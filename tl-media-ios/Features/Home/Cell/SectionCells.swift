@@ -10,6 +10,16 @@ import UIKit
 
 class SectionCells:UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    // MARK: UI ELEMENTS
+    let tabiLaboFamilysectionLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "TABI LABO FAMILY"
+        lbl.font = UIFont.systemFont(ofSize: 16)
+        lbl.textColor = .white
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
+    }()
+    
     // MARK: LIFECYCLE
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,6 +66,7 @@ class SectionCells:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     
     func setupView(){
         
+        
         //datasource and delegate
         topicCollectionView.dataSource = self
         topicCollectionView.delegate = self
@@ -67,8 +78,12 @@ class SectionCells:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         
         
         //auto layout
+        addSubview(tabiLaboFamilysectionLabel)
+        tabiLaboFamilysectionLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        tabiLaboFamilysectionLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        
         addSubview(topicCollectionView)
-        topicCollectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        topicCollectionView.topAnchor.constraint(equalTo: tabiLaboFamilysectionLabel.bottomAnchor).isActive = true
         topicCollectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         topicCollectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         topicCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true

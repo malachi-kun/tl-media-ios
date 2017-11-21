@@ -21,6 +21,7 @@ class TopicCell:UICollectionViewCell {
     
     func setupView(){
         backgroundColor = .blue
+       
         
     }
 }
