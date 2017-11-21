@@ -5,7 +5,6 @@
 //  Created by Malachi Hul on 2017/11/20.
 //  Copyright © 2017 Tabi-Labo. All rights reserved.
 //
-
 import UIKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
