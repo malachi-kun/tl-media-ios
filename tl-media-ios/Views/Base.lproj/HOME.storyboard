@@ -42,13 +42,13 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oo-cB-GBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1168.8" y="149.77511244377811"/>
+            <point key="canvasLocation" x="1338" y="150"/>
         </scene>
-        <!--Home-->
+        <!--HOME-->
         <scene sceneID="yG5-Gb-pAG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B8l-93-xOy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="NIL-GZ-UCa"/>
+                    <tabBarItem key="tabBarItem" title="HOME" id="NIL-GZ-UCa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OWX-qw-XcH">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -69,16 +69,61 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="pZ7-Zt-oeV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vxh-XX-q3m">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="B8l-93-xOy" kind="relationship" relationship="viewControllers" id="J47-2D-VmI"/>
+                        <segue destination="8xn-mH-d7V" kind="relationship" relationship="viewControllers" id="2pm-KT-cgA"/>
+                        <segue destination="Ftf-ho-3cc" kind="relationship" relationship="viewControllers" id="6P8-cp-BvW"/>
+                        <segue destination="cbr-HT-6tr" kind="relationship" relationship="viewControllers" id="ktC-k5-kqr"/>
+                        <segue destination="tkD-fv-hpM" kind="relationship" relationship="viewControllers" id="C1P-eP-8PK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csI-7m-m3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-298" y="150"/>
+            <point key="canvasLocation" x="-519" y="150"/>
+        </scene>
+        <!--NEW-->
+        <scene sceneID="2rF-sx-Bp2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NEW" id="8xn-mH-d7V" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="TYE-qG-4fV"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1kD-Gy-1Wp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-519" y="882"/>
+        </scene>
+        <!--SEARCH-->
+        <scene sceneID="v2B-FO-KTE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SEARCH" id="Ftf-ho-3cc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="hpZ-hI-b2k"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R2g-rl-4Qu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="276" y="959"/>
+        </scene>
+        <!--RANKING-->
+        <scene sceneID="pnX-UK-uxg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RANKING" id="cbr-HT-6tr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="zn5-L9-c6l"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mHD-Uq-YHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1001" y="959"/>
+        </scene>
+        <!--HISTORY-->
+        <scene sceneID="I2L-nh-5ut">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HISTORY" id="tkD-fv-hpM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ayl-Y1-1uq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MTb-WM-K5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1694" y="958"/>
         </scene>
     </scenes>
 </document>

@@ -11,14 +11,18 @@ import UIKit
 
 class HomeHeader:UICollectionViewCell {
     
+    
     // MARK: UI ELEMENTS
     let headerImage:UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .green
-        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.image = UIImage(named: "TL")
+        iv.contentMode = .scaleAspectFit
+        iv.backgroundColor = .black
+        //iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
+
     // MARK: LIFECYCLE CODE
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -32,9 +36,7 @@ class HomeHeader:UICollectionViewCell {
     // MARK: HELPER METHODS
     private func setupUI(){
         addSubview(headerImage)
-        headerImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        headerImage.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        headerImage.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        headerImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        headerImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
 }
