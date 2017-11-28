@@ -52,6 +52,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let nm = NetworkManager()
+        nm.testConnection()
+        
         collectionView?.backgroundColor = .black
         navigationItem.title = "Tabi Labo"
         headerTitle = ["", sectionTitle.tabiLaboFamily.rawValue, sectionTitle.category.rawValue]
@@ -82,7 +85,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     //CELL CODE
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Section count: \(sectionItems.count)")
+        //print("Section count: \(sectionItems.count)")
         return sectionItems.count
     }
     
