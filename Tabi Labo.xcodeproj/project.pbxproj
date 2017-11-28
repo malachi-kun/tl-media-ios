@@ -144,8 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				41F356C71FC2CC0D003F65FD /* Helper Utility */,
-				4112FD011FC2C38B00D8C2AF /* Views */,
 				4112FD001FC2C36E00D8C2AF /* Features */,
+				4112FD011FC2C38B00D8C2AF /* Views */,
 				4112FCFF1FC2C35900D8C2AF /* Supporting Files */,
 			);
 			path = "tl-media-ios";
@@ -205,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				4112FD031FC2C69900D8C2AF /* HomeController.swift */,
+				413E2B871FCCF10200E25686 /* Networking */,
 				41F356CE1FC2DFE9003F65FD /* Header */,
 				41FD31941FC3B69900D1DBF6 /* Cell */,
 			);
@@ -217,6 +218,13 @@
 				4138698C1FCC1F0400DF5CD7 /* NewCollectionView.swift */,
 			);
 			path = New;
+			sourceTree = "<group>";
+		};
+		413E2B871FCCF10200E25686 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		41F356C71FC2CC0D003F65FD /* Helper Utility */ = {

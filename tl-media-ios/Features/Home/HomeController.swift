@@ -16,8 +16,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         case category
     }
     
-    let categoryType:[String] = []
+    //items to put into collectionView cells
+    var sectionItems:[String] = [catList.topic.rawValue, catList.tlFamily.rawValue, catList.category.rawValue]
     
+    //MARK COLLECTION VIEW HEADER HEIGHT
+    let headerHeight:CGFloat = 350
+    
+    //MAKE CELL HEADER NAMES TO BE REGISTERED
     enum headerCellType:String {
         case headerID
         case topic
@@ -25,6 +30,15 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         case category
     }
     
+    //MAKE COLLECTION VIEW CELL HEIGHT SIZES
+    enum sectionCellSizes:CGFloat {
+        case topicHeight = 160
+        case tabiLabiFamilyHeight = 370
+        case categoryHeight = 425
+        case defaultValue = 260
+    }
+    
+    //SECTION TITLE HEADERS
     enum sectionTitle:String {
         case tabiLaboFamily = "TABI LABO FAMILY"
         case category = "CATEGORY"
@@ -32,8 +46,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var headerTitle:[String]?
     
-    //items to put into collectionView cells
-    var sectionItems:[String] = [catList.topic.rawValue, catList.tlFamily.rawValue, catList.category.rawValue]
+
 
     // MARK: LIFECYCLE
     override func viewDidLoad() {
@@ -89,7 +102,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     //FLOW LAYOUT : header
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 350)
+        return CGSize(width: view.frame.width, height: headerHeight)
     }
     
     //FLOW LAYOUT : cell
@@ -101,18 +114,21 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return 1
     }
     
+
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let width = view.frame.width
         
-        if indexPath.item == 0 {
-            return CGSize(width: width, height: 160)
-        } else if indexPath.item == 1 {
-            return CGSize(width: width, height: 370)
-        } else if indexPath.item == 2 {
-            return CGSize(width: width, height: 425)
+        
+        if indexPath.item == 0 {                        //Topic Section
+            return CGSize(width: width, height: sectionCellSizes.topicHeight.rawValue)
+        } else if indexPath.item == 1 {                 //Tabi Labo Family Section
+            return CGSize(width: width, height: sectionCellSizes.tabiLabiFamilyHeight.rawValue)
+        } else if indexPath.item == 2 {                 //Category Section
+            return CGSize(width: width, height: sectionCellSizes.categoryHeight.rawValue)
         } else {
-            return CGSize(width: width, height: 260)
+            return CGSize(width: width, height: sectionCellSizes.defaultValue.rawValue)
         }
     }
 }
