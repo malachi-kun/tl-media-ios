@@ -15,7 +15,6 @@ class CategoryCell:UICollectionViewCell {
         let iv = UIImageView()
         iv.image = UIImage(named: "TL")
         iv.contentMode = .scaleAspectFit
-        //iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     

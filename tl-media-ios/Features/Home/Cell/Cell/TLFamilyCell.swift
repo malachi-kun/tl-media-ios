@@ -14,7 +14,6 @@ class TLFamilyCell:UICollectionViewCell {
         let iv = UIImageView()
         iv.image = UIImage(named: "TL")
         iv.contentMode = .scaleAspectFit
-        //iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
@@ -47,8 +46,5 @@ class TLFamilyCell:UICollectionViewCell {
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        
-        //nameLabel.anchor(top: imageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 5, paddingRight: 0, width: 0, height: 0)
-        
     }
 }

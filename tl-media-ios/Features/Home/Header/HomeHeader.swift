@@ -15,7 +15,7 @@ class HomeHeader:UICollectionViewCell {
     // MARK: UI ELEMENTS
     let headerImage:UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "TL")
+        iv.image = UIImage(named: "TL")  //fileName
         iv.contentMode = .scaleAspectFit
         iv.backgroundColor = .black
         //iv.translatesAutoresizingMaskIntoConstraints = false

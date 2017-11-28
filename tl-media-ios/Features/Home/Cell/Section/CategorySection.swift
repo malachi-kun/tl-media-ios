@@ -16,7 +16,6 @@ class CategorySection:UICollectionViewCell, UICollectionViewDataSource, UICollec
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .black
-        //collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
@@ -59,15 +58,6 @@ class CategorySection:UICollectionViewCell, UICollectionViewDataSource, UICollec
         categoryLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 0, width: 0, height: 0)
 
         categoryCollectionView.anchor(top: categoryLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
-//        categoryLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        categoryLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-//        categoryLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-//
-//        categoryCollectionView.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 3).isActive = true
-//        categoryCollectionView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-//        categoryCollectionView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-//        categoryCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
     // MARK: COLLECTIONVIEW
@@ -78,7 +68,6 @@ class CategorySection:UICollectionViewCell, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.category.rawValue, for: indexPath) as! CategoryCell
         
-        print("category index: \(indexPath.item)")
         return cell
     }
     

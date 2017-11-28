@@ -16,7 +16,6 @@ class TabiLaboFamilySection:UICollectionViewCell, UICollectionViewDataSource, UI
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .black
-        //collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     

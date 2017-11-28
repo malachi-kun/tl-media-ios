@@ -16,7 +16,6 @@ class TopicSection:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .black
-        //collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
