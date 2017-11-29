@@ -16,6 +16,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         case category
     }
     
+    let networkManager = NetworkManager()
+    
     //items to put into collectionView cells
     var sectionItems:[String] = [catList.topic.rawValue, catList.tlFamily.rawValue, catList.category.rawValue]
     
@@ -46,19 +48,15 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var headerTitle:[String]?
     
-
-
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let nm = NetworkManager()
-        nm.testConnection()
+        //Get data from server
+        networkManager.getArticleFromServer(id: nil)
         
         collectionView?.backgroundColor = .black
         navigationItem.title = "Tabi Labo"
         headerTitle = ["", sectionTitle.tabiLaboFamily.rawValue, sectionTitle.category.rawValue]
-        
         
         //CELL REGISTRATION
         //header
@@ -85,7 +83,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     //CELL CODE
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //print("Section count: \(sectionItems.count)")
         return sectionItems.count
     }
     
@@ -117,20 +114,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return 1
     }
     
-
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let width = view.frame.width
-        
-        
-        if indexPath.item == 0 {                        //Topic Section
+        switch indexPath.item {
+        case 0:
             return CGSize(width: width, height: sectionCellSizes.topicHeight.rawValue)
-        } else if indexPath.item == 1 {                 //Tabi Labo Family Section
+        case 1:
             return CGSize(width: width, height: sectionCellSizes.tabiLabiFamilyHeight.rawValue)
-        } else if indexPath.item == 2 {                 //Category Section
+        case 2:
             return CGSize(width: width, height: sectionCellSizes.categoryHeight.rawValue)
-        } else {
+        default:
             return CGSize(width: width, height: sectionCellSizes.defaultValue.rawValue)
         }
     }

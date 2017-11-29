@@ -9,103 +9,113 @@
 import UIKit
 import Foundation
 
-class NetworkManager {
-    
-    typealias JSONDictionary = [String: Any]
-    typealias QueryResult = ([Topic]?, String) -> ()
-    
-    var topic: [Topic] = []
-    var errorMessage = ""
-    
-    // TODO
-    let defaultSession = URLSession(configuration: .default)
-    var dataTask:URLSessionDataTask?
-    
- 
-    func getSearchResults() {
-        // TODO
-        // 1
-        dataTask?.cancel()  //for new user, cancel if already exists.
-        // 2
-        if var urlComponents = URLComponents(string: "https://cms-api-dev.tabi-labo.com/api/v1/article/282211") {
+class NetworkManager:Codable {
 
-        //if var urlComponents = URLComponents(string: "https://itunes.apple.com/search") {
-            //urlComponents.query = "media=music&entity=song&term=\(searchTerm)"
-            // 3
-            guard let url = urlComponents.url else { return }
-            
-            //getRequest.addValue("Token xxxxxxxx", forHTTPHeaderField: "Authorization")
-            // 4
-            dataTask = defaultSession.dataTask(with: url) { data, response, error in
-                defer { self.dataTask = nil  }
-                // 5
-                if let error = error {
-                    self.errorMessage += "DataTask error: " + error.localizedDescription + "\n"
-                } else if let data = data,
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 {
-                    
-                    print("data found: \(data)")
-                    //self.updateSearchResults(data)
-                    // 6
-                    DispatchQueue.main.async {
-                        //completion(self.topic, self.errorMessage)
-                    }
-                } else if let data = data,
-                    let response = response as? HTTPURLResponse{
-                    print("status code: \(response.statusCode)")
-                }
-        
-            }
-            dataTask?.resume()
-        }
+    // MARK: PROPERTIES
+    var articleIDs = [Int]()
+    
+    //Codable Structure
+    //**Article ID
+    struct articles:Decodable {
+        var articles:[article]
     }
     
-    fileprivate func updateSearchResults(_ data: Data) {
-        var response: JSONDictionary?
-        topic.removeAll()
-        
-        do {
-            response = try JSONSerialization.jsonObject(with: data, options: []) as? JSONDictionary
-        } catch let parseError as NSError {
-            errorMessage += "JSONSerialization error: \(parseError.localizedDescription)\n"
-            return
-        }
-        
-        guard let array = response!["results"] as? [Any] else {
-            errorMessage += "Dictionary does not contain results key\n"
-            return
-        }
-        var index = 0
-        for trackDictionary in array {
-            if let trackDictionary = trackDictionary as? JSONDictionary,
-                let previewURLString = trackDictionary["previewUrl"] as? String,
-                let previewURL = URL(string: previewURLString),
-                let name = trackDictionary["trackName"] as? String,
-                let artist = trackDictionary["artistName"] as? String {
-                topic.append(Topic(name: name, artist: artist, previewURL: previewURL, index: index))
-                index += 1
-            } else {
-                errorMessage += "Problem parsing trackDictionary\n"
-            }
-        }
+    struct article:Decodable {
+        var article_id:Int
     }
     
-    func testConnection(){
+    //**Article Content
+    struct articleContentList:Decodable{
+        var article_items:[articleContent]?
+    }
+    
+    struct articleContent:Decodable {
+        var content:String
+        var images:[String]?
+    }
+    
+    //Server endpoint
+    enum authHeader:String{
+        case authType = "Authorization"
+        case authString = "Bearer 18ea0f254ce9bef70b6d95e10b03c6c36d9e4155c1fcc2322f69ab92c52069d2"
+        case url = "https://cms-api-dev.tabi-labo.com/api/v1/article"
+    }
+    
+    // MARK: FETCH ARTICLE IDS FROM SERVER
+    //Get data from server
+    func getArticleFromServer(id:Int?){
         let config = URLSessionConfiguration.default
-        let authString = "Bearer 18ea0f254ce9bef70b6d95e10b03c6c36d9e4155c1fcc2322f69ab92c52069d2"
-        config.httpAdditionalHeaders = ["Authorization" : authString]
+        config.httpAdditionalHeaders = [authHeader.authType.rawValue : authHeader.authString.rawValue]
+    
         let session = URLSession(configuration: config)
         
-        let url = NSURL(string: "https://cms-api-dev.tabi-labo.com/api/v1/article/282211")
-        let task = session.dataTask(with: url! as URL) {
-            ( data, response, error) in
-            if (response as? HTTPURLResponse) != nil {
-                let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                print(dataString!)
+        //If ID is present, we will want to fetch article content.  Else we are just fetching for articleIDs
+        if let id = id {
+            let address = "\(authHeader.url.rawValue)/\(id)"
+            guard let url = NSURL(string: address) else { return }
+            self.fetch(url: url, session: session, content:true)
+        } else {
+            guard let url = NSURL(string: authHeader.url.rawValue) else { return }
+            self.fetch(url: url, session: session, content: false)
+        }
+    }
+    
+    private func fetch(url:NSURL, session:URLSession, content:Bool){
+        let task = session.dataTask(with: url as URL) {
+            (data, response, error) in
+            
+            //Check for successful server connection and data received.
+            //Send to parse data
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let responseData = data {
+                if content {
+                    self.parseJSONForArticleContent(data: responseData)
+                } else {
+                    self.parseJSONForArticleID(data: responseData)
+                    self.fetchContentFromID()
+                }
             }
         }
         task.resume()
     }
+    
+    //Parse for Article ID
+    func parseJSONForArticleID(data:Data){
+        //serialize the data
+        do{
+            //decode and place article IDs in an Array
+            let jsonDecoded = try JSONDecoder().decode(articles.self, from: data)
+            for article in jsonDecoded.articles {
+                articleIDs.append(article.article_id)
+            }
+            
+            print("Completed ID Fetch.  ID Count: \(articleIDs.count)")
+        }catch let error{
+            print("unable to create json object. \n Error: \(error)")
+        }
+    }
+    
+    private func fetchContentFromID(){
+        for id in articleIDs {
+            getArticleFromServer(id: id)
+        }
+    }
+    
+    //Get article content with IDs
+    func parseJSONForArticleContent(data:Data){
+        do{
+            //decode for article content
+            let jsonDecoded = try JSONDecoder().decode(articleContentList.self, from: data)
+            guard let articleItems = jsonDecoded.article_items else {return}
+            for article in articleItems{
+                print("Content: \(article.content), Images: \(article.images ?? [""])")
+            }
+            
+            print("Completed ID Fetch.  ID Count: \(articleIDs.count)")
+        }catch let error{
+            print("unable to create json object. \n Error: \(error)")
+        }
+    }
+    
+    //Parse article content for images
     
 }

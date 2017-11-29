@@ -11,7 +11,6 @@ import UIKit
 
 class HomeHeader:UICollectionViewCell {
     
-    
     // MARK: UI ELEMENTS
     let headerImage:UIImageView = {
         let iv = UIImageView()
@@ -22,7 +21,6 @@ class HomeHeader:UICollectionViewCell {
         return iv
     }()
     
-
     // MARK: LIFECYCLE CODE
     override init(frame: CGRect){
         super.init(frame: frame)
