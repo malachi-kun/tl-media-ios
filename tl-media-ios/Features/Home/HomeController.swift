@@ -7,16 +7,25 @@
 //
 import UIKit
 
+
+
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    let testImageURL = "https://d2ygv0wrq5q6bx.cloudfront.net/uploads/image/files/129660/3d32f3a212ca7f5923a5720094d48416b7955d40.png"
+    
     // MARK: PROPERTIES
+    //Get data from server
+    //let networkManager = NetworkManager()
+    
     enum catList:String {
         case topic
         case tlFamily
         case category
     }
     
-    let networkManager = NetworkManager()
+    //image list
+    var imageList = [Int:String]()
+    var headerImage = UIImage()
     
     //items to put into collectionView cells
     var sectionItems:[String] = [catList.topic.rawValue, catList.tlFamily.rawValue, catList.category.rawValue]
@@ -51,8 +60,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Get data from server
-        networkManager.getArticleFromServer(id: nil)
+        //networkManager.delegate = self
         
         collectionView?.backgroundColor = .black
         navigationItem.title = "Tabi Labo"
@@ -78,8 +86,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellType.headerID.rawValue, for: indexPath) as! HomeHeader
+        
+        
+        //test code
+        //print(testImageURL)
+        header.setupCell(imgURL: testImageURL)
+ 
+        //test code
+      
+
         return header
     }
+    
+
     
     //CELL CODE
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -129,3 +148,20 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
 }
+
+extension HomeController: ArticleContentDelegate {
+    func articleContentList(articleModelList: [ArticleContentModel], articleContentModelList: [Int : [ArticleContentModel]]) {
+        
+        var i = 0
+        for inputType in articleModelList {
+            //print(inputType.input)
+            
+            if inputType.input == "image"{
+                i += 1
+                imageList[i] = inputType.content
+            }
+        }
+    }
+}
+
+

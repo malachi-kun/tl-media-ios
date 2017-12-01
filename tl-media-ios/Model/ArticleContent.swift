@@ -8,6 +8,14 @@
 
 import UIKit
 
-struct articleContentMode{
+struct ArticleContentModel:Codable{
+    var id:Int?
+    var content:String
+    var input:String
     
+    init(id:Int?, content:String, input:String){
+        self.id = id
+        self.content = content
+        self.input = input
+    }
 }
