@@ -43,13 +43,21 @@ class NetworkManager {
     }
     
     //Server endpoint
+    enum env:String{
+        case dev
+        case prod
+    }
+    
     enum authHeader:String{
         case authType = "Authorization"
         case authString = "Bearer 18ea0f254ce9bef70b6d95e10b03c6c36d9e4155c1fcc2322f69ab92c52069d2"
-        case url = "https://cms-api-dev.tabi-labo.com/api/v1/article"
-        case prodUrl = "https://search-tl-search-dev-bvb77sqhuziebbdvilw5qem5uy.ap-northeast-1.cloudsearch.amazonaws.co"
+        case devUrl = "https://cms-api-dev.tabi-labo.com/api/v1/article"
+        case prodUrl = "https://search-tl-search-dev-bvb77sqhuziebbdvilw5qem5uy.ap-northeast-1.cloudsearch.amazonaws.com"
     }
     
+    var environment = "dev"  // dev or prod
+  
+
     // MARK: LIFECYCLE
     init(){
         getArticleFromServer(id: nil, last:nil)
@@ -60,6 +68,8 @@ class NetworkManager {
     //If no 'id' is present.  Use URL to get Article ID.
     //Get data from server
     func getArticleFromServer(id:Int?, last:Bool?){
+        guard let url = configureEnvironmentURL() else {return}
+        
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = [authHeader.authType.rawValue : authHeader.authString.rawValue]
     
@@ -67,27 +77,30 @@ class NetworkManager {
         
         //If ID is present, we will want to fetch article content.  Else we are just fetching for articleIDs
         if let id = id {
-            let address = "\(authHeader.url.rawValue)/\(id)"
+            let address = "\(url)/\(id)"
             guard let url = NSURL(string: address) else { return }
             self.fetch(url: url, session: session, content:true, id:id, last:last)
         } else {
-            guard let url = NSURL(string: authHeader.url.rawValue) else { return }
+            guard let url = NSURL(string: url) else { return }
             self.fetch(url: url, session: session, content: false, id: nil, last:nil)
         }
     }
     
-    //If an 'Content' is true.  Fetch Article Content.
-    //If an 'Content' is false.  Fetch Article ID.
+    //If 'Content' is true.  Fetch Article Content.
+    //If 'Content' is false.  Fetch Article ID.
     private func fetch(url:NSURL, session:URLSession, content:Bool, id:Int?, last:Bool?){
+        //print(url)
         let task = session.dataTask(with: url as URL) {
             (data, response, error) in
             
-            //Check for successful server connection and data received.  Send to parse data
+            //Check for successful server connection and data received.  Send to PARSE PROCESS.
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let responseData = data {
                 if content {
+                    //print("content received.")
                     guard let id = id else {return}
                     self.parseJSONForArticleContent(data: responseData, id: id, last: nil)
                     
+                    //delegate after last item.
                     guard let last = last else {return}
                     if last {
                         self.delegate?.articleContentList(articleModelList: self.fetchedArticleContent, articleContentModelList: self.articleDict)
@@ -96,6 +109,8 @@ class NetworkManager {
                     self.parseJSONForArticleID(data: responseData)
                     self.fetchContentFromID()
                 }
+            } else {
+                print("Did not receive data.")
             }
         }
         task.resume()
@@ -111,8 +126,6 @@ class NetworkManager {
             for article in jsonDecoded.articles {
                 articleIDs.append(article.article_id)
             }
-            
-            //print("Completed ID Fetch.  ID Count: \(articleIDs.count)")
         }catch let error{
             //print("unable to create json object. \n Error: \(error)")
         }
@@ -139,7 +152,6 @@ class NetworkManager {
             
             guard let articleItems = jsonDecoded.article_items else {return}
             for article in articleItems{
-                //print("id:\(id), content:\(article.content), input:\(article.input_type)")
                 let articleContent = ArticleContentModel(id:id , content: article.content, input:article.input_type)
                 fetchedArticleContent.append(articleContent)
             }
@@ -149,10 +161,28 @@ class NetworkManager {
             //print("Completed Article Content Fetching. Fetch count.")
             
         }catch {
-            print("unable to create json object. \n Error: (error)")
+            //print("unable to create json object. \n Error: (error)")
         }
     }
     
-    //Parse article content for images
-    //** TBA **
+    // MARK:  HELPER METHODS
+    
+    //Check member property: 'environment' for either dev/prod
+    func configureEnvironmentURL() -> String?  {
+    
+        var url:String?
+        
+        if environment == env.prod.rawValue {
+            url = authHeader.prodUrl.rawValue
+            guard let url = url else {return nil}
+            return url
+        } else if environment == env.dev.rawValue{
+            url = authHeader.devUrl.rawValue
+            guard let url = url else {return nil}
+            return url
+        } else {
+            print("Environment does not exists.")
+            return nil
+        }
+    }
 }

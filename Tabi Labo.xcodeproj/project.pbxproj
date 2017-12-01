@@ -25,7 +25,6 @@
 		413E2B8D1FCD3EDA00E25686 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B8C1FCD3EDA00E25686 /* NetworkManager.swift */; };
 		413E2B901FCD3F7700E25686 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E2B8F1FCD3F7700E25686 /* Topic.swift */; };
 		413E2B921FCD449700E25686 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 413E2B911FCD449700E25686 /* Info.plist */; };
-		416BCC2F1FCFE45C00E9C024 /* NetworkFetchFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416BCC2E1FCFE45C00E9C024 /* NetworkFetchFile.swift */; };
 		419FA56B1FCE9B2800354CC3 /* ArticleContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419FA56A1FCE9B2800354CC3 /* ArticleContent.swift */; };
 		41F356C61FC2CB47003F65FD /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F356C51FC2CB47003F65FD /* HomeHeader.swift */; };
 		41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F356C81FC2CC2B003F65FD /* HelperUtility.swift */; };
@@ -80,7 +79,6 @@
 		413E2B8C1FCD3EDA00E25686 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		413E2B8F1FCD3F7700E25686 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		413E2B911FCD449700E25686 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "tl-media-ios/Info.plist"; sourceTree = SOURCE_ROOT; };
-		416BCC2E1FCFE45C00E9C024 /* NetworkFetchFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetchFile.swift; sourceTree = "<group>"; };
 		419FA56A1FCE9B2800354CC3 /* ArticleContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContent.swift; sourceTree = "<group>"; };
 		41F356C51FC2CB47003F65FD /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		41F356C81FC2CC2B003F65FD /* HelperUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperUtility.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				413E2B8C1FCD3EDA00E25686 /* NetworkManager.swift */,
-				416BCC2E1FCFE45C00E9C024 /* NetworkFetchFile.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -611,7 +608,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				416BCC2F1FCFE45C00E9C024 /* NetworkFetchFile.swift in Sources */,
 				413E2B8D1FCD3EDA00E25686 /* NetworkManager.swift in Sources */,
 				41FD319A1FC3C85B00D1DBF6 /* TabiLaboFamilySection.swift in Sources */,
 				4112FD041FC2C69900D8C2AF /* HomeController.swift in Sources */,

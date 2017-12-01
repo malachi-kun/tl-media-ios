@@ -6,7 +6,7 @@
 //  Copyright © 2017 Tabi-Labo. All rights reserved.
 //
 import UIKit
-
+import SDWebImage
 
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -15,7 +15,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     // MARK: PROPERTIES
     //Get data from server
-    //let networkManager = NetworkManager()
+    let networkManager = NetworkManager()
     
     enum catList:String {
         case topic
@@ -60,7 +60,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        //networkManager.delegate = self
+        networkManager.delegate = self
         
         collectionView?.backgroundColor = .black
         navigationItem.title = "Tabi Labo"
@@ -87,14 +87,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
 
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellType.headerID.rawValue, for: indexPath) as! HomeHeader
         
+        if imageList.count > 0 {
+            print(imageList[0])
+            guard let imageURLString = imageList[0] else {return header}
+            header.headerImage.sd_setImage(with: URL(string: imageURLString), placeholderImage: #imageLiteral(resourceName: "TL"))
+            return header
+        }
         
-        //test code
-        //print(testImageURL)
-        header.setupCell(imgURL: testImageURL)
- 
-        //test code
-      
-
+         header.headerImage.image = #imageLiteral(resourceName: "TL")
         return header
     }
     
@@ -154,12 +154,15 @@ extension HomeController: ArticleContentDelegate {
         
         var i = 0
         for inputType in articleModelList {
-            //print(inputType.input)
-            
             if inputType.input == "image"{
+                self.imageList[i] = inputType.content
+                print("raw: \(inputType.content) \n iL:\(imageList[i])")
                 i += 1
-                imageList[i] = inputType.content
             }
+        }
+        
+        DispatchQueue.main.async {
+            self.collectionView?.reloadData()
         }
     }
 }
