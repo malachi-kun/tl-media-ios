@@ -1,6 +1,6 @@
 //
 //  HomeScrollController.swift
-//  tl-media-ios
+//  tl-media-ios.
 //
 //  Created by Malachi Hul on 2017/12/04.
 //  Copyright © 2017 Tabi-Labo. All rights reserved.
