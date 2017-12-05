@@ -9,7 +9,7 @@
 import Foundation.NSURL
 
 // Query service creates Track objects
-class Topic {
+class TopicModel {
     
     let name: String
     let artist: String

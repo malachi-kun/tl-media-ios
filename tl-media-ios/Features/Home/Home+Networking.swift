@@ -5,25 +5,24 @@
 //  Created by Malachi Hul on 2017/11/28.
 //  Copyright © 2017 Tabi-Labo. All rights reserved.
 //
-
 import UIKit
 import Foundation
 
-protocol ArticleContentDelegate{
-    func articleContentList(articleModelList:[ArticleContentModel], articleContentModelList:[Int:[ArticleContentModel]])
-}
+
 
 class NetworkManager {
     
     // MARK: PROPERTIES
     var delegate:ArticleContentDelegate?
+    var delegateProd:ArticleProdDelegate?
     
     var articleIDs = [Int]()
     var fetchedArticleContent = [ArticleContentModel]()
     var articleDict = [Int:[ArticleContentModel]]()
+    var articleList = [ArticleModel]()
     
     //Codable Structure
-    //**Article ID
+    // MARK: **Article ID
     struct articles:Decodable {
         var articles:[article]
     }
@@ -41,6 +40,7 @@ class NetworkManager {
         var content:String
         var input_type:String
     }
+    // MARK: **Article ID
     
     //Server endpoint
     enum env:String{
@@ -52,15 +52,84 @@ class NetworkManager {
         case authType = "Authorization"
         case authString = "Bearer 18ea0f254ce9bef70b6d95e10b03c6c36d9e4155c1fcc2322f69ab92c52069d2"
         case devUrl = "https://cms-api-dev.tabi-labo.com/api/v1/article"
-        case prodUrl = "https://search-tl-search-dev-bvb77sqhuziebbdvilw5qem5uy.ap-northeast-1.cloudsearch.amazonaws.com"
+        case prodUrl = "https://search-tl-search-dev-bvb77sqhuziebbdvilw5qem5uy.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=titles:1&q.parser=structured"
     }
     
-    var environment = "dev"  // dev or prod
+    //SELECTED ENVIRONMENT
+    var environment = "prod"  // dev or prod
   
 
     // MARK: LIFECYCLE
     init(){
-        getArticleFromServer(id: nil, last:nil)
+        //getArticleFromServer(id: nil, last:nil) //disabled during testing
+        getFromProdEndpoint()
+    }
+    
+    // MARK: **PROD Article CODEABLE STRUCTURE**
+    struct prodArticle:Decodable {
+        var hits:hit
+    }
+    
+    struct hit:Decodable{
+        var hit:[editorials]
+    }
+    
+    struct editorials:Decodable{
+        var id:String
+        var fields:field
+    }
+    
+    struct field:Decodable{
+        var status:String
+        var author_name:String
+        var titles:[String]
+        var eye_catch_urls:[String]
+        var body:String
+    }
+    //**PROD Article CODEABLE STRUCTURE**
+
+    func getFromProdEndpoint(){
+        
+        guard let url = URL(string: authHeader.prodUrl.rawValue) else {return}
+        let config = URLSessionConfiguration.default
+
+        let session = URLSession(configuration: config)
+        let task = session.dataTask(with: url as URL) {
+            (data, response, error) in
+            guard let data = data else {return}
+            self.parseProdEndpoint(data: data)
+            
+            DispatchQueue.main.async {
+                self.delegateProd?.articleContentList(articleContent: self.articleList)
+            }
+            
+        }
+        task.resume()
+    }
+
+    
+    func parseProdEndpoint(data:Data){
+        //serialize the data
+        do{
+            //decode and place article IDs in an Array
+            let jsonDecoded = try JSONDecoder().decode(prodArticle.self, from: data)
+            let hits = jsonDecoded.hits.hit
+         
+            for singleHit in hits {
+                let status = singleHit.fields.status
+                let author = singleHit.fields.author_name
+                let titles = singleHit.fields.titles
+                let images = singleHit.fields.eye_catch_urls
+                let id = singleHit.id
+                let body = singleHit.fields.body
+                
+                let tempArticle = ArticleModel(id: id, status: status, author: author, title: titles, body: body, images: images)
+                
+                self.articleList.append(tempArticle)
+            }
+        }catch let error {
+            print("error: ", error)
+        }
     }
     
     // MARK: GET URL FOR ARTICLE INFORMATION FROM SERVER.
@@ -89,7 +158,7 @@ class NetworkManager {
     //If 'Content' is true.  Fetch Article Content.
     //If 'Content' is false.  Fetch Article ID.
     private func fetch(url:NSURL, session:URLSession, content:Bool, id:Int?, last:Bool?){
-        //print(url)
+
         let task = session.dataTask(with: url as URL) {
             (data, response, error) in
             
@@ -102,8 +171,9 @@ class NetworkManager {
                     
                     //delegate after last item.
                     guard let last = last else {return}
+                
                     if last {
-                        self.delegate?.articleContentList(articleModelList: self.fetchedArticleContent, articleContentModelList: self.articleDict)
+//                        self.delegate?.articleContentList(articleModelList: self.fetchedArticleContent, articleContentModelList: self.articleDict)
                     }
                 } else {
                     self.parseJSONForArticleID(data: responseData)
@@ -126,8 +196,8 @@ class NetworkManager {
             for article in jsonDecoded.articles {
                 articleIDs.append(article.article_id)
             }
-        }catch let error{
-            //print("unable to create json object. \n Error: \(error)")
+        }catch{
+            print("unable to create json object.")
         }
     }
     
@@ -158,8 +228,6 @@ class NetworkManager {
             
             //Add to dictionary to organize data
             articleDict = [id:fetchedArticleContent]
-            //print("Completed Article Content Fetching. Fetch count.")
-            
         }catch {
             //print("unable to create json object. \n Error: (error)")
         }
