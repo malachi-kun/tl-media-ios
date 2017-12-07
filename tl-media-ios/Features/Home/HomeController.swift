@@ -20,7 +20,7 @@ class HomeController: UICollectionViewController  {
     
     //Controller and layout parameters
     enum catList:String {
-        case topic
+        case voiceArticles
         case tlFamily
         case category
     }
@@ -30,7 +30,7 @@ class HomeController: UICollectionViewController  {
     var headerImage = UIImage()
     
     //items to put into collectionView cells
-    var sectionItems:[String] = [catList.topic.rawValue, catList.tlFamily.rawValue, catList.category.rawValue]
+    var sectionItems:[String] = [catList.voiceArticles.rawValue, catList.tlFamily.rawValue, catList.category.rawValue]
     
     //MARK COLLECTION VIEW HEADER HEIGHT
     let headerHeight:CGFloat = 350

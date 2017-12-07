@@ -16,6 +16,15 @@ class HomeScrollController:UICollectionViewController, UICollectionViewDelegateF
     let networkManager = NetworkManager()
     var articleDetails = [ArticleModel]()
     
+    //Controller and layout parameters
+    enum sectionNames:String {
+        case voiceArticles
+        case tlFamily
+        case category
+    }
+    
+    //Section of collectionView
+    var sectionItems:[String] = [sectionNames.voiceArticles.rawValue, sectionNames.tlFamily.rawValue, sectionNames.category.rawValue]
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
@@ -29,11 +38,17 @@ class HomeScrollController:UICollectionViewController, UICollectionViewDelegateF
     
     // MARK: COLLECTIONVIEW CONTROLLER
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return sectionItems.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return articleDetails.count
+        
+        switch section {
+        case 0:
+            return articleDetails.count
+        default:
+            return 0
+        }
     }
   
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -45,11 +60,6 @@ class HomeScrollController:UICollectionViewController, UICollectionViewDelegateF
     }
     
     // MARK: FLOW LAYOUT
-    //header
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: view.frame.width, height: view.frame.width)
-//    }
-    
     //cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
@@ -66,19 +76,7 @@ class HomeScrollController:UICollectionViewController, UICollectionViewDelegateF
     
     // MARK: DELEGATE METHODS
     func articleContentList(articleContent: [ArticleModel]) {
-        
-        var count = 0
-        
-        for article in articleContent {
-//            for imageString in article.images {
-//                imageList.append(imageString)
-//                count += 1
-//            }
-            articleDetails = articleContent
-     
-        }
-        
-        print(count)
+        articleDetails = articleContent
         collectionView?.reloadData()
     }
 }
