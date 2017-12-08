@@ -41,6 +41,7 @@ class HomeController: UICollectionViewController  {
     }
     
     var headerTitle:[String]?
+    let navigationTitle = "Tabi Labo"
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
@@ -50,7 +51,7 @@ class HomeController: UICollectionViewController  {
         networkManager.delegateProd = self
         
         collectionView?.backgroundColor = .black
-        navigationItem.title = "Tabi Labo"
+        navigationItem.title = navigationTitle
         headerTitle = ["", sectionTitle.tabiLaboFamily.rawValue, sectionTitle.category.rawValue]
         
         //CELL REGISTRATION

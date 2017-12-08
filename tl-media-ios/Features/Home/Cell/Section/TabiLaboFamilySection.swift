@@ -30,12 +30,13 @@ class TabiLaboFamilySection:UICollectionViewCell, UICollectionViewDataSource, UI
     }()
     
     // MARK: PROPERTIES
-
+    var cellImages = [UIImage]()
     let numberOfSections = 6
     
     //MARK: LIFECYCLE
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupimageLogoArray()
         setupView()
     }
     
@@ -44,6 +45,10 @@ class TabiLaboFamilySection:UICollectionViewCell, UICollectionViewDataSource, UI
     }
     
     // MARK: ASSIST METHODS
+    private func setupimageLogoArray(){
+            cellImages = [#imageLiteral(resourceName: "brands_go_logo"),#imageLiteral(resourceName: "brands_tl_logo"),#imageLiteral(resourceName: "brands_be_logo"),#imageLiteral(resourceName: "brands_jl_logo1"),#imageLiteral(resourceName: "brands_takibito_logo"),#imageLiteral(resourceName: "brands_diccovery_logo")]
+    }
+    
     func setupView(){
         
         backgroundColor = .black
@@ -68,6 +73,9 @@ class TabiLaboFamilySection:UICollectionViewCell, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.tlFamily.rawValue, for: indexPath) as! TLFamilyCell
+        
+        cell.imageView.image = cellImages[indexPath.item]
+        
         return cell
     }
     

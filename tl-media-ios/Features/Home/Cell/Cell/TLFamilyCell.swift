@@ -12,7 +12,7 @@ class TLFamilyCell:UICollectionViewCell {
     // MARK: UI ELEMENTS
     let imageView:UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .green
+        iv.backgroundColor = .black
         //iv.image = UIImage(named: "TL")
         iv.contentMode = .scaleAspectFit
         return iv
@@ -25,6 +25,9 @@ class TLFamilyCell:UICollectionViewCell {
         label.textColor = .white
         return label
     }()
+    
+    // MARK: PROPERTIES
+    let cellImages = [UIImage]()
     
     // MARK: LIFECYCLE
     override init(frame: CGRect) {
