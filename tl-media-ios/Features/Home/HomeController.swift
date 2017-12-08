@@ -18,13 +18,6 @@ class HomeController: UICollectionViewController  {
     //Article Model
     var articleDetailedList = [ArticleModel]()
     
-//  Controller and Layout Parameters  //**mark for delete**
-//    enum catList:String {
-//        case voiceArticles
-//        case tlFamily
-//        case category
-//   }
-    
     //Image List
     var imageList = [Int:String]()
     var headerImage = UIImage()
@@ -33,22 +26,11 @@ class HomeController: UICollectionViewController  {
     var sectionItems:[String] = [cellType.voiceArticle.rawValue, cellType.tlFamily.rawValue, cellType.category.rawValue]
     
     // MARK: COLLECTIONVIEW PROPERTIES
-    //COLLECTION VIEW HEADER HEIGHT
-    //let headerHeight:CGFloat = 350  //**mark for delete 2017/12/08**
-    
-    //MAKE CELL HEADER NAMES TO BE REGISTERED  //**mark for delete 2017/12/08**
-//    enum headerCellType:String {
-//        case headerID
-//        case audio
-//        case tlFamily
-//        case category
-//    }
-    
     //MAKE COLLECTION VIEW CELL HEIGHT SIZES
     enum sectionCellSizes:CGFloat {
         case voiceArticle = 650
         case tabiLabiFamilyHeight = 550
-        case categoryHeight = 475
+        case categoryHeight = 430
         case defaultValue = 260
     }
     
@@ -72,10 +54,6 @@ class HomeController: UICollectionViewController  {
         headerTitle = ["", sectionTitle.tabiLaboFamily.rawValue, sectionTitle.category.rawValue]
         
         //CELL REGISTRATION
-        //header  //**mark for delete 2017/12/08**
-//        collectionView?.register(HomeHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCellType.headerID.rawValue)
-        
-        //cell registration
         collectionView?.register(VoiceArticle.self, forCellWithReuseIdentifier: cellType.voiceArticle.rawValue)
         collectionView?.register(CategorySection.self, forCellWithReuseIdentifier: cellType.category.rawValue)
         collectionView?.register(TabiLaboFamilySection.self, forCellWithReuseIdentifier: cellType.tlFamily.rawValue)

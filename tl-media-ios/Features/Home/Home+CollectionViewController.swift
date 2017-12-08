@@ -16,29 +16,6 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
         return 1
     }
     
-    //HEADER CODE  //**mark for delete 2017/12/08**
-//    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        
-//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellType.headerID.rawValue, for: indexPath) as! HomeHeader
-//        
-//        //still in development
-//        if imageList.count > 0 {
-//            print(imageList[0] ?? "")
-//            guard let imageURLString = imageList[0] else {return header}
-//            header.headerImage.sd_setImage(with: URL(string: imageURLString), placeholderImage: #imageLiteral(resourceName: "TL"))
-//            return header
-//        }
-//        
-//        if articleDetailedList.count > 0 {
-//            let imgURLString = articleDetailedList[0].images![0]
-//            header.headerImage.sd_setImage(with: URL(string: imgURLString), placeholderImage: #imageLiteral(resourceName: "TL"))
-//            return header
-//        }
-//        
-//        header.headerImage.image = #imageLiteral(resourceName: "TL")
-//        return header
-//    }
-    
     //CELL CODE
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sectionItems.count
@@ -59,11 +36,6 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
     }
     
     // MARK: FLOW LAYOUT
-    //header  //**mark for delete 2017/12/08**
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: view.frame.width, height: headerHeight)
-//    }
-    
     //cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
