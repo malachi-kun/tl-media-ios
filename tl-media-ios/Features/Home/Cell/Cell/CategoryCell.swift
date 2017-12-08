@@ -13,7 +13,8 @@ class CategoryCell:UICollectionViewCell {
     // MARK: UI ELEMENTS
     let imageView:UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "TL")
+        iv.backgroundColor = .red
+        //iv.image = UIImage(named: "TL")
         iv.contentMode = .scaleAspectFit
         return iv
     }()

@@ -16,29 +16,28 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
         return 1
     }
     
-    //HEADER CODE
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellType.headerID.rawValue, for: indexPath) as! HomeHeader
-        
-        
-        //still in development
-        if imageList.count > 0 {
-            print(imageList[0] ?? "")
-            guard let imageURLString = imageList[0] else {return header}
-            header.headerImage.sd_setImage(with: URL(string: imageURLString), placeholderImage: #imageLiteral(resourceName: "TL"))
-            return header
-        }
-        
-        if articleDetailedList.count > 0 {
-            let imgURLString = articleDetailedList[0].images![0]
-            header.headerImage.sd_setImage(with: URL(string: imgURLString), placeholderImage: #imageLiteral(resourceName: "TL"))
-            return header
-        }
-        
-        header.headerImage.image = #imageLiteral(resourceName: "TL")
-        return header
-    }
+    //HEADER CODE  //**mark for delete 2017/12/08**
+//    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        
+//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellType.headerID.rawValue, for: indexPath) as! HomeHeader
+//        
+//        //still in development
+//        if imageList.count > 0 {
+//            print(imageList[0] ?? "")
+//            guard let imageURLString = imageList[0] else {return header}
+//            header.headerImage.sd_setImage(with: URL(string: imageURLString), placeholderImage: #imageLiteral(resourceName: "TL"))
+//            return header
+//        }
+//        
+//        if articleDetailedList.count > 0 {
+//            let imgURLString = articleDetailedList[0].images![0]
+//            header.headerImage.sd_setImage(with: URL(string: imgURLString), placeholderImage: #imageLiteral(resourceName: "TL"))
+//            return header
+//        }
+//        
+//        header.headerImage.image = #imageLiteral(resourceName: "TL")
+//        return header
+//    }
     
     //CELL CODE
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -48,7 +47,7 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.item == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.topic.rawValue, for: indexPath) as! TopicSection
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! VoiceArticle
             return cell
         } else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.tlFamily.rawValue, for: indexPath) as! TabiLaboFamilySection
@@ -60,10 +59,10 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
     }
     
     // MARK: FLOW LAYOUT
-    //header
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: headerHeight)
-    }
+    //header  //**mark for delete 2017/12/08**
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: view.frame.width, height: headerHeight)
+//    }
     
     //cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -79,7 +78,7 @@ extension HomeController: UICollectionViewDelegateFlowLayout {
         let width = view.frame.width
         switch indexPath.item {
         case 0:
-            return CGSize(width: width, height: sectionCellSizes.topicHeight.rawValue)
+            return CGSize(width: width, height: sectionCellSizes.voiceArticle.rawValue)
         case 1:
             return CGSize(width: width, height: sectionCellSizes.tabiLabiFamilyHeight.rawValue)
         case 2:

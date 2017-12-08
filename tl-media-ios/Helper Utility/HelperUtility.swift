@@ -10,7 +10,7 @@ import UIKit
 
 //COMMON ENUM USED THROUGHOUT APPLICATOIN
 enum cellType:String {
-    case topic
+    case voiceArticle
     case tlFamily
     case category
 }

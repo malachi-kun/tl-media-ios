@@ -11,7 +11,6 @@ import SDWebImage
 
 class HomeScrollController:UICollectionViewController, UICollectionViewDelegateFlowLayout, ArticleProdDelegate {
 
-    
     // MARK: PROPERTIES
     let networkManager = NetworkManager()
     var articleDetails = [ArticleModel]()
@@ -23,7 +22,7 @@ class HomeScrollController:UICollectionViewController, UICollectionViewDelegateF
         case category
     }
     
-    //Section of collectionView
+    //Section of CollectionView
     var sectionItems:[String] = [sectionNames.voiceArticles.rawValue, sectionNames.tlFamily.rawValue, sectionNames.category.rawValue]
     
     // MARK: LIFECYCLE
@@ -55,14 +54,13 @@ class HomeScrollController:UICollectionViewController, UICollectionViewDelegateF
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! HomeScrollCell
         
         cell.imageView.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
-        cell.articleTitleLabel.text = articleDetails[indexPath.row].author
         return cell
     }
     
     // MARK: FLOW LAYOUT
     //cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -70,7 +68,6 @@ class HomeScrollController:UICollectionViewController, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return CGSize(width: view.frame.width, height: 250)
     }
     

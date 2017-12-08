@@ -8,24 +8,26 @@
 
 import UIKit
 
-class TopicSection:UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ArticleProdDelegate {
     
     // MARK: UI ELEMENTS
     let rowsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        //layout.scrollDirection = .horizontal  //**mark for delete 2017/12/8**
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .black
         return collectionView
     }()
     
     // MARK: PROPERTIES
-
-    
+    let networkManager = NetworkManager()
+    var articleDetails = [ArticleModel]()
     
     // MARK: LIFECYCLE
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        networkManager.delegateProd = self
         setupView()
     }
     
@@ -38,7 +40,7 @@ class TopicSection:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     func setupView(){
         
         //register cell
-        rowsCollectionView.register(TopicCell.self, forCellWithReuseIdentifier:cellType.topic.rawValue)
+        rowsCollectionView.register(HomeScrollCell.self, forCellWithReuseIdentifier:cellType.voiceArticle.rawValue)
         
         //add to UI
         addSubview(rowsCollectionView)
@@ -54,14 +56,24 @@ class TopicSection:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     
     // MARK: COLLECTIONVIEW
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        switch section {
+        case 0:
+            return articleDetails.count
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.topic.rawValue, for: indexPath) as! TopicCell
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! HomeScrollCell
         
+        if articleDetails.count > 0{
+            cell.imageView.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
+            return cell
+        } else {
+            return cell
+        }
     }
     
     //FLOW LAYOUT : cell
@@ -75,6 +87,12 @@ class TopicSection:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
      
-        return CGSize(width: 200, height: frame.height)
+        return CGSize(width: frame.width, height: 200)
+    }
+    
+    // MARK: DELEGATE METHODS
+    func articleContentList(articleContent: [ArticleModel]) {
+        articleDetails = articleContent
+        rowsCollectionView.reloadData()
     }
 }

@@ -31,7 +31,7 @@ class TabiLaboFamilySection:UICollectionViewCell, UICollectionViewDataSource, UI
     
     // MARK: PROPERTIES
 
-    let numberOfSections = 4
+    let numberOfSections = 6
     
     //MARK: LIFECYCLE
     override init(frame: CGRect) {

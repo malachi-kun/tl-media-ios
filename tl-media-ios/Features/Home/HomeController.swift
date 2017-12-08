@@ -18,36 +18,37 @@ class HomeController: UICollectionViewController  {
     //Article Model
     var articleDetailedList = [ArticleModel]()
     
-    //Controller and layout parameters
-    enum catList:String {
-        case voiceArticles
-        case tlFamily
-        case category
-    }
+//  Controller and Layout Parameters  //**mark for delete**
+//    enum catList:String {
+//        case voiceArticles
+//        case tlFamily
+//        case category
+//   }
     
-    //image list
+    //Image List
     var imageList = [Int:String]()
     var headerImage = UIImage()
     
-    //items to put into collectionView cells
-    var sectionItems:[String] = [catList.voiceArticles.rawValue, catList.tlFamily.rawValue, catList.category.rawValue]
+    //Items To Put Into CollectionView Cells
+    var sectionItems:[String] = [cellType.voiceArticle.rawValue, cellType.tlFamily.rawValue, cellType.category.rawValue]
     
-    //MARK COLLECTION VIEW HEADER HEIGHT
-    let headerHeight:CGFloat = 350
+    // MARK: COLLECTIONVIEW PROPERTIES
+    //COLLECTION VIEW HEADER HEIGHT
+    //let headerHeight:CGFloat = 350  //**mark for delete 2017/12/08**
     
-    //MAKE CELL HEADER NAMES TO BE REGISTERED
-    enum headerCellType:String {
-        case headerID
-        case topic
-        case tlFamily
-        case category
-    }
+    //MAKE CELL HEADER NAMES TO BE REGISTERED  //**mark for delete 2017/12/08**
+//    enum headerCellType:String {
+//        case headerID
+//        case audio
+//        case tlFamily
+//        case category
+//    }
     
     //MAKE COLLECTION VIEW CELL HEIGHT SIZES
     enum sectionCellSizes:CGFloat {
-        case topicHeight = 160
-        case tabiLabiFamilyHeight = 370
-        case categoryHeight = 425
+        case voiceArticle = 650
+        case tabiLabiFamilyHeight = 550
+        case categoryHeight = 475
         case defaultValue = 260
     }
     
@@ -62,6 +63,7 @@ class HomeController: UICollectionViewController  {
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+
         networkManager.delegate = self
         networkManager.delegateProd = self
         
@@ -70,11 +72,11 @@ class HomeController: UICollectionViewController  {
         headerTitle = ["", sectionTitle.tabiLaboFamily.rawValue, sectionTitle.category.rawValue]
         
         //CELL REGISTRATION
-        //header
-        collectionView?.register(HomeHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCellType.headerID.rawValue)
+        //header  //**mark for delete 2017/12/08**
+//        collectionView?.register(HomeHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCellType.headerID.rawValue)
         
         //cell registration
-        collectionView?.register(TopicSection.self, forCellWithReuseIdentifier: cellType.topic.rawValue)
+        collectionView?.register(VoiceArticle.self, forCellWithReuseIdentifier: cellType.voiceArticle.rawValue)
         collectionView?.register(CategorySection.self, forCellWithReuseIdentifier: cellType.category.rawValue)
         collectionView?.register(TabiLaboFamilySection.self, forCellWithReuseIdentifier: cellType.tlFamily.rawValue)
     }

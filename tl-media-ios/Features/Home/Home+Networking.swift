@@ -13,34 +13,34 @@ import Foundation
 class NetworkManager {
     
     // MARK: PROPERTIES
-    var delegate:ArticleContentDelegate?
-    var delegateProd:ArticleProdDelegate?
-    
-    var articleIDs = [Int]()
-    var fetchedArticleContent = [ArticleContentModel]()
-    var articleDict = [Int:[ArticleContentModel]]()
-    var articleList = [ArticleModel]()
+    //delegate prop.
+    var delegate:ArticleContentDelegate?, delegateProd:ArticleProdDelegate?
+    //article prop.
+    var articleIDs = [Int](), fetchedArticleContent = [ArticleContentModel]()
+    var articleDict = [Int:[ArticleContentModel]](), articleList = [ArticleModel]()
     
     //Codable Structure
-    // MARK: **Article ID
+    // MARK: **Article ID**
     struct articles:Decodable {
         var articles:[article]
+        
     }
-    
     struct article:Decodable {
         var article_id:Int
+        
     }
     
     //**Article Content
     struct articleContentList:Decodable{
         var article_items:[articleContent]?
+        
     }
     
     struct articleContent:Decodable {
         var content:String
         var input_type:String
     }
-    // MARK: **Article ID
+    // MARK: **Article ID**
     
     //Server endpoint
     enum env:String{
@@ -56,7 +56,7 @@ class NetworkManager {
     }
     
     //SELECTED ENVIRONMENT
-    var environment = "prod"  // dev or prod
+    var environment = env.prod.rawValue  // dev or prod
   
 
     // MARK: LIFECYCLE
@@ -89,7 +89,6 @@ class NetworkManager {
     //**PROD Article CODEABLE STRUCTURE**
 
     func getFromProdEndpoint(){
-        
         guard let url = URL(string: authHeader.prodUrl.rawValue) else {return}
         let config = URLSessionConfiguration.default
 
@@ -102,12 +101,10 @@ class NetworkManager {
             DispatchQueue.main.async {
                 self.delegateProd?.articleContentList(articleContent: self.articleList)
             }
-            
         }
         task.resume()
     }
 
-    
     func parseProdEndpoint(data:Data){
         //serialize the data
         do{

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11ED469CFA2987FC2B404A4C /* Pods_tl_media_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 727D43A7E07D974A9AAC11B1 /* Pods_tl_media_iosTests.framework */; };
-		41109AC51FCBBF6800AFC05E /* TopicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41109AC41FCBBF6800AFC05E /* TopicSection.swift */; };
+		41109AC51FCBBF6800AFC05E /* VoiceArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */; };
 		4112FCD21FC2C34E00D8C2AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCD11FC2C34E00D8C2AF /* AppDelegate.swift */; };
 		4112FCD71FC2C34E00D8C2AF /* HOME.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4112FCD51FC2C34E00D8C2AF /* HOME.storyboard */; };
 		4112FCD91FC2C34E00D8C2AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4112FCD81FC2C34E00D8C2AF /* Assets.xcassets */; };
@@ -75,7 +75,7 @@
 		0D24CB4AB7AC9191D0478A8D /* Pods-tl-media-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tl-media-iosUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tl-media-iosUITests/Pods-tl-media-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		197F37250D291BF2FE098EEE /* Pods_tl_media_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tl_media_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA25A7CC203BC4C21D35857 /* Pods-tl-media-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tl-media-iosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tl-media-iosUITests/Pods-tl-media-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
-		41109AC41FCBBF6800AFC05E /* TopicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicSection.swift; sourceTree = "<group>"; };
+		41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticle.swift; sourceTree = "<group>"; };
 		4112FCCE1FC2C34E00D8C2AF /* tl-media-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tl-media-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4112FCD11FC2C34E00D8C2AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4112FCD61FC2C34E00D8C2AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HOME.storyboard; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 		41109AC61FCBC09A00AFC05E /* Section */ = {
 			isa = PBXGroup;
 			children = (
-				41109AC41FCBBF6800AFC05E /* TopicSection.swift */,
+				41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */,
 				41FD31991FC3C85B00D1DBF6 /* TabiLaboFamilySection.swift */,
 				413869891FCBDB7200DF5CD7 /* CategorySection.swift */,
 			);
@@ -236,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				413E2B911FCD449700E25686 /* Info.plist */,
-				4112FCD81FC2C34E00D8C2AF /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -260,6 +259,7 @@
 				413E2B851FCCE08400E25686 /* HISTORY.storyboard */,
 				4112FCDA1FC2C34E00D8C2AF /* LaunchScreen.storyboard */,
 				4112FCD11FC2C34E00D8C2AF /* AppDelegate.swift */,
+				4112FCD81FC2C34E00D8C2AF /* Assets.xcassets */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -662,7 +662,7 @@
 				417885C91FD53F9F008F4B8E /* HomeScrollCell.swift in Sources */,
 				417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */,
 				41F356C61FC2CB47003F65FD /* HomeHeader.swift in Sources */,
-				41109AC51FCBBF6800AFC05E /* TopicSection.swift in Sources */,
+				41109AC51FCBBF6800AFC05E /* VoiceArticle.swift in Sources */,
 				419FA56B1FCE9B2800354CC3 /* ArticleContentModel.swift in Sources */,
 				413E2B901FCD3F7700E25686 /* TopicModel.swift in Sources */,
 				41D741C01FD14DCE003DD012 /* Home+CollectionViewController.swift in Sources */,
