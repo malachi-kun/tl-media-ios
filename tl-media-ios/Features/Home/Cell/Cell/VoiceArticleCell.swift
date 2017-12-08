@@ -21,6 +21,8 @@ class VoiceArticleCell:UICollectionViewCell {
     let topLayer:UIView = {
         let v = UIView()
         v.backgroundColor = .clear
+        v.backgroundColor = .black
+        v.layer.opacity = 0.25
         return v
     }()
     
