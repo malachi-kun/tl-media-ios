@@ -13,7 +13,7 @@ class HomeController: UICollectionViewController  {
  
     // MARK: PROPERTIES
     //Get data from server
-    let networkManager = NetworkManager()
+    let networkManager = HomeNetworking()
     
     //Article Model
     var articleDetailedList = [ArticleModel]()
@@ -29,7 +29,7 @@ class HomeController: UICollectionViewController  {
     //MAKE COLLECTION VIEW CELL HEIGHT SIZES
     enum sectionCellSizes:CGFloat {
         case voiceArticle = 650
-        case tabiLabiFamilyHeight = 550
+        case tabiLabiFamilyHeight = 525
         case categoryHeight = 430
         case defaultValue = 260
     }

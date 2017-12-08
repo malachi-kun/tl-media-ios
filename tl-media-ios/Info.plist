@@ -40,7 +40,7 @@
 		<true/>
 	</dict>
 	<key>CFBundleDisplayName</key>
-	<string></string>
+	<string>Tabi Labo</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

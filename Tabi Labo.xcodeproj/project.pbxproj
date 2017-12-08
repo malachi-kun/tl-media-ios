@@ -266,7 +266,6 @@
 		4112FD021FC2C46E00D8C2AF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				417885C61FD53D33008F4B8E /* HomeScrollVersioln */,
 				4112FD031FC2C69900D8C2AF /* HomeController.swift */,
 				41D741BF1FD14DCE003DD012 /* Home+CollectionViewController.swift */,
 				413E2B8C1FCD3EDA00E25686 /* Home+Networking.swift */,
@@ -294,13 +293,6 @@
 				417885C21FD50CC4008F4B8E /* ArticleModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		417885C61FD53D33008F4B8E /* HomeScrollVersioln */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HomeScrollVersioln;
 			sourceTree = "<group>";
 		};
 		41F356C71FC2CC0D003F65FD /* Helper Utility */ = {

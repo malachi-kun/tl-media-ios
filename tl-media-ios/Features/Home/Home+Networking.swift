@@ -8,9 +8,7 @@
 import UIKit
 import Foundation
 
-
-
-class NetworkManager {
+class HomeNetworking {
     
     // MARK: PROPERTIES
     //delegate prop.

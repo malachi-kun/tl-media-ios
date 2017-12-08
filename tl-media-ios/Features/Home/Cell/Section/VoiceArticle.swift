@@ -20,7 +20,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     }()
     
     // MARK: PROPERTIES
-    let networkManager = NetworkManager()
+    let networkManager = HomeNetworking()
     var articleDetails = [ArticleModel]()
     
     // MARK: LIFECYCLE
