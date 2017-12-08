@@ -9,7 +9,7 @@
 import UIKit
 
 
-class HomeScrollCell:UICollectionViewCell {
+class VoiceArticleCell:UICollectionViewCell {
     // MARK: UI ELEMENTS
     let imageView:UIImageView = {
         let iv = UIImageView()

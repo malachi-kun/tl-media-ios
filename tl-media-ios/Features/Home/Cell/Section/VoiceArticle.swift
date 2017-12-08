@@ -40,7 +40,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     func setupView(){
         
         //register cell
-        rowsCollectionView.register(HomeScrollCell.self, forCellWithReuseIdentifier:cellType.voiceArticle.rawValue)
+        rowsCollectionView.register(VoiceArticleCell.self, forCellWithReuseIdentifier:cellType.voiceArticle.rawValue)
         
         //add to UI
         addSubview(rowsCollectionView)
@@ -66,7 +66,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! HomeScrollCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! VoiceArticleCell
         
         if articleDetails.count > 0{
             cell.imageView.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))

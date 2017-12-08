@@ -14,7 +14,7 @@ class CategoryCell:UICollectionViewCell {
     let imageView:UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .black
-        iv.image = UIImage(named: "TL")
+        iv.image = #imageLiteral(resourceName: "TL")
         iv.contentMode = .scaleAspectFit
         return iv
     }()
