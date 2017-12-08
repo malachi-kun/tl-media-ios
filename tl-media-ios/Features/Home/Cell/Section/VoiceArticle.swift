@@ -13,7 +13,6 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     // MARK: UI ELEMENTS
     let rowsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        //layout.scrollDirection = .horizontal  //**mark for delete 2017/12/8**
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .black
         return collectionView
@@ -50,7 +49,6 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         rowsCollectionView.dataSource = self
         
         //auto layout
-        
         rowsCollectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
@@ -86,7 +84,6 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-     
         return CGSize(width: frame.width, height: 200)
     }
     

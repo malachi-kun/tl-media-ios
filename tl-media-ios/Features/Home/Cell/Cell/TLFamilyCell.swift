@@ -9,11 +9,11 @@
 import UIKit
 
 class TLFamilyCell:UICollectionViewCell {
+    
     // MARK: UI ELEMENTS
     let imageView:UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .black
-        //iv.image = UIImage(named: "TL")
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -43,8 +43,10 @@ class TLFamilyCell:UICollectionViewCell {
     func setupView(){
         backgroundColor = .black
         
+    
         addSubview(imageView)
         addSubview(nameLabel)
+   
         
         imageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
