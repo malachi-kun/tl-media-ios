@@ -19,7 +19,7 @@ extension HomeController: ArticleContentDelegate {
                 i += 1
             }
         }
-
+        
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }

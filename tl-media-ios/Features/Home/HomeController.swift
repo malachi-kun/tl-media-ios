@@ -8,7 +8,6 @@
 import UIKit
 import SDWebImage
 
-
 class HomeController: UICollectionViewController  {
  
     // MARK: PROPERTIES

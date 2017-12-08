@@ -15,6 +15,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .black
+        
         return collectionView
     }()
     
@@ -33,7 +34,6 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     // MARK: ASSIST METHODS
     func setupView(){
