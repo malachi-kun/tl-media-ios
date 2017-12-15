@@ -15,6 +15,10 @@ enum cellType:String {
     case category
 }
 
+enum notificationCalls:String{
+    case playAudioArticlePressed
+}
+
 //UI Color Helper Extension
 extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {

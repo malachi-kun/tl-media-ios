@@ -32,5 +32,3 @@ extension HomeController: ArticleProdDelegate{
             self.collectionView?.reloadData()
         }
 }
-
-

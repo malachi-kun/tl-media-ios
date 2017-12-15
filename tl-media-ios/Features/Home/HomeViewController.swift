@@ -13,7 +13,7 @@ import Foundation
 class HomeViewController:UIViewController{
 
     // MARK: UIProperties
-    @IBOutlet weak var bottomAudioView: HomeLineView!
+    @IBOutlet weak var bottomAudioView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet fileprivate(set) weak var tabBar : UITabBar!
     
@@ -25,19 +25,23 @@ class HomeViewController:UIViewController{
     override func viewDidLoad() {
         bottomAudioView.isHidden = true
         
+        //add Notification observer to unhide bottomAudioView
+        NotificationCenter.default.addObserver(self, selector: #selector(unhideBottomAudio), name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: nil)
+        
         let storyboard = UIStoryboard(name: "HOME", bundle: nil)
         self.modalVC = storyboard.instantiateViewController(withIdentifier: "HomeModal") as? HomeModalController
         self.modalVC.modalPresentationStyle = .overFullScreen
         
         //miniplayer properties
         self.containerView.backgroundColor = .white
-        let color = UIColor.white  //color when miniPlaybutton is click action.
-        
         self.setupAnimator()
         
         setupView()
     }
     
+    @objc func unhideBottomAudio(){
+        bottomAudioView.isHidden = false
+    }
     
     // MARK: ACTION
     @IBAction func tapMiniPlayerButton() {
@@ -45,10 +49,9 @@ class HomeViewController:UIViewController{
         self.present(self.modalVC, animated: true, completion: nil)
     }
     
-    
     // MARK: ASSIST METHODS
     private func setupView(){
-        bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -75, paddingRight: 0, width: view.frame.size.width, height: 50)
+//        bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -75, paddingRight: 0, width: view.frame.size.width, height: 50)
     }
     
     func setupAnimator() {
@@ -60,11 +63,8 @@ class HomeViewController:UIViewController{
                 modalGestureHandler.registerGesture(_self.modalVC.view)
                 modalGestureHandler.panCompletionThreshold = 15.0
                 _self.animator?.registerInteractiveTransitioning(.dismiss, gestureHandler: modalGestureHandler)
-                
-                
             } else {
                 self?.setupAnimator()
-                
             }
         }
         

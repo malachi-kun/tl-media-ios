@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ArticleProdDelegate {
     
     // MARK: UI ELEMENTS
@@ -23,7 +24,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     let networkManager = HomeNetworking()
     var articleDetails = [ArticleModel]()
     var indexPressed:Int?
-    
+   
     // MARK: LIFECYCLE
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,9 +83,9 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     @objc func playPressed(withSender:AnyObject){
         guard let index = withSender.tag else { return }
         print("test")
-        //delegate to make bottomAudio visible again
-        //......
-        //......
+        
+        //NotificationCenter to notify play has been pressed.
+        NotificationCenter.default.post(name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: self)
     }
     
     //FLOW LAYOUT : cell

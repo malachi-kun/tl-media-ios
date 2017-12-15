@@ -15,17 +15,12 @@ class HomeRootController:UIViewController {
     let homeRootCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        //collectionView.backgroundColor = .blue
-        
         return collectionView
     }()
     
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
-        view.backgroundColor = .purple
-      
-        
         homeRootCollectionView.delegate = self
         homeRootCollectionView.dataSource = self
         
@@ -45,8 +40,6 @@ class HomeRootController:UIViewController {
     }
     
     private func setupView(){
-//        view.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
         view.addSubview(homeRootCollectionView)
         homeRootCollectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: -12, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
@@ -81,5 +74,5 @@ class HomeRootController:UIViewController {
     }
     
     var headerTitle:[String]?
-    let navigationTitle = "Tabi Labo"
+    let navigationTitle = "TABI LABO"
 }
