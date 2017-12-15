@@ -23,7 +23,8 @@ class HomeViewController:UIViewController{
 
     // MARK: LIFECYCLE
     override func viewDidLoad() {
-      
+        bottomAudioView.isHidden = true
+        
         let storyboard = UIStoryboard(name: "HOME", bundle: nil)
         self.modalVC = storyboard.instantiateViewController(withIdentifier: "HomeModal") as? HomeModalController
         self.modalVC.modalPresentationStyle = .overFullScreen

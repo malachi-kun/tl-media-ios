@@ -81,7 +81,10 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     
     @objc func playPressed(withSender:AnyObject){
         guard let index = withSender.tag else { return }
-        print("play pressed at index: \(index)")
+        print("test")
+        //delegate to make bottomAudio visible again
+        //......
+        //......
     }
     
     //FLOW LAYOUT : cell
