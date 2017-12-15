@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		11ED469CFA2987FC2B404A4C /* Pods_tl_media_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 727D43A7E07D974A9AAC11B1 /* Pods_tl_media_iosTests.framework */; };
 		410DA61E1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */; };
-		410FBA281FE21C2E00A9BFA1 /* HomeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FBA271FE21C2E00A9BFA1 /* HomeLineView.swift */; };
 		410FBA2A1FE220C300A9BFA1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FBA291FE220C300A9BFA1 /* HomeViewController.swift */; };
 		41109AC51FCBBF6800AFC05E /* VoiceArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */; };
 		4112FCD21FC2C34E00D8C2AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCD11FC2C34E00D8C2AF /* AppDelegate.swift */; };
@@ -19,6 +18,7 @@
 		4112FCE71FC2C34E00D8C2AF /* tl_media_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCE61FC2C34E00D8C2AF /* tl_media_iosTests.swift */; };
 		4112FCF21FC2C34E00D8C2AF /* tl_media_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCF11FC2C34E00D8C2AF /* tl_media_iosUITests.swift */; };
 		4112FD041FC2C69900D8C2AF /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FD031FC2C69900D8C2AF /* HomeController.swift */; };
+		412CD2B21FE3CB120093D64B /* Home+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412CD2B11FE3CB120093D64B /* Home+Audio.swift */; };
 		4138698A1FCBDB7200DF5CD7 /* CategorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413869891FCBDB7200DF5CD7 /* CategorySection.swift */; };
 		4138698D1FCC1F0400DF5CD7 /* NewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4138698C1FCC1F0400DF5CD7 /* NewCollectionView.swift */; };
 		413869901FCC22C800DF5CD7 /* NEW.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4138698E1FCC22C800DF5CD7 /* NEW.storyboard */; };
@@ -81,7 +81,6 @@
 		197F37250D291BF2FE098EEE /* Pods_tl_media_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tl_media_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA25A7CC203BC4C21D35857 /* Pods-tl-media-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tl-media-iosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tl-media-iosUITests/Pods-tl-media-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerTransitionAnimation.swift; sourceTree = "<group>"; };
-		410FBA271FE21C2E00A9BFA1 /* HomeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLineView.swift; sourceTree = "<group>"; };
 		410FBA291FE220C300A9BFA1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticle.swift; sourceTree = "<group>"; };
 		4112FCCE1FC2C34E00D8C2AF /* tl-media-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tl-media-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +95,7 @@
 		4112FCF11FC2C34E00D8C2AF /* tl_media_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tl_media_iosUITests.swift; sourceTree = "<group>"; };
 		4112FCF31FC2C34E00D8C2AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4112FD031FC2C69900D8C2AF /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		412CD2B11FE3CB120093D64B /* Home+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+Audio.swift"; sourceTree = "<group>"; };
 		412DFD221FD65E36003FF906 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		413869891FCBDB7200DF5CD7 /* CategorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySection.swift; sourceTree = "<group>"; };
 		4138698C1FCC1F0400DF5CD7 /* NewCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCollectionView.swift; sourceTree = "<group>"; };
@@ -285,18 +285,26 @@
 		4112FD021FC2C46E00D8C2AF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				41D7D51F1FE269A5006B8E77 /* Root */,
+				41D7D51F1FE269A5006B8E77 /* Root_temp */,
+				412CD2B01FE3CADF0093D64B /* Services */,
 				410FBA291FE220C300A9BFA1 /* HomeViewController.swift */,
 				4112FD031FC2C69900D8C2AF /* HomeController.swift */,
 				41D741BF1FD14DCE003DD012 /* Home+CollectionViewController.swift */,
-				413E2B8C1FCD3EDA00E25686 /* Home+Networking.swift */,
 				41D741C11FD14ED0003DD012 /* Home+Delegation.swift */,
 				417885C01FD50C27008F4B8E /* Home+Protocols.swift */,
 				41F356CE1FC2DFE9003F65FD /* Header */,
 				41FD31941FC3B69900D1DBF6 /* Cell */,
-				410FBA271FE21C2E00A9BFA1 /* HomeLineView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		412CD2B01FE3CADF0093D64B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				413E2B8C1FCD3EDA00E25686 /* Home+Networking.swift */,
+				412CD2B11FE3CB120093D64B /* Home+Audio.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		4138698B1FCC1EED00DF5CD7 /* New */ = {
@@ -317,7 +325,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		41D7D51F1FE269A5006B8E77 /* Root */ = {
+		41D7D51F1FE269A5006B8E77 /* Root_temp */ = {
 			isa = PBXGroup;
 			children = (
 				41D7D51B1FE25A7E006B8E77 /* HomeRootController.swift */,
@@ -325,7 +333,7 @@
 				41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */,
 				41D7D5201FE26B17006B8E77 /* HomeModalController.swift */,
 			);
-			path = Root;
+			path = Root_temp;
 			sourceTree = "<group>";
 		};
 		41F356C71FC2CC0D003F65FD /* Helper Utility */ = {
@@ -671,7 +679,6 @@
 				417885C11FD50C27008F4B8E /* Home+Protocols.swift in Sources */,
 				4112FD041FC2C69900D8C2AF /* HomeController.swift in Sources */,
 				41FD319C1FC3C9AD00D1DBF6 /* TLFamilyCell.swift in Sources */,
-				410FBA281FE21C2E00A9BFA1 /* HomeLineView.swift in Sources */,
 				4138698D1FCC1F0400DF5CD7 /* NewCollectionView.swift in Sources */,
 				41D7D51C1FE25A7E006B8E77 /* HomeRootController.swift in Sources */,
 				41D7D5211FE26B17006B8E77 /* HomeModalController.swift in Sources */,
@@ -687,6 +694,7 @@
 				410FBA2A1FE220C300A9BFA1 /* HomeViewController.swift in Sources */,
 				413E2B901FCD3F7700E25686 /* TopicModel.swift in Sources */,
 				41D741C01FD14DCE003DD012 /* Home+CollectionViewController.swift in Sources */,
+				412CD2B21FE3CB120093D64B /* Home+Audio.swift in Sources */,
 				410DA61E1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift in Sources */,
 				41FD31961FC3B6AE00D1DBF6 /* CategoryCell.swift in Sources */,
 				4138698A1FCBDB7200DF5CD7 /* CategorySection.swift in Sources */,

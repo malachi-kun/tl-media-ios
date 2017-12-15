@@ -16,6 +16,11 @@ class HomeViewController:UIViewController{
     @IBOutlet weak var bottomAudioView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet fileprivate(set) weak var tabBar : UITabBar!
+    @IBOutlet weak var btnPlay: UIButton!
+    
+    var audioURLList:[String] = ["http://techslides.com/demos/samples/sample.mp3"]
+    var audioManager:HomeAudio?
+    var nowPlaying:Bool?
     
     private var animator : ARNTransitionAnimator?
     fileprivate var modalVC : HomeModalController!
@@ -24,6 +29,9 @@ class HomeViewController:UIViewController{
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         bottomAudioView.isHidden = true
+        
+        //initialize audio
+        audioManager = HomeAudio(fileURL: audioURLList[0])
         
         //add Notification observer to unhide bottomAudioView
         NotificationCenter.default.addObserver(self, selector: #selector(unhideBottomAudio), name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: nil)
@@ -48,6 +56,29 @@ class HomeViewController:UIViewController{
         print("button pressed")
         self.present(self.modalVC, animated: true, completion: nil)
     }
+    
+    @IBAction func btnPlayPressed(_ sender: Any) {
+        guard let nowPlaying = nowPlaying else {
+            audioManager?.playAudio()
+            self.nowPlaying = true
+            btnPlay.setTitle("| |", for: .normal)
+            return
+        }
+        
+        //Need to fix below
+        if (!nowPlaying) {
+            audioManager?.playAudio()
+            self.nowPlaying = true
+            btnPlay.setTitle("| |", for: .normal)
+        } else {
+            audioManager?.pauseAudio()
+            self.nowPlaying = false
+            btnPlay.setTitle("|>", for: .normal)
+        }
+        
+        print("audioPlayerRate: \(audioManager?.avPlayer?.rate), np:\(nowPlaying) self.nowPlaying:\(self.nowPlaying)")
+    }
+    
     
     // MARK: ASSIST METHODS
     private func setupView(){
