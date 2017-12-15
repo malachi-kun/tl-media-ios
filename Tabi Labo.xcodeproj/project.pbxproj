@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		11ED469CFA2987FC2B404A4C /* Pods_tl_media_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 727D43A7E07D974A9AAC11B1 /* Pods_tl_media_iosTests.framework */; };
+		410DA61E1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */; };
+		410FBA281FE21C2E00A9BFA1 /* HomeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FBA271FE21C2E00A9BFA1 /* HomeLineView.swift */; };
+		410FBA2A1FE220C300A9BFA1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FBA291FE220C300A9BFA1 /* HomeViewController.swift */; };
 		41109AC51FCBBF6800AFC05E /* VoiceArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */; };
 		4112FCD21FC2C34E00D8C2AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCD11FC2C34E00D8C2AF /* AppDelegate.swift */; };
 		4112FCD71FC2C34E00D8C2AF /* HOME.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4112FCD51FC2C34E00D8C2AF /* HOME.storyboard */; };
@@ -28,8 +31,12 @@
 		417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C21FD50CC4008F4B8E /* ArticleModel.swift */; };
 		417885C91FD53F9F008F4B8E /* VoiceArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C81FD53F9F008F4B8E /* VoiceArticleCell.swift */; };
 		419FA56B1FCE9B2800354CC3 /* ArticleContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */; };
+		41D667AF1FE362C900721CD9 /* HomeRoot+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */; };
+		41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */; };
 		41D741C01FD14DCE003DD012 /* Home+CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D741BF1FD14DCE003DD012 /* Home+CollectionViewController.swift */; };
 		41D741C21FD14ED0003DD012 /* Home+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D741C11FD14ED0003DD012 /* Home+Delegation.swift */; };
+		41D7D51C1FE25A7E006B8E77 /* HomeRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7D51B1FE25A7E006B8E77 /* HomeRootController.swift */; };
+		41D7D5211FE26B17006B8E77 /* HomeModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7D5201FE26B17006B8E77 /* HomeModalController.swift */; };
 		41F356C61FC2CB47003F65FD /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F356C51FC2CB47003F65FD /* HomeHeader.swift */; };
 		41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F356C81FC2CC2B003F65FD /* HelperUtility.swift */; };
 		41FD31961FC3B6AE00D1DBF6 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FD31951FC3B6AE00D1DBF6 /* CategoryCell.swift */; };
@@ -73,6 +80,9 @@
 		0D24CB4AB7AC9191D0478A8D /* Pods-tl-media-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tl-media-iosUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tl-media-iosUITests/Pods-tl-media-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		197F37250D291BF2FE098EEE /* Pods_tl_media_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tl_media_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA25A7CC203BC4C21D35857 /* Pods-tl-media-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tl-media-iosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tl-media-iosUITests/Pods-tl-media-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerTransitionAnimation.swift; sourceTree = "<group>"; };
+		410FBA271FE21C2E00A9BFA1 /* HomeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLineView.swift; sourceTree = "<group>"; };
+		410FBA291FE220C300A9BFA1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticle.swift; sourceTree = "<group>"; };
 		4112FCCE1FC2C34E00D8C2AF /* tl-media-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tl-media-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4112FCD11FC2C34E00D8C2AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,8 +110,12 @@
 		417885C21FD50CC4008F4B8E /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		417885C81FD53F9F008F4B8E /* VoiceArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticleCell.swift; sourceTree = "<group>"; };
 		419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentModel.swift; sourceTree = "<group>"; };
+		41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeRoot+CollectionView.swift"; sourceTree = "<group>"; };
+		41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeRoot+Delegation.swift"; sourceTree = "<group>"; };
 		41D741BF1FD14DCE003DD012 /* Home+CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+CollectionViewController.swift"; sourceTree = "<group>"; };
 		41D741C11FD14ED0003DD012 /* Home+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+Delegation.swift"; sourceTree = "<group>"; };
+		41D7D51B1FE25A7E006B8E77 /* HomeRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRootController.swift; sourceTree = "<group>"; };
+		41D7D5201FE26B17006B8E77 /* HomeModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModalController.swift; sourceTree = "<group>"; };
 		41F356C51FC2CB47003F65FD /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		41F356C81FC2CC2B003F65FD /* HelperUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperUtility.swift; sourceTree = "<group>"; };
 		41FD31951FC3B6AE00D1DBF6 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -156,6 +170,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		410FBA2B1FE234B700A9BFA1 /* API Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "API Libraries";
+			sourceTree = "<group>";
+		};
 		41109AC61FCBC09A00AFC05E /* Section */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +222,7 @@
 		4112FCD01FC2C34E00D8C2AF /* tl-media-ios */ = {
 			isa = PBXGroup;
 			children = (
+				410FBA2B1FE234B700A9BFA1 /* API Libraries */,
 				413E2B8E1FCD3F6700E25686 /* Model */,
 				41F356C71FC2CC0D003F65FD /* Helper Utility */,
 				4112FD001FC2C36E00D8C2AF /* Features */,
@@ -263,6 +285,8 @@
 		4112FD021FC2C46E00D8C2AF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				41D7D51F1FE269A5006B8E77 /* Root */,
+				410FBA291FE220C300A9BFA1 /* HomeViewController.swift */,
 				4112FD031FC2C69900D8C2AF /* HomeController.swift */,
 				41D741BF1FD14DCE003DD012 /* Home+CollectionViewController.swift */,
 				413E2B8C1FCD3EDA00E25686 /* Home+Networking.swift */,
@@ -270,6 +294,7 @@
 				417885C01FD50C27008F4B8E /* Home+Protocols.swift */,
 				41F356CE1FC2DFE9003F65FD /* Header */,
 				41FD31941FC3B69900D1DBF6 /* Cell */,
+				410FBA271FE21C2E00A9BFA1 /* HomeLineView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -292,9 +317,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		41D7D51F1FE269A5006B8E77 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				41D7D51B1FE25A7E006B8E77 /* HomeRootController.swift */,
+				41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */,
+				41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */,
+				41D7D5201FE26B17006B8E77 /* HomeModalController.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		41F356C71FC2CC0D003F65FD /* Helper Utility */ = {
 			isa = PBXGroup;
 			children = (
+				410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */,
 				41F356C81FC2CC2B003F65FD /* HelperUtility.swift */,
 			);
 			path = "Helper Utility";
@@ -590,10 +627,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-tl-media-ios/Pods-tl-media-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ARNTransitionAnimator/ARNTransitionAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARNTransitionAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,16 +671,23 @@
 				417885C11FD50C27008F4B8E /* Home+Protocols.swift in Sources */,
 				4112FD041FC2C69900D8C2AF /* HomeController.swift in Sources */,
 				41FD319C1FC3C9AD00D1DBF6 /* TLFamilyCell.swift in Sources */,
+				410FBA281FE21C2E00A9BFA1 /* HomeLineView.swift in Sources */,
 				4138698D1FCC1F0400DF5CD7 /* NewCollectionView.swift in Sources */,
+				41D7D51C1FE25A7E006B8E77 /* HomeRootController.swift in Sources */,
+				41D7D5211FE26B17006B8E77 /* HomeModalController.swift in Sources */,
 				4112FCD21FC2C34E00D8C2AF /* AppDelegate.swift in Sources */,
 				41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */,
 				417885C91FD53F9F008F4B8E /* VoiceArticleCell.swift in Sources */,
 				417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */,
+				41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */,
 				41F356C61FC2CB47003F65FD /* HomeHeader.swift in Sources */,
+				41D667AF1FE362C900721CD9 /* HomeRoot+CollectionView.swift in Sources */,
 				41109AC51FCBBF6800AFC05E /* VoiceArticle.swift in Sources */,
 				419FA56B1FCE9B2800354CC3 /* ArticleContentModel.swift in Sources */,
+				410FBA2A1FE220C300A9BFA1 /* HomeViewController.swift in Sources */,
 				413E2B901FCD3F7700E25686 /* TopicModel.swift in Sources */,
 				41D741C01FD14DCE003DD012 /* Home+CollectionViewController.swift in Sources */,
+				410DA61E1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift in Sources */,
 				41FD31961FC3B6AE00D1DBF6 /* CategoryCell.swift in Sources */,
 				4138698A1FCBDB7200DF5CD7 /* CategorySection.swift in Sources */,
 			);

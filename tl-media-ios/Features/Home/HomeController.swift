@@ -9,7 +9,6 @@ import UIKit
 import SDWebImage
 
 class HomeController: UICollectionViewController  {
- 
     // MARK: PROPERTIES
     //Get data from server
     let networkManager = HomeNetworking()
@@ -58,6 +57,7 @@ class HomeController: UICollectionViewController  {
         collectionView?.register(CategorySection.self, forCellWithReuseIdentifier: cellType.category.rawValue)
         collectionView?.register(TabiLaboFamilySection.self, forCellWithReuseIdentifier: cellType.tlFamily.rawValue)
     }
+    
 }
 
 

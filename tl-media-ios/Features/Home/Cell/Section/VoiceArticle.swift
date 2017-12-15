@@ -22,11 +22,12 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     // MARK: PROPERTIES
     let networkManager = HomeNetworking()
     var articleDetails = [ArticleModel]()
+    var indexPressed:Int?
     
     // MARK: LIFECYCLE
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         networkManager.delegateProd = self
         setupView()
     }
@@ -50,6 +51,8 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         
         //auto layout
         rowsCollectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+
     }
     
     // MARK: COLLECTIONVIEW
@@ -68,10 +71,17 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         
         if articleDetails.count > 0{
             cell.imageView.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
+            cell.playButton.tag = indexPath.item
+            cell.playButton.addTarget(self, action: #selector(playPressed(withSender:)), for: .touchUpInside)
             return cell
         } else {
             return cell
         }
+    }
+    
+    @objc func playPressed(withSender:AnyObject){
+        guard let index = withSender.tag else { return }
+        print("play pressed at index: \(index)")
     }
     
     //FLOW LAYOUT : cell

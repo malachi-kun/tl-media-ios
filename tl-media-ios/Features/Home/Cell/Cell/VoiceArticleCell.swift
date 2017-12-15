@@ -33,6 +33,13 @@ class VoiceArticleCell:UICollectionViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 25)
         return label
     }()
+    
+    let playButton:UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        button.isUserInteractionEnabled = true
+        return button
+    }()
         
     // MARK: LIFECYCLE
     override init(frame: CGRect) {
@@ -49,12 +56,15 @@ class VoiceArticleCell:UICollectionViewCell {
         addSubview(imageView)
         addSubview(topLayer)
         bringSubview(toFront: topLayer)
-        addSubview(titleLabel)
+        sendSubview(toBack: topLayer)
+        topLayer.addSubview(titleLabel)
         
         imageView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        
         topLayer.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         titleLabel.anchor(top: topLayer.topAnchor, left: topLayer.leftAnchor, bottom: nil, right: topLayer.rightAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        addSubview(playButton)
+        playButton.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: -300, width: 20, height: 125)
     }
 }
