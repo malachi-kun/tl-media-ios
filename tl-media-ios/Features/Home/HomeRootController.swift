@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeRootController:UIViewController {
-    
     
     // MARK: UI ELEMENTS
     let homeRootCollectionView: UICollectionView = {
@@ -17,7 +17,6 @@ class HomeRootController:UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {

@@ -18,6 +18,7 @@ class HomeViewController:UIViewController{
     @IBOutlet fileprivate(set) weak var tabBar : UITabBar!
     @IBOutlet weak var btnPlay: UIButton!
     
+    //?? will be fetching audio articles from the server.
     var audioURLList:[String] = ["http://techslides.com/demos/samples/sample.mp3"]
     var audioManager:HomeAudio?
     var nowPlaying:Bool?
@@ -33,6 +34,7 @@ class HomeViewController:UIViewController{
         //initialize audio
         audioManager = HomeAudio(fileURL: audioURLList[0])
         
+        // MARK: Notification center
         //add Notification observer to unhide bottomAudioView
         NotificationCenter.default.addObserver(self, selector: #selector(unhideBottomAudio), name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: nil)
         
@@ -49,6 +51,7 @@ class HomeViewController:UIViewController{
     
     @objc func unhideBottomAudio(){
         bottomAudioView.isHidden = false
+        startAudio()
     }
     
     // MARK: ACTION
@@ -58,6 +61,10 @@ class HomeViewController:UIViewController{
     }
     
     @IBAction func btnPlayPressed(_ sender: Any) {
+        startAudio()
+    }
+    
+    private func startAudio(){
         guard let nowPlaying = nowPlaying else {
             audioManager?.playAudio()
             self.nowPlaying = true
@@ -75,14 +82,11 @@ class HomeViewController:UIViewController{
             self.nowPlaying = false
             btnPlay.setTitle("|>", for: .normal)
         }
-        
-        print("audioPlayerRate: \(audioManager?.avPlayer?.rate), np:\(nowPlaying) self.nowPlaying:\(self.nowPlaying)")
     }
-    
     
     // MARK: ASSIST METHODS
     private func setupView(){
-//        bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -75, paddingRight: 0, width: view.frame.size.width, height: 50)
+        //
     }
     
     func setupAnimator() {

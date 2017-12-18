@@ -62,8 +62,9 @@ class HomeNetworking {
     // MARK: LIFECYCLE
     init(){
         //getArticleFromServer(id: nil, last:nil) //disabled during testing
-        getFromProdEndpoint()
+        self.getFromProdEndpoint()
     }
+    
     
     // MARK: **PROD Article CODEABLE STRUCTURE**
     struct prodArticle:Decodable {

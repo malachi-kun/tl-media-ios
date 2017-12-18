@@ -52,8 +52,6 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         
         //auto layout
         rowsCollectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
-
     }
     
     // MARK: COLLECTIONVIEW
@@ -82,9 +80,10 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     
     @objc func playPressed(withSender:AnyObject){
         guard let index = withSender.tag else { return }
-        print("test")
+        print("cell play button pressed.")
         
-        //NotificationCenter to notify play has been pressed.
+        // MARK: NotificationCenter
+        //notification center to unhide audio bar.
         NotificationCenter.default.post(name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: self)
     }
     
