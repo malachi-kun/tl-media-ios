@@ -22,7 +22,6 @@ extension HomeRootController:ArticleContentDelegate, ArticleProdDelegate{
                 i += 1
             }
         }
-        
         DispatchQueue.main.async {
             self.homeRootCollectionView.reloadData()
         }

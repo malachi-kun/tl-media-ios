@@ -30,6 +30,7 @@
 		417885C11FD50C27008F4B8E /* HomeRoot+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C01FD50C27008F4B8E /* HomeRoot+Protocols.swift */; };
 		417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C21FD50CC4008F4B8E /* ArticleModel.swift */; };
 		417885C91FD53F9F008F4B8E /* VoiceArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C81FD53F9F008F4B8E /* VoiceArticleCell.swift */; };
+		417D5DBA1FE79BEE00E4AB48 /* HomeAudioChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D5DB91FE79BEE00E4AB48 /* HomeAudioChatController.swift */; };
 		419FA56B1FCE9B2800354CC3 /* ArticleContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */; };
 		41D667AF1FE362C900721CD9 /* HomeRoot+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */; };
 		41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */; };
@@ -109,6 +110,7 @@
 		417885C01FD50C27008F4B8E /* HomeRoot+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeRoot+Protocols.swift"; sourceTree = "<group>"; };
 		417885C21FD50CC4008F4B8E /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		417885C81FD53F9F008F4B8E /* VoiceArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticleCell.swift; sourceTree = "<group>"; };
+		417D5DB91FE79BEE00E4AB48 /* HomeAudioChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAudioChatController.swift; sourceTree = "<group>"; };
 		419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentModel.swift; sourceTree = "<group>"; };
 		41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeRoot+CollectionView.swift"; sourceTree = "<group>"; };
 		41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeRoot+Delegation.swift"; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				41D7D5201FE26B17006B8E77 /* HomeModalController.swift */,
 				417885C01FD50C27008F4B8E /* HomeRoot+Protocols.swift */,
 				413E2B8E1FCD3F6700E25686 /* Model */,
+				417D5DB81FE79BC600E4AB48 /* AudioChat */,
 				412CD2B01FE3CADF0093D64B /* Services */,
 				41FD31941FC3B69900D1DBF6 /* Cell */,
 				411BB17D1FE75BDB0089B94F /* MARK_FOR_DELETE_2017_18_12 */,
@@ -334,6 +337,14 @@
 				417885C21FD50CC4008F4B8E /* ArticleModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		417D5DB81FE79BC600E4AB48 /* AudioChat */ = {
+			isa = PBXGroup;
+			children = (
+				417D5DB91FE79BEE00E4AB48 /* HomeAudioChatController.swift */,
+			);
+			path = AudioChat;
 			sourceTree = "<group>";
 		};
 		41F356C71FC2CC0D003F65FD /* Helper Utility */ = {
@@ -636,11 +647,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-tl-media-ios/Pods-tl-media-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ARNTransitionAnimator/ARNTransitionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARNTransitionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,6 +701,7 @@
 				41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */,
 				417885C91FD53F9F008F4B8E /* VoiceArticleCell.swift in Sources */,
 				417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */,
+				417D5DBA1FE79BEE00E4AB48 /* HomeAudioChatController.swift in Sources */,
 				41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */,
 				41F356C61FC2CB47003F65FD /* HomeHeader.swift in Sources */,
 				41D667AF1FE362C900721CD9 /* HomeRoot+CollectionView.swift in Sources */,

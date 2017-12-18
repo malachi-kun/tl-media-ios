@@ -5,6 +5,7 @@
 //  Created by Malachi Hul on 2017/12/15.
 //  Copyright © 2017 Tabi-Labo. All rights reserved.
 //
+// CollectionView in the HomeRootController
 
 import UIKit
 
