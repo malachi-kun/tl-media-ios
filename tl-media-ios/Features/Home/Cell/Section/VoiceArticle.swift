@@ -79,7 +79,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     }
     
     @objc func playPressed(withSender:AnyObject){
-        guard let index = withSender.tag else { return }
+        guard (withSender.tag) != nil else { return }
         print("cell play button pressed.")
         
         // MARK: NotificationCenter

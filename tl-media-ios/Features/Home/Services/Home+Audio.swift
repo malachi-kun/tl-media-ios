@@ -57,6 +57,6 @@ class HomeAudio {
             MPMediaItemPropertyTitle:name,
             MPMediaItemPropertyArtist: "Learning Radio"
         ]
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = songInfo
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = songInfo as Any as? [String : Any]
     }
 }
