@@ -1,0 +1,6 @@
+framework module Pods_tl_media_iosTests {
+  umbrella header "Pods-tl-media-iosTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
