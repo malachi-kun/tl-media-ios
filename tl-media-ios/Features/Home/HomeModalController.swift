@@ -27,7 +27,7 @@ class HomeModalController:UIViewController {
     let titleLabel:UILabel = {
         let label = UILabel()
         label.text = "Article Title \nsecond line"
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         //label.backgroundColor = .green
@@ -64,6 +64,7 @@ class HomeModalController:UIViewController {
     // MARK: PROPERTIES
     var audioManager:HomeAudio?
     var nowPlaying:Bool?
+    var header:ArticleHeader?
     
     // MARK: OUTLETS
     @IBOutlet weak var audioChat: UIView!
@@ -136,5 +137,9 @@ class HomeModalController:UIViewController {
         
         audioChat.addSubview(blockSendButton)
         blockSendButton.anchor(top: nil, left: audioChat.leftAnchor, bottom: audioChat.bottomAnchor, right: audioChat.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: audioChat.frame.width, height: 50)
+        
+        //Enter details of UI Component
+        titleLabel.text = header?.description
+        issueLabel.text = header?.issueDate
     }
 }

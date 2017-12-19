@@ -17,9 +17,7 @@ class HomeViewController:UIViewController{
     @IBOutlet weak var bottomAudioView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet fileprivate(set) weak var tabBar : UITabBar!
-    @IBOutlet weak var btnPlay: UIButton!
-    
-    //MANUAL AUDIO BAR CODE
+ 
     // MARK: UI COMPONENTS
     let bottomControllerView:UIView = {
         let topView = UIView()
@@ -35,17 +33,16 @@ class HomeViewController:UIViewController{
     
     let titleLabel:UILabel = {
         let label = UILabel()
-        label.text = "Article Title \nsecond line"
-        label.font = UIFont.systemFont(ofSize: 17)
+        //label.text = "A spoon full of sugar makes the medicine go down."
+        label.font = UIFont.boldSystemFont(ofSize: 17)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        //label.backgroundColor = .green
         return label
     }()
     
     let issueLabel:UILabel = {
         let label = UILabel()
-        label.text = "ISSUE 2017/12/18"
+        //label.text = "ISSUE 2017/12/18"
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
@@ -62,12 +59,15 @@ class HomeViewController:UIViewController{
         button.addTarget(self, action: #selector(tapMiniPlayerButton), for: .touchUpInside)
         return button
     }()
-    //MANUAL AUDIO BAR CODE
+    
+    // MARK: PROPERTIES
+    //let articleHeaderDetails:ArticleHeader?
     
     //?? will be fetching audio articles from the server.
     var audioURLList:[String] = ["http://techslides.com/demos/samples/sample.mp3"]
     var audioManager:HomeAudio?
     var nowPlaying:Bool?
+    var activeModel:ArticleModel?
     
     private var animator : ARNTransitionAnimator?
     fileprivate var modalVC : HomeModalController!
@@ -76,12 +76,9 @@ class HomeViewController:UIViewController{
     override func viewDidLoad() {
         bottomAudioView.isHidden = true
         
-        //initialize audio
-        //audioManager = HomeAudio(fileURL: audioURLList[0])
-        
         // MARK: Notification center
         //add Notification observer to unhide bottomAudioView
-        NotificationCenter.default.addObserver(self, selector: #selector(unhideBottomAudio), name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(unhideBottomAudio(_:)), name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: nil)
         
         let storyboard = UIStoryboard(name: "HOME", bundle: nil)
         self.modalVC = storyboard.instantiateViewController(withIdentifier: "HomeModal") as? HomeModalController
@@ -94,8 +91,14 @@ class HomeViewController:UIViewController{
         setupView()
     }
     
-    @objc func unhideBottomAudio(){
-        print("unhide audio bar")
+    @objc func unhideBottomAudio(_ notification:Notification){
+        //print("unhide audio bar")
+        guard let articleDetails = notification.userInfo![notificationCalls.articleDetails.rawValue] else { return }
+        
+        //received article detail from NotificationCenter
+        activeModel = articleDetails as? ArticleModel
+        titleLabel.text = activeModel?.title[0]
+        
         bottomAudioView.isHidden = false
         audioManager = HomeAudio.shared
         nowPlaying = true
@@ -104,7 +107,10 @@ class HomeViewController:UIViewController{
     // MARK: ACTION
     @IBAction func tapMiniPlayerButton() {
         print("button pressed")
+        let articleDetails = ArticleHeader(id: "1", description: (activeModel?.title[0])!, issueDate: "2017/19/12")
         modalVC.nowPlaying = nowPlaying
+        modalVC.header = articleDetails
+        
         self.present(self.modalVC, animated: true, completion: nil)
     }
     
@@ -112,7 +118,6 @@ class HomeViewController:UIViewController{
         guard let nowPlaying = nowPlaying else {
             audioManager?.playAudio()
             self.nowPlaying = true
-            //btnPlay.setTitle("| |", for: .normal)
             return
         }
         
@@ -120,11 +125,9 @@ class HomeViewController:UIViewController{
         if (!nowPlaying) {
             audioManager?.playAudio()
             self.nowPlaying = true
-            //btnPlay.setTitle("| |", for: .normal)
         } else {
             audioManager?.pauseAudio()
             self.nowPlaying = false
-            //btnPlay.setTitle("|>", for: .normal)
         }
     }
     
@@ -155,8 +158,11 @@ class HomeViewController:UIViewController{
         //invisible button to dismiss
         bottomAudioView.addSubview(dismissButton)
         dismissButton.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: bottomAudioView.bottomAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
         //**top audio control**
+        
+        // Assing values to UI components.
+        titleLabel.text = activeModel?.title[0]
+        issueLabel.text = "2017/19/12"
     }
     
     func setupAnimator() {

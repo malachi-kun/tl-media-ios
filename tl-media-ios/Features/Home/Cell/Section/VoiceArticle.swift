@@ -70,6 +70,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         
         if articleDetails.count > 0{
             cell.imageView.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
+            cell.titleLabel.text = articleDetails[indexPath.row].title[0]
             cell.playButton.tag = indexPath.item
             cell.playButton.addTarget(self, action: #selector(playPressed(withSender:)), for: .touchUpInside)
             return cell
@@ -84,7 +85,9 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         
         // MARK: NotificationCenter
         //notification center to unhide audio bar.
-        NotificationCenter.default.post(name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: self)
+        //NotificationCenter.default.post(name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: self)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.playAudioArticlePressed.rawValue), object: self, userInfo: [notificationCalls.articleDetails.rawValue:articleDetails[withSender.tag]])
     }
     
     //FLOW LAYOUT : cell

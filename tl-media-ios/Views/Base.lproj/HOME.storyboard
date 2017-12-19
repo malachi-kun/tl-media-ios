@@ -64,7 +64,7 @@
                                     <constraint firstItem="qfD-UW-UKG" firstAttribute="leading" secondItem="wIq-bK-ENC" secondAttribute="leading" constant="8" id="nK3-8l-ET3"/>
                                 </constraints>
                             </view>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jk1-fQ-y77">
+                            <tabBar hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jk1-fQ-y77">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>

@@ -17,6 +17,7 @@ enum cellType:String {
 
 enum notificationCalls:String{
     case playAudioArticlePressed
+    case articleDetails
 }
 
 //UI Color Helper Extension

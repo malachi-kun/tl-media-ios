@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11ED469CFA2987FC2B404A4C /* Pods_tl_media_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 727D43A7E07D974A9AAC11B1 /* Pods_tl_media_iosTests.framework */; };
+		4108492F1FE8BCBD0063502E /* ArticleHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108492E1FE8BCBD0063502E /* ArticleHeaderModel.swift */; };
 		410DA61E1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */; };
 		410FBA2A1FE220C300A9BFA1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FBA291FE220C300A9BFA1 /* HomeViewController.swift */; };
 		41109AC51FCBBF6800AFC05E /* VoiceArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */; };
@@ -81,6 +82,7 @@
 		0D24CB4AB7AC9191D0478A8D /* Pods-tl-media-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tl-media-iosUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tl-media-iosUITests/Pods-tl-media-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		197F37250D291BF2FE098EEE /* Pods_tl_media_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tl_media_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA25A7CC203BC4C21D35857 /* Pods-tl-media-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tl-media-iosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tl-media-iosUITests/Pods-tl-media-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4108492E1FE8BCBD0063502E /* ArticleHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderModel.swift; sourceTree = "<group>"; };
 		410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerTransitionAnimation.swift; sourceTree = "<group>"; };
 		410FBA291FE220C300A9BFA1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticle.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		411BB17D1FE75BDB0089B94F /* MARK_FOR_DELETE_2017_18_12 */ = {
 			isa = PBXGroup;
 			children = (
+				413E2B8F1FCD3F7700E25686 /* TopicModel.swift */,
 				41F356CE1FC2DFE9003F65FD /* Header */,
 				4112FD031FC2C69900D8C2AF /* HomeController.swift */,
 				41D741BF1FD14DCE003DD012 /* Home+CollectionViewController.swift */,
@@ -332,9 +335,9 @@
 		413E2B8E1FCD3F6700E25686 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				413E2B8F1FCD3F7700E25686 /* TopicModel.swift */,
 				419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */,
 				417885C21FD50CC4008F4B8E /* ArticleModel.swift */,
+				4108492E1FE8BCBD0063502E /* ArticleHeaderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				419FA56B1FCE9B2800354CC3 /* ArticleContentModel.swift in Sources */,
 				410FBA2A1FE220C300A9BFA1 /* HomeViewController.swift in Sources */,
 				413E2B901FCD3F7700E25686 /* TopicModel.swift in Sources */,
+				4108492F1FE8BCBD0063502E /* ArticleHeaderModel.swift in Sources */,
 				41D741C01FD14DCE003DD012 /* Home+CollectionViewController.swift in Sources */,
 				412CD2B21FE3CB120093D64B /* Home+Audio.swift in Sources */,
 				410DA61E1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift in Sources */,
