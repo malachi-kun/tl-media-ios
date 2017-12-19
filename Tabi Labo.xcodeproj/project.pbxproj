@@ -39,6 +39,7 @@
 		41D741C21FD14ED0003DD012 /* Home+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D741C11FD14ED0003DD012 /* Home+Delegation.swift */; };
 		41D7D51C1FE25A7E006B8E77 /* HomeRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7D51B1FE25A7E006B8E77 /* HomeRootController.swift */; };
 		41D7D5211FE26B17006B8E77 /* HomeModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7D5201FE26B17006B8E77 /* HomeModalController.swift */; };
+		41DD369F1FE8FCD100836225 /* AudioToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DD369E1FE8FCD100836225 /* AudioToolBar.swift */; };
 		41F356C61FC2CB47003F65FD /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F356C51FC2CB47003F65FD /* HomeHeader.swift */; };
 		41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F356C81FC2CC2B003F65FD /* HelperUtility.swift */; };
 		41FD31961FC3B6AE00D1DBF6 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FD31951FC3B6AE00D1DBF6 /* CategoryCell.swift */; };
@@ -120,6 +121,7 @@
 		41D741C11FD14ED0003DD012 /* Home+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+Delegation.swift"; sourceTree = "<group>"; };
 		41D7D51B1FE25A7E006B8E77 /* HomeRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRootController.swift; sourceTree = "<group>"; };
 		41D7D5201FE26B17006B8E77 /* HomeModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModalController.swift; sourceTree = "<group>"; };
+		41DD369E1FE8FCD100836225 /* AudioToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioToolBar.swift; sourceTree = "<group>"; };
 		41F356C51FC2CB47003F65FD /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		41F356C81FC2CC2B003F65FD /* HelperUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperUtility.swift; sourceTree = "<group>"; };
 		41FD31951FC3B6AE00D1DBF6 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */,
 				41D7D5201FE26B17006B8E77 /* HomeModalController.swift */,
 				417885C01FD50C27008F4B8E /* HomeRoot+Protocols.swift */,
+				41DD369D1FE8FCAC00836225 /* UIViews */,
 				413E2B8E1FCD3F6700E25686 /* Model */,
 				417D5DB81FE79BC600E4AB48 /* AudioChat */,
 				412CD2B01FE3CADF0093D64B /* Services */,
@@ -348,6 +351,14 @@
 				417D5DB91FE79BEE00E4AB48 /* HomeAudioChatController.swift */,
 			);
 			path = AudioChat;
+			sourceTree = "<group>";
+		};
+		41DD369D1FE8FCAC00836225 /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				41DD369E1FE8FCD100836225 /* AudioToolBar.swift */,
+			);
+			path = UIViews;
 			sourceTree = "<group>";
 		};
 		41F356C71FC2CC0D003F65FD /* Helper Utility */ = {
@@ -693,6 +704,7 @@
 			files = (
 				41D741C21FD14ED0003DD012 /* Home+Delegation.swift in Sources */,
 				413E2B8D1FCD3EDA00E25686 /* Home+Networking.swift in Sources */,
+				41DD369F1FE8FCD100836225 /* AudioToolBar.swift in Sources */,
 				41FD319A1FC3C85B00D1DBF6 /* TabiLaboFamilySection.swift in Sources */,
 				417885C11FD50C27008F4B8E /* HomeRoot+Protocols.swift in Sources */,
 				4112FD041FC2C69900D8C2AF /* HomeController.swift in Sources */,

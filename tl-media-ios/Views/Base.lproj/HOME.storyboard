@@ -46,7 +46,7 @@
                                     <segue destination="Yns-7Y-Bzg" kind="embed" id="3iE-rO-FqL"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIq-bK-ENC">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIq-bK-ENC">
                                 <rect key="frame" x="0.0" y="565" width="375" height="53"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfD-UW-UKG">
@@ -90,7 +90,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="5OL-lx-i7o"/>
                     <connections>
-                        <outlet property="bottomAudioView" destination="wIq-bK-ENC" id="Pvw-wU-YxJ"/>
                         <outlet property="containerView" destination="5G3-wd-VHR" id="cOW-om-BjC"/>
                         <outlet property="tabBar" destination="jk1-fQ-y77" id="aY0-iK-6IU"/>
                     </connections>
@@ -169,6 +168,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="d9s-iA-h96"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TfV-dn-Hjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,13 +194,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="N1e-4X-c3V"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Rdy-NE-cMn"/>
                     <connections>
                         <outlet property="audioChat" destination="SfN-Y6-zg0" id="hzr-w0-7cl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSU-tO-7g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2629.5999999999999" y="162.3688155922039"/>
+            <point key="canvasLocation" x="2911" y="149"/>
         </scene>
         <!--Home Audio Chat Controller-->
         <scene sceneID="4s4-Lf-UQu">
@@ -210,11 +211,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="189"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Szt-pp-310"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sgk-yG-s4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3423" y="162"/>
+            <point key="canvasLocation" x="3785" y="149"/>
         </scene>
     </scenes>
 </document>

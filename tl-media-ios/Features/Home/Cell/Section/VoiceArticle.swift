@@ -73,6 +73,10 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
             cell.titleLabel.text = articleDetails[indexPath.row].title[0]
             cell.playButton.tag = indexPath.item
             cell.playButton.addTarget(self, action: #selector(playPressed(withSender:)), for: .touchUpInside)
+            
+
+            cell.layer.shouldRasterize = true
+            cell.layer.rasterizationScale = UIScreen.main.scale
             return cell
         } else {
             return cell
@@ -87,6 +91,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         //notification center to unhide audio bar.
         //NotificationCenter.default.post(name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: self)
         
+        print(articleDetails[withSender.tag])
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.playAudioArticlePressed.rawValue), object: self, userInfo: [notificationCalls.articleDetails.rawValue:articleDetails[withSender.tag]])
     }
     

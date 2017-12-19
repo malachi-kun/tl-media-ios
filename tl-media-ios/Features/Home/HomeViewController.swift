@@ -14,37 +14,14 @@ import Foundation
 class HomeViewController:UIViewController{
 
     // MARK: UIProperties
-    @IBOutlet weak var bottomAudioView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet fileprivate(set) weak var tabBar : UITabBar!
  
     // MARK: UI COMPONENTS
-    let bottomControllerView:UIView = {
-        let topView = UIView()
-        topView.backgroundColor = .white
-        return topView
-    }()
-    
-    let articleImageView:UIImageView = {
-        let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "TL")
-        return iv
-    }()
-    
-    let titleLabel:UILabel = {
-        let label = UILabel()
-        //label.text = "A spoon full of sugar makes the medicine go down."
-        label.font = UIFont.boldSystemFont(ofSize: 17)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    let issueLabel:UILabel = {
-        let label = UILabel()
-        //label.text = "ISSUE 2017/12/18"
-        label.font = UIFont.systemFont(ofSize: 12)
-        return label
+    let bottomAudioView:AudioToolBar = {
+        let top = AudioToolBar()
+        top.backgroundColor = .white
+        return top
     }()
     
     let playPauseButton:UIButton = {
@@ -53,15 +30,16 @@ class HomeViewController:UIViewController{
         button.addTarget(self, action: #selector(startAudio), for: .touchUpInside)
         return button
     }()
-    
+
     let dismissButton:UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(tapMiniPlayerButton), for: .touchUpInside)
         return button
     }()
+
     
     // MARK: PROPERTIES
-    //let articleHeaderDetails:ArticleHeader?
+    //let articleHeaderDetails:ArticleHeader?  //mark for delete: 2017/12/19
     
     //?? will be fetching audio articles from the server.
     var audioURLList:[String] = ["http://techslides.com/demos/samples/sample.mp3"]
@@ -74,6 +52,7 @@ class HomeViewController:UIViewController{
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
+
         bottomAudioView.isHidden = true
         
         // MARK: Notification center
@@ -86,19 +65,20 @@ class HomeViewController:UIViewController{
         
         //miniplayer properties
         self.containerView.backgroundColor = .white
-        //self.setupAnimator()
+        self.setupAnimator()
         
         setupView()
     }
     
     @objc func unhideBottomAudio(_ notification:Notification){
-        //print("unhide audio bar")
+
         guard let articleDetails = notification.userInfo![notificationCalls.articleDetails.rawValue] else { return }
         
         //received article detail from NotificationCenter
         activeModel = articleDetails as? ArticleModel
-        titleLabel.text = activeModel?.title[0]
-        
+        guard let activeModel = activeModel else {return}
+
+        bottomAudioView.titleLabel.text = activeModel.title[0]
         bottomAudioView.isHidden = false
         audioManager = HomeAudio.shared
         nowPlaying = true
@@ -106,11 +86,11 @@ class HomeViewController:UIViewController{
     
     // MARK: ACTION
     @IBAction func tapMiniPlayerButton() {
-        print("button pressed")
+  
         let articleDetails = ArticleHeader(id: "1", description: (activeModel?.title[0])!, issueDate: "2017/19/12")
         modalVC.nowPlaying = nowPlaying
         modalVC.header = articleDetails
-        
+        print(articleDetails)
         self.present(self.modalVC, animated: true, completion: nil)
     }
     
@@ -133,36 +113,24 @@ class HomeViewController:UIViewController{
     
     // MARK: ASSIST METHODS
     private func setupView(){
+
         view.addSubview(bottomAudioView)
+        let topBottomPadding:CGFloat = 15
         bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -80, paddingRight: 00, width: view.frame.width, height: 85)
         
-        //article image
-        bottomAudioView.addSubview(articleImageView)
-        let topBottomPadding:CGFloat = 15
-        articleImageView.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: bottomAudioView.bottomAnchor, right: nil, paddingTop: topBottomPadding, paddingLeft: 0, paddingBottom: -topBottomPadding, paddingRight: 0, width: 50, height: 50)
-        
-        //title label
-        bottomAudioView.addSubview(titleLabel)
-        let leftPadding:CGFloat = 15
-        let labelWidth:CGFloat = 250
-        titleLabel.anchor(top: bottomAudioView.topAnchor, left: articleImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: leftPadding, paddingBottom:0, paddingRight: 0, width: labelWidth, height: 45)
-
-        //issue label
-        bottomAudioView.addSubview(issueLabel)
-        issueLabel.anchor(top: titleLabel.bottomAnchor, left: articleImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: leftPadding, paddingBottom:0, paddingRight: 0, width: labelWidth, height: 15)
-
         //play~pause button
         bottomAudioView.addSubview(playPauseButton)
         playPauseButton.anchor(top: bottomAudioView.topAnchor, left: nil, bottom: bottomAudioView.bottomAnchor, right: bottomAudioView.rightAnchor, paddingTop: topBottomPadding, paddingLeft: 0, paddingBottom: -topBottomPadding, paddingRight: -50, width: 150, height:150)
-        
-        //invisible button to dismiss
+
+        //invisible button to activate
         bottomAudioView.addSubview(dismissButton)
-        dismissButton.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: bottomAudioView.bottomAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        //**top audio control**
-        
+        dismissButton.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: bottomAudioView.progressSlide.topAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -10, paddingRight: 0, width: 0, height: 0)
+    
         // Assing values to UI components.
-        titleLabel.text = activeModel?.title[0]
-        issueLabel.text = "2017/19/12"
+        if let title = activeModel?.title[0] {
+            bottomAudioView.titleLabel.text = title
+            bottomAudioView.issueLabel.text = "2017/19/12"
+        }
     }
     
     func setupAnimator() {

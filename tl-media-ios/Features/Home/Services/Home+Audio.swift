@@ -13,6 +13,7 @@ class HomeAudio {
     var avPlayer: AVPlayer?
     
     static let shared = HomeAudio(fileURL:"http://techslides.com/demos/samples/sample.mp3")
+    //static let shared = HomeAudio()
     
     init() {
         avPlayer = AVPlayer()
