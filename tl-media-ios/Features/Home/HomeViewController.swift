@@ -53,6 +53,13 @@ class HomeViewController:UIViewController{
     let playPauseButton:UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        button.addTarget(self, action: #selector(startAudio), for: .touchUpInside)
+        return button
+    }()
+    
+    let dismissButton:UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(tapMiniPlayerButton), for: .touchUpInside)
         return button
     }()
     //MANUAL AUDIO BAR CODE
@@ -70,7 +77,7 @@ class HomeViewController:UIViewController{
         bottomAudioView.isHidden = true
         
         //initialize audio
-        audioManager = HomeAudio(fileURL: audioURLList[0])
+        //audioManager = HomeAudio(fileURL: audioURLList[0])
         
         // MARK: Notification center
         //add Notification observer to unhide bottomAudioView
@@ -82,31 +89,30 @@ class HomeViewController:UIViewController{
         
         //miniplayer properties
         self.containerView.backgroundColor = .white
-        self.setupAnimator()
+        //self.setupAnimator()
         
-        //setupView()
+        setupView()
     }
     
     @objc func unhideBottomAudio(){
+        print("unhide audio bar")
         bottomAudioView.isHidden = false
-        startAudio()
+        audioManager = HomeAudio.shared
+        nowPlaying = true
     }
     
     // MARK: ACTION
     @IBAction func tapMiniPlayerButton() {
         print("button pressed")
+        modalVC.nowPlaying = nowPlaying
         self.present(self.modalVC, animated: true, completion: nil)
     }
     
-    @IBAction func btnPlayPressed(_ sender: Any) {
-        startAudio()
-    }
-    
-    private func startAudio(){
+    @objc private func startAudio(){
         guard let nowPlaying = nowPlaying else {
             audioManager?.playAudio()
             self.nowPlaying = true
-            btnPlay.setTitle("| |", for: .normal)
+            //btnPlay.setTitle("| |", for: .normal)
             return
         }
         
@@ -114,33 +120,42 @@ class HomeViewController:UIViewController{
         if (!nowPlaying) {
             audioManager?.playAudio()
             self.nowPlaying = true
-            btnPlay.setTitle("| |", for: .normal)
+            //btnPlay.setTitle("| |", for: .normal)
         } else {
             audioManager?.pauseAudio()
             self.nowPlaying = false
-            btnPlay.setTitle("|>", for: .normal)
+            //btnPlay.setTitle("|>", for: .normal)
         }
     }
     
     // MARK: ASSIST METHODS
     private func setupView(){
-        view.addSubview(bottomControllerView)
-        bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 09, width: view.frame.width, height: 85)
+        view.addSubview(bottomAudioView)
+        bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -80, paddingRight: 00, width: view.frame.width, height: 85)
+        
+        //article image
+        bottomAudioView.addSubview(articleImageView)
+        let topBottomPadding:CGFloat = 15
+        articleImageView.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: bottomAudioView.bottomAnchor, right: nil, paddingTop: topBottomPadding, paddingLeft: 0, paddingBottom: -topBottomPadding, paddingRight: 0, width: 50, height: 50)
         
         //title label
         bottomAudioView.addSubview(titleLabel)
-        let topBottomPadding:CGFloat = 15
         let leftPadding:CGFloat = 15
         let labelWidth:CGFloat = 250
         titleLabel.anchor(top: bottomAudioView.topAnchor, left: articleImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: leftPadding, paddingBottom:0, paddingRight: 0, width: labelWidth, height: 45)
-        
+
         //issue label
         bottomAudioView.addSubview(issueLabel)
         issueLabel.anchor(top: titleLabel.bottomAnchor, left: articleImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: leftPadding, paddingBottom:0, paddingRight: 0, width: labelWidth, height: 15)
-        
+
         //play~pause button
         bottomAudioView.addSubview(playPauseButton)
         playPauseButton.anchor(top: bottomAudioView.topAnchor, left: nil, bottom: bottomAudioView.bottomAnchor, right: bottomAudioView.rightAnchor, paddingTop: topBottomPadding, paddingLeft: 0, paddingBottom: -topBottomPadding, paddingRight: -50, width: 150, height:150)
+        
+        //invisible button to dismiss
+        bottomAudioView.addSubview(dismissButton)
+        dismissButton.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: bottomAudioView.bottomAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
         //**top audio control**
     }
     

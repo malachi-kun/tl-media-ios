@@ -44,6 +44,13 @@ class HomeModalController:UIViewController {
     let playPauseButton:UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        button.addTarget(self, action: #selector(startAudio), for: .touchUpInside)
+        return button
+    }()
+    
+    let dismissButton:UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         return button
     }()
     
@@ -54,7 +61,10 @@ class HomeModalController:UIViewController {
         return ui
     }()
     
-
+    // MARK: PROPERTIES
+    var audioManager:HomeAudio?
+    var nowPlaying:Bool?
+    
     // MARK: OUTLETS
     @IBOutlet weak var audioChat: UIView!
     
@@ -63,6 +73,30 @@ class HomeModalController:UIViewController {
        setupView()
     }
 
+    // MARK: ACTION
+    @objc private func startAudio(){
+        audioManager = HomeAudio.shared
+        
+        guard let nowPlaying = nowPlaying else {
+            audioManager?.playAudio()
+            self.nowPlaying = true
+            return
+        }
+        
+        //Need to fix below
+        if (!nowPlaying) {
+            audioManager?.playAudio()
+            self.nowPlaying = true
+        } else {
+            audioManager?.pauseAudio()
+            self.nowPlaying = false
+        }
+    }
+    
+    @objc private func dismissView(){
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: ASSIST METHODS
     private func setupView(){
         view.backgroundColor = .black
@@ -90,6 +124,10 @@ class HomeModalController:UIViewController {
         //play~pause button
         topControllerView.addSubview(playPauseButton)
         playPauseButton.anchor(top: topControllerView.topAnchor, left: nil, bottom: topControllerView.bottomAnchor, right: topControllerView.rightAnchor, paddingTop: topBottomPadding, paddingLeft: 0, paddingBottom: -topBottomPadding, paddingRight: -50, width: 150, height:150)
+        
+        //invisible button to dismiss
+        topControllerView.addSubview(dismissButton)
+        dismissButton.anchor(top: topControllerView.topAnchor, left: topControllerView.leftAnchor, bottom: topControllerView.bottomAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         //**top audio control**
         
         //**Chat message display**

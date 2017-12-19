@@ -12,6 +12,8 @@ import MediaPlayer
 class HomeAudio {
     var avPlayer: AVPlayer?
     
+    static let shared = HomeAudio(fileURL:"http://techslides.com/demos/samples/sample.mp3")
+    
     init() {
         avPlayer = AVPlayer()
     }
@@ -20,6 +22,7 @@ class HomeAudio {
         guard let url = URL(string: fileURL) else {return}
         self.avPlayer = AVPlayer(url: url)
         setPlayingScreen(fileURL:fileURL)
+        playAudio()
     }
     
     func playStream(fileURL: String) {
@@ -51,7 +54,6 @@ class HomeAudio {
     func setPlayingScreen(fileURL: String){
         let urlArray = fileURL.components(separatedBy: "/")
         let name = urlArray.last
-        //print(name)
         
         let songInfo = [
             MPMediaItemPropertyTitle:name,
