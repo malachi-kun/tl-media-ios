@@ -35,6 +35,12 @@ class HomeAudio {
         setPlayingScreen(fileURL:fileURL)
     }
     
+    func setStream(fileURL: String) {
+        guard let url = URL(string: fileURL) else {return}
+        avPlayer = AVPlayer(url: url)
+        setPlayingScreen(fileURL:fileURL)
+    }
+    
     func playAudio(){
         if (avPlayer?.rate == 0 && avPlayer?.error == nil) {
             avPlayer?.play()
@@ -50,6 +56,27 @@ class HomeAudio {
     
     func resetAudio(){
         avPlayer?.seek(to: kCMTimeZero)
+    }
+    
+    private let seekDuration:Float64 = 1
+    func back15(){
+        let currentTime = CMTimeGetSeconds((avPlayer?.currentTime())!)
+        var newTime = currentTime - seekDuration
+        if newTime < 0 {
+            newTime = 0
+        }
+        let calculatedTime:CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+        avPlayer?.seek(to: calculatedTime)
+    }
+    
+    func foward15(){
+        let currentTime = CMTimeGetSeconds((avPlayer?.currentTime())!)
+        var newTime = currentTime + seekDuration
+        if newTime < 0 {
+            newTime = 0
+        }
+        let calculatedTime:CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+        avPlayer?.seek(to: calculatedTime)
     }
     
     func setPlayingScreen(fileURL: String){

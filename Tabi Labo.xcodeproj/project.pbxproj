@@ -291,16 +291,13 @@
 			isa = PBXGroup;
 			children = (
 				410FBA291FE220C300A9BFA1 /* HomeViewController.swift */,
-				41D7D51B1FE25A7E006B8E77 /* HomeRootController.swift */,
-				41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */,
-				41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */,
 				41D7D5201FE26B17006B8E77 /* HomeModalController.swift */,
-				417885C01FD50C27008F4B8E /* HomeRoot+Protocols.swift */,
+				41802DAE1FE9FD140094EF4A /* HomeRoot */,
+				41FD31941FC3B69900D1DBF6 /* Cell */,
 				41DD369D1FE8FCAC00836225 /* UIViews */,
 				413E2B8E1FCD3F6700E25686 /* Model */,
 				417D5DB81FE79BC600E4AB48 /* AudioChat */,
 				412CD2B01FE3CADF0093D64B /* Services */,
-				41FD31941FC3B69900D1DBF6 /* Cell */,
 				411BB17D1FE75BDB0089B94F /* MARK_FOR_DELETE_2017_18_12 */,
 			);
 			path = Home;
@@ -351,6 +348,17 @@
 				417D5DB91FE79BEE00E4AB48 /* HomeAudioChatController.swift */,
 			);
 			path = AudioChat;
+			sourceTree = "<group>";
+		};
+		41802DAE1FE9FD140094EF4A /* HomeRoot */ = {
+			isa = PBXGroup;
+			children = (
+				41D7D51B1FE25A7E006B8E77 /* HomeRootController.swift */,
+				41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */,
+				41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */,
+				417885C01FD50C27008F4B8E /* HomeRoot+Protocols.swift */,
+			);
+			path = HomeRoot;
 			sourceTree = "<group>";
 		};
 		41DD369D1FE8FCAC00836225 /* UIViews */ = {

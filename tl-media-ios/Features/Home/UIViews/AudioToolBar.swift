@@ -27,19 +27,11 @@ class AudioToolBar:UIView{
     
     let issueLabel:UILabel = {
         let label = UILabel()
-        label.text = "ISSUE DATE 2017/19/12"
+        label.text = "ISSUE 2017/12/19"
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
-    
-    let progressSlide:UISlider = {
-        let slider = UISlider()
-        slider.minimumTrackTintColor = .red
-        slider.maximumTrackTintColor = .gray
-        slider.setThumbImage(UIImage(), for: .normal)
-        return slider
-    }()
-    
+  
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -65,11 +57,6 @@ class AudioToolBar:UIView{
         //issue label
         addSubview(issueLabel)
         issueLabel.anchor(top: titleLabel.bottomAnchor, left: articleImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: leftPadding, paddingBottom:0, paddingRight: 0, width: labelWidth, height: 15)
-        
-        
-        //progress slider
-        addSubview(progressSlide)
-        progressSlide.anchor(top: issueLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingBottom: -10, paddingRight: 15, width: frame.width, height: 3)
     }
     
 }

@@ -18,6 +18,14 @@ class HomeViewController:UIViewController{
     @IBOutlet fileprivate(set) weak var tabBar : UITabBar!
  
     // MARK: UI COMPONENTS
+    let progressSlide:UISlider = {
+        let slider = UISlider()
+        slider.minimumTrackTintColor = .red
+        slider.maximumTrackTintColor = .gray
+        slider.setThumbImage(UIImage(), for: .normal)
+        return slider
+    }()
+    
     let bottomAudioView:AudioToolBar = {
         let top = AudioToolBar()
         top.backgroundColor = .white
@@ -39,7 +47,6 @@ class HomeViewController:UIViewController{
 
     
     // MARK: PROPERTIES
-    //let articleHeaderDetails:ArticleHeader?  //mark for delete: 2017/12/19
     
     //?? will be fetching audio articles from the server.
     var audioURLList:[String] = ["http://techslides.com/demos/samples/sample.mp3"]
@@ -53,7 +60,7 @@ class HomeViewController:UIViewController{
     // MARK: LIFECYCLE
     override func viewDidLoad() {
 
-        bottomAudioView.isHidden = true
+        hideUI()
         
         // MARK: Notification center
         //add Notification observer to unhide bottomAudioView
@@ -79,9 +86,9 @@ class HomeViewController:UIViewController{
         guard let activeModel = activeModel else {return}
 
         bottomAudioView.titleLabel.text = activeModel.title[0]
-        bottomAudioView.isHidden = false
         audioManager = HomeAudio.shared
         nowPlaying = true
+        unHideUI()
     }
     
     // MARK: ACTION
@@ -112,11 +119,27 @@ class HomeViewController:UIViewController{
     }
     
     // MARK: ASSIST METHODS
+    
+    private func hideUI(){
+        let trueValue = true
+        bottomAudioView.isHidden = trueValue
+        progressSlide.isHidden = trueValue
+    }
+    
+    private func unHideUI(){
+        let falseValue = false
+        bottomAudioView.isHidden = falseValue
+        progressSlide.isHidden = falseValue
+    }
     private func setupView(){
 
         view.addSubview(bottomAudioView)
         let topBottomPadding:CGFloat = 15
         bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -80, paddingRight: 00, width: view.frame.width, height: 85)
+        
+        //progressSlide
+        view.addSubview(progressSlide)
+        progressSlide.anchor(top: nil, left: view.leftAnchor, bottom: bottomAudioView.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 5)
         
         //play~pause button
         bottomAudioView.addSubview(playPauseButton)
@@ -124,7 +147,7 @@ class HomeViewController:UIViewController{
 
         //invisible button to activate
         bottomAudioView.addSubview(dismissButton)
-        dismissButton.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: bottomAudioView.progressSlide.topAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -10, paddingRight: 0, width: 0, height: 0)
+        dismissButton.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: view.bottomAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -10, paddingRight: 0, width: 0, height: 0)
     
         // Assing values to UI components.
         if let title = activeModel?.title[0] {

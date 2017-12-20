@@ -18,7 +18,6 @@ class HomeModalController:UIViewController {
         return top
     }()
 
-    
     let playPauseButton:UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
@@ -37,6 +36,50 @@ class HomeModalController:UIViewController {
         let ui = UIView()
         ui.backgroundColor = .black
         return ui
+    }()
+    
+    let progressSlide:UISlider = {
+        let slider = UISlider()
+        slider.minimumTrackTintColor = .red
+        slider.maximumTrackTintColor = .gray
+        slider.setThumbImage(UIImage(), for: .normal)
+        return slider
+    }()
+    
+    //AudioControls
+    let ccButton:UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(ccPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    let rewindButton:UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(rewindPressed), for: .touchUpInside)
+        button.backgroundColor = .green
+        return button
+    }()
+    
+    let pausePlayButton:UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        button.contentMode = .center
+        button.addTarget(self, action: #selector(pausePlayPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    let forwardButton:UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(forwardPressed), for: .touchUpInside)
+         button.backgroundColor = .orange
+        return button
+    }()
+    
+    let replayButton:UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(replayPressed), for: .touchUpInside)
+        button.backgroundColor = .yellow
+        return button
     }()
     
     // MARK: PROPERTIES
@@ -80,6 +123,34 @@ class HomeModalController:UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc private func audioControlPressed(){
+        print("audio control button pressed")
+    }
+    
+    @objc private func ccPressed(){
+        print("cc button pressed.")
+        audioChat.isHidden = !audioChat.isHidden
+    }
+
+    @objc private func rewindPressed(){
+        print("rewind button pressed.")
+        audioManager?.back15()
+    }
+    
+    @objc private func pausePlayPressed(){
+        print("pause play button pressed.")
+        startAudio()
+    }
+    
+    @objc private func forwardPressed(){
+        print("forward button pressed.")
+        audioManager?.foward15()
+    }
+    
+    @objc private func replayPressed(){
+        print("replay button pressed.")
+        audioManager?.resetAudio()
+    }
     // MARK: ASSIST METHODS
     private func setupView(){
         view.backgroundColor = .black
@@ -105,8 +176,24 @@ class HomeModalController:UIViewController {
         audioChat.addSubview(blockSendButton)
         blockSendButton.anchor(top: nil, left: audioChat.leftAnchor, bottom: audioChat.bottomAnchor, right: audioChat.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: audioChat.frame.width, height: 50)
 
+        //progressSlide
+        view.addSubview(progressSlide)
+        progressSlide.anchor(top: nil, left: view.leftAnchor, bottom: blockSendButton.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 5)
+        
+        setupAudioControls()
+        
         //Enter details of UI Component
         topController.titleLabel.text = header?.description
         topController.issueLabel.text = header?.issueDate
+    }
+    
+    private func setupAudioControls(){
+        let stackView = UIStackView(arrangedSubviews: [ccButton,rewindButton,pausePlayButton,forwardButton,replayButton])
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        
+        view.addSubview(stackView)
+        stackView.anchor(top: progressSlide.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 150)
     }
 }
