@@ -201,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSU-tO-7g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2911" y="149"/>
+            <point key="canvasLocation" x="2751" y="150"/>
         </scene>
         <!--Home Audio Chat Controller-->
         <scene sceneID="4s4-Lf-UQu">
@@ -216,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sgk-yG-s4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3785" y="149"/>
+            <point key="canvasLocation" x="3626" y="150"/>
         </scene>
     </scenes>
 </document>

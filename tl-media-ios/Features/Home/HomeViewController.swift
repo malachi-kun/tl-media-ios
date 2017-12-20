@@ -34,7 +34,7 @@ class HomeViewController:UIViewController{
     
     let playPauseButton:UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
         button.addTarget(self, action: #selector(startAudio), for: .touchUpInside)
         return button
     }()
@@ -47,7 +47,6 @@ class HomeViewController:UIViewController{
 
     
     // MARK: PROPERTIES
-    
     //?? will be fetching audio articles from the server.
     var audioURLList:[String] = ["http://techslides.com/demos/samples/sample.mp3"]
     var audioManager:HomeAudio?
@@ -59,7 +58,9 @@ class HomeViewController:UIViewController{
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
-
+     
+        //navigation bar
+        self.navigationItem.title = "TABI LABO"
         hideUI()
         
         // MARK: Notification center
@@ -75,6 +76,15 @@ class HomeViewController:UIViewController{
         self.setupAnimator()
         
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let nowPlaying = nowPlaying else {return}
+        if nowPlaying{
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
+        } else {
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        }
     }
     
     @objc func unhideBottomAudio(_ notification:Notification){
@@ -104,16 +114,18 @@ class HomeViewController:UIViewController{
     @objc private func startAudio(){
         guard let nowPlaying = nowPlaying else {
             audioManager?.playAudio()
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
             self.nowPlaying = true
             return
         }
         
-        //Need to fix below
         if (!nowPlaying) {
             audioManager?.playAudio()
             self.nowPlaying = true
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
         } else {
             audioManager?.pauseAudio()
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             self.nowPlaying = false
         }
     }
@@ -131,8 +143,9 @@ class HomeViewController:UIViewController{
         bottomAudioView.isHidden = falseValue
         progressSlide.isHidden = falseValue
     }
+    
     private func setupView(){
-
+        
         view.addSubview(bottomAudioView)
         let topBottomPadding:CGFloat = 15
         bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -80, paddingRight: 00, width: view.frame.width, height: 85)

@@ -17,10 +17,15 @@ class HomeModalController:UIViewController {
         top.backgroundColor = .white
         return top
     }()
+    
+    let backgroundImage:UIImageView = {
+        let iv = UIImageView()
+        iv.image = #imageLiteral(resourceName: "SanFranciscoCityScape")
+        return iv
+    }()
 
     let playPauseButton:UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
         button.addTarget(self, action: #selector(startAudio), for: .touchUpInside)
         return button
     }()
@@ -49,14 +54,15 @@ class HomeModalController:UIViewController {
     //AudioControls
     let ccButton:UIButton = {
         let button = UIButton()
+        button.setTitle("cc", for: .normal)
         button.addTarget(self, action: #selector(ccPressed), for: .touchUpInside)
         return button
     }()
     
     let rewindButton:UIButton = {
         let button = UIButton()
+        button.setTitle("<<", for: .normal)
         button.addTarget(self, action: #selector(rewindPressed), for: .touchUpInside)
-        button.backgroundColor = .green
         return button
     }()
     
@@ -70,15 +76,15 @@ class HomeModalController:UIViewController {
     
     let forwardButton:UIButton = {
         let button = UIButton()
+        button.setTitle(">>", for: .normal)
         button.addTarget(self, action: #selector(forwardPressed), for: .touchUpInside)
-         button.backgroundColor = .orange
         return button
     }()
     
     let replayButton:UIButton = {
         let button = UIButton()
+        button.setTitle("<>", for: .normal)
         button.addTarget(self, action: #selector(replayPressed), for: .touchUpInside)
-        button.backgroundColor = .yellow
         return button
     }()
     
@@ -93,6 +99,13 @@ class HomeModalController:UIViewController {
     // MARK: LIFECYLE
     override func viewDidLoad() {
        setupView()
+        
+        guard let nowPlaying = nowPlaying else {return}
+        if nowPlaying{
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
+        } else {
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,18 +116,22 @@ class HomeModalController:UIViewController {
     @objc private func startAudio(){
         audioManager = HomeAudio.shared
         
+        //top controller
         guard let nowPlaying = nowPlaying else {
             audioManager?.playAudio()
             self.nowPlaying = true
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
             return
         }
-        
-        //Need to fix below
         if (!nowPlaying) {
             audioManager?.playAudio()
             self.nowPlaying = true
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
+            pausePlayButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
         } else {
             audioManager?.pauseAudio()
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            pausePlayButton.setImage(#imageLiteral(resourceName: "play.png"), for: .normal)
             self.nowPlaying = false
         }
     }
@@ -175,11 +192,15 @@ class HomeModalController:UIViewController {
 
         audioChat.addSubview(blockSendButton)
         blockSendButton.anchor(top: nil, left: audioChat.leftAnchor, bottom: audioChat.bottomAnchor, right: audioChat.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: audioChat.frame.width, height: 50)
-
+        
         //progressSlide
         view.addSubview(progressSlide)
         progressSlide.anchor(top: nil, left: view.leftAnchor, bottom: blockSendButton.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 5)
         
+        view.addSubview(backgroundImage)
+        view.sendSubview(toBack: backgroundImage)
+        backgroundImage.anchor(top: audioChat.topAnchor, left: audioChat.leftAnchor, bottom: progressSlide.topAnchor, right: audioChat.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 550)
+    
         setupAudioControls()
         
         //Enter details of UI Component
@@ -194,6 +215,6 @@ class HomeModalController:UIViewController {
         stackView.distribution = .fillEqually
         
         view.addSubview(stackView)
-        stackView.anchor(top: progressSlide.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 150)
+        stackView.anchor(top: progressSlide.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 175)
     }
 }

@@ -42,7 +42,6 @@ class AudioToolBar:UIView{
     }
     
     private func setupView(){
-
         //article image
         addSubview(articleImageView)
         let topBottomPadding:CGFloat = 15
@@ -58,5 +57,4 @@ class AudioToolBar:UIView{
         addSubview(issueLabel)
         issueLabel.anchor(top: titleLabel.bottomAnchor, left: articleImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: leftPadding, paddingBottom:0, paddingRight: 0, width: labelWidth, height: 15)
     }
-    
 }

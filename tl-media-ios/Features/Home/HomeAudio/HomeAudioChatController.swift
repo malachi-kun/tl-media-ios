@@ -20,12 +20,13 @@ class HomeAudioChatController:JSQMessagesViewController {
     }()
     
     lazy var incomingBubble: JSQMessagesBubbleImage = {
-        return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
+        return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor.red)
     }()
     
-    var icon = #imageLiteral(resourceName: "brain")
     var iconList = [UIImage]()
+    var iconSize:UInt = 30
     
+    var conversationList:[chatPerson] = [chatPerson]()
     var conversation:[String] = ["Hello","Hi", "日本語はわかりますか","日本語ちょっとうわかります","絵ですね","ありがとございます"]
     var conversationIndex = 0
     
@@ -37,22 +38,40 @@ class HomeAudioChatController:JSQMessagesViewController {
         backGroundImageView.image = #imageLiteral(resourceName: "SanFranciscoCityScape")
         collectionView.backgroundView = backGroundImageView
         
+        // MARK: Blur code
+        let blurEffect = UIBlurEffect(style: .extraLight)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = (collectionView.backgroundView?.bounds)!
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        collectionView.backgroundView?.addSubview(blurEffectView)
+        
         // Do any additional setup after loading the view, typically from a nib.
         self.senderId = "1"
         self.senderDisplayName = ""
         
         //**generate auto mesage
-        for i in 0..<5 {
+        for _ in conversation {
             createMessage()
         }
 
         //**generate auto mesage
-
         inputToolbar.contentView.leftBarButtonItem = nil
         //collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero //hides avatar
         //collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero //hides avatar
         //button.sendActions(for: .touchUpInside)
         
+    }
+    
+    private func generateFakeConversation(){
+        let personOne = chatPerson(name: "Brain", message: "Hi", personIcon: #imageLiteral(resourceName: "brain"))
+        conversationList.append(personOne)
+        let personTwo = chatPerson(name: "Pinky", message: "Hello", personIcon: #imageLiteral(resourceName: "TL"))
+        conversationList.append(personTwo)
+        let personThree = chatPerson(name: "Brain", message: "日本語ちょっとうわかります", personIcon: #imageLiteral(resourceName: "brain"))
+        conversationList.append(personThree)
+        let personFour = chatPerson(name: "Pinky", message: "絵ですね", personIcon: #imageLiteral(resourceName: "TL"))
+        conversationList.append(personFour)
     }
     
     // MARK: COLLECTIONVIEW
@@ -70,13 +89,14 @@ class HomeAudioChatController:JSQMessagesViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let bubbleFactory = JSQMessagesBubbleImageFactory()
+        _ = JSQMessagesBubbleImageFactory()
         
         return messages[indexPath.item].senderId == senderId ? outgoingBubble : incomingBubble
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return JSQMessagesAvatarImageFactory.avatarImage(with: icon, diameter: 30)
+        //return JSQMessagesAvatarImageFactory.avatarImage(with: conversationList[indexPath.item].personIcon, diameter: iconSize)
+        return JSQMessagesAvatarImageFactory.avatarImage(with: iconList[indexPath.item], diameter: iconSize)
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString!
@@ -92,10 +112,12 @@ class HomeAudioChatController:JSQMessagesViewController {
     func createMessage(){
         if senderId == "1" {
             messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: conversation[conversationIndex]))
+            iconList.append(#imageLiteral(resourceName: "brain"))
             self.senderId = "2"
             conversationIndex += 1
         } else {
             messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: conversation[conversationIndex]))
+            iconList.append(#imageLiteral(resourceName: "TL"))
             self.senderId = "1"
             conversationIndex += 1
         }
