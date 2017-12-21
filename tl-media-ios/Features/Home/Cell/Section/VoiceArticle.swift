@@ -9,7 +9,7 @@
 import UIKit
 
 
-class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ArticleProdDelegate {
+class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, ArticleDelegate {
     
     // MARK: UI ELEMENTS
     let rowsCollectionView: UICollectionView = {

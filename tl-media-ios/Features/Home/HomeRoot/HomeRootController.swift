@@ -24,7 +24,6 @@ class HomeRootController:UIViewController {
         homeRootCollectionView.delegate = self
         homeRootCollectionView.dataSource = self
         
-        networkManager.delegate = self
         networkManager.delegateProd = self
         
         homeRootCollectionView.backgroundColor = .black

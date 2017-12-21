@@ -12,7 +12,7 @@ class HomeNetworking {
     
     // MARK: PROPERTIES
     //delegate prop.
-    var delegate:ArticleContentDelegate?, delegateProd:ArticleProdDelegate?
+    var delegateProd:ArticleDelegate?
 
     var articleDict = [Int:[ArticleContentModel]](), articleList = [ArticleModel]()
     

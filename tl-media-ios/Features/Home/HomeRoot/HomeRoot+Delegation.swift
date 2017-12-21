@@ -9,7 +9,7 @@
 import UIKit
 
 
-extension HomeRootController:ArticleContentDelegate, ArticleProdDelegate{
+extension HomeRootController: ArticleDelegate{
     
     // MARK: DELEGATION
     func articleContentList(articleModelList: [ArticleContentModel], articleContentModelList: [Int : [ArticleContentModel]]) {

@@ -8,13 +8,7 @@
 
 import Foundation
 
-
-// MARK: Dec 4, 2017 - Dev code and dev structure.  Please to remove once I get full requirements in the design.
-protocol ArticleContentDelegate{
-    func articleContentList(articleModelList:[ArticleContentModel], articleContentModelList:[Int:[ArticleContentModel]])
-}
-
-protocol ArticleProdDelegate {
+protocol ArticleDelegate {
     func articleContentList(articleContent:[ArticleModel])
 }
 
