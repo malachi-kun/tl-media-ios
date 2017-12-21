@@ -23,7 +23,7 @@ class HomeAudioChatController:JSQMessagesViewController {
         return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor.red)
     }()
     
-    var iconList = [UIImage]()
+    var iconList:[String:UIImage] = [String:UIImage]()
     var iconSize:UInt = 30
     
     var conversationList:[chatPerson] = [chatPerson]()
@@ -43,35 +43,51 @@ class HomeAudioChatController:JSQMessagesViewController {
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = (collectionView.backgroundView?.bounds)!
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
         collectionView.backgroundView?.addSubview(blurEffectView)
         
         // Do any additional setup after loading the view, typically from a nib.
-        self.senderId = "1"
-        self.senderDisplayName = ""
+        requiredClassInit()
         
         //**generate auto mesage
-        for _ in conversation {
-            createMessage()
-        }
-
+            generateFakeConversation()
         //**generate auto mesage
+        
         inputToolbar.contentView.leftBarButtonItem = nil
-        //collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero //hides avatar
-        //collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero //hides avatar
-        //button.sendActions(for: .touchUpInside)
-        
+        let avatarWidth = 50
+        let avatarHeight = avatarWidth
+        collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize(width: avatarWidth, height: avatarHeight)
+        collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: avatarWidth, height: avatarHeight)
+    }
+    
+    private func requiredClassInit(){
+        self.senderId = "1"             //Deleting this will cause crash
+        self.senderDisplayName = ""     //Deleting this will cause crash
     }
     
     private func generateFakeConversation(){
-        let personOne = chatPerson(name: "Brain", message: "Hi", personIcon: #imageLiteral(resourceName: "brain"))
-        conversationList.append(personOne)
-        let personTwo = chatPerson(name: "Pinky", message: "Hello", personIcon: #imageLiteral(resourceName: "TL"))
-        conversationList.append(personTwo)
-        let personThree = chatPerson(name: "Brain", message: "日本語ちょっとうわかります", personIcon: #imageLiteral(resourceName: "brain"))
-        conversationList.append(personThree)
-        let personFour = chatPerson(name: "Pinky", message: "絵ですね", personIcon: #imageLiteral(resourceName: "TL"))
-        conversationList.append(personFour)
+        let personBrain = chatPerson(id: "1", name: "", personIcon: #imageLiteral(resourceName: "brain"))
+        let personTL = chatPerson(id: "2", name: "", personIcon: #imageLiteral(resourceName: "TL"))
+        
+        if let brainID = personBrain.id, let TLid = personTL.id {
+            iconList[brainID] = personBrain.personIcon
+            iconList[TLid] = personTL.personIcon
+            
+            //1
+            messages.append(JSQMessage(senderId: personBrain.id, displayName: personBrain.name, text: "Hi"))
+            //2
+            messages.append(JSQMessage(senderId: personTL.id, displayName: personTL.name, text: "Hello!"))
+            //3
+            messages.append(JSQMessage(senderId: personTL.id, displayName: personTL.name, text: "Welcome to Tabi Labo :)"))
+            //4
+            messages.append(JSQMessage(senderId: personBrain.id, displayName: personBrain.name, text: "Thank you!"))
+            //5
+            messages.append(JSQMessage(senderId: personTL.id, displayName: personTL.name, text: "What would you like to know?"))
+            //6
+            messages.append(JSQMessage(senderId: personBrain.id, displayName: personBrain.name, text: "Everything!!!"))
+            
+            collectionView.reloadData()
+            finishSendingMessage()  //remove from text field.
+        }
     }
     
     // MARK: COLLECTIONVIEW
@@ -96,51 +112,22 @@ class HomeAudioChatController:JSQMessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         //return JSQMessagesAvatarImageFactory.avatarImage(with: conversationList[indexPath.item].personIcon, diameter: iconSize)
-        return JSQMessagesAvatarImageFactory.avatarImage(with: iconList[indexPath.item], diameter: iconSize)
+        //return JSQMessagesAvatarImageFactory.avatarImage(with: iconList[indexPath.item], diameter: iconSize)
+        
+        return JSQMessagesAvatarImageFactory.avatarImage(with: iconList[messages[indexPath.item].senderId], diameter: iconSize)
     }
     
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString!
-    {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString!{
         return messages[indexPath.item].senderId == senderId ? nil : NSAttributedString(string: messages[indexPath.item].senderDisplayName)
     }
     
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat
-    {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat{
         return messages[indexPath.item].senderId == senderId ? 0 : 15
-    }
-    
-    func createMessage(){
-        if senderId == "1" {
-            messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: conversation[conversationIndex]))
-            iconList.append(#imageLiteral(resourceName: "brain"))
-            self.senderId = "2"
-            conversationIndex += 1
-        } else {
-            messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: conversation[conversationIndex]))
-            iconList.append(#imageLiteral(resourceName: "TL"))
-            self.senderId = "1"
-            conversationIndex += 1
-        }
-        
-        collectionView.reloadData()
-        finishSendingMessage()  //remove from text field.
     }
     
     // MARK: JSQM BUTTON CODE
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-    
-        if senderId == "1" {
-            messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
-            iconList.append(#imageLiteral(resourceName: "brain"))
-            self.senderId = "2"
-        } else {
-            messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
-            self.senderId = "1"
-            iconList.append(#imageLiteral(resourceName: "pinky"))
-        }
-        
-        collectionView.reloadData()
-        finishSendingMessage()  //remove from text field.
+        //do nothing
     }
 }
 

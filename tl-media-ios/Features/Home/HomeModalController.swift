@@ -8,6 +8,7 @@
 // The secondary viewController of the primary Container View Controller.
 
 import UIKit
+import MediaPlayer
 
 class HomeModalController:UIViewController {
 
@@ -47,7 +48,7 @@ class HomeModalController:UIViewController {
         let slider = UISlider()
         slider.minimumTrackTintColor = .red
         slider.maximumTrackTintColor = .gray
-        slider.setThumbImage(UIImage(), for: .normal)
+        slider.setThumbImage(#imageLiteral(resourceName: "thumb"), for: .normal)
         return slider
     }()
     
@@ -99,18 +100,13 @@ class HomeModalController:UIViewController {
     // MARK: LIFECYLE
     override func viewDidLoad() {
        setupView()
-        
-        guard let nowPlaying = nowPlaying else {return}
-        if nowPlaying{
-            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
-        } else {
-            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupView()
     }
+    
+
 
     // MARK: ACTION
     @objc private func startAudio(){
@@ -123,20 +119,14 @@ class HomeModalController:UIViewController {
             playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
             return
         }
-        if (!nowPlaying) {
-            audioManager?.playAudio()
-            self.nowPlaying = true
-            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
-            pausePlayButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
-        } else {
-            audioManager?.pauseAudio()
-            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
-            pausePlayButton.setImage(#imageLiteral(resourceName: "play.png"), for: .normal)
-            self.nowPlaying = false
-        }
+        //nowPlaying object has been created.
+        togglePlayButton()
     }
     
     @objc private func dismissView(){
+        // MARK: NotificationCenter
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.nowPlayingStatus.rawValue), object: self, userInfo: [notificationCalls.nowPlayingStatus.rawValue:nowPlaying])
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -206,6 +196,7 @@ class HomeModalController:UIViewController {
         //Enter details of UI Component
         topController.titleLabel.text = header?.description
         topController.issueLabel.text = header?.issueDate
+        verifyPlayButton()
     }
     
     private func setupAudioControls(){
@@ -216,5 +207,40 @@ class HomeModalController:UIViewController {
         
         view.addSubview(stackView)
         stackView.anchor(top: progressSlide.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 175)
+    }
+    
+    private func verifyPlayButton(){
+        guard let nowPlaying = nowPlaying else {return}
+        if (nowPlaying) {
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            pausePlayButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        } else {
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            pausePlayButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        }
+    }
+    
+    private func getProgressLineStatus(){
+        //progress line logic
+        let cmtime = audioManager?.avPlayer?.currentItem?.currentTime()
+        let floatTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentTime())!))
+        let durationTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentItem?.duration)!))
+        progressSlide.setValue(floatTime/durationTime, animated: true)
+    }
+    
+    private func togglePlayButton(){
+        guard let nowPlaying = nowPlaying else {return}
+        if (!nowPlaying) {
+            audioManager?.playAudio()
+            self.nowPlaying = true
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
+            pausePlayButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
+            getProgressLineStatus()
+        } else {
+            audioManager?.pauseAudio()
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            pausePlayButton.setImage(#imageLiteral(resourceName: "play.png"), for: .normal)
+            self.nowPlaying = false
+        }
     }
 }

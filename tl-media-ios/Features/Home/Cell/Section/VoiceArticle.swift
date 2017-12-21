@@ -88,10 +88,6 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         print("cell play button pressed.")
         
         // MARK: NotificationCenter
-        //notification center to unhide audio bar.
-        //NotificationCenter.default.post(name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: self)
-        
-        print(articleDetails[withSender.tag])
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.playAudioArticlePressed.rawValue), object: self, userInfo: [notificationCalls.articleDetails.rawValue:articleDetails[withSender.tag]])
     }
     

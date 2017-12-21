@@ -10,13 +10,13 @@ import UIKit
 
 
 struct chatPerson{
+    var id:String?
     var name:String?
-    var message:String?
     var personIcon:UIImage?
     
-    init(name:String, message:String, personIcon:UIImage){
+    init(id:String, name:String, personIcon:UIImage){
+        self.id = id
         self.name = name
-        self.message = message
         self.personIcon = personIcon
     }
 }

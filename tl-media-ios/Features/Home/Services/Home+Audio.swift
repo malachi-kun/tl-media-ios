@@ -46,7 +46,7 @@ class HomeAudio {
             avPlayer?.play()
         }
     }
-    
+
     func pauseAudio(){
         let floatZero = Float(0)
         if ((avPlayer?.rate)! > floatZero && avPlayer?.error == nil) {

@@ -10,6 +10,7 @@
 import UIKit
 import ARNTransitionAnimator
 import Foundation
+import MediaPlayer
 
 class HomeViewController:UIViewController{
 
@@ -22,7 +23,7 @@ class HomeViewController:UIViewController{
         let slider = UISlider()
         slider.minimumTrackTintColor = .red
         slider.maximumTrackTintColor = .gray
-        slider.setThumbImage(UIImage(), for: .normal)
+        slider.setThumbImage(#imageLiteral(resourceName: "thumb"), for: .normal)
         return slider
     }()
     
@@ -35,11 +36,11 @@ class HomeViewController:UIViewController{
     let playPauseButton:UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
-        button.addTarget(self, action: #selector(startAudio), for: .touchUpInside)
+        button.addTarget(self, action: #selector(togglePlayButton), for: .touchUpInside)
         return button
     }()
 
-    let dismissButton:UIButton = {
+    let audioButtonPressed:UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(tapMiniPlayerButton), for: .touchUpInside)
         return button
@@ -64,8 +65,10 @@ class HomeViewController:UIViewController{
         hideUI()
         
         // MARK: Notification center
-        //add Notification observer to unhide bottomAudioView
+        //Notification observer to unhide bottomAudioView
         NotificationCenter.default.addObserver(self, selector: #selector(unhideBottomAudio(_:)), name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: nil)
+        //Notification observer to be notified of NowPlaying status change.
+        NotificationCenter.default.addObserver(self, selector: #selector(notifyNowPlayingStatus(_:)), name: Notification.Name(notificationCalls.nowPlayingStatus.rawValue), object: nil)
         
         let storyboard = UIStoryboard(name: "HOME", bundle: nil)
         self.modalVC = storyboard.instantiateViewController(withIdentifier: "HomeModal") as? HomeModalController
@@ -79,16 +82,10 @@ class HomeViewController:UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let nowPlaying = nowPlaying else {return}
-        if nowPlaying{
-            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
-        } else {
-            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
-        }
+        setupView()
     }
     
     @objc func unhideBottomAudio(_ notification:Notification){
-
         guard let articleDetails = notification.userInfo![notificationCalls.articleDetails.rawValue] else { return }
         
         //received article detail from NotificationCenter
@@ -99,6 +96,26 @@ class HomeViewController:UIViewController{
         audioManager = HomeAudio.shared
         nowPlaying = true
         unHideUI()
+        getProgressLineStatus()
+    }
+    
+    private func getProgressLineStatus(){
+        //progress line logic
+        let cmtime = audioManager?.avPlayer?.currentItem?.currentTime()
+        let floatTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentTime())!))
+        let durationTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentItem?.duration)!))
+        progressSlide.setValue(floatTime/durationTime, animated: true)
+    }
+
+    
+    @objc func notifyNowPlayingStatus(_ notification:Notification){
+        guard let nowPlayingStatus = notification.userInfo![notificationCalls.nowPlayingStatus.rawValue] else { return }
+           print(nowPlayingStatus)
+        
+        //received article detail from NotificationCenter
+        nowPlaying = nowPlayingStatus as! Bool
+        viewWillAppear(true)
+     
     }
     
     // MARK: ACTION
@@ -107,31 +124,11 @@ class HomeViewController:UIViewController{
         let articleDetails = ArticleHeader(id: "1", description: (activeModel?.title[0])!, issueDate: "2017/19/12")
         modalVC.nowPlaying = nowPlaying
         modalVC.header = articleDetails
-        print(articleDetails)
         self.present(self.modalVC, animated: true, completion: nil)
     }
     
-    @objc private func startAudio(){
-        guard let nowPlaying = nowPlaying else {
-            audioManager?.playAudio()
-            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
-            self.nowPlaying = true
-            return
-        }
-        
-        if (!nowPlaying) {
-            audioManager?.playAudio()
-            self.nowPlaying = true
-            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
-        } else {
-            audioManager?.pauseAudio()
-            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
-            self.nowPlaying = false
-        }
-    }
     
     // MARK: ASSIST METHODS
-    
     private func hideUI(){
         let trueValue = true
         bottomAudioView.isHidden = trueValue
@@ -145,7 +142,6 @@ class HomeViewController:UIViewController{
     }
     
     private func setupView(){
-        
         view.addSubview(bottomAudioView)
         let topBottomPadding:CGFloat = 15
         bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -80, paddingRight: 00, width: view.frame.width, height: 85)
@@ -159,14 +155,15 @@ class HomeViewController:UIViewController{
         playPauseButton.anchor(top: bottomAudioView.topAnchor, left: nil, bottom: bottomAudioView.bottomAnchor, right: bottomAudioView.rightAnchor, paddingTop: topBottomPadding, paddingLeft: 0, paddingBottom: -topBottomPadding, paddingRight: -50, width: 150, height:150)
 
         //invisible button to activate
-        bottomAudioView.addSubview(dismissButton)
-        dismissButton.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: view.bottomAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -10, paddingRight: 0, width: 0, height: 0)
+        bottomAudioView.addSubview(audioButtonPressed)
+        audioButtonPressed.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: view.bottomAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -10, paddingRight: 0, width: 0, height: 0)
     
         // Assing values to UI components.
         if let title = activeModel?.title[0] {
             bottomAudioView.titleLabel.text = title
             bottomAudioView.issueLabel.text = "2017/19/12"
         }
+        verifyPlayButton()
     }
     
     func setupAnimator() {
@@ -191,6 +188,29 @@ class HomeViewController:UIViewController{
         self.animator?.registerInteractiveTransitioning(.present, gestureHandler: gestureHandler)
         
         self.modalVC.transitioningDelegate = self.animator
+    }
+    
+    @objc private func verifyPlayButton(){
+        guard let nowPlaying = nowPlaying else {return}
+        if (nowPlaying) {
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        } else {
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        }
+    }
+    
+    @objc private func togglePlayButton(){
+        guard let nowPlaying = nowPlaying else {return}
+        
+        if (!nowPlaying) {
+            audioManager?.playAudio()
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
+            self.nowPlaying = true
+        } else {
+            audioManager?.pauseAudio()
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            self.nowPlaying = false
+        }
     }
 }
 
