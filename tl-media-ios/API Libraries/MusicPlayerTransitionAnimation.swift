@@ -74,7 +74,7 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable {
             let startOriginY = self.miniPlayerStartFrame.origin.y
             let endOriginY = -self.miniPlayerStartFrame.size.height
             let diff = -endOriginY + startOriginY
-            print("startOrigin:\(startOriginY) endOrigin:\(endOriginY) diff:\(diff)")
+            //print("startOrigin:\(startOriginY) endOrigin:\(endOriginY) diff:\(diff)")
             // tabBar
             let tabStartOriginY = self.tabBarStartFrame.origin.y
             let tabEndOriginY = self.modalVC.view.frame.size.height

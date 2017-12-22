@@ -18,7 +18,7 @@ extension HomeRootController: ArticleDelegate{
         for inputType in articleModelList {
             if inputType.input == "image"{
                 self.imageList[i] = inputType.content
-                print("raw: \(inputType.content) \n iL:\(String(describing: imageList[i]))")
+                //print("raw: \(inputType.content) \n iL:\(String(describing: imageList[i]))")
                 i += 1
             }
         }

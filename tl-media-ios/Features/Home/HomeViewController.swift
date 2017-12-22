@@ -108,7 +108,7 @@ class HomeViewController:UIViewController{
     
     @objc func notifyNowPlayingStatus(_ notification:Notification){
         guard let nowPlayingStatus = notification.userInfo![notificationCalls.nowPlayingStatus.rawValue] else { return }
-           print(nowPlayingStatus)
+           //print(nowPlayingStatus)
         
         //received article detail from NotificationCenter
         nowPlaying = nowPlayingStatus as? Bool
