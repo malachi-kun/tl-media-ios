@@ -46,7 +46,6 @@ class HomeViewController:UIViewController{
         return button
     }()
 
-    
     // MARK: PROPERTIES
     //?? will be fetching audio articles from the server.
     var audioURLList:[String] = ["http://techslides.com/demos/samples/sample.mp3"]
@@ -115,12 +114,10 @@ class HomeViewController:UIViewController{
         //received article detail from NotificationCenter
         nowPlaying = nowPlayingStatus as! Bool
         viewWillAppear(true)
-     
     }
     
     // MARK: ACTION
     @IBAction func tapMiniPlayerButton() {
-  
         let articleDetails = ArticleHeader(id: "1", description: (activeModel?.title[0])!, issueDate: "2017/19/12")
         modalVC.nowPlaying = nowPlaying
         modalVC.header = articleDetails

@@ -106,8 +106,6 @@ class HomeModalController:UIViewController {
         setupView()
     }
     
-
-
     // MARK: ACTION
     @objc private func startAudio(){
         audioManager = HomeAudio.shared
