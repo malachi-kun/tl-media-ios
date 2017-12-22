@@ -87,8 +87,6 @@ class HomeViewController:UIViewController{
         setupView()
     }
     
-  
-    
     // MARK: ACTION
     @IBAction func tapMiniPlayerButton() {
         let articleDetails = ArticleHeader(id: "1", description: (activeModel?.title[0])!, issueDate: "2017/19/12")
@@ -231,9 +229,6 @@ class HomeViewController:UIViewController{
         let durationTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentItem?.duration)!))
         progressSlide.setValue(floatTime/durationTime, animated: true)
     }
-    
-    
-
 }
 
 

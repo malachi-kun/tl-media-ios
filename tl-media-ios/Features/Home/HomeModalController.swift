@@ -157,6 +157,7 @@ class HomeModalController:UIViewController {
         print("replay button pressed.")
         audioManager?.resetAudio()
     }
+    
     // MARK: ASSIST METHODS
     private func setupView(){
         view.backgroundColor = .black
@@ -199,7 +200,6 @@ class HomeModalController:UIViewController {
         //verify UI status
         verifyPlayButton()
         syncProgressLineToAudio()
- 
     }
     
     private func setupAudioControls(){
@@ -231,7 +231,6 @@ class HomeModalController:UIViewController {
     }
     
     private func togglePlayButton(nowPlaying:Bool){
-    
         if (!nowPlaying) {
             audioManager?.playAudio()
             self.nowPlaying = true
