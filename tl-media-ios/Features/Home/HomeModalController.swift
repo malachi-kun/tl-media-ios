@@ -99,7 +99,8 @@ class HomeModalController:UIViewController {
     
     // MARK: LIFECYLE
     override func viewDidLoad() {
-       setupView()
+        audioManager = HomeAudio.shared
+        setupView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -108,7 +109,7 @@ class HomeModalController:UIViewController {
     
     // MARK: ACTION
     @objc private func startAudio(){
-        audioManager = HomeAudio.shared
+        //audioManager = HomeAudio.shared
         
         //top controller
         guard let nowPlaying = nowPlaying else {

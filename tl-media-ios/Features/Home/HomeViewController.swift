@@ -28,7 +28,6 @@ class HomeViewController:UIViewController{
         return slider
     }()
     
-
     let bottomAudioView:AudioToolBar = {
         let top = AudioToolBar()
         top.backgroundColor = .white
@@ -59,11 +58,17 @@ class HomeViewController:UIViewController{
     private var animator : ARNTransitionAnimator?
     fileprivate var modalVC : HomeModalController!
     
+    enum storyboardID:String{
+        case storyBoardName = "HOME"
+        case storyBoardWithIdentier = "HomeModal"
+    }
+    let appTitle = "TABI LABO"
+    
     // MARK: LIFECYCLE
     override func viewDidLoad() {
      
         //navigation bar
-        self.navigationItem.title = "TABI LABO"
+        self.navigationItem.title = appTitle
         hideUI()
         
         // MARK: Notification center
@@ -72,8 +77,8 @@ class HomeViewController:UIViewController{
         //Notification observer to be notified of NowPlaying status change.
         NotificationCenter.default.addObserver(self, selector: #selector(notifyNowPlayingStatus(_:)), name: Notification.Name(notificationCalls.nowPlayingStatus.rawValue), object: nil)
         
-        let storyboard = UIStoryboard(name: "HOME", bundle: nil)
-        self.modalVC = storyboard.instantiateViewController(withIdentifier: "HomeModal") as? HomeModalController
+        let storyboard = UIStoryboard(name: storyboardID.storyBoardName.rawValue, bundle: nil)
+        self.modalVC = storyboard.instantiateViewController(withIdentifier: storyboardID.storyBoardWithIdentier.rawValue) as? HomeModalController
         self.modalVC.modalPresentationStyle = .overFullScreen
         
         //miniplayer properties
@@ -211,8 +216,6 @@ class HomeViewController:UIViewController{
         self.modalVC.transitioningDelegate = self.animator
     }
     
-
-    
     private func syncProgressLineToAudio(){
         //progress code
         audioManager?.avPlayer?.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 30), queue: .main) { time in
@@ -220,8 +223,6 @@ class HomeViewController:UIViewController{
             self.progressSlide.value = Float(fraction)
         }
     }
-    
-
     
     private func getProgressLineStatus(){
         //progress line logic
