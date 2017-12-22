@@ -100,7 +100,6 @@ class HomeViewController:UIViewController{
     
     private func getProgressLineStatus(){
         //progress line logic
-        let cmtime = audioManager?.avPlayer?.currentItem?.currentTime()
         let floatTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentTime())!))
         let durationTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentItem?.duration)!))
         progressSlide.setValue(floatTime/durationTime, animated: true)
@@ -112,7 +111,7 @@ class HomeViewController:UIViewController{
            print(nowPlayingStatus)
         
         //received article detail from NotificationCenter
-        nowPlaying = nowPlayingStatus as! Bool
+        nowPlaying = nowPlayingStatus as? Bool
         viewWillAppear(true)
     }
     

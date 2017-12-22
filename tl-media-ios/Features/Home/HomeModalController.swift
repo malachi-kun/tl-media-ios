@@ -111,7 +111,7 @@ class HomeModalController:UIViewController {
         audioManager = HomeAudio.shared
         
         //top controller
-        guard let nowPlaying = nowPlaying else {
+        guard nowPlaying != nil else {
             audioManager?.playAudio()
             self.nowPlaying = true
             playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
@@ -123,6 +123,7 @@ class HomeModalController:UIViewController {
     
     @objc private func dismissView(){
         // MARK: NotificationCenter
+        guard let nowPlaying = nowPlaying else {return}
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.nowPlayingStatus.rawValue), object: self, userInfo: [notificationCalls.nowPlayingStatus.rawValue:nowPlaying])
         
         dismiss(animated: true, completion: nil)
@@ -220,7 +221,6 @@ class HomeModalController:UIViewController {
     
     private func getProgressLineStatus(){
         //progress line logic
-        let cmtime = audioManager?.avPlayer?.currentItem?.currentTime()
         let floatTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentTime())!))
         let durationTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentItem?.duration)!))
         progressSlide.setValue(floatTime/durationTime, animated: true)
