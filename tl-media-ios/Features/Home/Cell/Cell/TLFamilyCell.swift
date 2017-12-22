@@ -42,12 +42,10 @@ class TLFamilyCell:UICollectionViewCell {
     // MARK: UI CODE
     func setupView(){
         backgroundColor = .black
-        
-    
+
         addSubview(imageView)
         addSubview(nameLabel)
    
-        
         imageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

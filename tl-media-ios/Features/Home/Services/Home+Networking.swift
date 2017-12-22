@@ -33,13 +33,11 @@ class HomeNetworking {
     //SELECTED ENVIRONMENT
     var environment = env.prod.rawValue  // dev or prod
   
-
     // MARK: LIFECYCLE
     init(){
         //getArticleFromServer(id: nil, last:nil) //disabled during testing
         self.getFromProdEndpoint()
     }
-    
     
     // MARK: **PROD Article CODEABLE STRUCTURE**
     struct prodArticle:Decodable {
@@ -62,8 +60,8 @@ class HomeNetworking {
         var eye_catch_urls:[String]
         var body:String
     }
+    
     //**PROD Article CODEABLE STRUCTURE**
-
     func getFromProdEndpoint(){
         guard let url = URL(string: authHeader.prodUrl.rawValue) else {return}
         let config = URLSessionConfiguration.default

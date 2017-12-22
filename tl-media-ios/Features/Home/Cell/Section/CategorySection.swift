@@ -54,7 +54,6 @@ class CategorySection:UICollectionViewCell, UICollectionViewDataSource, UICollec
         categoryCollectionView.register(CategoryCell.self, forCellWithReuseIdentifier: cellType.category.rawValue)
         
         //auto layout
-        
         categoryLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 0, width: 0, height: 0)
 
         categoryCollectionView.anchor(top: categoryLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)

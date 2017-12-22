@@ -19,7 +19,6 @@ class CategoryCell:UICollectionViewCell {
         return iv
     }()
     
-    
     // MARK: LIFECYCLE
     override init(frame: CGRect) {
         super.init(frame: frame)

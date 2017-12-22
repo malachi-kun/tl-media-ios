@@ -102,7 +102,7 @@ class HomeModalController:UIViewController {
        setupView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         setupView()
     }
     
@@ -111,14 +111,14 @@ class HomeModalController:UIViewController {
         audioManager = HomeAudio.shared
         
         //top controller
-        guard nowPlaying != nil else {
+        guard let nowPlaying = nowPlaying else {
             audioManager?.playAudio()
             self.nowPlaying = true
             playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
             return
         }
-        //nowPlaying object has been created.
-        togglePlayButton()
+        //nowPlaying object has  already been created will execute method below.
+        togglePlayButton(nowPlaying: nowPlaying)
     }
     
     @objc private func dismissView(){
@@ -195,7 +195,11 @@ class HomeModalController:UIViewController {
         //Enter details of UI Component
         topController.titleLabel.text = header?.description
         topController.issueLabel.text = header?.issueDate
+        
+        //verify UI status
         verifyPlayButton()
+        syncProgressLineToAudio()
+ 
     }
     
     private func setupAudioControls(){
@@ -226,19 +230,27 @@ class HomeModalController:UIViewController {
         progressSlide.setValue(floatTime/durationTime, animated: true)
     }
     
-    private func togglePlayButton(){
-        guard let nowPlaying = nowPlaying else {return}
+    private func togglePlayButton(nowPlaying:Bool){
+    
         if (!nowPlaying) {
             audioManager?.playAudio()
             self.nowPlaying = true
             playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
             pausePlayButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
-            getProgressLineStatus()
+            syncProgressLineToAudio()
         } else {
             audioManager?.pauseAudio()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             pausePlayButton.setImage(#imageLiteral(resourceName: "play.png"), for: .normal)
             self.nowPlaying = false
+            syncProgressLineToAudio()
+        }
+    }
+    
+    private func syncProgressLineToAudio(){
+        audioManager?.avPlayer?.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 30), queue: .main) { time in
+            let fraction = CMTimeGetSeconds(time) / CMTimeGetSeconds((self.audioManager?.avPlayer?.currentItem!.duration)!)
+            self.progressSlide.value = Float(fraction)
         }
     }
 }

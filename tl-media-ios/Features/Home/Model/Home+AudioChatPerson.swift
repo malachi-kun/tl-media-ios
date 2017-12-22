@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 struct chatPerson{
     var id:String?
     var name:String?
