@@ -19,7 +19,11 @@
 		4112FCE71FC2C34E00D8C2AF /* tl_media_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCE61FC2C34E00D8C2AF /* tl_media_iosTests.swift */; };
 		4112FCF21FC2C34E00D8C2AF /* tl_media_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCF11FC2C34E00D8C2AF /* tl_media_iosUITests.swift */; };
 		4112FD041FC2C69900D8C2AF /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FD031FC2C69900D8C2AF /* HomeController.swift */; };
+		4116C1311FFE015A00F74946 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116C1301FFE015A00F74946 /* LoginController.swift */; };
 		412483321FFDBC90001D1A2C /* LOGIN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 412483311FFDBC90001D1A2C /* LOGIN.storyboard */; };
+		412483351FFDBD38001D1A2C /* ListenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412483341FFDBD38001D1A2C /* ListenController.swift */; };
+		412483371FFDEC81001D1A2C /* DownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412483361FFDEC81001D1A2C /* DownloadController.swift */; };
+		412483391FFDEC8C001D1A2C /* BuyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412483381FFDEC8C001D1A2C /* BuyController.swift */; };
 		412CD2B21FE3CB120093D64B /* Home+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412CD2B11FE3CB120093D64B /* Home+Audio.swift */; };
 		4138698A1FCBDB7200DF5CD7 /* CategorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413869891FCBDB7200DF5CD7 /* CategorySection.swift */; };
 		4138698D1FCC1F0400DF5CD7 /* NewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4138698C1FCC1F0400DF5CD7 /* NewCollectionView.swift */; };
@@ -101,7 +105,11 @@
 		4112FCF11FC2C34E00D8C2AF /* tl_media_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tl_media_iosUITests.swift; sourceTree = "<group>"; };
 		4112FCF31FC2C34E00D8C2AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4112FD031FC2C69900D8C2AF /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		4116C1301FFE015A00F74946 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		412483311FFDBC90001D1A2C /* LOGIN.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LOGIN.storyboard; sourceTree = "<group>"; };
+		412483341FFDBD38001D1A2C /* ListenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenController.swift; sourceTree = "<group>"; };
+		412483361FFDEC81001D1A2C /* DownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadController.swift; sourceTree = "<group>"; };
+		412483381FFDEC8C001D1A2C /* BuyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyController.swift; sourceTree = "<group>"; };
 		412CD2B11FE3CB120093D64B /* Home+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+Audio.swift"; sourceTree = "<group>"; };
 		412DFD221FD65E36003FF906 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		413869891FCBDB7200DF5CD7 /* CategorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySection.swift; sourceTree = "<group>"; };
@@ -281,6 +289,7 @@
 		4112FD011FC2C38B00D8C2AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				412483311FFDBC90001D1A2C /* LOGIN.storyboard */,
 				4112FCD51FC2C34E00D8C2AF /* HOME.storyboard */,
 				4138698E1FCC22C800DF5CD7 /* NEW.storyboard */,
 				413E2B801FCCE05700E25686 /* SEARCH.storyboard */,
@@ -289,7 +298,6 @@
 				4112FCDA1FC2C34E00D8C2AF /* LaunchScreen.storyboard */,
 				4112FCD11FC2C34E00D8C2AF /* AppDelegate.swift */,
 				4112FCD81FC2C34E00D8C2AF /* Assets.xcassets */,
-				412483311FFDBC90001D1A2C /* LOGIN.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +332,10 @@
 		412483331FFDBCA6001D1A2C /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				412483341FFDBD38001D1A2C /* ListenController.swift */,
+				412483361FFDEC81001D1A2C /* DownloadController.swift */,
+				412483381FFDEC8C001D1A2C /* BuyController.swift */,
+				4116C1301FFE015A00F74946 /* LoginController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -719,6 +731,7 @@
 			files = (
 				41802DB11FEA6C0E0094EF4A /* Home+AudioChatPerson.swift in Sources */,
 				41D741C21FD14ED0003DD012 /* Home+Delegation.swift in Sources */,
+				412483391FFDEC8C001D1A2C /* BuyController.swift in Sources */,
 				413E2B8D1FCD3EDA00E25686 /* Home+Networking.swift in Sources */,
 				41DD369F1FE8FCD100836225 /* AudioToolBar.swift in Sources */,
 				41FD319A1FC3C85B00D1DBF6 /* TabiLaboFamilySection.swift in Sources */,
@@ -736,12 +749,15 @@
 				41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */,
 				41F356C61FC2CB47003F65FD /* HomeHeader.swift in Sources */,
 				41D667AF1FE362C900721CD9 /* HomeRoot+CollectionView.swift in Sources */,
+				412483351FFDBD38001D1A2C /* ListenController.swift in Sources */,
 				41109AC51FCBBF6800AFC05E /* VoiceArticle.swift in Sources */,
+				4116C1311FFE015A00F74946 /* LoginController.swift in Sources */,
 				419FA56B1FCE9B2800354CC3 /* ArticleContentModel.swift in Sources */,
 				410FBA2A1FE220C300A9BFA1 /* HomeViewController.swift in Sources */,
 				413E2B901FCD3F7700E25686 /* TopicModel.swift in Sources */,
 				4108492F1FE8BCBD0063502E /* ArticleHeaderModel.swift in Sources */,
 				41D741C01FD14DCE003DD012 /* Home+CollectionViewController.swift in Sources */,
+				412483371FFDEC81001D1A2C /* DownloadController.swift in Sources */,
 				412CD2B21FE3CB120093D64B /* Home+Audio.swift in Sources */,
 				410DA61E1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift in Sources */,
 				41FD31961FC3B6AE00D1DBF6 /* CategoryCell.swift in Sources */,
