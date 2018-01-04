@@ -26,7 +26,7 @@ class DownloadController:UIViewController {
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
-    
+
     let enjoyTabiLaboImageView:UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "HowToEnjoyTabiLabo")
@@ -47,7 +47,7 @@ class DownloadController:UIViewController {
     
     let downloadButtonImageView:UIImageView = {
         let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "BuyIcon")
+        iv.image = #imageLiteral(resourceName: "DownloadIcon")
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -85,7 +85,7 @@ class DownloadController:UIViewController {
     
     // MARK: ASSIST METHODS
     private func setupUI(){
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(displayP3Red: 31/255, green: 31/255, blue: 31/255, alpha: 1.0)
         centerTabiLaboIcon()
         
         view.addSubview(dismissImageView)

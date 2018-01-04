@@ -20,6 +20,7 @@
 		4112FCF21FC2C34E00D8C2AF /* tl_media_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCF11FC2C34E00D8C2AF /* tl_media_iosUITests.swift */; };
 		4112FD041FC2C69900D8C2AF /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FD031FC2C69900D8C2AF /* HomeController.swift */; };
 		4116C1311FFE015A00F74946 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116C1301FFE015A00F74946 /* LoginController.swift */; };
+		4116C1331FFE170900F74946 /* TrainingBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116C1321FFE170900F74946 /* TrainingBaseController.swift */; };
 		412483321FFDBC90001D1A2C /* LOGIN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 412483311FFDBC90001D1A2C /* LOGIN.storyboard */; };
 		412483351FFDBD38001D1A2C /* ListenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412483341FFDBD38001D1A2C /* ListenController.swift */; };
 		412483371FFDEC81001D1A2C /* DownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412483361FFDEC81001D1A2C /* DownloadController.swift */; };
@@ -106,6 +107,7 @@
 		4112FCF31FC2C34E00D8C2AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4112FD031FC2C69900D8C2AF /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		4116C1301FFE015A00F74946 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		4116C1321FFE170900F74946 /* TrainingBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingBaseController.swift; sourceTree = "<group>"; };
 		412483311FFDBC90001D1A2C /* LOGIN.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LOGIN.storyboard; sourceTree = "<group>"; };
 		412483341FFDBD38001D1A2C /* ListenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenController.swift; sourceTree = "<group>"; };
 		412483361FFDEC81001D1A2C /* DownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadController.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				412483361FFDEC81001D1A2C /* DownloadController.swift */,
 				412483381FFDEC8C001D1A2C /* BuyController.swift */,
 				4116C1301FFE015A00F74946 /* LoginController.swift */,
+				4116C1321FFE170900F74946 /* TrainingBaseController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */,
 				417885C91FD53F9F008F4B8E /* VoiceArticleCell.swift in Sources */,
 				417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */,
+				4116C1331FFE170900F74946 /* TrainingBaseController.swift in Sources */,
 				417D5DBA1FE79BEE00E4AB48 /* Home+AudioChat.swift in Sources */,
 				41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */,
 				41F356C61FC2CB47003F65FD /* HomeHeader.swift in Sources */,

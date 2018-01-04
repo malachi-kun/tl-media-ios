@@ -85,7 +85,7 @@ class BuyController:UIViewController {
     
     // MARK: ASSIST METHODS
     private func setupUI(){
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(displayP3Red: 31/255, green: 31/255, blue: 31/255, alpha: 1.0)
         centerTabiLaboIcon()
         
         view.addSubview(dismissImageView)

@@ -11,7 +11,6 @@ import UIKit
 class ListenController:UIViewController {
     
     // MARK: UI COMPONENTS
-    
     let logoImageView:UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "LOGO")
@@ -61,29 +60,30 @@ class ListenController:UIViewController {
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
-        //init
-        setupUI()
+         setupUI()
     }
     
     // MARK: ACTION
     @objc func presentDownload(){
         let downloadVC = DownloadController()
         self.navigationController?.pushViewController(downloadVC, animated: true)
+       
     }
     
     // MARK: ASSIST METHODS
     private func setupUI(){
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(displayP3Red: 31/255, green: 31/255, blue: 31/255, alpha: 1.0)
+        view.addSubview(continueButton)
+    
         centerTabiLaboIcon()
         
         view.addSubview(enjoyTabiLaboImageView)
         enjoyTabiLaboImageView.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 70, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 156, height: 88)
         enjoyTabiLaboImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        view.addSubview(continueButton)
         continueButton.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: -100, paddingRight: 0, width: 288, height: 50)
         continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
+
         //common bottom padding
         let bottomPadding:CGFloat = -40
         //play button

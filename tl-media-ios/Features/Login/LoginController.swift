@@ -50,21 +50,34 @@ class LoginController:UIViewController {
     
     let emailTxtField:UITextField = {
         let textfield = UITextField()
-        textfield.placeholder = "email"
+        //textfield.placeholder = "email"
         textfield.backgroundColor = .gray
+        textfield.attributedPlaceholder = NSAttributedString(string: "email",
+                                                             attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         return textfield
     }()
+    
     
     let passwordTxtField:UITextField = {
         let textfield = UITextField()
-        textfield.placeholder = "password"
+        //textfield.placeholder = "password"
+        textfield.attributedPlaceholder = NSAttributedString(string: "password",
+                                                             attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         textfield.backgroundColor = .gray
         textfield.isSecureTextEntry = true
+        
+//        let border = CALayer()
+//        let width = CGFloat(2.0)
+//        border.borderColor = UIColor.darkGray.cgColor
+//        border.frame = CGRect(x: 0, y: textfield.frame.size.height - width, width:  textfield.frame.size.width, height: textfield.frame.size.height)
+//
+//        border.borderWidth = width
+//        textfield.layer.addSublayer(border)
+//        textfield.layer.masksToBounds = true
+        
         return textfield
     }()
 
-    
-    
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         //init
@@ -78,7 +91,7 @@ class LoginController:UIViewController {
     
     // MARK: ASSIST METHODS
     private func setupUI(){
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor(displayP3Red: 31/255, green: 31/255, blue: 31/255, alpha: 1.0)
 
         view.addSubview(logoImageView)
         logoImageView.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 140, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 24)
@@ -86,7 +99,6 @@ class LoginController:UIViewController {
         
         setUpSignUpStackView()
         loginSetupLoginTextField()
-
     }
     
     private func setUpSignUpStackView(){
@@ -118,5 +130,4 @@ class LoginController:UIViewController {
         stackView.anchor(top: nil, left: nil, bottom: signInButton.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: -125, paddingRight: 0, width: 210, height: 100)
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
-
 }
