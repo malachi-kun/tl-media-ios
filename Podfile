@@ -7,6 +7,9 @@ target 'tl-media-ios' do
   pod 'SDWebImage', '~> 4.0'
   pod 'ARNTransitionAnimator'
   pod 'JSQMessagesViewController'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
   # Pods for tl-media-ios
   
   target 'tl-media-iosTests' do

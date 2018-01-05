@@ -58,7 +58,8 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return articleDetails.count
+            return 6
+            //return articleDetails.count
         default:
             return 0
         }

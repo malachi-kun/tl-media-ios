@@ -40,6 +40,11 @@
 		417D5DBA1FE79BEE00E4AB48 /* Home+AudioChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D5DB91FE79BEE00E4AB48 /* Home+AudioChat.swift */; };
 		41802DB11FEA6C0E0094EF4A /* Home+AudioChatPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802DB01FEA6C0E0094EF4A /* Home+AudioChatPerson.swift */; };
 		419FA56B1FCE9B2800354CC3 /* ArticleContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */; };
+		41A034B01FFF182000176A0E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A034B41FFF182000176A0E /* Bolts.framework */; };
+		41A034B11FFF182000176A0E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A034B51FFF182000176A0E /* FBSDKCoreKit.framework */; };
+		41A034B21FFF182000176A0E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A034B61FFF182000176A0E /* FBSDKLoginKit.framework */; };
+		41A034B31FFF182000176A0E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A034B71FFF182000176A0E /* FBSDKShareKit.framework */; };
+		41A034B91FFF201E00176A0E /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A034B81FFF201E00176A0E /* FacebookService.swift */; };
 		41D667AF1FE362C900721CD9 /* HomeRoot+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */; };
 		41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */; };
 		41D741C01FD14DCE003DD012 /* Home+CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D741BF1FD14DCE003DD012 /* Home+CollectionViewController.swift */; };
@@ -129,6 +134,11 @@
 		417D5DB91FE79BEE00E4AB48 /* Home+AudioChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+AudioChat.swift"; sourceTree = "<group>"; };
 		41802DB01FEA6C0E0094EF4A /* Home+AudioChatPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+AudioChatPerson.swift"; sourceTree = "<group>"; };
 		419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentModel.swift; sourceTree = "<group>"; };
+		41A034B41FFF182000176A0E /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41A034B51FFF182000176A0E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41A034B61FFF182000176A0E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41A034B71FFF182000176A0E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41A034B81FFF201E00176A0E /* FacebookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
 		41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeRoot+CollectionView.swift"; sourceTree = "<group>"; };
 		41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeRoot+Delegation.swift"; sourceTree = "<group>"; };
 		41D741BF1FD14DCE003DD012 /* Home+CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+CollectionViewController.swift"; sourceTree = "<group>"; };
@@ -154,6 +164,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A034B01FFF182000176A0E /* Bolts.framework in Frameworks */,
+				41A034B11FFF182000176A0E /* FBSDKCoreKit.framework in Frameworks */,
+				41A034B21FFF182000176A0E /* FBSDKLoginKit.framework in Frameworks */,
+				41A034B31FFF182000176A0E /* FBSDKShareKit.framework in Frameworks */,
 				8514F5DE97A7FDED6C2AC2F4 /* Pods_tl_media_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +287,7 @@
 		4112FCFF1FC2C35900D8C2AF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4112FCD11FC2C34E00D8C2AF /* AppDelegate.swift */,
 				413E2B911FCD449700E25686 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -298,7 +313,6 @@
 				413E2B821FCCE06F00E25686 /* RANKING.storyboard */,
 				413E2B851FCCE08400E25686 /* HISTORY.storyboard */,
 				4112FCDA1FC2C34E00D8C2AF /* LaunchScreen.storyboard */,
-				4112FCD11FC2C34E00D8C2AF /* AppDelegate.swift */,
 				4112FCD81FC2C34E00D8C2AF /* Assets.xcassets */,
 			);
 			path = Views;
@@ -339,6 +353,7 @@
 				412483381FFDEC8C001D1A2C /* BuyController.swift */,
 				4116C1301FFE015A00F74946 /* LoginController.swift */,
 				4116C1321FFE170900F74946 /* TrainingBaseController.swift */,
+				41A034B81FFF201E00176A0E /* FacebookService.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -419,6 +434,10 @@
 		565CE3B341A86D20FAA4C2D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41A034B41FFF182000176A0E /* Bolts.framework */,
+				41A034B51FFF182000176A0E /* FBSDKCoreKit.framework */,
+				41A034B61FFF182000176A0E /* FBSDKLoginKit.framework */,
+				41A034B71FFF182000176A0E /* FBSDKShareKit.framework */,
 				94CD71B8A4500C2C33CD29E6 /* Pods_tl_media_ios.framework */,
 				727D43A7E07D974A9AAC11B1 /* Pods_tl_media_iosTests.framework */,
 				197F37250D291BF2FE098EEE /* Pods_tl_media_iosUITests.framework */,
@@ -691,6 +710,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-tl-media-ios/Pods-tl-media-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ARNTransitionAnimator/ARNTransitionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -698,6 +724,13 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARNTransitionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -752,6 +785,7 @@
 				417D5DBA1FE79BEE00E4AB48 /* Home+AudioChat.swift in Sources */,
 				41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */,
 				41F356C61FC2CB47003F65FD /* HomeHeader.swift in Sources */,
+				41A034B91FFF201E00176A0E /* FacebookService.swift in Sources */,
 				41D667AF1FE362C900721CD9 /* HomeRoot+CollectionView.swift in Sources */,
 				412483351FFDBD38001D1A2C /* ListenController.swift in Sources */,
 				41109AC51FCBBF6800AFC05E /* VoiceArticle.swift in Sources */,

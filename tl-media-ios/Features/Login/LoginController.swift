@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import FacebookLogin
+import FacebookCore
 
-class LoginController:UIViewController {
-    
+class LoginController:UIViewController, LoginButtonDelegate {
     // MARK: UI COMPONENTS
     let logoImageView:UIImageView = {
         let iv = UIImageView()
@@ -50,7 +51,6 @@ class LoginController:UIViewController {
     
     let emailTxtField:UITextField = {
         let textfield = UITextField()
-        //textfield.placeholder = "email"
         textfield.backgroundColor = .gray
         textfield.attributedPlaceholder = NSAttributedString(string: "email",
                                                              attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
@@ -59,28 +59,24 @@ class LoginController:UIViewController {
     
     let passwordTxtField:UITextField = {
         let textfield = UITextField()
-        //textfield.placeholder = "password"
         textfield.attributedPlaceholder = NSAttributedString(string: "password",
                                                              attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         textfield.backgroundColor = .gray
         textfield.isSecureTextEntry = true
-        
-//        let border = CALayer()
-//        let width = CGFloat(2.0)
-//        border.borderColor = UIColor.darkGray.cgColor
-//        border.frame = CGRect(x: 0, y: textfield.frame.size.height - width, width:  textfield.frame.size.width, height: textfield.frame.size.height)
-//
-//        border.borderWidth = width
-//        textfield.layer.addSublayer(border)
-//        textfield.layer.masksToBounds = true
-        
         return textfield
     }()
 
+    let facebookLogin:LoginButton = {
+        let fbButton = LoginButton(readPermissions: [.publicProfile, .email])
+        fbButton.translatesAutoresizingMaskIntoConstraints = false
+        return fbButton
+    }()
+    
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         //init
         setupUI()
+        facebookLogin.delegate = self
     }
     
     // MARK: ACTION
@@ -98,6 +94,9 @@ class LoginController:UIViewController {
         
         setUpSignUpStackView()
         loginSetupLoginTextField()
+        view.addSubview(facebookLogin)
+        facebookLogin.anchor(top: nil, left: nil, bottom: view.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: -25, paddingRight: 0, width: 0, height: 0)
+        facebookLogin.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     private func setUpSignUpStackView(){
@@ -128,5 +127,31 @@ class LoginController:UIViewController {
         view.addSubview(stackView)
         stackView.anchor(top: nil, left: nil, bottom: signInButton.topAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: -125, paddingRight: 0, width: 210, height: 100)
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
+    // MARK: FACEBOOK SHARE SERVICE
+    private func facebookShare(){
+        let url = URL(string: "http://tabi-labo.com")
+        let activityController  = UIActivityViewController(activityItems: ["test", #imageLiteral(resourceName: "TL"), url], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
+    }
+    
+    // MARK: FACEBOOK LOGINBUTTON DELEGATE
+    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+        let connection = GraphRequestConnection()
+        connection.add(GraphRequest(graphPath: "/me", parameters: ["fields":"email,name"])) { httpResponse, result in
+            switch result {
+            case .success(let response):
+                print("Graph Request Succeeded: \(response)")
+                self.facebookShare()
+            case .failed(let error):
+                print("Graph Request Failed: \(error)")
+            }
+        }
+        connection.start()
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: LoginButton) {
+        print("logout success")
     }
 }
