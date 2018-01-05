@@ -57,7 +57,6 @@ class LoginController:UIViewController {
         return textfield
     }()
     
-    
     let passwordTxtField:UITextField = {
         let textfield = UITextField()
         //textfield.placeholder = "password"
