@@ -67,7 +67,6 @@ class ListenController:UIViewController {
     @objc func presentDownload(){
         let downloadVC = DownloadController()
         self.navigationController?.pushViewController(downloadVC, animated: true)
-       
     }
     
     // MARK: ASSIST METHODS

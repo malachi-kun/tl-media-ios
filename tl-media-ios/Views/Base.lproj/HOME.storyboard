@@ -170,10 +170,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="d9s-iA-h96"/>
                     </view>
+                    <connections>
+                        <segue destination="ca7-oB-DDd" kind="show" identifier="articleDetail" id="eEp-ue-yt6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TfV-dn-Hjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1911" y="149"/>
+        </scene>
+        <!--Home Article Detail Controller-->
+        <scene sceneID="cvm-NB-Zvc">
+            <objects>
+                <viewController id="ca7-oB-DDd" customClass="HomeArticleDetailController" customModule="tl_media_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bg9-8z-eAS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="h04-mr-eM6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tbq-uw-5Jy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1910" y="856"/>
         </scene>
         <!--Home Modal Controller-->
         <scene sceneID="ucm-o4-acg">
@@ -201,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSU-tO-7g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2751" y="150"/>
+            <point key="canvasLocation" x="2729" y="141"/>
         </scene>
         <!--Home Audio Chat Controller-->
         <scene sceneID="4s4-Lf-UQu">
@@ -216,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sgk-yG-s4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3626" y="150"/>
+            <point key="canvasLocation" x="3599" y="141"/>
         </scene>
     </scenes>
 </document>

@@ -6,6 +6,7 @@
 //  Copyright © 2017 Tabi-Labo. All rights reserved.
 //
 // The secondary viewController of the primary Container View Controller.
+// This is the VC that has the audio chat feature.
 
 import UIKit
 import MediaPlayer
@@ -118,6 +119,7 @@ class HomeModalController:UIViewController {
             playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
             return
         }
+        
         //nowPlaying object has  already been created will execute method below.
         togglePlayButton(nowPlaying: nowPlaying)
     }
@@ -216,7 +218,7 @@ class HomeModalController:UIViewController {
     private func verifyPlayButton(){
         guard let nowPlaying = nowPlaying else {return}
         if (nowPlaying) {
-            playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             pausePlayButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
         } else {
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)

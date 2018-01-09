@@ -12,4 +12,7 @@ protocol ArticleDelegate {
     func articleContentList(articleContent:[ArticleModel])
 }
 
+protocol ArticleDetailDelegate{
+    func passArticleDetail(detail:ArticleDetailModel)
+}
 

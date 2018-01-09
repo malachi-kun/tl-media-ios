@@ -9,8 +9,8 @@
 import UIKit
 
 
-extension HomeRootController: ArticleDelegate{
-    
+extension HomeRootController: ArticleDelegate, ArticleDetailDelegate{
+
     // MARK: DELEGATION
     func articleContentList(articleModelList: [ArticleContentModel], articleContentModelList: [Int : [ArticleContentModel]]) {
         
@@ -18,7 +18,6 @@ extension HomeRootController: ArticleDelegate{
         for inputType in articleModelList {
             if inputType.input == "image"{
                 self.imageList[i] = inputType.content
-                //print("raw: \(inputType.content) \n iL:\(String(describing: imageList[i]))")
                 i += 1
             }
         }
@@ -30,6 +29,12 @@ extension HomeRootController: ArticleDelegate{
     func articleContentList(articleContent: [ArticleModel]) {
         self.articleDetailedList = articleContent
         self.homeRootCollectionView.reloadData()
+    }
+    
+    //get data from articleDetail and segue to HomeArticleDetail VC
+    func passArticleDetail(detail: ArticleDetailModel) {
+        print("test passing article detail data to  HOMEROOT")
+        performSegue(withIdentifier: "articleDetail", sender: self)
     }
     
 }

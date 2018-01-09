@@ -57,6 +57,9 @@ class HomeRootController:UIViewController {
     //Items To Put Into CollectionView Cells
     var sectionItems:[String] = [cellType.voiceArticle.rawValue, cellType.tlFamily.rawValue, cellType.category.rawValue]
     
+    //delegate
+    var delegate:ArticleDetailDelegate?
+    
     // MARK: COLLECTIONVIEW PROPERTIES
     //MAKE COLLECTION VIEW CELL HEIGHT SIZES
     enum sectionCellSizes:CGFloat {
@@ -74,4 +77,12 @@ class HomeRootController:UIViewController {
     
     var headerTitle:[String]?
     let navigationTitle = "TABI LABO"
+    
+    
+    // MARK: PREPARE FOR SEGUE
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "articleDetail" {
+            let vc = segue.destination as! HomeArticleDetailController
+        }
+    }
 }

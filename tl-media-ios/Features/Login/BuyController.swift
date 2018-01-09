@@ -66,7 +66,6 @@ class BuyController:UIViewController {
         return label
     }()
     
-    
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         //init

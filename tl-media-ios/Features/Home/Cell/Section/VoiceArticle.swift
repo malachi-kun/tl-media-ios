@@ -24,6 +24,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     let networkManager = HomeNetworking()
     var articleDetails = [ArticleModel]()
     var indexPressed:Int?
+    var delegate:ArticleDetailDelegate?  //delegate to ArticleDetailDelegate
    
     // MARK: LIFECYCLE
     override init(frame: CGRect) {
@@ -84,6 +85,16 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //print("article cell clicked!!!")
+        
+        //delegate to HomeRoot
+        let detail = ArticleDetailModel(id: 1, header: "headerTest", paragraph: "paragraphTest", articleImage: #imageLiteral(resourceName: "TL"))
+        delegate?.passArticleDetail(detail: detail)
+    }
+    
+    
+    // MARK: ACTION
     @objc func playPressed(withSender:AnyObject){
         guard (withSender.tag) != nil else { return }
         print("cell play button pressed.")

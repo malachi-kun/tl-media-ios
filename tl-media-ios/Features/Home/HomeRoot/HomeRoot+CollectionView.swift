@@ -11,7 +11,7 @@ import UIKit
 
 extension HomeRootController:UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
  
-    // MARK: COLLECTIONVIEW Data Source
+    // MARK: COLLECTIONVIEW DATA SOURCE
     // COLLECTION VIEW CODE
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -25,6 +25,7 @@ extension HomeRootController:UICollectionViewDelegateFlowLayout, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! VoiceArticle
+            cell.delegate = self
             return cell
         } else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.tlFamily.rawValue, for: indexPath) as! TabiLaboFamilySection
@@ -33,14 +34,6 @@ extension HomeRootController:UICollectionViewDelegateFlowLayout, UICollectionVie
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.category.rawValue, for: indexPath) as! CategorySection
             return cell
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        printThatItWorked()
-    }
-    
-    func printThatItWorked(){
-        print("It worked")
     }
     
     // MARK: FLOW LAYOUT

@@ -11,7 +11,6 @@ import MobileCoreServices
 import AVKit
 
 class HomeAudioChatController:JSQMessagesViewController {
-    
     private var messages = [JSQMessage]()
     
     // MARK: PROPERTIES
