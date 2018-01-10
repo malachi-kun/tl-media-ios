@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		11ED469CFA2987FC2B404A4C /* Pods_tl_media_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 727D43A7E07D974A9AAC11B1 /* Pods_tl_media_iosTests.framework */; };
 		4108492F1FE8BCBD0063502E /* ArticleHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4108492E1FE8BCBD0063502E /* ArticleHeaderModel.swift */; };
+		410D2EAA2005AA2C0090BBB7 /* HomeArticleDetail+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D2EA92005AA2C0090BBB7 /* HomeArticleDetail+CollectionView.swift */; };
+		410D2EAC2005AD1C0090BBB7 /* HomeArticleDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D2EAB2005AD1C0090BBB7 /* HomeArticleDetailCell.swift */; };
 		410DA61E1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */; };
 		410FBA2A1FE220C300A9BFA1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FBA291FE220C300A9BFA1 /* HomeViewController.swift */; };
 		41109AC51FCBBF6800AFC05E /* VoiceArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */; };
@@ -45,7 +47,6 @@
 		41A034B91FFF201E00176A0E /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A034B81FFF201E00176A0E /* FacebookService.swift */; };
 		41C3E8792004514000A7B89F /* HomeArticleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C3E8782004514000A7B89F /* HomeArticleDetailController.swift */; };
 		41C3E87C2004607200A7B89F /* ArticleDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C3E87B2004607200A7B89F /* ArticleDetailModel.swift */; };
-		41C3E87E2004678900A7B89F /* HomeModalDelegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C3E87D2004678900A7B89F /* HomeModalDelegation.swift */; };
 		41D667AF1FE362C900721CD9 /* HomeRoot+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */; };
 		41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */; };
 		41D7D51C1FE25A7E006B8E77 /* HomeRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7D51B1FE25A7E006B8E77 /* HomeRootController.swift */; };
@@ -94,6 +95,8 @@
 		197F37250D291BF2FE098EEE /* Pods_tl_media_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tl_media_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA25A7CC203BC4C21D35857 /* Pods-tl-media-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tl-media-iosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-tl-media-iosUITests/Pods-tl-media-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4108492E1FE8BCBD0063502E /* ArticleHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleHeaderModel.swift; sourceTree = "<group>"; };
+		410D2EA92005AA2C0090BBB7 /* HomeArticleDetail+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeArticleDetail+CollectionView.swift"; sourceTree = "<group>"; };
+		410D2EAB2005AD1C0090BBB7 /* HomeArticleDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArticleDetailCell.swift; sourceTree = "<group>"; };
 		410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerTransitionAnimation.swift; sourceTree = "<group>"; };
 		410FBA291FE220C300A9BFA1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		41109AC41FCBBF6800AFC05E /* VoiceArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticle.swift; sourceTree = "<group>"; };
@@ -137,7 +140,6 @@
 		41A034B81FFF201E00176A0E /* FacebookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
 		41C3E8782004514000A7B89F /* HomeArticleDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArticleDetailController.swift; sourceTree = "<group>"; };
 		41C3E87B2004607200A7B89F /* ArticleDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailModel.swift; sourceTree = "<group>"; };
-		41C3E87D2004678900A7B89F /* HomeModalDelegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModalDelegation.swift; sourceTree = "<group>"; };
 		41D667AE1FE362C900721CD9 /* HomeRoot+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeRoot+CollectionView.swift"; sourceTree = "<group>"; };
 		41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeRoot+Delegation.swift"; sourceTree = "<group>"; };
 		41D7D51B1FE25A7E006B8E77 /* HomeRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRootController.swift; sourceTree = "<group>"; };
@@ -319,7 +321,6 @@
 			children = (
 				410FBA291FE220C300A9BFA1 /* HomeViewController.swift */,
 				41D7D5201FE26B17006B8E77 /* HomeModalController.swift */,
-				41C3E87D2004678900A7B89F /* HomeModalDelegation.swift */,
 				41802DAE1FE9FD140094EF4A /* HomeRoot */,
 				41FD31941FC3B69900D1DBF6 /* Cell */,
 				41DD369D1FE8FCAC00836225 /* UIViews */,
@@ -388,6 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				41C3E8782004514000A7B89F /* HomeArticleDetailController.swift */,
+				410D2EA92005AA2C0090BBB7 /* HomeArticleDetail+CollectionView.swift */,
+				410D2EAB2005AD1C0090BBB7 /* HomeArticleDetailCell.swift */,
 			);
 			path = HomeArticleDetail;
 			sourceTree = "<group>";
@@ -763,11 +766,12 @@
 				41D7D51C1FE25A7E006B8E77 /* HomeRootController.swift in Sources */,
 				41D7D5211FE26B17006B8E77 /* HomeModalController.swift in Sources */,
 				4112FCD21FC2C34E00D8C2AF /* AppDelegate.swift in Sources */,
+				410D2EAC2005AD1C0090BBB7 /* HomeArticleDetailCell.swift in Sources */,
 				41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */,
 				417885C91FD53F9F008F4B8E /* VoiceArticleCell.swift in Sources */,
+				410D2EAA2005AA2C0090BBB7 /* HomeArticleDetail+CollectionView.swift in Sources */,
 				417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */,
 				4116C1331FFE170900F74946 /* TrainingBaseController.swift in Sources */,
-				41C3E87E2004678900A7B89F /* HomeModalDelegation.swift in Sources */,
 				417D5DBA1FE79BEE00E4AB48 /* Home+AudioChat.swift in Sources */,
 				41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */,
 				41A034B91FFF201E00176A0E /* FacebookService.swift in Sources */,

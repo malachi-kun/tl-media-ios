@@ -93,6 +93,8 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         delegate?.passArticleDetail(detail: detail)
     }
     
+    // MARK: PREFETCH API
+    
     
     // MARK: ACTION
     @objc func playPressed(withSender:AnyObject){
