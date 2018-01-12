@@ -193,6 +193,40 @@
             </objects>
             <point key="canvasLocation" x="1910" y="856"/>
         </scene>
+        <!--Home Expanding Scroll Test-->
+        <scene sceneID="P2q-g2-qeq">
+            <objects>
+                <collectionViewController id="vHX-zW-x40" customClass="HomeExpandingScrollTest" customModule="tl_media_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="J9D-nN-E9q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VWS-tp-Qc1">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IqU-Vc-nXj" customClass="HomeExpandingScrollTestCell" customModule="tl_media_ios" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="vHX-zW-x40" id="xqu-jF-IZ5"/>
+                            <outlet property="delegate" destination="vHX-zW-x40" id="T59-Na-d5E"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3cC-8n-4uP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2854" y="855"/>
+        </scene>
         <!--Home Modal Controller-->
         <scene sceneID="ucm-o4-acg">
             <objects>
@@ -200,33 +234,21 @@
                     <view key="view" contentMode="scaleToFill" id="BOR-Nj-3tb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SfN-Y6-zg0">
-                                <rect key="frame" x="0.0" y="183" width="375" height="189"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="q9b-Su-88b" kind="embed" id="wEU-Yt-OKt"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="N1e-4X-c3V"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rdy-NE-cMn"/>
-                    <connections>
-                        <outlet property="audioChat" destination="SfN-Y6-zg0" id="hzr-w0-7cl"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSU-tO-7g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2729" y="141"/>
         </scene>
-        <!--Home Audio Chat Controller-->
+        <!--View Controller-->
         <scene sceneID="4s4-Lf-UQu">
             <objects>
-                <viewController id="q9b-Su-88b" customClass="HomeAudioChatController" customModule="tl_media_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="q9b-Su-88b" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cDy-ox-x8c">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="189"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Szt-pp-310"/>
@@ -234,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sgk-yG-s4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3599" y="141"/>
+            <point key="canvasLocation" x="3529" y="141"/>
         </scene>
     </scenes>
 </document>

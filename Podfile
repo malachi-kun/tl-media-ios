@@ -6,7 +6,6 @@ target 'tl-media-ios' do
   use_frameworks!
   pod 'SDWebImage', '~> 4.0'
   pod 'ARNTransitionAnimator'
-  pod 'JSQMessagesViewController'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'

@@ -34,7 +34,8 @@ extension HomeRootController: ArticleDelegate, ArticleDetailDelegate{
     //get data from articleDetail and segue to HomeArticleDetail VC
     func passArticleDetail(detail: ArticleDetailModel) {
         print("test passing article detail data to  HOMEROOT")
-        performSegue(withIdentifier: "articleDetail", sender: self)
+        articleDetail = detail
+        performSegue(withIdentifier: segueType.articleDetail.rawValue, sender: self)
     }
     
 }

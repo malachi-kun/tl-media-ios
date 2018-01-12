@@ -11,12 +11,23 @@ import UIKit
 class HomeArticleDetailCell:UICollectionViewCell {
     
     // MARK: UI COMPONENETS
+    //**Top section
     let articleHeaderImage:UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "card01")
+        iv.isUserInteractionEnabled = false
         return iv
     }()
     
+    let playButton:UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        button.isUserInteractionEnabled = true
+        return button
+    }() 
+    
+
+    //article header
     let titleLabel:UILabel = {
         let label = UILabel()
         label.text = "I bomb atomically.  Socrates, philosphy, and high prophecies can't defining why I be dropping these mockery."
@@ -56,6 +67,7 @@ class HomeArticleDetailCell:UICollectionViewCell {
         return label
     }()
     
+    //body
     let bodyLabel:UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -91,10 +103,7 @@ class HomeArticleDetailCell:UICollectionViewCell {
         return label
     }()
     
- 
-    
 
-    
     // MARK: LIFECYCLE
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -109,10 +118,13 @@ class HomeArticleDetailCell:UICollectionViewCell {
     // MARK: ASSIST METHODS
     func setUpUI(){
 
-        backgroundColor = .green
+        //backgroundColor = .green
         
         addSubview(articleHeaderImage)
         articleHeaderImage.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 220)
+        
+        addSubview(playButton)
+        playButton.anchor(top: nil, left: nil, bottom: articleHeaderImage.bottomAnchor, right: articleHeaderImage.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -10, paddingRight: 15, width: 50, height: 50)
         
         addSubview(titleLabel)
         titleLabel.anchor(top: articleHeaderImage.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: -10, width: 0, height: 0)
@@ -133,6 +145,6 @@ class HomeArticleDetailCell:UICollectionViewCell {
             , right: rightAnchor, paddingTop: topPad, paddingLeft: leftPad, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         addSubview(bodyLabel)
-        bodyLabel.anchor(top: profileImage.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: topPad, paddingLeft: leftPad, paddingBottom: 10, paddingRight: 10, width: 0, height: 0)
+        bodyLabel.anchor(top: profileImage.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: topPad, paddingLeft: leftPad, paddingBottom: 10, paddingRight: 10, width: UIScreen.main.bounds.size.width-(2*12), height: 0)
     }
 }

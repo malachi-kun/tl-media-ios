@@ -38,7 +38,6 @@ class HomeViewController:UIViewController{
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
         button.addTarget(self, action: #selector(togglePlayButton), for: .touchUpInside)
-        
         return button
     }()
 

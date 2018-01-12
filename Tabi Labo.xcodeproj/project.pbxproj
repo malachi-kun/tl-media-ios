@@ -37,7 +37,9 @@
 		417885C11FD50C27008F4B8E /* HomeRoot+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C01FD50C27008F4B8E /* HomeRoot+Protocols.swift */; };
 		417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C21FD50CC4008F4B8E /* ArticleModel.swift */; };
 		417885C91FD53F9F008F4B8E /* VoiceArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C81FD53F9F008F4B8E /* VoiceArticleCell.swift */; };
-		417D5DBA1FE79BEE00E4AB48 /* Home+AudioChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D5DB91FE79BEE00E4AB48 /* Home+AudioChat.swift */; };
+		41794FA620084DA6009BF186 /* HomeExpandingScrollTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41794FA520084DA6009BF186 /* HomeExpandingScrollTest.swift */; };
+		41794FA820084E11009BF186 /* HomeExpandingScrollTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41794FA720084E11009BF186 /* HomeExpandingScrollTestCell.swift */; };
+		417D5DBA1FE79BEE00E4AB48 /* HomeAudioChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D5DB91FE79BEE00E4AB48 /* HomeAudioChatController.swift */; };
 		41802DB11FEA6C0E0094EF4A /* Home+AudioChatPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802DB01FEA6C0E0094EF4A /* Home+AudioChatPerson.swift */; };
 		419FA56B1FCE9B2800354CC3 /* ArticleContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */; };
 		41A034B01FFF182000176A0E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A034B41FFF182000176A0E /* Bolts.framework */; };
@@ -130,7 +132,9 @@
 		417885C01FD50C27008F4B8E /* HomeRoot+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeRoot+Protocols.swift"; sourceTree = "<group>"; };
 		417885C21FD50CC4008F4B8E /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		417885C81FD53F9F008F4B8E /* VoiceArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticleCell.swift; sourceTree = "<group>"; };
-		417D5DB91FE79BEE00E4AB48 /* Home+AudioChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+AudioChat.swift"; sourceTree = "<group>"; };
+		41794FA520084DA6009BF186 /* HomeExpandingScrollTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeExpandingScrollTest.swift; sourceTree = "<group>"; };
+		41794FA720084E11009BF186 /* HomeExpandingScrollTestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeExpandingScrollTestCell.swift; sourceTree = "<group>"; };
+		417D5DB91FE79BEE00E4AB48 /* HomeAudioChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAudioChatController.swift; sourceTree = "<group>"; };
 		41802DB01FEA6C0E0094EF4A /* Home+AudioChatPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+AudioChatPerson.swift"; sourceTree = "<group>"; };
 		419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentModel.swift; sourceTree = "<group>"; };
 		41A034B41FFF182000176A0E /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +259,7 @@
 		4112FCD01FC2C34E00D8C2AF /* tl-media-ios */ = {
 			isa = PBXGroup;
 			children = (
+				41F0082A2006FC08000C4F18 /* MOVE_TO_TRASH */,
 				410FBA2B1FE234B700A9BFA1 /* API Libraries */,
 				41F356C71FC2CC0D003F65FD /* Helper Utility */,
 				4112FD001FC2C36E00D8C2AF /* Features */,
@@ -320,9 +325,10 @@
 			isa = PBXGroup;
 			children = (
 				410FBA291FE220C300A9BFA1 /* HomeViewController.swift */,
-				41D7D5201FE26B17006B8E77 /* HomeModalController.swift */,
+				41794FA520084DA6009BF186 /* HomeExpandingScrollTest.swift */,
+				41794FA720084E11009BF186 /* HomeExpandingScrollTestCell.swift */,
 				41802DAE1FE9FD140094EF4A /* HomeRoot */,
-				41FD31941FC3B69900D1DBF6 /* Cell */,
+				41F0082B2006FC5D000C4F18 /* HomeModal */,
 				41DD369D1FE8FCAC00836225 /* UIViews */,
 				413E2B8E1FCD3F6700E25686 /* Model */,
 				412CD2B01FE3CADF0093D64B /* Services */,
@@ -346,7 +352,6 @@
 		412CD2B01FE3CADF0093D64B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				417D5DB91FE79BEE00E4AB48 /* Home+AudioChat.swift */,
 				413E2B8C1FCD3EDA00E25686 /* Home+Networking.swift */,
 				412CD2B11FE3CB120093D64B /* Home+Audio.swift */,
 			);
@@ -381,6 +386,7 @@
 				41D667B01FE3633500721CD9 /* HomeRoot+Delegation.swift */,
 				417885C01FD50C27008F4B8E /* HomeRoot+Protocols.swift */,
 				41C3E87A2004554C00A7B89F /* HomeArticleDetail */,
+				41FD31941FC3B69900D1DBF6 /* Cell */,
 			);
 			path = HomeRoot;
 			sourceTree = "<group>";
@@ -401,6 +407,22 @@
 				41DD369E1FE8FCD100836225 /* AudioToolBar.swift */,
 			);
 			path = UIViews;
+			sourceTree = "<group>";
+		};
+		41F0082A2006FC08000C4F18 /* MOVE_TO_TRASH */ = {
+			isa = PBXGroup;
+			children = (
+				417D5DB91FE79BEE00E4AB48 /* HomeAudioChatController.swift */,
+			);
+			path = MOVE_TO_TRASH;
+			sourceTree = "<group>";
+		};
+		41F0082B2006FC5D000C4F18 /* HomeModal */ = {
+			isa = PBXGroup;
+			children = (
+				41D7D5201FE26B17006B8E77 /* HomeModalController.swift */,
+			);
+			path = HomeModal;
 			sourceTree = "<group>";
 		};
 		41F356C71FC2CC0D003F65FD /* Helper Utility */ = {
@@ -706,8 +728,6 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
-				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -720,8 +740,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,18 +779,20 @@
 				41C3E8792004514000A7B89F /* HomeArticleDetailController.swift in Sources */,
 				41FD319A1FC3C85B00D1DBF6 /* TabiLaboFamilySection.swift in Sources */,
 				417885C11FD50C27008F4B8E /* HomeRoot+Protocols.swift in Sources */,
+				41794FA620084DA6009BF186 /* HomeExpandingScrollTest.swift in Sources */,
 				41FD319C1FC3C9AD00D1DBF6 /* TLFamilyCell.swift in Sources */,
 				4138698D1FCC1F0400DF5CD7 /* NewCollectionView.swift in Sources */,
 				41D7D51C1FE25A7E006B8E77 /* HomeRootController.swift in Sources */,
 				41D7D5211FE26B17006B8E77 /* HomeModalController.swift in Sources */,
 				4112FCD21FC2C34E00D8C2AF /* AppDelegate.swift in Sources */,
 				410D2EAC2005AD1C0090BBB7 /* HomeArticleDetailCell.swift in Sources */,
+				41794FA820084E11009BF186 /* HomeExpandingScrollTestCell.swift in Sources */,
 				41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */,
 				417885C91FD53F9F008F4B8E /* VoiceArticleCell.swift in Sources */,
 				410D2EAA2005AA2C0090BBB7 /* HomeArticleDetail+CollectionView.swift in Sources */,
 				417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */,
 				4116C1331FFE170900F74946 /* TrainingBaseController.swift in Sources */,
-				417D5DBA1FE79BEE00E4AB48 /* Home+AudioChat.swift in Sources */,
+				417D5DBA1FE79BEE00E4AB48 /* HomeAudioChatController.swift in Sources */,
 				41D667B11FE3633500721CD9 /* HomeRoot+Delegation.swift in Sources */,
 				41A034B91FFF201E00176A0E /* FacebookService.swift in Sources */,
 				41D667AF1FE362C900721CD9 /* HomeRoot+CollectionView.swift in Sources */,

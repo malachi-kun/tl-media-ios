@@ -60,6 +60,4 @@ extension HomeRootController:UICollectionViewDelegateFlowLayout, UICollectionVie
             return CGSize(width: width, height: sectionCellSizes.defaultValue.rawValue)
         }
     }
-    
-    
 }

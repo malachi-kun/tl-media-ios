@@ -12,13 +12,15 @@ struct ArticleDetailModel{
     var id:Int?
     var header:String
     var paragraph:String
-    var articleImage = UIImage()
+    var articleImage:String
+    var author:String
     
-    init(id:Int, header:String, paragraph:String, articleImage:UIImage){
+    init(id:Int, header:String, paragraph:String, articleImage:String, author:String){
         self.id = id
         self.header = header
         self.paragraph = paragraph
         self.articleImage = articleImage
+        self.author = author
     }
 }
 

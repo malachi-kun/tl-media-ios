@@ -24,15 +24,31 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.HomeArticleDetailCell.rawValue, for: indexPath) as! HomeArticleDetailCell
         cell.frame.size.width = collectionView.frame.size.width
+        
+        guard let image = articleDetail?.articleImage else { return cell}
+        guard let headerTitle = articleDetail?.header else { return cell}
+        guard let body = articleDetail?.paragraph else { return cell }
+        guard let author = articleDetail?.author else { return cell }
+        
+        cell.articleHeaderImage.sd_setImage(with: URL(string: image), placeholderImage: #imageLiteral(resourceName: "TL"))
+        cell.titleLabel.text = headerTitle
+        cell.authorNameLabel.text = author
+        cell.bodyLabel.text = body
+        cell.playButton.addTarget(self, action: #selector(playAudioPressed), for: .touchUpInside)
         return cell
+    }
+    
+
+    @objc func playAudioPressed(){
+        print("test")
     }
     
     // MARK: COLLECTIONVIEW FLOW LAYOUT
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 0
     }
 }

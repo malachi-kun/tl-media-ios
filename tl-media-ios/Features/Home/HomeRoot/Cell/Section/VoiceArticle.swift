@@ -76,7 +76,6 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
             cell.playButton.tag = indexPath.item
             cell.playButton.addTarget(self, action: #selector(playPressed(withSender:)), for: .touchUpInside)
             
-
             cell.layer.shouldRasterize = true
             cell.layer.rasterizationScale = UIScreen.main.scale
             return cell
@@ -86,10 +85,9 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print("article cell clicked!!!")
-        
         //delegate to HomeRoot
-        let detail = ArticleDetailModel(id: 1, header: "headerTest", paragraph: "paragraphTest", articleImage: #imageLiteral(resourceName: "TL"))
+        let selectedIndex = indexPath.row
+        let detail = ArticleDetailModel(id: 1, header: articleDetails[selectedIndex].title[0], paragraph: articleDetails[selectedIndex].body, articleImage: articleDetails[indexPath.row].images![0], author: articleDetails[selectedIndex].author)
         delegate?.passArticleDetail(detail: detail)
     }
     
@@ -99,7 +97,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     // MARK: ACTION
     @objc func playPressed(withSender:AnyObject){
         guard (withSender.tag) != nil else { return }
-        print("cell play button pressed.")
+        //print("cell play button pressed.")
         
         // MARK: NotificationCenter
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.playAudioArticlePressed.rawValue), object: self, userInfo: [notificationCalls.articleDetails.rawValue:articleDetails[withSender.tag]])
@@ -115,7 +113,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width, height: 200)
+        return CGSize(width: frame.width, height: 220)
     }
     
     // MARK: DELEGATE METHODS

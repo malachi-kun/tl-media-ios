@@ -38,11 +38,11 @@ class HomeModalController:UIViewController {
         return button
     }()
     
-    //BLOCKS SENDER AND MESSAGEBOX
-    let blockSendButton:UIView = {
-        let ui = UIView()
-        ui.backgroundColor = .black
-        return ui
+    let articleImage:UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.backgroundColor = .green
+        return iv
     }()
     
     let progressSlide:UISlider = {
@@ -96,7 +96,7 @@ class HomeModalController:UIViewController {
     var header:ArticleHeader?
     
     // MARK: OUTLETS
-    @IBOutlet weak var audioChat: UIView!
+    //@IBOutlet weak var audioChat: UIView!
     
     // MARK: LIFECYLE
     override func viewDidLoad() {
@@ -138,7 +138,7 @@ class HomeModalController:UIViewController {
     
     @objc private func ccPressed(){
         print("cc button pressed.")
-        audioChat.isHidden = !audioChat.isHidden
+        //audioChat.isHidden = !audioChat.isHidden
     }
 
     @objc private func rewindPressed(){
@@ -164,36 +164,29 @@ class HomeModalController:UIViewController {
     // MARK: ASSIST METHODS
     private func setupView(){
         view.backgroundColor = .black
-        audioChat.backgroundColor = .black
-        
+     
         //**top audio control**
         let topBottomPadding:CGFloat = 15
         view.addSubview(topController)
         topController.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 35, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 85)
         
-        //play~pause button
+            //play~pause button
         topController.addSubview(playPauseButton)
         playPauseButton.anchor(top: topController.topAnchor, left: nil, bottom: topController.bottomAnchor, right: topController.rightAnchor, paddingTop: topBottomPadding, paddingLeft: 0, paddingBottom: -topBottomPadding, paddingRight: -50, width: 150, height:150)
 
-        //invisible button to dismiss
+            //invisible button to dismiss
         topController.addSubview(dismissButton)
         dismissButton.anchor(top: topController.topAnchor, left: topController.leftAnchor, bottom: topController.bottomAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
 
-        //**Chat message display**
-        view.addSubview(audioChat)
-        audioChat.anchor(top: topController.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 550)
-
-        audioChat.addSubview(blockSendButton)
-        blockSendButton.anchor(top: nil, left: audioChat.leftAnchor, bottom: audioChat.bottomAnchor, right: audioChat.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: audioChat.frame.width, height: 50)
+        //**article image
+        view.addSubview(articleImage)
+        articleImage.anchor(top: topController.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 408)
         
         //progressSlide
         view.addSubview(progressSlide)
-        progressSlide.anchor(top: nil, left: view.leftAnchor, bottom: blockSendButton.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 5)
+        progressSlide.anchor(top: articleImage.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 5)
         
-        view.addSubview(backgroundImage)
-        view.sendSubview(toBack: backgroundImage)
-        backgroundImage.anchor(top: audioChat.topAnchor, left: audioChat.leftAnchor, bottom: progressSlide.topAnchor, right: audioChat.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 550)
-    
+        //**bottom audio controls
         setupAudioControls()
         
         //Enter details of UI Component
@@ -212,7 +205,7 @@ class HomeModalController:UIViewController {
         stackView.distribution = .fillEqually
         
         view.addSubview(stackView)
-        stackView.anchor(top: progressSlide.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 175)
+        stackView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 175)
     }
     
     private func verifyPlayButton(){

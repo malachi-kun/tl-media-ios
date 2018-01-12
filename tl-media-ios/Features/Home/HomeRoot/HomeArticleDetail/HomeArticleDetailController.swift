@@ -21,31 +21,38 @@ class HomeArticleDetailController:UIViewController {
         return collectionView
     }()
     
+
     // MARK: PROPERTIES
     enum cellID:String{
         case HomeArticleDetailCell
     }
+    
     var estimatedSize:CGSize?
+    var articleDetail:ArticleDetailModel?
+
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         collectionView.register(HomeArticleDetailCell.self, forCellWithReuseIdentifier: cellID.HomeArticleDetailCell.rawValue)
+        if let flowlayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowlayout.estimatedItemSize = CGSize(width: 1, height: 1)
+        }
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         estimatedSize = UICollectionViewFlowLayoutAutomaticSize
         setUpUI()
     }
     
-  
-    
-    
     // MARK: ASSIST METHODS
     private func setUpUI(){
         view.backgroundColor = .black
         
+        //navigation bar button
+//        let downloadBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "DownloadIcon"), style: .plain, target: self, action: Selector("action")) // action:#selector(Class.MethodName) for swift 3
+//        self.navigationItem.rightBarButtonItem  = button1
+        
         view.addSubview(collectionView)
         collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
-    
-    
 }

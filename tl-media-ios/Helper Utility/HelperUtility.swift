@@ -21,6 +21,10 @@ enum notificationCalls:String{
     case nowPlayingStatus
 }
 
+enum segueType:String{
+    case articleDetail
+}
+
 //UI Color Helper Extension
 extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {

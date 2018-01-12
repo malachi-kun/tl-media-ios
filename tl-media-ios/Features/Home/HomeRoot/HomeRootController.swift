@@ -57,8 +57,9 @@ class HomeRootController:UIViewController {
     //Items To Put Into CollectionView Cells
     var sectionItems:[String] = [cellType.voiceArticle.rawValue, cellType.tlFamily.rawValue, cellType.category.rawValue]
     
-    //delegate
+    //delegate and delegateproperties
     var delegate:ArticleDetailDelegate?
+    var articleDetail:ArticleDetailModel?
     
     // MARK: COLLECTIONVIEW PROPERTIES
     //MAKE COLLECTION VIEW CELL HEIGHT SIZES
@@ -81,8 +82,9 @@ class HomeRootController:UIViewController {
     
     // MARK: PREPARE FOR SEGUE
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "articleDetail" {
+        if segue.identifier == segueType.articleDetail.rawValue {
             let vc = segue.destination as! HomeArticleDetailController
+            vc.articleDetail = articleDetail
         }
     }
 }
