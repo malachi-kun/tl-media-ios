@@ -51,11 +51,9 @@ extension HomeRootController:UICollectionViewDelegateFlowLayout, UICollectionVie
         let width = view.frame.width
         switch indexPath.item {
         case 0:
-            return CGSize(width: width, height: sectionCellSizes.voiceArticle.rawValue)
+            return CGSize(width: width, height: 650)
         case 1:
-            return CGSize(width: width, height: sectionCellSizes.tabiLabiFamilyHeight.rawValue)
-        case 2:
-            return CGSize(width: width, height: sectionCellSizes.categoryHeight.rawValue)
+            return CGSize(width: width, height: 525)
         default:
             return CGSize(width: width, height: sectionCellSizes.defaultValue.rawValue)
         }

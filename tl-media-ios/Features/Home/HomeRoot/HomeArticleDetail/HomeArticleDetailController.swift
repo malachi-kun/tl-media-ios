@@ -49,10 +49,14 @@ class HomeArticleDetailController:UIViewController {
         view.backgroundColor = .black
         
         //navigation bar button
-//        let downloadBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "DownloadIcon"), style: .plain, target: self, action: Selector("action")) // action:#selector(Class.MethodName) for swift 3
-//        self.navigationItem.rightBarButtonItem  = button1
+        let downloadBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "DownloadIcon"), style: .plain, target: self, action: #selector(downloadPressed))
+        self.navigationItem.rightBarButtonItem  = downloadBarButton
         
         view.addSubview(collectionView)
         collectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+    }
+    
+    @objc private func downloadPressed(){
+        print("download pressed")
     }
 }

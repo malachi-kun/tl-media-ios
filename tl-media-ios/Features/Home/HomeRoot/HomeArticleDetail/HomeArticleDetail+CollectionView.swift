@@ -38,7 +38,6 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
-
     @objc func playAudioPressed(){
         print("test")
     }

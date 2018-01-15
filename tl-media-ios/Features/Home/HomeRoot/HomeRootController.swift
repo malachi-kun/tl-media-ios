@@ -19,30 +19,6 @@ class HomeRootController:UIViewController {
         return collectionView
     }()
     
-    // MARK: LIFECYCLE
-    override func viewDidLoad() {
-        homeRootCollectionView.delegate = self
-        homeRootCollectionView.dataSource = self
-        
-        networkManager.delegateProd = self
-        
-        homeRootCollectionView.backgroundColor = .black
-        navigationItem.title = navigationTitle
-        headerTitle = ["", sectionTitle.tabiLaboFamily.rawValue, sectionTitle.category.rawValue]
-        
-        //CELL REGISTRATION
-        homeRootCollectionView.register(VoiceArticle.self, forCellWithReuseIdentifier: cellType.voiceArticle.rawValue)
-        homeRootCollectionView.register(CategorySection.self, forCellWithReuseIdentifier: cellType.category.rawValue)
-        homeRootCollectionView.register(TabiLaboFamilySection.self, forCellWithReuseIdentifier: cellType.tlFamily.rawValue)
-        
-        setupView()
-    }
-    
-    private func setupView(){
-        view.addSubview(homeRootCollectionView)
-        homeRootCollectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: -12, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-    }
-    
     // MARK: PROPERTIES
     //Get data from server
     let networkManager = HomeNetworking()
@@ -79,6 +55,31 @@ class HomeRootController:UIViewController {
     var headerTitle:[String]?
     let navigationTitle = "TABI LABO"
     
+    
+    // MARK: LIFECYCLE
+    override func viewDidLoad() {
+        homeRootCollectionView.delegate = self
+        homeRootCollectionView.dataSource = self
+        
+        networkManager.delegateProd = self
+        
+        homeRootCollectionView.backgroundColor = .black
+        navigationItem.title = navigationTitle
+        headerTitle = ["", sectionTitle.tabiLaboFamily.rawValue, sectionTitle.category.rawValue]
+        
+        //CELL REGISTRATION
+        homeRootCollectionView.register(VoiceArticle.self, forCellWithReuseIdentifier: cellType.voiceArticle.rawValue)
+        homeRootCollectionView.register(CategorySection.self, forCellWithReuseIdentifier: cellType.category.rawValue)
+        homeRootCollectionView.register(TabiLaboFamilySection.self, forCellWithReuseIdentifier: cellType.tlFamily.rawValue)
+        
+        setupView()
+    }
+    
+    private func setupView(){
+        view.addSubview(homeRootCollectionView)
+        view.backgroundColor = .black
+        homeRootCollectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: -12, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+    }
     
     // MARK: PREPARE FOR SEGUE
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

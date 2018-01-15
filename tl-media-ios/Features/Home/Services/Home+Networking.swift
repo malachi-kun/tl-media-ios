@@ -87,7 +87,6 @@ class HomeNetworking {
             let hits = jsonDecoded.hits.hit
          
             for singleHit in hits {
-                //print(singleHit)
                 let status = singleHit.fields.status
                 let author = singleHit.fields.author_name
                 let titles = singleHit.fields.titles

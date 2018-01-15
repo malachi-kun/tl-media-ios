@@ -60,7 +60,6 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         switch section {
         case 0:
             return 6
-            //return articleDetails.count
         default:
             return 0
         }
@@ -90,10 +89,7 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
         let detail = ArticleDetailModel(id: 1, header: articleDetails[selectedIndex].title[0], paragraph: articleDetails[selectedIndex].body, articleImage: articleDetails[indexPath.row].images![0], author: articleDetails[selectedIndex].author)
         delegate?.passArticleDetail(detail: detail)
     }
-    
-    // MARK: PREFETCH API
-    
-    
+  
     // MARK: ACTION
     @objc func playPressed(withSender:AnyObject){
         guard (withSender.tag) != nil else { return }
