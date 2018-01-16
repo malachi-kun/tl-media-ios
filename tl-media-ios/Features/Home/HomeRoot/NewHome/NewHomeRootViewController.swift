@@ -37,7 +37,7 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
     
     //delegate and delegateproperties
 //    var delegate:ArticleDetailDelegate?
-//    var articleDetail:ArticleDetailModel?
+    var articleDetail:ArticleDetailModel?
     
     // MARK: COLLECTIONVIEW PROPERTIES
     //MAKE COLLECTION VIEW CELL HEIGHT SIZES
@@ -126,6 +126,7 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
         let selectedIndex = indexPath.row
         let detail = ArticleDetailModel(id: 1, header: articleDetails[selectedIndex].title[0], paragraph: articleDetails[selectedIndex].body, articleImage: articleDetails[indexPath.row].images![0], author: articleDetails[selectedIndex].author)
         delegate?.passArticleDetail(detail: detail)
+        performSegue(withIdentifier: segueType.articleDetail.rawValue, sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -144,12 +145,12 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
     }
     
     // MARK: PREPARE FOR SEGUE
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == segueType.articleDetail.rawValue {
-//            let vc = segue.destination as! HomeArticleDetailController
-//            vc.articleDetail = articleDetail
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueType.articleDetail.rawValue {
+            let vc = segue.destination as! HomeArticleDetailController
+            vc.articleDetail = articleDetail
+        }
+    }
     
     // MARK: NETWORK ARTICLE DETAIL DELEGATION
     func articleContentList(articleContent: [ArticleModel]) {
