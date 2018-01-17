@@ -8,8 +8,10 @@
 
 import UIKit
 
-class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ArticleDelegate {
+class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ArticleDelegate, ArticleDetailDelegate {
+
     
+
     // MARK: UI ELEMENTS
     let homeRootCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -36,7 +38,7 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
     var sectionItems:[String] = [cellType.voiceArticle.rawValue, cellType.tlFamily.rawValue, cellType.category.rawValue]
     
     //delegate and delegateproperties
-//    var delegate:ArticleDetailDelegate?
+    //var delegate:ArticleDetailDelegate?
     var articleDetail:ArticleDetailModel?
     
     // MARK: COLLECTIONVIEW PROPERTIES
@@ -63,6 +65,7 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
         homeRootCollectionView.delegate = self
         homeRootCollectionView.dataSource = self
         networkManager.delegateProd = self
+        delegate = self
         
         homeRootCollectionView.backgroundColor = .black
         navigationItem.title = navigationTitle
@@ -126,7 +129,6 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
         let selectedIndex = indexPath.row
         let detail = ArticleDetailModel(id: 1, header: articleDetails[selectedIndex].title[0], paragraph: articleDetails[selectedIndex].body, articleImage: articleDetails[indexPath.row].images![0], author: articleDetails[selectedIndex].author)
         delegate?.passArticleDetail(detail: detail)
-        performSegue(withIdentifier: segueType.articleDetail.rawValue, sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -149,6 +151,7 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
         if segue.identifier == segueType.articleDetail.rawValue {
             let vc = segue.destination as! HomeArticleDetailController
             vc.articleDetail = articleDetail
+  
         }
     }
     
@@ -160,6 +163,12 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
         }
         print(articleDetails.count)
     }
+    
+    func passArticleDetail(detail: ArticleDetailModel) {
+        articleDetail = detail
+        performSegue(withIdentifier: segueType.articleDetail.rawValue, sender: self)
+    }
+    
     
     
 }

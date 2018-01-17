@@ -60,6 +60,16 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
+		<key>JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>Pods-tl-media-ios.xcscheme</key>
 		<dict>
 			<key>isShown</key>
