@@ -86,8 +86,9 @@ class VoiceArticle:UICollectionViewCell, UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //delegate to HomeRoot
         let selectedIndex = indexPath.row
-        let detail = ArticleDetailModel(id: 1, header: articleDetails[selectedIndex].title[0], paragraph: articleDetails[selectedIndex].body, articleImage: articleDetails[indexPath.row].images![0], author: articleDetails[selectedIndex].author)
-        delegate?.passArticleDetail(detail: detail)
+
+        //let detail = ArticleModel(id: 1, header: articleDetails[selectedIndex].title[0], paragraph: articleDetails[selectedIndex].body, articleImage: articleDetails[indexPath.row].images![0], author: articleDetails[selectedIndex].author)
+        delegate?.passArticleDetail(detail: articleDetails[indexPath.row])
     }
   
     // MARK: ACTION

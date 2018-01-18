@@ -22,12 +22,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qpu-GL-nV9"/>
                     <connections>
-                        <segue destination="quJ-0R-0Aa" kind="show" id="Lwq-rf-u1S"/>
+                        <segue destination="quJ-0R-0Aa" kind="show" identifier="listenToDownload" id="Lwq-rf-u1S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48b-7Z-ATE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="164" y="95.802098950524751"/>
+            <point key="canvasLocation" x="-141" y="96"/>
         </scene>
         <!--Download Controller-->
         <scene sceneID="lUy-uE-LdX">
@@ -40,12 +40,12 @@
                         <viewLayoutGuide key="safeArea" id="7mR-tC-b3T"/>
                     </view>
                     <connections>
-                        <segue destination="XFy-lo-YBz" kind="show" id="Znz-RA-EuP"/>
+                        <segue destination="XFy-lo-YBz" kind="show" identifier="downloadToBuy" id="Znz-RA-EuP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jSu-p9-9Ll" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="96"/>
+            <point key="canvasLocation" x="354" y="96"/>
         </scene>
         <!--Buy Controller-->
         <scene sceneID="hhw-NF-KGH">
@@ -58,12 +58,12 @@
                         <viewLayoutGuide key="safeArea" id="C8g-sR-BiW"/>
                     </view>
                     <connections>
-                        <segue destination="3yl-6W-DT1" kind="show" id="dsY-qh-j1o"/>
+                        <segue destination="3yl-6W-DT1" kind="show" identifier="buyToLogin" id="dsY-qh-j1o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEj-iA-9JO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="96"/>
+            <point key="canvasLocation" x="873" y="96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5zj-0j-38i">
@@ -93,12 +93,12 @@
                         <viewLayoutGuide key="safeArea" id="20o-Q1-MPG"/>
                     </view>
                     <connections>
-                        <segue destination="24Y-x8-mjE" kind="show" id="WJ8-Ef-QJR"/>
+                        <segue destination="24Y-x8-mjE" kind="show" identifier="loginToFacebookLogin" id="WJ8-Ef-QJR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BCj-r0-Fps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2434" y="96"/>
+            <point key="canvasLocation" x="1348" y="96"/>
         </scene>
         <!--Facebook Login Detail-->
         <scene sceneID="bv9-Kr-Y03">
@@ -113,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbR-ve-5OU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3274" y="96"/>
+            <point key="canvasLocation" x="1795" y="96"/>
         </scene>
     </scenes>
 </document>

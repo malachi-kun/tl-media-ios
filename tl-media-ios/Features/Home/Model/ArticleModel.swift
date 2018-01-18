@@ -15,13 +15,15 @@ struct ArticleModel {
     var title:[String]
     var images:[String]?
     var body:String
+    var postDate:String
     
-    init(id:String, status:String, author:String, title:[String], body:String, images:[String]){
+    init(id:String, status:String, author:String, title:[String], body:String, images:[String], postDate:String){
         self.id = id
         self.status = status
         self.author = author
         self.title = title
         self.images = images
         self.body = body
+        self.postDate = postDate
     }
 }

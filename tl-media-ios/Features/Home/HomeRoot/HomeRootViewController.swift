@@ -1,5 +1,5 @@
 //
-//  NewHomeRootViewController.swift
+//  HomeRootViewController.swift
 //  tl-media-ios
 //
 //  Created by Malachi Hul on 2018/01/12.
@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import SDWebImage
 
-class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ArticleDelegate, ArticleDetailDelegate {
-
-    
+class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ArticleDelegate, ArticleDetailDelegate {
 
     // MARK: UI ELEMENTS
     let homeRootCollectionView: UICollectionView = {
@@ -28,7 +27,6 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
     var delegate:ArticleDetailDelegate?  //delegate to ArticleDetailDelegate
     
     //Article Model
-    var articleDetailedList = [ArticleModel]()
     
     //Image List
     var imageList = [Int:String]()
@@ -39,7 +37,7 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
     
     //delegate and delegateproperties
     //var delegate:ArticleDetailDelegate?
-    var articleDetail:ArticleDetailModel?
+    var articleDetail:ArticleModel?
     
     // MARK: COLLECTIONVIEW PROPERTIES
     //MAKE COLLECTION VIEW CELL HEIGHT SIZES
@@ -58,7 +56,7 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
     var headerTitle:[String]?
     let navigationTitle = "TABI LABO"
     
-    let numOfArticles = 10
+    var numOfArticles = Int()
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
@@ -71,9 +69,9 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
         navigationItem.title = navigationTitle
         
         //CELL REGISTRATION
-        homeRootCollectionView.register(NewHomeRootViewArticleCell.self, forCellWithReuseIdentifier: cellType.voiceArticle.rawValue)
-        homeRootCollectionView.register(NewHomeRootTabiLaboFamilyCell.self, forCellWithReuseIdentifier: cellType.tlFamily.rawValue)
-        homeRootCollectionView.register(NewHomeRootCategoryCell.self, forCellWithReuseIdentifier: cellType.category.rawValue)
+        homeRootCollectionView.register(HomeRootViewArticleCell.self, forCellWithReuseIdentifier: cellType.voiceArticle.rawValue)
+        homeRootCollectionView.register(HomeRootTabiLaboFamilyCell.self, forCellWithReuseIdentifier: cellType.tlFamily.rawValue)
+        homeRootCollectionView.register(HomeRootCategoryCell.self, forCellWithReuseIdentifier: cellType.category.rawValue)
         if let flowlayout = homeRootCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowlayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
@@ -99,7 +97,7 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
         
         if indexPath.item < numOfArticles {
             //article cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! NewHomeRootViewArticleCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! HomeRootViewArticleCell
             cell.frame.size.width = UIScreen.main.bounds.width
             
     
@@ -112,23 +110,22 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
             }
         } else if indexPath.item == numOfArticles {
             //category
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.tlFamily.rawValue, for: indexPath) as! NewHomeRootTabiLaboFamilyCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.tlFamily.rawValue, for: indexPath) as! HomeRootTabiLaboFamilyCell
             return cell
         } else if indexPath.item == numOfArticles + 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.category.rawValue, for: indexPath) as! NewHomeRootCategoryCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.category.rawValue, for: indexPath) as! HomeRootCategoryCell
             return cell
         }
 
         //default
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! NewHomeRootViewArticleCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! HomeRootViewArticleCell
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //delegate to HomeRoot
         let selectedIndex = indexPath.row
-        let detail = ArticleDetailModel(id: 1, header: articleDetails[selectedIndex].title[0], paragraph: articleDetails[selectedIndex].body, articleImage: articleDetails[indexPath.row].images![0], author: articleDetails[selectedIndex].author)
-        delegate?.passArticleDetail(detail: detail)
+        delegate?.passArticleDetail(detail: articleDetails[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -151,24 +148,21 @@ class NewHomeRootViewController:UIViewController,UICollectionViewDelegate, UICol
         if segue.identifier == segueType.articleDetail.rawValue {
             let vc = segue.destination as! HomeArticleDetailController
             vc.articleDetail = articleDetail
-  
         }
     }
     
     // MARK: NETWORK ARTICLE DETAIL DELEGATION
     func articleContentList(articleContent: [ArticleModel]) {
         articleDetails = articleContent
+        numOfArticles = articleDetails.count
         DispatchQueue.main.async {
            self.homeRootCollectionView.reloadData()
         }
         print(articleDetails.count)
     }
     
-    func passArticleDetail(detail: ArticleDetailModel) {
+    func passArticleDetail(detail: ArticleModel) {
         articleDetail = detail
         performSegue(withIdentifier: segueType.articleDetail.rawValue, sender: self)
     }
-    
-    
-    
 }

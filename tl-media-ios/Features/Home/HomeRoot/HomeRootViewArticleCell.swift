@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewHomeRootViewArticleCell: UICollectionViewCell {
+class HomeRootViewArticleCell: UICollectionViewCell {
     
     // MARK: UI COMPONENTS
     let articleImage:UIImageView = {

@@ -21,14 +21,13 @@ class HomeArticleDetailController:UIViewController {
         return collectionView
     }()
     
-
     // MARK: PROPERTIES
     enum cellID:String{
         case HomeArticleDetailCell
     }
     
     var estimatedSize:CGSize?
-    var articleDetail:ArticleDetailModel?
+    var articleDetail:ArticleModel?
 
     
     // MARK: LIFECYCLE

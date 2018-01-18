@@ -71,6 +71,7 @@ class HomeViewController:UIViewController{
         hideUI()
         
         // MARK: Notification center
+        
         //Notification observer to unhide bottomAudioView
         NotificationCenter.default.addObserver(self, selector: #selector(unhideBottomAudio(_:)), name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: nil)
         //Notification observer to be notified of NowPlaying status change.
