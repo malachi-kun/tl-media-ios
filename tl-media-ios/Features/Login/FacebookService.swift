@@ -23,7 +23,7 @@ class FacebookService:UIViewController,LoginButtonDelegate{
     // MARK: FACEBOOK SHARE SERVICE
     private func facebookShare(){
         let url = URL(string: "http://tabi-labo.com")
-        let activityController  = UIActivityViewController(activityItems: ["test", #imageLiteral(resourceName: "TL"), url], applicationActivities: nil)
+        let activityController  = UIActivityViewController(activityItems: ["test", #imageLiteral(resourceName: "TL"), url ?? nil], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
     }
     

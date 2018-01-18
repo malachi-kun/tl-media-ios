@@ -107,13 +107,10 @@ class HomeNetworking {
     func parseProdEndpoint(data:Data){
         do{
             //decode and place article IDs in an Array
-            do {
-                let json = try JSONSerialization.jsonObject(with: data)
-                parseOldWay(json: json)
-            } catch {
-                print(error)
-            }
-
+        
+            let json = try JSONSerialization.jsonObject(with: data)
+            parseOldWay(json: json)
+            
             //NEW WAY
 //            let jsonDecoded = try JSONDecoder().decode(prodArticle.self, from: data)
 //            //print(jsonDecoded.hits.hit[0].fields)

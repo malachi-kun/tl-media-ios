@@ -212,12 +212,12 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		410FBA2B1FE234B700A9BFA1 /* API Libraries */ = {
+		410FBA2B1FE234B700A9BFA1 /* API LIBRARIES */ = {
 			isa = PBXGroup;
 			children = (
 				410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */,
 			);
-			path = "API Libraries";
+			path = "API LIBRARIES";
 			sourceTree = "<group>";
 		};
 		41109AC61FCBC09A00AFC05E /* Section */ = {
@@ -265,10 +265,10 @@
 		4112FCD01FC2C34E00D8C2AF /* tl-media-ios */ = {
 			isa = PBXGroup;
 			children = (
-				41949F002010807E008C7747 /* PROTOCOLS */,
 				41F0082A2006FC08000C4F18 /* MOVE_TO_TRASH */,
-				410FBA2B1FE234B700A9BFA1 /* API Libraries */,
-				41F356C71FC2CC0D003F65FD /* Helper Utility */,
+				41949F002010807E008C7747 /* PROTOCOLS */,
+				410FBA2B1FE234B700A9BFA1 /* API LIBRARIES */,
+				41F356C71FC2CC0D003F65FD /* HELPER UTILITY */,
 				4112FD001FC2C36E00D8C2AF /* Features */,
 				4112FD011FC2C38B00D8C2AF /* Views */,
 				4112FCFF1FC2C35900D8C2AF /* Supporting Files */,
@@ -450,12 +450,12 @@
 			path = HomeModal;
 			sourceTree = "<group>";
 		};
-		41F356C71FC2CC0D003F65FD /* Helper Utility */ = {
+		41F356C71FC2CC0D003F65FD /* HELPER UTILITY */ = {
 			isa = PBXGroup;
 			children = (
 				41F356C81FC2CC2B003F65FD /* HelperUtility.swift */,
 			);
-			path = "Helper Utility";
+			path = "HELPER UTILITY";
 			sourceTree = "<group>";
 		};
 		41FD31941FC3B69900D1DBF6 /* Cell */ = {
