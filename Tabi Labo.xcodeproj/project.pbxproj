@@ -334,9 +334,9 @@
 				410FBA291FE220C300A9BFA1 /* HomeViewController.swift */,
 				41802DAE1FE9FD140094EF4A /* HomeRoot */,
 				41F0082B2006FC5D000C4F18 /* HomeModal */,
-				41DD369D1FE8FCAC00836225 /* UIViews */,
 				413E2B8E1FCD3F6700E25686 /* Model */,
 				412CD2B01FE3CADF0093D64B /* Services */,
+				41DD369D1FE8FCAC00836225 /* UIViews */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -389,8 +389,8 @@
 				416992D02008A69E00EEEC56 /* HomeRootViewArticleCell.swift */,
 				4174389D200C736D00B56C19 /* HomeRootTabiLaboFamilyCell.swift */,
 				4174389F200C83F200B56C19 /* HomeRootCategory.swift */,
-				4197FE46201082FF009F1037 /* Views */,
 				41C3E87A2004554C00A7B89F /* HomeArticleDetail */,
+				4197FE46201082FF009F1037 /* UIViews */,
 				41FD31941FC3B69900D1DBF6 /* Cell */,
 			);
 			path = HomeRoot;
@@ -404,12 +404,12 @@
 			path = PROTOCOLS;
 			sourceTree = "<group>";
 		};
-		4197FE46201082FF009F1037 /* Views */ = {
+		4197FE46201082FF009F1037 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
 				4174389B200C45BF00B56C19 /* VoiceArticleView.swift */,
 			);
-			path = Views;
+			path = UIViews;
 			sourceTree = "<group>";
 		};
 		41C3E87A2004554C00A7B89F /* HomeArticleDetail */ = {
