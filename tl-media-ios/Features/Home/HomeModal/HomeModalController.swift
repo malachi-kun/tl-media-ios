@@ -20,11 +20,11 @@ class HomeModalController:UIViewController {
         return top
     }()
     
-    let backgroundImage:UIImageView = {
-        let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "SanFranciscoCityScape")
-        return iv
-    }()
+//    let backgroundImage:UIImageView = {
+//        let iv = UIImageView()
+//        iv.image = #imageLiteral(resourceName: "SanFranciscoCityScape")
+//        return iv
+//    }()
 
     let playPauseButton:UIButton = {
         let button = UIButton()
