@@ -29,6 +29,8 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     
     //Article Model
     
+    
+    
     //Image List
     var imageList = [Int:String]()
     var headerImage = UIImage()
@@ -76,7 +78,6 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         if let flowlayout = homeRootCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowlayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
-
         setupView()
     }
     
@@ -106,11 +107,9 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
                 cell.voiceArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
                 cell.voiceArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
                 
-                //let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(headsetTapped(tapGestureRecognizer:)))
-                let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeRootViewController.headsetTapped(_:)))
-                cell.voiceArticle.headsetIcon.isUserInteractionEnabled = true
                 cell.voiceArticle.headsetIcon.tag = indexPath.row
-                cell.voiceArticle.headsetIcon.addGestureRecognizer(tapGestureRecognizer)
+                print("vATag: \(cell.voiceArticle.headsetIcon.tag) index:\(indexPath.row)")
+                cell.voiceArticle.headsetIcon.addTarget(self, action: #selector(headsetTapped(withSender:)), for: .touchUpInside)
                 return cell
             } else {
                 return cell
@@ -130,10 +129,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //delegate to HomeRoot
         let selectedIndex = indexPath.row
-        tappedHeadSetIndex = indexPath.row
-        print("tapped index: \(tappedHeadSetIndex)")
         delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
     }
 
@@ -161,18 +157,14 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     }
     
     // MARK: ASSIST METHODS
-    @objc func headsetTapped(_ withSender: AnyObject){
-        //guard (withSender.tag) != nil else { return }
-        //print("cell play button pressed.")
+    @objc func headsetTapped(withSender: AnyObject){
+        guard (withSender.tag) != nil else { return }
+
         
         // MARK: NotificationCenter
-        guard let tappedHeadSetIndex = tappedHeadSetIndex else { return }
-        print("index tapped: \(tappedHeadSetIndex)")
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.playAudioArticlePressed.rawValue), object: self, userInfo: [notificationCalls.articleDetails.rawValue:articleDetails[tappedHeadSetIndex]])
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.playAudioArticlePressed.rawValue), object: self, userInfo: [notificationCalls.articleDetails.rawValue:articleDetails[withSender.tag]])
     }
-    
-    
-    
+
     // MARK: NETWORK ARTICLE DETAIL DELEGATION
     func articleContentList(articleContent: [ArticleModel]) {
         articleDetails = articleContent

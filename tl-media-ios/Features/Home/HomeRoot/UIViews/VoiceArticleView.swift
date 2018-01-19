@@ -30,11 +30,18 @@ class VoiceArticleView:UIView {
     }()
     
     //headset icon
-    let headsetIcon:UIImageView = {
-        let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "headset")
-        iv.backgroundColor = .black
-        return iv
+//    let headsetIcon:UIImageView = {
+//        let iv = UIImageView()
+//        iv.image = #imageLiteral(resourceName: "headset")
+//        iv.backgroundColor = .black
+//        return iv
+//    }()
+    
+    let headsetIcon:UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "headset"), for: .normal)
+        button.isUserInteractionEnabled = true
+        return button
     }()
     
     override init(frame: CGRect) {

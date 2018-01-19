@@ -38,7 +38,7 @@
 		416992D12008A69E00EEEC56 /* HomeRootViewArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416992D02008A69E00EEEC56 /* HomeRootViewArticleCell.swift */; };
 		4174389C200C45BF00B56C19 /* VoiceArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4174389B200C45BF00B56C19 /* VoiceArticleView.swift */; };
 		4174389E200C736D00B56C19 /* HomeRootTabiLaboFamilyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4174389D200C736D00B56C19 /* HomeRootTabiLaboFamilyCell.swift */; };
-		417438A0200C83F200B56C19 /* HomeRootCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4174389F200C83F200B56C19 /* HomeRootCategory.swift */; };
+		417438A0200C83F200B56C19 /* HomeRootCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4174389F200C83F200B56C19 /* HomeRootCategoryCell.swift */; };
 		417885C11FD50C27008F4B8E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C01FD50C27008F4B8E /* Protocols.swift */; };
 		417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C21FD50CC4008F4B8E /* ArticleModel.swift */; };
 		417885C91FD53F9F008F4B8E /* VoiceArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C81FD53F9F008F4B8E /* VoiceArticleCell.swift */; };
@@ -136,7 +136,7 @@
 		416992D02008A69E00EEEC56 /* HomeRootViewArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRootViewArticleCell.swift; sourceTree = "<group>"; };
 		4174389B200C45BF00B56C19 /* VoiceArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticleView.swift; sourceTree = "<group>"; };
 		4174389D200C736D00B56C19 /* HomeRootTabiLaboFamilyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRootTabiLaboFamilyCell.swift; sourceTree = "<group>"; };
-		4174389F200C83F200B56C19 /* HomeRootCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRootCategory.swift; sourceTree = "<group>"; };
+		4174389F200C83F200B56C19 /* HomeRootCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRootCategoryCell.swift; sourceTree = "<group>"; };
 		417885C01FD50C27008F4B8E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		417885C21FD50CC4008F4B8E /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		417885C81FD53F9F008F4B8E /* VoiceArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticleCell.swift; sourceTree = "<group>"; };
@@ -382,16 +382,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		4166513D2011C8DE005CA292 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				416992D02008A69E00EEEC56 /* HomeRootViewArticleCell.swift */,
+				4174389D200C736D00B56C19 /* HomeRootTabiLaboFamilyCell.swift */,
+				4174389F200C83F200B56C19 /* HomeRootCategoryCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		41802DAE1FE9FD140094EF4A /* HomeRoot */ = {
 			isa = PBXGroup;
 			children = (
 				416992CE2008A45500EEEC56 /* HomeRootViewController.swift */,
-				416992D02008A69E00EEEC56 /* HomeRootViewArticleCell.swift */,
-				4174389D200C736D00B56C19 /* HomeRootTabiLaboFamilyCell.swift */,
-				4174389F200C83F200B56C19 /* HomeRootCategory.swift */,
+				4166513D2011C8DE005CA292 /* Cell */,
 				41C3E87A2004554C00A7B89F /* HomeArticleDetail */,
 				4197FE46201082FF009F1037 /* UIViews */,
-				41FD31941FC3B69900D1DBF6 /* Cell */,
 			);
 			path = HomeRoot;
 			sourceTree = "<group>";
@@ -433,6 +440,7 @@
 		41F0082A2006FC08000C4F18 /* MOVE_TO_TRASH */ = {
 			isa = PBXGroup;
 			children = (
+				41FD31941FC3B69900D1DBF6 /* Cell - MARK FOR DELETE */,
 				41D7D51B1FE25A7E006B8E77 /* Trash_HomeRootController.swift */,
 				41D667AE1FE362C900721CD9 /* Trash_HomeRoot+CollectionView.swift */,
 				41D667B01FE3633500721CD9 /* Trash_HomeRoot+Delegation.swift */,
@@ -458,13 +466,13 @@
 			path = "HELPER UTILITY";
 			sourceTree = "<group>";
 		};
-		41FD31941FC3B69900D1DBF6 /* Cell */ = {
+		41FD31941FC3B69900D1DBF6 /* Cell - MARK FOR DELETE */ = {
 			isa = PBXGroup;
 			children = (
 				41109AC61FCBC09A00AFC05E /* Section */,
 				41109AC71FCBC0A200AFC05E /* Cell */,
 			);
-			path = Cell;
+			path = "Cell - MARK FOR DELETE";
 			sourceTree = "<group>";
 		};
 		565CE3B341A86D20FAA4C2D6 /* Frameworks */ = {
@@ -800,7 +808,7 @@
 				41802DB11FEA6C0E0094EF4A /* Home+AudioChatPerson.swift in Sources */,
 				412483391FFDEC8C001D1A2C /* BuyController.swift in Sources */,
 				413E2B8D1FCD3EDA00E25686 /* Home+Networking.swift in Sources */,
-				417438A0200C83F200B56C19 /* HomeRootCategory.swift in Sources */,
+				417438A0200C83F200B56C19 /* HomeRootCategoryCell.swift in Sources */,
 				41DD369F1FE8FCD100836225 /* AudioToolBar.swift in Sources */,
 				416992D12008A69E00EEEC56 /* HomeRootViewArticleCell.swift in Sources */,
 				4174389C200C45BF00B56C19 /* VoiceArticleView.swift in Sources */,
