@@ -4,7 +4,7 @@
 //
 //  Created by xxxAIRINxxx on 2016/11/05.
 //  Copyright © 2016 xxxAIRINxxx. All rights reserved.
-//
+//  Published by Malachi Hul
 
 import Foundation
 import UIKit
@@ -20,7 +20,6 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable {
     
     private var miniPlayerStartFrame: CGRect
     private var tabBarStartFrame: CGRect
-    
     private var containerView: UIView?
     
     deinit {
