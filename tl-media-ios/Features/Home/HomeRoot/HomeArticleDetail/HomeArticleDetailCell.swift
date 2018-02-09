@@ -19,6 +19,14 @@ class HomeArticleDetailCell:UICollectionViewCell {
         return iv
     }()
     
+    let exitButton:UIButton = {
+        let button = UIButton()
+        button.setTitle("X", for: .normal)
+        button.setTitleColor(.gray, for: .normal)
+        button.isUserInteractionEnabled = true
+        return button
+    }()
+    
     let playButton:UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
@@ -26,7 +34,6 @@ class HomeArticleDetailCell:UICollectionViewCell {
         return button
     }() 
     
-
     //article header
     let titleLabel:UILabel = {
         let label = UILabel()
@@ -101,6 +108,9 @@ class HomeArticleDetailCell:UICollectionViewCell {
         
         addSubview(articleHeaderImage)
         articleHeaderImage.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 220)
+        
+        addSubview(exitButton)
+        exitButton.anchor(top: articleHeaderImage.topAnchor, left: nil, bottom: nil, right: articleHeaderImage.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 50, height: 50)
         
         addSubview(playButton)
         playButton.anchor(top: nil, left: nil, bottom: articleHeaderImage.bottomAnchor, right: articleHeaderImage.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -10, paddingRight: 15, width: 50, height: 50)

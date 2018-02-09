@@ -172,7 +172,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wWq-Tp-WUk"/>
                     <connections>
-                        <segue destination="ca7-oB-DDd" kind="show" identifier="articleDetail" id="HCa-GI-Kz5"/>
+                        <segue destination="ca7-oB-DDd" kind="presentation" identifier="articleDetail" id="HCa-GI-Kz5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXB-ds-tSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbq-uw-5Jy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1589" y="988"/>
+            <point key="canvasLocation" x="1994" y="986"/>
         </scene>
         <!--Home Modal Controller-->
         <scene sceneID="ucm-o4-acg">
@@ -208,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSU-tO-7g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2094" y="988"/>
+            <point key="canvasLocation" x="2670" y="987"/>
         </scene>
     </scenes>
 </document>

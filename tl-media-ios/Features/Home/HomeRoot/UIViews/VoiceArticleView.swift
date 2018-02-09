@@ -13,29 +13,36 @@ class VoiceArticleView:UIView {
     
     // MARK: UI COMPONENTS
     //article image
-    let articleImage:UIImageView = {
+    let articleImageFirst:UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = .black
+        iv.contentMode = .scaleToFill
+        iv.backgroundColor = .red
+        return iv
+    }()
+ 
+    let articleImageSecond:UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleToFill
+        iv.backgroundColor = .green
         return iv
     }()
     
     //multiple line title
-    let titleLabel:UILabel = {
+    let titleLabelFirst:UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.backgroundColor = .black
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         label.text = "no text found"
         return label
     }()
-    
-    //headset icon
-//    let headsetIcon:UIImageView = {
-//        let iv = UIImageView()
-//        iv.image = #imageLiteral(resourceName: "headset")
-//        iv.backgroundColor = .black
-//        return iv
-//    }()
+
+    let titleLabelSecond:UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        label.text = "no text found"
+        return label
+    }()
     
     let headsetIcon:UIButton = {
         let button = UIButton()
@@ -57,14 +64,24 @@ class VoiceArticleView:UIView {
     private func setupView(){
         backgroundColor = .black
         
-        addSubview(articleImage)
-        articleImage.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+        setupStackView()
         
-        addSubview(titleLabel)
-        titleLabel.anchor(top: topAnchor, left: articleImage.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 200, height: 50)
+        addSubview(titleLabelFirst)
+        titleLabelFirst.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: articleImageFirst.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: bounds.width, height: 50)
         
-        addSubview(headsetIcon)
-        headsetIcon.anchor(top: topAnchor, left: titleLabel.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+        addSubview(titleLabelSecond)
+        titleLabelSecond.anchor(top: nil, left: articleImageSecond.leftAnchor, bottom: bottomAnchor, right: articleImageSecond.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: bounds.width, height: 50)
     }
     
+    private func setupStackView(){
+            let stackView = UIStackView(arrangedSubviews: [articleImageFirst, articleImageSecond])
+            
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.axis = .horizontal
+            stackView.distribution = .fillEqually
+            stackView.spacing = 1
+            
+            addSubview(stackView)
+            stackView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 100)
+    }
 }

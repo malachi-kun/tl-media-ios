@@ -11,6 +11,7 @@ import UIKit
 //COMMON ENUM USED THROUGHOUT APPLICATOIN
 enum cellType:String {
     case voiceArticle
+    case headlineArticleCell
     case tlFamily
     case category
 }

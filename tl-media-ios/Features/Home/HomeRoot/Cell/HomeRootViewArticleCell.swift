@@ -11,26 +11,11 @@ import UIKit
 class HomeRootViewArticleCell: UICollectionViewCell {
     
     // MARK: UI COMPONENTS
-    let articleImage:UIImageView = {
-        let iv = UIImageView()
-        iv.backgroundColor = .purple
-        return iv
-    }()
     
     //article views
     let voiceArticle:VoiceArticleView = {
         let va = VoiceArticleView()
         return va
-    }()
-    
-    let articleHeaderLabel:UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.sizeToFit()
-        label.text = "New Article"
-        return label
     }()
     
     override init(frame: CGRect) {
@@ -44,6 +29,6 @@ class HomeRootViewArticleCell: UICollectionViewCell {
     
     private func setUpUI(){
         addSubview(voiceArticle)
-        voiceArticle.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.width - (2*12), height: 50)
+        voiceArticle.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.width - (2*12), height: 150)
     }
 }

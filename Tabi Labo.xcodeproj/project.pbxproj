@@ -57,6 +57,9 @@
 		41D7D51C1FE25A7E006B8E77 /* Trash_HomeRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7D51B1FE25A7E006B8E77 /* Trash_HomeRootController.swift */; };
 		41D7D5211FE26B17006B8E77 /* HomeModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7D5201FE26B17006B8E77 /* HomeModalController.swift */; };
 		41DD369F1FE8FCD100836225 /* AudioToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DD369E1FE8FCD100836225 /* AudioToolBar.swift */; };
+		41E122912022AE5000C86E3E /* HeadlineArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E122902022AE5000C86E3E /* HeadlineArticleView.swift */; };
+		41E122932022AE6600C86E3E /* SecondaryArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E122922022AE6600C86E3E /* SecondaryArticleView.swift */; };
+		41E122952022B45A00C86E3E /* HomeRootHeadlineArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E122942022B45A00C86E3E /* HomeRootHeadlineArticleCell.swift */; };
 		41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F356C81FC2CC2B003F65FD /* HelperUtility.swift */; };
 		41FD31961FC3B6AE00D1DBF6 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FD31951FC3B6AE00D1DBF6 /* CategoryCell.swift */; };
 		41FD319A1FC3C85B00D1DBF6 /* TabiLaboFamilySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FD31991FC3C85B00D1DBF6 /* TabiLaboFamilySection.swift */; };
@@ -155,6 +158,9 @@
 		41D7D51B1FE25A7E006B8E77 /* Trash_HomeRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash_HomeRootController.swift; sourceTree = "<group>"; };
 		41D7D5201FE26B17006B8E77 /* HomeModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModalController.swift; sourceTree = "<group>"; };
 		41DD369E1FE8FCD100836225 /* AudioToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioToolBar.swift; sourceTree = "<group>"; };
+		41E122902022AE5000C86E3E /* HeadlineArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineArticleView.swift; sourceTree = "<group>"; };
+		41E122922022AE6600C86E3E /* SecondaryArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryArticleView.swift; sourceTree = "<group>"; };
+		41E122942022B45A00C86E3E /* HomeRootHeadlineArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRootHeadlineArticleCell.swift; sourceTree = "<group>"; };
 		41F356C81FC2CC2B003F65FD /* HelperUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperUtility.swift; sourceTree = "<group>"; };
 		41FD31951FC3B6AE00D1DBF6 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		41FD31991FC3C85B00D1DBF6 /* TabiLaboFamilySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabiLaboFamilySection.swift; sourceTree = "<group>"; };
@@ -388,6 +394,7 @@
 				416992D02008A69E00EEEC56 /* HomeRootViewArticleCell.swift */,
 				4174389D200C736D00B56C19 /* HomeRootTabiLaboFamilyCell.swift */,
 				4174389F200C83F200B56C19 /* HomeRootCategoryCell.swift */,
+				41E122942022B45A00C86E3E /* HomeRootHeadlineArticleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -415,6 +422,8 @@
 			isa = PBXGroup;
 			children = (
 				4174389B200C45BF00B56C19 /* VoiceArticleView.swift */,
+				41E122902022AE5000C86E3E /* HeadlineArticleView.swift */,
+				41E122922022AE6600C86E3E /* SecondaryArticleView.swift */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -820,6 +829,7 @@
 				4138698D1FCC1F0400DF5CD7 /* NewCollectionView.swift in Sources */,
 				41D7D51C1FE25A7E006B8E77 /* Trash_HomeRootController.swift in Sources */,
 				41D7D5211FE26B17006B8E77 /* HomeModalController.swift in Sources */,
+				41E122932022AE6600C86E3E /* SecondaryArticleView.swift in Sources */,
 				4112FCD21FC2C34E00D8C2AF /* AppDelegate.swift in Sources */,
 				410D2EAC2005AD1C0090BBB7 /* HomeArticleDetailCell.swift in Sources */,
 				41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */,
@@ -830,10 +840,12 @@
 				417D5DBA1FE79BEE00E4AB48 /* Trash_HomeAudioChatController.swift in Sources */,
 				416992CF2008A45500EEEC56 /* HomeRootViewController.swift in Sources */,
 				41D667B11FE3633500721CD9 /* Trash_HomeRoot+Delegation.swift in Sources */,
+				41E122952022B45A00C86E3E /* HomeRootHeadlineArticleCell.swift in Sources */,
 				41A034B91FFF201E00176A0E /* FacebookService.swift in Sources */,
 				41D667AF1FE362C900721CD9 /* Trash_HomeRoot+CollectionView.swift in Sources */,
 				412483351FFDBD38001D1A2C /* ListenController.swift in Sources */,
 				41109AC51FCBBF6800AFC05E /* VoiceArticle.swift in Sources */,
+				41E122912022AE5000C86E3E /* HeadlineArticleView.swift in Sources */,
 				4116C1311FFE015A00F74946 /* LoginController.swift in Sources */,
 				419FA56B1FCE9B2800354CC3 /* ArticleContentModel.swift in Sources */,
 				410FBA2A1FE220C300A9BFA1 /* HomeViewController.swift in Sources */,

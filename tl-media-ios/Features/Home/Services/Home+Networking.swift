@@ -8,7 +8,92 @@
 import UIKit
 import Foundation
 
+
+enum testauthHeader:String{
+    case testauthType = "Authorization"
+    case testauthString = "Bearer 18ea0f254ce9bef70b6d95e10b03c6c36d9e4155c1fcc2322f69ab92c52069d2"
+    case testurl = "https://cms-api.tabi-labo.com/api/v1/article"
+    //case testurl = "https://cms-api-dev.tabi-labo.com/api/v1/article"
+    case testprodUrl = "https://search-tl-search-dev-bvb77sqhuziebbdvilw5qem5uy.ap-northeast-1.cloudsearch.amazonaws.co"
+}
+
 class HomeNetworking {
+    /*
+     TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
+     TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
+     TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
+     */
+    
+    func getArticleFromServer(id:Int?, last:Bool?){
+     
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [testauthHeader.testauthType.rawValue : testauthHeader.testauthString.rawValue]
+        
+        let session = URLSession(configuration: config)
+        guard let id = id else { return }
+        let address = "\(testauthHeader.testurl.rawValue)"
+        guard let url = NSURL(string: address) else { return }
+        let task = session.dataTask(with: url as! URL) {
+            (data, response, error) in
+            
+            print(data)
+            let httpResponse = response as? HTTPURLResponse
+            print(httpResponse?.statusCode)
+            
+            do{
+                //decode and place article IDs in an Array
+                let json = try JSONSerialization.jsonObject(with: data!)
+                print(json)
+            }catch let error {
+                print("error: ", error)
+            }
+        }
+         task.resume()
+    }
+    
+//    private func fetch(url:NSURL, session:URLSession, content:Bool, id:Int?, last:Bool?){
+//        print(url)
+//        let task = session.dataTask(with: url as URL) {
+//            (data, response, error) in
+//
+//            print(data)
+//            let httpResponse = response as? HTTPURLResponse
+//            print(httpResponse?.statusCode)
+//
+//            //Check for successful server connection and data received.  Send to parse data
+//            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let responseData = data {
+//                self.TESTparseProdEndpoint(data: responseData)
+//            }
+//
+//        }
+//        task.resume()
+//    }
+    
+//    func TESTparseProdEndpoint(data:Data){
+//        do{
+//            //decode and place article IDs in an Array
+//
+//            let json = try JSONSerialization.jsonObject(with: data)
+//            print(json)
+//            parseOldWay(json: json)
+//
+//            //NEW WAY
+//            //            let jsonDecoded = try JSONDecoder().decode(prodArticle.self, from: data)
+//            //            //print(jsonDecoded.hits.hit[0].fields)
+//
+//        }catch let error {
+//            print("error: ", error)
+//        }
+//    }
+    
+    
+    /*
+     TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
+     TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
+     TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
+     */
+    
+    
     
     // MARK: PROPERTIES
     // delegate prop.
@@ -20,7 +105,8 @@ class HomeNetworking {
         case authType = "Authorization"
         case authString = "Bearer 18ea0f254ce9bef70b6d95e10b03c6c36d9e4155c1fcc2322f69ab92c52069d2"
         case devUrl = "https://cms-api-dev.tabi-labo.com/api/v1/article"
-        case prodUrl = "https://search-tl-search-ah5hia2jqloge7xcptvricgete.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=titles:1&q.parser=structured&sort=post_date%20desc&size=20"
+        case prodUrl = "https://cms-api.tabi-labo.com/api/v1/article"
+        //case prodUrl = "https://search-tl-search-ah5hia2jqloge7xcptvricgete.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=titles:1&q.parser=structured&sort=post_date%20desc&size=20"
     }
     
     enum env:String{
@@ -61,23 +147,51 @@ class HomeNetworking {
 
     //**PROD Article CODEABLE STRUCTURE**
     func getFromProdEndpoint(){
-        guard let url = URL(string: authHeader.prodUrl.rawValue) else {return}
+//        guard let url = URL(string: authHeader.prodUrl.rawValue) else {return}
+//        let config = URLSessionConfiguration.default
+//
+//        let session = URLSession(configuration: config)
+//
+//        let task = session.dataTask(with: url as URL) {
+//            (data, response, error) in
+//            guard let data = data else {return}
+//            self.parseProdEndpoint(data: data)
+//            DispatchQueue.main.async {
+//                self.delegateProd?.articleContentList(articleContent: self.articleList)
+//            }
+//        }
+//        task.resume()
+        
         let config = URLSessionConfiguration.default
-
+        config.httpAdditionalHeaders = [testauthHeader.testauthType.rawValue : testauthHeader.testauthString.rawValue]
+        
         let session = URLSession(configuration: config)
-        
-        
-        let task = session.dataTask(with: url as URL) {
+        let address = "\(testauthHeader.testurl.rawValue)"
+        guard let url = NSURL(string: address) else { return }
+        let task = session.dataTask(with: url as! URL) {
             (data, response, error) in
-            guard let data = data else {return}
-            self.parseProdEndpoint(data: data)
-            DispatchQueue.main.async {
-                self.delegateProd?.articleContentList(articleContent: self.articleList)
+            
+            print(data)
+            let httpResponse = response as? HTTPURLResponse
+            print(httpResponse?.statusCode)
+            
+            
+            do{
+                //decode and place article IDs in an Array
+                
+                let json = try JSONSerialization.jsonObject(with: data!)
+                print(json)
+                self.parseJsonData(json: json)
+                
+            }catch let error {
+                print("error: ", error)
             }
+            
         }
         task.resume()
     }
 
+ 
 //    func parseProdEndpoint(data:Data){
 //        //serialize the data
 //       print(data)
@@ -109,7 +223,8 @@ class HomeNetworking {
             //decode and place article IDs in an Array
         
             let json = try JSONSerialization.jsonObject(with: data)
-            parseOldWay(json: json)
+            print(json)
+            parseJsonData(json: json)
             
             //NEW WAY
 //            let jsonDecoded = try JSONDecoder().decode(prodArticle.self, from: data)
@@ -120,7 +235,7 @@ class HomeNetworking {
         }
     }
     
-    private func parseOldWay(json:Any){
+    private func parseJsonData(json:Any){
         let jsonObject = json as! [String:AnyObject]
         let hits = jsonObject["hits"] as! [String:AnyObject]
         let hit = hits["hit"] as! [AnyObject]
@@ -168,3 +283,4 @@ class HomeNetworking {
         }
     }
 }
+
