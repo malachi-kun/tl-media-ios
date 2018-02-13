@@ -27,13 +27,13 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.HomeArticleDetailCell.rawValue, for: indexPath) as! HomeArticleDetailCell
             cell.frame.size.width = collectionView.frame.size.width
         
-            guard let image = articleDetail?.images![0] else { return cell}
+//        guard let image = articleDetail?.images![0] else { return cell}
             guard let headerTitle = articleDetail?.title[0] else { return cell}
             guard let body = articleDetail?.body else { return cell }
             guard let author = articleDetail?.author else { return cell }
             guard let issueDate = articleDetail?.postDate else { return cell }
         
-            cell.articleHeaderImage.sd_setImage(with: URL(string: image), placeholderImage: #imageLiteral(resourceName: "TL"))
+//            cell.articleHeaderImage.sd_setImage(with: URL(string: image), placeholderImage: #imageLiteral(resourceName: "TL"))
             cell.titleLabel.text = headerTitle
             cell.authorNameLabel.text = author
             cell.bodyLabel.text = body

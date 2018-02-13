@@ -10,6 +10,7 @@ import UIKit
 
 struct ArticleModel {
     var id:String
+    var authorId:String
     var status:String
     var author:String
     var title:[String]
@@ -17,7 +18,7 @@ struct ArticleModel {
     var body:String
     var postDate:String
     
-    init(id:String, status:String, author:String, title:[String], body:String, images:[String], postDate:String){
+    init(id:String, status:String, author:String, title:[String], body:String, postDate:String, authorId:String, images:[String]?){
         self.id = id
         self.status = status
         self.author = author
@@ -25,5 +26,7 @@ struct ArticleModel {
         self.images = images
         self.body = body
         self.postDate = postDate
+        self.authorId = authorId
+        
     }
 }

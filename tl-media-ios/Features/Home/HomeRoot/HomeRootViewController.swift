@@ -62,8 +62,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         
         //test network
-        networkManager.getArticleFromServer(id: 286435, last: true)
-        
+         
         homeRootCollectionView.delegate = self
         homeRootCollectionView.dataSource = self
         networkManager.delegateProd = self
