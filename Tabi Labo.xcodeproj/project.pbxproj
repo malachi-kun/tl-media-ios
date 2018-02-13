@@ -391,10 +391,10 @@
 		4166513D2011C8DE005CA292 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				41E122942022B45A00C86E3E /* HomeRootHeadlineArticleCell.swift */,
 				416992D02008A69E00EEEC56 /* HomeRootViewArticleCell.swift */,
 				4174389D200C736D00B56C19 /* HomeRootTabiLaboFamilyCell.swift */,
 				4174389F200C83F200B56C19 /* HomeRootCategoryCell.swift */,
-				41E122942022B45A00C86E3E /* HomeRootHeadlineArticleCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

@@ -98,17 +98,22 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        print("index:\(indexPath.item) numOfArticles:\(numOfArticles)")
         if indexPath.item < numOfArticles {
-            //article cell
             
+            //article cell
             //**HeadlineArticleCell
             if indexPath.row == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.headlineArticleCell.rawValue, for: indexPath) as! HomeRootHeadlineArticleCell
+                
                 cell.frame.size.width = UIScreen.main.bounds.width
                 cell.headlineArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
                 cell.headlineArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
-                cell.headlineArticle.headsetIcon.tag = indexPath.row
-                cell.headlineArticle.headsetIcon.addTarget(self, action: #selector(headsetTapped(withSender:)), for: .touchUpInside)
+                cell.headlineArticle.articleImage.tag = indexPath.row
+                let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(articleImageTapped(tapGestureRecognizer:)))
+                cell.headlineArticle.articleImage.tag = indexPath.row
+                cell.headlineArticle.articleImage.isUserInteractionEnabled = true
+                cell.headlineArticle.articleImage.addGestureRecognizer(tapGestureRecognizer)
                 return cell
             } else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! HomeRootViewArticleCell
@@ -117,11 +122,23 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
                     cell.voiceArticle.articleImageFirst.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
                     cell.voiceArticle.articleImageSecond.sd_setImage(with: URL(string: articleDetails[indexPath.row+1].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
                     
+                    //image interaction
+                    let firsttapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(firstArticleImageTapped(tapGestureRecognizer:)))
+                    let secondtapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(secondArticleImageTapped(tapGestureRecognizer:)))
+                    
+                  
+                    cell.voiceArticle.articleImageFirst.tag = indexPath.row
+                    cell.voiceArticle.articleImageSecond.tag = indexPath.row+1
+                    cell.voiceArticle.articleImageFirst.addGestureRecognizer(firsttapGestureRecognizer)
+                    cell.voiceArticle.articleImageSecond.addGestureRecognizer(secondtapGestureRecognizer)
+                    //article label
                     cell.voiceArticle.titleLabelFirst.text = articleDetails[indexPath.row].title[0]
                     cell.voiceArticle.titleLabelSecond.text = articleDetails[indexPath.row+1].title[0]
-                    //                cell.voiceArticle.headsetIcon.tag = indexPath.row
-                    //                cell.voiceArticle.headsetIcon.addTarget(self, action: #selector(headsetTapped(withSender:)), for: .touchUpInside)
-                    
+                } else if indexPath.row+1 == articleDetails.count {
+                    cell.voiceArticle.articleImageFirst.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
+                    cell.voiceArticle.titleLabelFirst.text = articleDetails[indexPath.row].title[0]
+//                    cell.voiceArticle.headsetIcon.tag = indexPath.row
+                    cell.voiceArticle.headsetIcon.addTarget(self, action: #selector(headsetTapped(withSender:)), for: .touchUpInside)
                 }
                 return cell
             }
@@ -142,10 +159,11 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedIndex = indexPath.row
-        delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let selectedIndex = indexPath.row
+//        print(selectedIndex)
+//        delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
+//    }
 
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        
@@ -185,6 +203,30 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         // MARK: NotificationCenter
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.playAudioArticlePressed.rawValue), object: self, userInfo: [notificationCalls.articleDetails.rawValue:articleDetails[withSender.tag]])
     }
+    
+    @objc func articleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        //print("headline tapped, tag: \(tapGestureRecognizer.view?.tag)")
+        guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
+        // MARK: NotificationCenter
+        delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
+
+    }
+    
+    @objc func firstArticleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        //print("first tapped, tag: \(tapGestureRecognizer.view?.tag)")
+        guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
+        // MARK: NotificationCenter
+        delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
+        
+    }
+
+    @objc func secondArticleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        //print("second tapped, tag: \(tapGestureRecognizer.view?.tag)")
+        guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
+        // MARK: NotificationCenter
+        delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
+    }
+
 
     // MARK: NETWORK ARTICLE DETAIL DELEGATION
     func articleContentList(articleContent: [ArticleModel]) {
@@ -193,7 +235,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         DispatchQueue.main.async {
            self.homeRootCollectionView.reloadData()
         }
-        print(articleDetails.count)
+        //print(articleDetails.count)
     }
     
     func passArticleDetail(detail: ArticleModel) {

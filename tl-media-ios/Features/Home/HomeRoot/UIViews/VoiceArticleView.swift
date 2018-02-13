@@ -16,14 +16,16 @@ class VoiceArticleView:UIView {
     let articleImageFirst:UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleToFill
-        iv.backgroundColor = .red
+        iv.isUserInteractionEnabled = true
+        //iv.backgroundColor = .red
         return iv
     }()
  
     let articleImageSecond:UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleToFill
-        iv.backgroundColor = .green
+        iv.isUserInteractionEnabled = true
+//        iv.backgroundColor = .green
         return iv
     }()
     
