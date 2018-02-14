@@ -13,9 +13,9 @@ class HomeRootViewArticleCell: UICollectionViewCell {
     // MARK: UI COMPONENTS
     
     //article views
-    let voiceArticle:VoiceArticleView = {
-        let va = VoiceArticleView()
-        return va
+    let voiceArticle:ArticleView = {
+        let article = ArticleView()
+        return article
     }()
     
     override init(frame: CGRect) {
@@ -29,6 +29,6 @@ class HomeRootViewArticleCell: UICollectionViewCell {
     
     private func setUpUI(){
         addSubview(voiceArticle)
-        voiceArticle.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.width - (2*12), height: 150)
+        voiceArticle.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.width/2-2*3, height: 150)
     }
 }

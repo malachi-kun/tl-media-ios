@@ -24,6 +24,7 @@ class HomeNetworking {
         case authString = "Bearer 18ea0f254ce9bef70b6d95e10b03c6c36d9e4155c1fcc2322f69ab92c52069d2"
         case devUrl = "https://cms-api-dev.tabi-labo.com/api/v1/article"
         case prodUrl = "https://cms-api.tabi-labo.com/api/v1/article"
+        case prodPostedUrl = "https://cms-api.tabi-labo.com/api/v1/article?status=posted"
         //case prodUrl = "https://search-tl-search-ah5hia2jqloge7xcptvricgete.ap-northeast-1.cloudsearch.amazonaws.com/2013-01-01/search?q=titles:1&q.parser=structured&sort=post_date%20desc&size=20"  //cloudSearch  //mark for delete *2018/02/13
     }
     
@@ -63,7 +64,6 @@ class HomeNetworking {
         var status:String
         var author_name:String
         var titles:[String]
-        //var eye_catch_urls:[String]
         var body:String
     }
 
@@ -83,7 +83,7 @@ class HomeNetworking {
             address = "\(authHeader.prodUrl.rawValue)/\(id)"   //remove two options
             initialReq = false
         } else {
-            address = "\(authHeader.prodUrl.rawValue)"
+            address = "\(authHeader.prodPostedUrl.rawValue)"
             initialReq = true
         }
    
@@ -95,6 +95,7 @@ class HomeNetworking {
             do{
                 //decode and place article IDs in an Array
                 let json = try JSONSerialization.jsonObject(with: data!)
+                print(json)
                 
                 if initialReq {
                     parseJsonData(json: json)
@@ -116,8 +117,6 @@ class HomeNetworking {
             }
         }
         task.resume()
-    
-
     
     enum articleNodes:String{
         case article_id
@@ -141,9 +140,11 @@ class HomeNetworking {
         for article in articleArray {
             if article["status"] as! String ==  "posted" {
                 let status = "posted"
-                if let id = article[articleNodes.article_id.rawValue], let authorId = article[articleNodes.author_id.rawValue] {
+                if let id = article[articleNodes.article_id.rawValue]   //,
+                    //let authorId = article[articleNodes.author_id.rawValue]
+                {
                     guard let id = id else {return}
-                    guard let authorId = authorId else {return}
+                    guard let authorId = article[articleNodes.author_id.rawValue] else {return}
                     let author = article[articleNodes.create_user_name.rawValue] as! String
                     let title = article[articleNodes.titles.rawValue] as! [String]
                     let body = article[articleNodes.body.rawValue] as! String
@@ -158,17 +159,24 @@ class HomeNetworking {
     }
         
         func parseJsonForArticleDetails(json:Any) {
+            //print(json)
             let jsonObject = json as! [String:AnyObject]
             let article = jsonObject["article_items"] as! [AnyObject]
             let sectionCount = article.count
             var index = 0
             for elements in article{
                 let inputType = elements["input_type"] as! String
-                let content = elements["content"] as! String
-                
-                let elementsModel = ArticleDetailElementModel(index: index, inputType: inputType, content: content)
-                articleElementList.append(elementsModel)
-                index += 1
+                //guard let content = elements["content"] else { return }
+                if let content = elements["content"] as? String {
+                    let elementsModel = ArticleDetailElementModel(index: index, inputType: inputType, content: content)
+                    articleElementList.append(elementsModel)
+                    index += 1
+                }else {
+                    print("blah, not string object.")
+                }
+//                let elementsModel = ArticleDetailElementModel(index: index, inputType: inputType, content: content as! String)
+//                articleElementList.append(elementsModel)
+//                index += 1
             }
         }
     

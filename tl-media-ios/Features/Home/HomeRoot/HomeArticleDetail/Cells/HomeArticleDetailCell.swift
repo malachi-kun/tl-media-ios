@@ -14,7 +14,7 @@ class HomeArticleDetailCell:UICollectionViewCell {
     //**Top section
     let articleHeaderImage:UIImageView = {
         let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "card01")
+        iv.image = #imageLiteral(resourceName: "blackBackGround")
         iv.isUserInteractionEnabled = false
         return iv
     }()

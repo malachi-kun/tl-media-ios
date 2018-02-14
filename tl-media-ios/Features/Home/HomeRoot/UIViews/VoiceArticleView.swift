@@ -76,7 +76,7 @@ class VoiceArticleView:UIView {
     }
     
     private func setupStackView(){
-            let stackView = UIStackView(arrangedSubviews: [articleImageFirst, articleImageSecond])
+            let stackView = UIStackView(arrangedSubviews: [articleImageFirst,articleImageSecond])
             
             stackView.translatesAutoresizingMaskIntoConstraints = false
             stackView.axis = .horizontal

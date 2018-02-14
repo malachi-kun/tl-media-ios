@@ -64,3 +64,11 @@ extension UIView {
         }
     }
 }
+
+func removeHTMLTags(stringToConvert:String) -> String{
+    //remove html tags
+    let str = stringToConvert.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    //remove p's and breaks'
+    let noTagString = str.replacingOccurrences(of: "&[^;]+;", with: "", options: String.CompareOptions.regularExpression, range: nil)
+    return noTagString
+}

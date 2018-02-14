@@ -49,6 +49,7 @@
 		417885C91FD53F9F008F4B8E /* VoiceArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417885C81FD53F9F008F4B8E /* VoiceArticleCell.swift */; };
 		417D5DBA1FE79BEE00E4AB48 /* Trash_HomeAudioChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417D5DB91FE79BEE00E4AB48 /* Trash_HomeAudioChatController.swift */; };
 		41802DB11FEA6C0E0094EF4A /* Home+AudioChatPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41802DB01FEA6C0E0094EF4A /* Home+AudioChatPerson.swift */; };
+		41914C5A2033D7EE00222279 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41914C592033D7EE00222279 /* ArticleView.swift */; };
 		419FA56B1FCE9B2800354CC3 /* ArticleContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */; };
 		41A034B01FFF182000176A0E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A034B41FFF182000176A0E /* Bolts.framework */; };
 		41A034B11FFF182000176A0E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A034B51FFF182000176A0E /* FBSDKCoreKit.framework */; };
@@ -154,6 +155,7 @@
 		417885C81FD53F9F008F4B8E /* VoiceArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceArticleCell.swift; sourceTree = "<group>"; };
 		417D5DB91FE79BEE00E4AB48 /* Trash_HomeAudioChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash_HomeAudioChatController.swift; sourceTree = "<group>"; };
 		41802DB01FEA6C0E0094EF4A /* Home+AudioChatPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+AudioChatPerson.swift"; sourceTree = "<group>"; };
+		41914C592033D7EE00222279 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		419FA56A1FCE9B2800354CC3 /* ArticleContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentModel.swift; sourceTree = "<group>"; };
 		41A034B41FFF182000176A0E /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A034B51FFF182000176A0E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -439,6 +441,7 @@
 		4197FE46201082FF009F1037 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				41914C592033D7EE00222279 /* ArticleView.swift */,
 				4174389B200C45BF00B56C19 /* VoiceArticleView.swift */,
 				41E122902022AE5000C86E3E /* HeadlineArticleView.swift */,
 				4164FF9A2032C96200EECBF3 /* ArticleElementsView.swift */,
@@ -859,6 +862,7 @@
 				410D2EAA2005AA2C0090BBB7 /* HomeArticleDetail+CollectionView.swift in Sources */,
 				417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */,
 				4116C1331FFE170900F74946 /* TrainingBaseController.swift in Sources */,
+				41914C5A2033D7EE00222279 /* ArticleView.swift in Sources */,
 				417D5DBA1FE79BEE00E4AB48 /* Trash_HomeAudioChatController.swift in Sources */,
 				416992CF2008A45500EEEC56 /* HomeRootViewController.swift in Sources */,
 				41D667B11FE3633500721CD9 /* Trash_HomeRoot+Delegation.swift in Sources */,

@@ -13,7 +13,7 @@ class HeadlineArticeView:UIView {
     // MARK: UI COMPONENTS
     let articleImage:UIImageView = {
         let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "card01")
+        iv.image = #imageLiteral(resourceName: "blackBackGround")
         iv.contentMode = .scaleToFill
         iv.backgroundColor = .black
         return iv

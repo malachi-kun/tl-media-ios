@@ -13,7 +13,7 @@ class HomeArticleSentenceCell:UICollectionViewCell {
     //article image
     let inputTypeLabel:UILabel = {
         let label = UILabel()
-        label.text = "blank label"
+        label.text = ""
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.lineBreakMode = .byWordWrapping

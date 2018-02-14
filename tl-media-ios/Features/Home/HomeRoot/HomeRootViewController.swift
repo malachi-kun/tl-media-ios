@@ -107,7 +107,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.headlineArticleCell.rawValue, for: indexPath) as! HomeRootHeadlineArticleCell
                 
                 cell.frame.size.width = UIScreen.main.bounds.width
-                cell.headlineArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
+                cell.headlineArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
                 cell.headlineArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
                 cell.headlineArticle.articleImage.tag = indexPath.row
                 let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(articleImageTapped(tapGestureRecognizer:)))
@@ -119,25 +119,25 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! HomeRootViewArticleCell
                
                 if indexPath.row+1 < articleDetails.count {
-                    cell.voiceArticle.articleImageFirst.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
-                    cell.voiceArticle.articleImageSecond.sd_setImage(with: URL(string: articleDetails[indexPath.row+1].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
+                    cell.voiceArticle.articleImageFirst.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
+                    //cell.voiceArticle.articleImageSecond.sd_setImage(with: URL(string: articleDetails[indexPath.row+1].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
                     
                     //image interaction
                     let firsttapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(firstArticleImageTapped(tapGestureRecognizer:)))
-                    let secondtapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(secondArticleImageTapped(tapGestureRecognizer:)))
+                    //let secondtapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(secondArticleImageTapped(tapGestureRecognizer:)))
                     
                   
                     cell.voiceArticle.articleImageFirst.tag = indexPath.row
-                    cell.voiceArticle.articleImageSecond.tag = indexPath.row+1
+                    //cell.voiceArticle.articleImageSecond.tag = indexPath.row+1
                     cell.voiceArticle.articleImageFirst.addGestureRecognizer(firsttapGestureRecognizer)
-                    cell.voiceArticle.articleImageSecond.addGestureRecognizer(secondtapGestureRecognizer)
+                    //cell.voiceArticle.articleImageSecond.addGestureRecognizer(secondtapGestureRecognizer)
                     //article label
                     cell.voiceArticle.titleLabelFirst.text = articleDetails[indexPath.row].title[0]
-                    cell.voiceArticle.titleLabelSecond.text = articleDetails[indexPath.row+1].title[0]
+                    //cell.voiceArticle.titleLabelSecond.text = articleDetails[indexPath.row+1].title[0]
                 } else if indexPath.row+1 == articleDetails.count {
-                    cell.voiceArticle.articleImageFirst.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
+                    cell.voiceArticle.articleImageFirst.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
                     cell.voiceArticle.titleLabelFirst.text = articleDetails[indexPath.row].title[0]
-                    cell.voiceArticle.headsetIcon.addTarget(self, action: #selector(headsetTapped(withSender:)), for: .touchUpInside)
+                    //cell.voiceArticle.headsetIcon.addTarget(self, action: #selector(headsetTapped(withSender:)), for: .touchUpInside)
                 }
                 return cell
             }
