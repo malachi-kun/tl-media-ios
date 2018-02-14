@@ -13,11 +13,12 @@ class HomeArticleSentenceCell:UICollectionViewCell {
     //article image
     let inputTypeLabel:UILabel = {
         let label = UILabel()
-        label.text = ""
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
+        label.sizeToFit()
+        label.text = ""
         return label
     }()
     
@@ -33,6 +34,6 @@ class HomeArticleSentenceCell:UICollectionViewCell {
     
     private func setupUI(){
         addSubview(inputTypeLabel)
-        inputTypeLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 300, height: 0)
+        inputTypeLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.size.width-24, height: 0)
     }
 }

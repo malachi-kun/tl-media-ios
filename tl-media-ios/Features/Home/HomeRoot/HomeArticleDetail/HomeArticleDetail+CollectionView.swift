@@ -33,6 +33,7 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
         //COLLECTIONVIEW AT INDEX 0
 
         if indexPath.row == 0 {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.HomeArticleDetailCell.rawValue, for: indexPath) as! HomeArticleDetailCell
             cell.frame.size.width = collectionView.frame.size.width
             
@@ -50,6 +51,7 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
             cell.playButton.addTarget(self, action: #selector(playAudioPressed), for: .touchUpInside)
             cell.exitButton.addTarget(self, action: #selector(exitButtonPressed), for: .touchUpInside)
             return cell
+            
         } else {
             if articleElements?[indexPath.row].inputType == cellType.image.rawValue {
                 
@@ -57,7 +59,12 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
                 
                 guard let imageURL = articleElements?[indexPath.row].content else {return cell} 
                 cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
+//                cell.frame.size.width = cell.imageContent.frame.size.width
+//                cell.frame.size.height = cell.imageContent.frame.size.height
+//                print("cellWidth: \(cell.frame.size.width)  imageWidth: \(cell.imageContent.frame.size.width)")
+//                print("cellHeight: \(cell.frame.size.height)  imageHeight: \(cell.imageContent.frame.size.height)")
                 return cell
+                
             }else if articleElements?[indexPath.row].inputType == cellType.sentence.rawValue{
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.ArticleSentenceElement.rawValue, for: indexPath) as! HomeArticleSentenceCell
@@ -65,6 +72,7 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
                 guard let content = articleElements?[indexPath.row].content else {return cell}
                 cell.inputTypeLabel.text = removeHTMLTags(stringToConvert: content)
                 return cell
+                
             }
         }
 
@@ -83,10 +91,14 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
     
     // MARK: COLLECTIONVIEW FLOW LAYOUT
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 25
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 0, 0, 0)
     }
 }

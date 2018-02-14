@@ -65,6 +65,7 @@ extension UIView {
     }
 }
 
+//COMMON METHODS TO REMOVE HTML TAGS FROM JSON
 func removeHTMLTags(stringToConvert:String) -> String{
     //remove html tags
     let str = stringToConvert.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)

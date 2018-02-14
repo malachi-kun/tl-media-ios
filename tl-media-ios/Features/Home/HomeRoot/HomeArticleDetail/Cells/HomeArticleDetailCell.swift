@@ -39,7 +39,7 @@ class HomeArticleDetailCell:UICollectionViewCell {
         let label = UILabel()
         label.text = "I bomb atomically.  Socrates, philosphy, and high prophecies can't defining why I be dropping these mockery."
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         return label

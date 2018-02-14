@@ -159,14 +159,14 @@ class HomeNetworking {
     }
         
         func parseJsonForArticleDetails(json:Any) {
-            //print(json)
+       
             let jsonObject = json as! [String:AnyObject]
             let article = jsonObject["article_items"] as! [AnyObject]
-            let sectionCount = article.count
+            //let sectionCount = article.count
             var index = 0
             for elements in article{
                 let inputType = elements["input_type"] as! String
-                //guard let content = elements["content"] else { return }
+
                 if let content = elements["content"] as? String {
                     let elementsModel = ArticleDetailElementModel(index: index, inputType: inputType, content: content)
                     articleElementList.append(elementsModel)
@@ -174,9 +174,6 @@ class HomeNetworking {
                 }else {
                     print("blah, not string object.")
                 }
-//                let elementsModel = ArticleDetailElementModel(index: index, inputType: inputType, content: content as! String)
-//                articleElementList.append(elementsModel)
-//                index += 1
             }
         }
     
@@ -200,7 +197,7 @@ class HomeNetworking {
         }
     }
 
-        /*  MARK FOR DELETE:  2018/02/13
+        /*  MARK FOR DELETE:  2018/02/13  TO REMOVE 2018/02/16
          TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
          TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
          TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST

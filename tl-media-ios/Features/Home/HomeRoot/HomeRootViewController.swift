@@ -97,8 +97,6 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //print("index:\(indexPath.item) numOfArticles:\(numOfArticles)")
         if indexPath.item < numOfArticles {
             
             //article cell

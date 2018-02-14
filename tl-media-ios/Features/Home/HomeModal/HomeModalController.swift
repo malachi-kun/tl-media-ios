@@ -41,7 +41,7 @@ class HomeModalController:UIViewController {
     let articleImage:UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
-        iv.backgroundColor = .green
+        iv.backgroundColor = .white
         return iv
     }()
     

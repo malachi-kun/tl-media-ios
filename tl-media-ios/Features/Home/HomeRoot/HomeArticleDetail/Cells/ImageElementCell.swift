@@ -14,7 +14,8 @@ class ImageElementCell:UICollectionViewCell {
     let imageContent:UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "whiteBackGround")
-        iv.contentMode = .scaleToFill
+        iv.contentMode = .scaleAspectFit
+        //iv.contentMode = .scaleToFill
         iv.isUserInteractionEnabled = true
         return iv
     }()
@@ -31,7 +32,8 @@ class ImageElementCell:UICollectionViewCell {
     
     //
     private func setupUI(){
+        self.backgroundColor = .red
         addSubview(imageContent)
-        imageContent.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.size.width-24, height: 220)
+        imageContent.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.size.width-24, height: 0)
     }
 }
