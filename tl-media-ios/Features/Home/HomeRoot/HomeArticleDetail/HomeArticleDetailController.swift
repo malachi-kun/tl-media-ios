@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeArticleDetailController:UIViewController {
     
@@ -24,15 +25,20 @@ class HomeArticleDetailController:UIViewController {
     // MARK: PROPERTIES
     enum cellID:String{
         case HomeArticleDetailCell
+        case ArticleSentenceElement
+        case ImageContent
     }
     
     var estimatedSize:CGSize?
     var articleDetail:ArticleModel?
+    var articleElements:[ArticleDetailElementModel]?
 
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
         collectionView.register(HomeArticleDetailCell.self, forCellWithReuseIdentifier: cellID.HomeArticleDetailCell.rawValue)
+        collectionView.register(HomeArticleSentenceCell.self, forCellWithReuseIdentifier: cellID.ArticleSentenceElement.rawValue)
+        collectionView.register(ImageElementCell.self, forCellWithReuseIdentifier: cellID.ImageContent.rawValue)
         if let flowlayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowlayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
@@ -40,6 +46,7 @@ class HomeArticleDetailController:UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         estimatedSize = UICollectionViewFlowLayoutAutomaticSize
+        getArticleDetails()
         setUpUI()
     }
     
@@ -57,5 +64,12 @@ class HomeArticleDetailController:UIViewController {
     
     @objc private func downloadPressed(){
         print("download pressed")
+    }
+    
+    private func getArticleDetails(){
+        //get article details
+        guard let id = articleDetail?.id else {return}
+        let networkManager = HomeNetworking(id: id)
+        networkManager.delegateElements = self
     }
 }

@@ -18,3 +18,7 @@ protocol ArticleDetailDelegate{
     func passArticleDetail(detail:ArticleModel)
 }
 
+protocol ArticleElementListDelegate{
+    func getArticleElements(elements:[ArticleDetailElementModel])
+}
+

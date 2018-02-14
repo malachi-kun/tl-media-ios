@@ -82,10 +82,7 @@ class HomeArticleDetailCell:UICollectionViewCell {
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.sizeToFit()
-        //label.backgroundColor = .green
-        label.text = """
-        LONG TEXT
-        """
+        label.text = ""
         return label
     }()
     
@@ -103,9 +100,6 @@ class HomeArticleDetailCell:UICollectionViewCell {
     
     // MARK: ASSIST METHODS
     func setUpUI(){
-
-        //backgroundColor = .green
-        
         addSubview(articleHeaderImage)
         articleHeaderImage.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 220)
         

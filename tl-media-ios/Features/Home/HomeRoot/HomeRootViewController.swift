@@ -21,7 +21,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     var tappedHeadSetIndex:Int?
 
     //Get data from server
-    let networkManager = HomeNetworking()
+    let networkManager = HomeNetworking(id:nil)
     var articleDetails = [ArticleModel]()
     var indexPressed:Int?
     var delegate:ArticleDetailDelegate?  //delegate to ArticleDetailDelegate
@@ -98,7 +98,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        print("index:\(indexPath.item) numOfArticles:\(numOfArticles)")
+        //print("index:\(indexPath.item) numOfArticles:\(numOfArticles)")
         if indexPath.item < numOfArticles {
             
             //article cell
@@ -137,7 +137,6 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
                 } else if indexPath.row+1 == articleDetails.count {
                     cell.voiceArticle.articleImageFirst.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "TL"))
                     cell.voiceArticle.titleLabelFirst.text = articleDetails[indexPath.row].title[0]
-//                    cell.voiceArticle.headsetIcon.tag = indexPath.row
                     cell.voiceArticle.headsetIcon.addTarget(self, action: #selector(headsetTapped(withSender:)), for: .touchUpInside)
                 }
                 return cell
@@ -158,27 +157,6 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! HomeRootViewArticleCell
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let selectedIndex = indexPath.row
-//        print(selectedIndex)
-//        delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
-//    }
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        
-//        let width = view.frame.width
-//        switch indexPath.item {
-//        case 0:
-//            return CGSize(width: width, height: sectionCellSizes.voiceArticle.rawValue)
-//        case numOfArticles:
-//            return CGSize(width: width, height: sectionCellSizes.longSquare.rawValue)
-//        case numOfArticles+1:
-//            return CGSize(width: width, height: sectionCellSizes.longSquare.rawValue)
-//        default:
-//            return CGSize(width: width, height: sectionCellSizes.voiceArticle.rawValue)
-//        }
-//    }
     
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
             return 10
@@ -207,7 +185,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     @objc func articleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
         //print("headline tapped, tag: \(tapGestureRecognizer.view?.tag)")
         guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
-        // MARK: NotificationCenter
+        // Delegate
         delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
 
     }
@@ -215,7 +193,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     @objc func firstArticleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
         //print("first tapped, tag: \(tapGestureRecognizer.view?.tag)")
         guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
-        // MARK: NotificationCenter
+        // Delegate
         delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
         
     }
@@ -223,10 +201,9 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     @objc func secondArticleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
         //print("second tapped, tag: \(tapGestureRecognizer.view?.tag)")
         guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
-        // MARK: NotificationCenter
+        // Delegate
         delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
     }
-
 
     // MARK: NETWORK ARTICLE DETAIL DELEGATION
     func articleContentList(articleContent: [ArticleModel]) {
@@ -235,7 +212,6 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         DispatchQueue.main.async {
            self.homeRootCollectionView.reloadData()
         }
-        //print(articleDetails.count)
     }
     
     func passArticleDetail(detail: ArticleModel) {

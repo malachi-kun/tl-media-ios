@@ -18,29 +18,58 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
     
     //CELL CODE
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        //print("The count is: \(articleElements?.count)")
+        return articleElements?.count ?? 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //COLLECTIONVIEW AT INDEX 0
+
+        if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.HomeArticleDetailCell.rawValue, for: indexPath) as! HomeArticleDetailCell
             cell.frame.size.width = collectionView.frame.size.width
-        
+            
             guard let image = articleDetail?.images![0] else { return cell}
             guard let headerTitle = articleDetail?.title[0] else { return cell}
             guard let body = articleDetail?.body else { return cell }
             guard let author = articleDetail?.author else { return cell }
             guard let issueDate = articleDetail?.postDate else { return cell }
-        
+
             cell.articleHeaderImage.sd_setImage(with: URL(string: image), placeholderImage: #imageLiteral(resourceName: "TL"))
             cell.titleLabel.text = headerTitle
             cell.authorNameLabel.text = author
-            cell.bodyLabel.text = body
+            //cell.bodyLabel.text = body
             cell.dateLabel.text = issueDate
             cell.playButton.addTarget(self, action: #selector(playAudioPressed), for: .touchUpInside)
             cell.exitButton.addTarget(self, action: #selector(exitButtonPressed), for: .touchUpInside)
             return cell
+        } else {
+            if articleElements?[indexPath.row].inputType == "image" {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.ImageContent.rawValue, for: indexPath) as! ImageElementCell
+                guard let imageURL = articleElements?[indexPath.row].content else {return cell}
+                //print(imageURL)
+                cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "TL"))
+                //cell.imageContent.frame.size.width = view.frame.width
+                //cell.imageContent.frame.size.height = view.frame.height
+                return cell
+            }else if articleElements?[indexPath.row].inputType == "sentence"{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.ArticleSentenceElement.rawValue, for: indexPath) as! HomeArticleSentenceCell
+                
+                
+                //remove tags
+                let str = articleElements?[indexPath.row].content.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+                //remove p's and breaks'
+                let noTagString = str?.replacingOccurrences(of: "&[^;]+;", with: "", options: String.CompareOptions.regularExpression, range: nil)
+                
+                cell.inputTypeLabel.text = noTagString
+                return cell
+            }
+
+        }
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.ArticleSentenceElement.rawValue, for: indexPath) as! HomeArticleSentenceCell
+        return cell
     }
     
     @objc func playAudioPressed(){
@@ -54,10 +83,10 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
     
     // MARK: COLLECTIONVIEW FLOW LAYOUT
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 25
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 5
     }
 }
