@@ -8,7 +8,9 @@
 
 import UIKit
 
-extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ImageResizeDelegate {
+
+    
     
     // MARK: COLLECTIONVIEW DATA SOURCE
     // COLLECTION VIEW CODE
@@ -43,6 +45,7 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
             guard let author = articleDetail?.author else { return cell }
             guard let issueDate = articleDetail?.postDate else { return cell }
 
+            
             cell.articleHeaderImage.sd_setImage(with: URL(string: image), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
             cell.titleLabel.text = headerTitle
             cell.authorNameLabel.text = author
@@ -56,13 +59,21 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
             if articleElements?[indexPath.row].inputType == cellType.image.rawValue {
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.ImageContent.rawValue, for: indexPath) as! ImageElementCell
-                
-                guard let imageURL = articleElements?[indexPath.row].content else {return cell} 
-                cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
-//                cell.frame.size.width = cell.imageContent.frame.size.width
-//                cell.frame.size.height = cell.imageContent.frame.size.height
-//                print("cellWidth: \(cell.frame.size.width)  imageWidth: \(cell.imageContent.frame.size.width)")
-//                print("cellHeight: \(cell.frame.size.height)  imageHeight: \(cell.imageContent.frame.size.height)")
+            
+                guard let imageURL = articleElements?[indexPath.row].content else {return cell}
+        
+                if let downloadedimage = imageDict[imageURL] {
+                    let conversion = (UIScreen.main.bounds.size.height * downloadedimage.ratio)
+                    cell.setHeightConversion(height: conversion)
+                    cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
+                } else {
+                    guard let uncachedImage = cell.imageContent.image else { return cell}
+                    downloadImage(urlString:imageURL)
+                    cell.imageContent.image = #imageLiteral(resourceName: "whiteBackGround") //placeholder
+                }
+ 
+                //cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
+                //print(cell.imageContent.image?.size.height)
                 return cell
                 
             }else if articleElements?[indexPath.row].inputType == cellType.sentence.rawValue{
@@ -72,12 +83,44 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
                 guard let content = articleElements?[indexPath.row].content else {return cell}
                 cell.inputTypeLabel.text = removeHTMLTags(stringToConvert: content)
                 return cell
-                
             }
         }
-
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.ArticleSentenceElement.rawValue, for: indexPath) as! HomeArticleSentenceCell
         return cell
+    }
+    
+    // MARK: IMAGE DOWNLOADER HELP
+    func downloadImage(urlString: String) {
+        print("Download Started")
+        guard let url = URL(string: urlString) else {return}
+        getDataFromUrl(url: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            //print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() {
+                let image = UIImage(data: data)
+                //save ratio
+                let ratio:CGFloat = ((image?.size.height)! / (image?.size.width)!)  // Height over Width
+                print(ratio)
+                //delegate image cache
+                guard let downloadImage = image else {return}
+                self.imageDelegate?.imageResizer(url: urlString, image: downloadImage, ratio: ratio)
+            }
+        }
+    }
+    
+    func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    // MARK: DELEGATE METHOD
+    func imageResizer(url:String, image: UIImage, ratio: CGFloat) {
+        print("urlString:\(url) ratio:\(ratio)")
+        imageDict[url] = (image, ratio)
+        collectionView.reloadData()
     }
     
     @objc func playAudioPressed(){

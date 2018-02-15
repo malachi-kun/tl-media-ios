@@ -6,7 +6,7 @@
 //  Copyright © 2017 Tabi-Labo. All rights reserved.
 //  Protocols for HomeRootController.
 
-import Foundation
+import UIKit
 
 //Gets article details from the network to HomeController.
 protocol ArticleDelegate {
@@ -20,5 +20,9 @@ protocol ArticleDetailDelegate{
 
 protocol ArticleElementListDelegate{
     func getArticleElements(elements:[ArticleDetailElementModel])
+}
+
+protocol ImageResizeDelegate{
+    func imageResizer(url:String, image:UIImage, ratio:CGFloat)
 }
 

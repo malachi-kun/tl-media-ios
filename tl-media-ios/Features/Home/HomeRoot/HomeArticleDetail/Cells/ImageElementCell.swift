@@ -15,8 +15,10 @@ class ImageElementCell:UICollectionViewCell {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "whiteBackGround")
         iv.contentMode = .scaleAspectFit
-        //iv.contentMode = .scaleToFill
-        iv.isUserInteractionEnabled = true
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.clipsToBounds = true
+        //iv.isUserInteractionEnabled = true
+        //iv.backgroundColor = .green
         return iv
     }()
     
@@ -30,10 +32,19 @@ class ImageElementCell:UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //
+ 
+    func setHeightConversion(height:CGFloat){
+        imageContent.heightAnchor.constraint(equalToConstant: height/2).isActive = true
+    }
+    
     private func setupUI(){
-        self.backgroundColor = .red
+        self.backgroundColor = .white
         addSubview(imageContent)
-        imageContent.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.size.width-24, height: 0)
+        
+        imageContent.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        imageContent.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        imageContent.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        imageContent.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        imageContent.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width-1).isActive = true
     }
 }
