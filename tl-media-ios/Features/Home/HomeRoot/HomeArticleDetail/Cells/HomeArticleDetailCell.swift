@@ -15,6 +15,7 @@ class HomeArticleDetailCell:UICollectionViewCell {
     let articleHeaderImage:UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "blackBackGround")
+        iv.contentMode = .scaleAspectFit
         iv.isUserInteractionEnabled = false
         return iv
     }()

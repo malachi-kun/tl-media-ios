@@ -46,9 +46,8 @@ class HomeArticleDetailController:UIViewController {
         if let flowlayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowlayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
-        
+
         imageDelegate = self
-        downloadArticleImages()
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -80,9 +79,10 @@ class HomeArticleDetailController:UIViewController {
         networkManager.delegateElements = self
     }
     
-    private func downloadArticleImages(){
+    func downloadArticleImages(elements:[ArticleDetailElementModel]){
         guard let articleElements = articleElements else {return}
             for image in articleElements {
+                print(image)
                 if image.inputType == cellType.image.rawValue {
                     downloadImage(urlString: image.content)
                 }

@@ -14,7 +14,7 @@ class ArticleView:UIView{
     //article image
     let articleImageFirst:UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleToFill
+        iv.contentMode = .scaleAspectFit
         iv.isUserInteractionEnabled = true
         return iv
     }()

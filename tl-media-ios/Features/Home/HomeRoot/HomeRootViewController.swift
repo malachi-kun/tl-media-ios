@@ -37,7 +37,6 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     var sectionItems:[String] = [cellType.voiceArticle.rawValue, cellType.tlFamily.rawValue, cellType.category.rawValue]
     
     //delegate and delegateproperties
-    //var delegate:ArticleDetailDelegate?
     var articleDetail:ArticleModel?
     
     // MARK: COLLECTIONVIEW PROPERTIES
@@ -207,6 +206,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     func articleContentList(articleContent: [ArticleModel]) {
         articleDetails = articleContent
         numOfArticles = articleDetails.count
+
         DispatchQueue.main.async {
            self.homeRootCollectionView.reloadData()
         }
