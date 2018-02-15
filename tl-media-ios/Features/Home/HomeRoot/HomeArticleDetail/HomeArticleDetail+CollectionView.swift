@@ -62,18 +62,18 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
             
                 guard let imageURL = articleElements?[indexPath.row].content else {return cell}
         
-                if let downloadedimage = imageDict[imageURL] {
-                    let conversion = (UIScreen.main.bounds.size.height * downloadedimage.ratio)
-                    cell.setHeightConversion(height: conversion)
-                    cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
-                } else {
-                    guard let uncachedImage = cell.imageContent.image else { return cell}
-                    downloadImage(urlString:imageURL)
-                    cell.imageContent.image = #imageLiteral(resourceName: "whiteBackGround") //placeholder
-                }
+                // MARK FOR DELETE : 2018/02/15
+//                if let downloadedimage = imageDict[imageURL] {
+//                    let conversion = (UIScreen.main.bounds.size.height * downloadedimage.ratio)
+//                    cell.setHeightConversion(height: conversion)
+//                    cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
+//                } else {
+//                    guard let uncachedImage = cell.imageContent.image else { return cell}
+//                    downloadImage(urlString:imageURL)
+//                    cell.imageContent.image = #imageLiteral(resourceName: "whiteBackGround") //placeholder
+//                }
  
-                //cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
-                //print(cell.imageContent.image?.size.height)
+                cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
                 return cell
                 
             }else if articleElements?[indexPath.row].inputType == cellType.sentence.rawValue{
@@ -96,8 +96,8 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
         guard let url = URL(string: urlString) else {return}
         getDataFromUrl(url: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            //print(response?.suggestedFilename ?? url.lastPathComponent)
             print("Download Finished")
+            
             DispatchQueue.main.async() {
                 let image = UIImage(data: data)
                 //save ratio

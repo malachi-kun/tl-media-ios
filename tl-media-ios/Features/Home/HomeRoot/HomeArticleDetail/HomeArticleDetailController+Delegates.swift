@@ -12,7 +12,7 @@ import UIKit
 extension HomeArticleDetailController:ArticleElementListDelegate {
     func getArticleElements(elements: [ArticleDetailElementModel]) {
         articleElements = elements
-        downloadArticleImages(elements:elements)
+        //downloadArticleImages(elements:elements)  //MARK FOR DELETE 2018/02/15
         collectionView.reloadData()
     }
 }

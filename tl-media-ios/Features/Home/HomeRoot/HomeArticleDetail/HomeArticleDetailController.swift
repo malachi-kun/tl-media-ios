@@ -82,7 +82,7 @@ class HomeArticleDetailController:UIViewController {
     func downloadArticleImages(elements:[ArticleDetailElementModel]){
         guard let articleElements = articleElements else {return}
             for image in articleElements {
-                print(image)
+          
                 if image.inputType == cellType.image.rawValue {
                     downloadImage(urlString: image.content)
                 }
