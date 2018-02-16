@@ -54,10 +54,5 @@ class HeadlineArticeView:UIView {
         
         addSubview(titleLabel)
         titleLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: bounds.width, height: 50)
-
-//        addSubview(headsetIcon)
-//        headsetIcon.anchor(top: topAnchor, left: titleLabel.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
-    
-
     }
 }

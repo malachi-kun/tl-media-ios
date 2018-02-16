@@ -43,10 +43,5 @@ class ImageElementCell:UICollectionViewCell {
         
         guard let imageHeight = imageContent.image?.size.height else { return }
         imageContent.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.size.width-2, height: imageHeight / 2)
-//        imageContent.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        imageContent.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-//        imageContent.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-//        imageContent.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//        imageContent.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width-1).isActive = true
     }
 }

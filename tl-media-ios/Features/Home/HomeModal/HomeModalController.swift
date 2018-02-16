@@ -20,12 +20,6 @@ class HomeModalController:UIViewController {
         return top
     }()
     
-//    let backgroundImage:UIImageView = {
-//        let iv = UIImageView()
-//        iv.image = #imageLiteral(resourceName: "SanFranciscoCityScape")
-//        return iv
-//    }()
-
     let playPauseButton:UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(startAudio), for: .touchUpInside)
@@ -96,7 +90,6 @@ class HomeModalController:UIViewController {
     var header:ArticleHeader?
     
     // MARK: OUTLETS
-    //@IBOutlet weak var audioChat: UIView!
     
     // MARK: LIFECYLE
     override func viewDidLoad() {

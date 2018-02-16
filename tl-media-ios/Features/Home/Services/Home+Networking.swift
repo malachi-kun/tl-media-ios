@@ -177,196 +177,26 @@ class HomeNetworking {
             }
         }
     
-    // MARK:  HELPER METHODS
-    //Check member property: 'environment' for either dev/prod
-    func configureEnvironmentURL() -> String?  {
-        
-        var url:String?
-        
-        if environment == env.prod.rawValue {
-            url = authHeader.prodUrl.rawValue
-            guard let url = url else {return nil}
-            return url
-        } else if environment == env.dev.rawValue{
-            url = authHeader.devUrl.rawValue
-            guard let url = url else {return nil}
-            return url
-        } else {
-            print("Environment does not exists.")
-            return nil
+        // MARK:  HELPER METHODS
+        //Check member property: 'environment' for either dev/prod
+        func configureEnvironmentURL() -> String?  {
+            
+            var url:String?
+            
+            if environment == env.prod.rawValue {
+                url = authHeader.prodUrl.rawValue
+                guard let url = url else {return nil}
+                return url
+            } else if environment == env.dev.rawValue{
+                url = authHeader.devUrl.rawValue
+                guard let url = url else {return nil}
+                return url
+            } else {
+                print("Environment does not exists.")
+                return nil
+            }
         }
+        
     }
-
-        /*  MARK FOR DELETE:  2018/02/13  TO REMOVE 2018/02/16
-         TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
-         TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
-         TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
-         */
-        
-        //    func getArticleFromServer(id:Int?, last:Bool?){
-        //
-        //        let config = URLSessionConfiguration.default
-        //        config.httpAdditionalHeaders = [testauthHeader.testauthType.rawValue : testauthHeader.testauthString.rawValue]
-        //
-        //        let session = URLSession(configuration: config)
-        //        guard let id = id else { return }
-        //        let address = "\(testauthHeader.testurl.rawValue)"
-        //        guard let url = NSURL(string: address) else { return }
-        //        let task = session.dataTask(with: url as! URL) {
-        //            (data, response, error) in
-        //
-        //            //print(data)
-        //            let httpResponse = response as? HTTPURLResponse
-        //            //print(httpResponse?.statusCode)
-        //
-        //            do{
-        //                //decode and place article IDs in an Array
-        //                let json = try JSONSerialization.jsonObject(with: data!)
-        //                //print(json)
-        //            }catch let error {
-        //                print("error: ", error)
-        //            }
-        //        }
-        //         task.resume()
-        //    }
-        
-        //    private func fetch(url:NSURL, session:URLSession, content:Bool, id:Int?, last:Bool?){
-        //        print(url)
-        //        let task = session.dataTask(with: url as URL) {
-        //            (data, response, error) in
-        //
-        //            print(data)
-        //            let httpResponse = response as? HTTPURLResponse
-        //            print(httpResponse?.statusCode)
-        //
-        //            //Check for successful server connection and data received.  Send to parse data
-        //            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let responseData = data {
-        //                self.TESTparseProdEndpoint(data: responseData)
-        //            }
-        //
-        //        }
-        //        task.resume()
-        //    }
-        
-        //    func TESTparseProdEndpoint(data:Data){
-        //        do{
-        //            //decode and place article IDs in an Array
-        //
-        //            let json = try JSONSerialization.jsonObject(with: data)
-        //            print(json)
-        //            parseOldWay(json: json)
-        //
-        //            //NEW WAY
-        //            //            let jsonDecoded = try JSONDecoder().decode(prodArticle.self, from: data)
-        //            //            //print(jsonDecoded.hits.hit[0].fields)
-        //
-        //        }catch let error {
-        //            print("error: ", error)
-        //        }
-        //    }
-        
-        
-        /*
-         END TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
-         TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
-         TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
-         */
-        
-        //enum testauthHeader:String{
-        //    case testauthType = "Authorization"
-        //    case testauthString = "Bearer 18ea0f254ce9bef70b6d95e10b03c6c36d9e4155c1fcc2322f69ab92c52069d2"
-        //    case testurl = "https://cms-api.tabi-labo.com/api/v1/article"
-        //    //case testurl = "https://cms-api-dev.tabi-labo.com/api/v1/article"
-        //    case testprodUrl = "https://search-tl-search-dev-bvb77sqhuziebbdvilw5qem5uy.ap-northeast-1.cloudsearch.amazonaws.co"
-        //}
-        
-        // ***MARK FOR DELETE*** 2018/02/13
-        //        guard let url = URL(string: authHeader.prodUrl.rawValue) else {return}
-        //        let config = URLSessionConfiguration.default
-        //
-        //        let session = URLSession(configuration: config)
-        //
-        //        let task = session.dataTask(with: url as URL) {
-        //            (data, response, error) in
-        //            guard let data = data else {return}
-        //            self.parseProdEndpoint(data: data)
-        //            DispatchQueue.main.async {
-        //                self.delegateProd?.articleContentList(articleContent: self.articleList)
-        //            }
-        //        }
-        //        task.resume()
-        // ***MARK FOR DELETE***
-    }
-    
-    
-    // ***MARK FOR DELETE*** 2018/02/13
-    //    func parseProdEndpoint(data:Data){
-    //        //serialize the data
-    //       print(data)
-    //        do{
-    //            //decode and place article IDs in an Array
-    //            let jsonDecoded = try JSONDecoder().decode(prodArticle.self, from: data)
-    //            print(jsonDecoded)
-    //            let hits = jsonDecoded.hit.hits
-    //
-    //            for singleHit in hits {
-    //                let status = singleHit.fields.status
-    //                let author = singleHit.fields.author_name
-    //                let titles = singleHit.fields.titles
-    //                let images = singleHit.fields.eye_catch_urls
-    //                let id = singleHit.id
-    //                let body = singleHit.fields.body
-    //
-    //                let tempArticle = ArticleModel(id: id, status: status, author: author, title: titles, body: body, images: images)
-    //
-    //                self.articleList.append(tempArticle)
-    //            }
-    //        }catch let error {
-    //            print("error: ", error)
-    //        }
-    //    }
-    // ***MARK FOR DELETE***
-    
-    // ***MARK FOR DELETE*** 2018/02/13
-    //
-    //        let hit = hits["hit"] as! [AnyObject]
-    //
-    //
-    //
-    //
-    //
-    //        for entry in hit {
-    //            let fields = entry["fields"] as! [String:AnyObject]
-    //
-    //            let status = fields["status"] as! String
-    //                if status == "posted" {
-    //                    //capture id, status, author, body
-    //                    let id = fields["id"] as! String
-    //                    let author = fields["author_name"] as! String
-    //                    let body = fields["body"] as! String
-    //                    let postDate = fields["post_date"] as! String
-    //
-    //                    //capture arrays of title, images
-    //                    let eyeCatchImageURL = fields["eye_catch_urls"] as! [String]
-    //                    let titles = fields["titles"] as! [String]
-    //
-    //                    let article = ArticleModel(id: id, status: status, author: author, title: titles, body: body, images: eyeCatchImageURL, postDate: postDate)
-    //
-    //                    articleList.append(article)
-    //                }
-    //            }
-    //        print(articleList.count)
-    
-    //    func parseProdEndpoint(data:Data){
-    //        do{
-    //            //decode and place article IDs in an Array
-    //            let json = try JSONSerialization.jsonObject(with: data)
-    //            parseJsonData(json: json)
-    //        }catch let error {
-    //            print("error: ", error)
-    //        }
-    //    }
-    
-    // ***MARK FOR DELETE***
 }
 

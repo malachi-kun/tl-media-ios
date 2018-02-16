@@ -14,7 +14,7 @@ import MediaPlayer
 
 class HomeViewController:UIViewController{
 
-    // MARK: UIProperties
+    // MARK: UI Properties
     @IBOutlet weak var containerView: UIView!
     @IBOutlet fileprivate(set) weak var tabBar : UITabBar!
  
