@@ -40,6 +40,7 @@ class HomeArticleDetailController:UIViewController {
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
+        //Cell registration
         collectionView.register(HomeArticleDetailCell.self, forCellWithReuseIdentifier: cellID.HomeArticleDetailCell.rawValue)
         collectionView.register(HomeArticleSentenceCell.self, forCellWithReuseIdentifier: cellID.ArticleSentenceElement.rawValue)
         collectionView.register(ImageElementCell.self, forCellWithReuseIdentifier: cellID.ImageContent.rawValue)
@@ -47,11 +48,12 @@ class HomeArticleDetailController:UIViewController {
             flowlayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
 
+        //delegate
         imageDelegate = self
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         estimatedSize = UICollectionViewFlowLayoutAutomaticSize
+        
         getArticleDetails()
         setUpUI()
     }

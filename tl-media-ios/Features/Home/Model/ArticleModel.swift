@@ -27,6 +27,5 @@ struct ArticleModel {
         self.body = body
         self.postDate = postDate
         self.authorId = authorId
-        
     }
 }

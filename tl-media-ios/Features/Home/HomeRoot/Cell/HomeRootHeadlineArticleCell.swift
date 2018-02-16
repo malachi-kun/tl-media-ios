@@ -26,7 +26,7 @@ class HomeRootHeadlineArticleCell:UICollectionViewCell {
     
     private func setUpUI(){
         addSubview(headlineArticle)
-        headlineArticle.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.width - (2*12), height: 175)
+        headlineArticle.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.width - 2, height: 200)
     }
     
     

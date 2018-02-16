@@ -14,7 +14,7 @@ class HeadlineArticeView:UIView {
     let articleImage:UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "blackBackGround")
-        iv.contentMode = .scaleToFill
+        iv.contentMode = .scaleAspectFill
         iv.backgroundColor = .black
         return iv
     }()

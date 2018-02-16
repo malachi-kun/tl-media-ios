@@ -110,8 +110,6 @@ class HomeNetworking {
                         self.delegateElements?.getArticleElements(elements: self.articleElementList)
                     }
                 }
-
-
             }catch let error {
                 print("error: ", error)
             }

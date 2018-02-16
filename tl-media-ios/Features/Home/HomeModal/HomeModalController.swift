@@ -89,7 +89,6 @@ class HomeModalController:UIViewController {
     var nowPlaying:Bool?
     var header:ArticleHeader?
     
-    // MARK: OUTLETS
     
     // MARK: LIFECYLE
     override func viewDidLoad() {
