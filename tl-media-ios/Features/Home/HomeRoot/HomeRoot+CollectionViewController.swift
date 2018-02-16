@@ -58,9 +58,7 @@ extension HomeRootViewController {
                     
                     cell.voiceArticle.articleImageFirst.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
                     cell.voiceArticle.titleLabelFirst.text = articleDetails[indexPath.row].title[0]
-                    
                 }
-                
                 return cell
             }
             //Tabi Labo Family
@@ -81,11 +79,11 @@ extension HomeRootViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 1
     }
     
 }

@@ -43,7 +43,7 @@ class ArticleView:UIView{
         addSubview(articleImageFirst)
         articleImageFirst.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         addSubview(titleLabelFirst)
-        titleLabelFirst.anchor(top: nil, left: articleImageFirst.leftAnchor, bottom: bottomAnchor, right: articleImageFirst.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        titleLabelFirst.anchor(top: nil, left: articleImageFirst.leftAnchor, bottom: articleImageFirst.bottomAnchor, right: articleImageFirst.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     
     }
 }

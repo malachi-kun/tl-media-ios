@@ -29,6 +29,6 @@ class HomeRootViewArticleCell: UICollectionViewCell {
     
     private func setUpUI(){
         addSubview(voiceArticle)
-        voiceArticle.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.width/2-2*3, height: 150)
+        voiceArticle.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: (UIScreen.main.bounds.width/2)-0.5, height:100)
     }
 }
