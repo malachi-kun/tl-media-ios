@@ -18,6 +18,7 @@ class AudioToolBar:UIView{
     
     let titleLabel:UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 17)
         label.text = "This is the title description."
         label.lineBreakMode = .byWordWrapping
@@ -27,6 +28,7 @@ class AudioToolBar:UIView{
     
     let issueLabel:UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.text = "ISSUE 2017/12/19"
         label.font = UIFont.systemFont(ofSize: 12)
         return label

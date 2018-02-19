@@ -80,8 +80,14 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         homeRootCollectionView.backgroundColor = .black
         navigationItem.title = navigationTitle
         
+
+        
+//        // Stop listening notification
+//        NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+        
         view.addSubview(homeRootCollectionView)
         homeRootCollectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: -12, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        
     }
     
     
@@ -120,6 +126,18 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
         // Delegate
         delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
+    }
+    
+    @objc func redPlayTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
+ 
+        // MARK: NOTIFICATION CENTER
+        // Define identifier and Post notification
+//        let imageDataDict:[String:Any] = [notificationCalls.articleDetails.rawValue:articleDetails[selectedIndex]]
+//        let notificationName = Notification.Name(notificationCalls.playAudioArticlePressed.rawValue)
+        //let notificationName = Notification.Name(notificationCalls.playAudioArticlePressed.rawValue, object: nil, userInfo: imageDataDict)
+        //NotificationCenter.default.post(name: notificationName, object:nil, userInfo: articleDetails[selectedIndex] as? [AnyHashable : Any])
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.playAudioArticlePressed.rawValue), object: self, userInfo: [notificationCalls.articleDetails.rawValue:articleDetails[selectedIndex]])
     }
 
     // MARK: NETWORK ARTICLE DETAIL DELEGATION

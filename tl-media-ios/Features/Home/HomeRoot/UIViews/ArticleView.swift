@@ -21,8 +21,9 @@ class ArticleView:UIView{
     
     let titleLabelFirst:UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        label.textColor = .black
+        label.backgroundColor = .white
+        //label.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         label.text = "no text found"
         return label
     }()

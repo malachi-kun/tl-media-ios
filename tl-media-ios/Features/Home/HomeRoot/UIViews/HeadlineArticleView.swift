@@ -22,15 +22,16 @@ class HeadlineArticeView:UIView {
     //multiple line title
     let titleLabel:UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        label.textColor = .black
+        label.backgroundColor = .white
+        //label.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         label.text = "no text found"
         return label
     }()
     
-    let headsetIcon:UIButton = {
+    let redPlayIcon:UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "headset"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "redPlay"), for: .normal)
         button.isUserInteractionEnabled = true
         return button
     }()
@@ -52,7 +53,11 @@ class HeadlineArticeView:UIView {
         addSubview(articleImage)
         articleImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: bounds.width, height: bounds.height)
         
+
         addSubview(titleLabel)
         titleLabel.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: bounds.width, height: 50)
+        
+        addSubview(redPlayIcon)
+        redPlayIcon.anchor(top: nil, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -33, paddingRight: 12, width: 0, height: 0)
     }
 }

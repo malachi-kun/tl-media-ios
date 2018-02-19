@@ -38,7 +38,7 @@ class ListenController:UIViewController {
     
     let playButtonImageView:UIImageView = {
         let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "Playbutton")
+        iv.image = #imageLiteral(resourceName: "playTrack")
         iv.contentMode = .scaleAspectFit
         return iv
     }()

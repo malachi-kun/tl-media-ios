@@ -30,7 +30,7 @@ class HomeArticleDetailCell:UICollectionViewCell {
     
     let playButton:UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         button.isUserInteractionEnabled = true
         return button
     }() 

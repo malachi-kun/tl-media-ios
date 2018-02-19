@@ -64,7 +64,7 @@ class HomeModalController:UIViewController {
     
     let pausePlayButton:UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         button.contentMode = .center
         button.addTarget(self, action: #selector(pausePlayPressed), for: .touchUpInside)
         return button
@@ -203,11 +203,11 @@ class HomeModalController:UIViewController {
     private func verifyPlayButton(){
         guard let nowPlaying = nowPlaying else {return}
         if (nowPlaying) {
-             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
-            pausePlayButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+             playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
+            pausePlayButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         } else {
-            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
-            pausePlayButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
+            pausePlayButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         }
     }
     

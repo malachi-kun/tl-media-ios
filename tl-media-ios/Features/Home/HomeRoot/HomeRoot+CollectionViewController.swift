@@ -32,10 +32,16 @@ extension HomeRootViewController {
                 cell.headlineArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
                 cell.headlineArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
                 cell.headlineArticle.articleImage.tag = indexPath.row
+                cell.headlineArticle.redPlayIcon.tag = indexPath.row
                 cell.headlineArticle.articleImage.isUserInteractionEnabled = true
+                
                 //tapGesture for cell
                 let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(articleImageTapped(tapGestureRecognizer:)))
                 cell.headlineArticle.articleImage.addGestureRecognizer(tapGestureRecognizer)
+                
+                let redPlayTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(redPlayTapped(tapGestureRecognizer:)))
+                cell.headlineArticle.redPlayIcon.addGestureRecognizer(redPlayTapGestureRecognizer)
+                
                 return cell
                 
             } else {

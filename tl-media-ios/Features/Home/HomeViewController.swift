@@ -30,13 +30,13 @@ class HomeViewController:UIViewController{
     
     let bottomAudioView:AudioToolBar = {
         let top = AudioToolBar()
-        top.backgroundColor = .white
+        top.backgroundColor = .black
         return top
     }()
     
     let playPauseButton:UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         button.addTarget(self, action: #selector(togglePlayButton), for: .touchUpInside)
         return button
     }()
@@ -74,6 +74,7 @@ class HomeViewController:UIViewController{
         
         //Notification observer to unhide bottomAudioView
         NotificationCenter.default.addObserver(self, selector: #selector(unhideBottomAudio(_:)), name: Notification.Name(notificationCalls.playAudioArticlePressed.rawValue), object: nil)
+        
         //Notification observer to be notified of NowPlaying status change.
         NotificationCenter.default.addObserver(self, selector: #selector(notifyNowPlayingStatus(_:)), name: Notification.Name(notificationCalls.nowPlayingStatus.rawValue), object: nil)
         
@@ -132,9 +133,9 @@ class HomeViewController:UIViewController{
     @objc private func verifyPlayButton(){
         guard let nowPlaying = nowPlaying else {return}
         if (nowPlaying) {
-            playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         } else {
-            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         }
     }
     
@@ -143,12 +144,12 @@ class HomeViewController:UIViewController{
         
         if (!nowPlaying) {
             audioManager?.playAudio()
-            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
+            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal) //pause
             self.nowPlaying = true
             syncProgressLineToAudio()
         } else {
             audioManager?.pauseAudio()
-            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal) //play
             self.nowPlaying = false
             syncProgressLineToAudio()
         }
@@ -189,6 +190,7 @@ class HomeViewController:UIViewController{
             bottomAudioView.titleLabel.text = title
             bottomAudioView.issueLabel.text = "2017/19/12"
         }
+        
         verifyPlayButton()
     }
     
