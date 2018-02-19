@@ -222,13 +222,13 @@ class HomeModalController:UIViewController {
         if (!nowPlaying) {
             audioManager?.playAudio()
             self.nowPlaying = true
-            playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
-            pausePlayButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
+            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
+            pausePlayButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
             syncProgressLineToAudio()
         } else {
             audioManager?.pauseAudio()
-            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
-            pausePlayButton.setImage(#imageLiteral(resourceName: "play.png"), for: .normal)
+            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
+            pausePlayButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
             self.nowPlaying = false
             syncProgressLineToAudio()
         }
