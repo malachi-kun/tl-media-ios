@@ -61,18 +61,6 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.ImageContent.rawValue, for: indexPath) as! ImageElementCell
             
                 guard let imageURL = articleElements?[indexPath.row].content else {return cell}
-        
-                // MARK FOR DELETE : 2018/02/15
-//                if let downloadedimage = imageDict[imageURL] {
-//                    let conversion = (UIScreen.main.bounds.size.height * downloadedimage.ratio)
-//                    cell.setHeightConversion(height: conversion)
-//                    cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
-//                } else {
-//                    guard let uncachedImage = cell.imageContent.image else { return cell}
-//                    downloadImage(urlString:imageURL)
-//                    cell.imageContent.image = #imageLiteral(resourceName: "whiteBackGround") //placeholder
-//                }
- 
                 cell.imageContent.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
                 return cell
                 
