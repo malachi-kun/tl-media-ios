@@ -88,7 +88,6 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         
     }
     
-    
     // MARK: PREPARE FOR SEGUE
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueType.articleDetail.rawValue {
@@ -117,7 +116,8 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         // Delegate
         delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
     }
-//
+    
+//      MARK FOR DELETE - 2018/02/20
 //    @objc func secondArticleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
 //        //print("second tapped, tag: \(tapGestureRecognizer.view?.tag)")
 //        guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }

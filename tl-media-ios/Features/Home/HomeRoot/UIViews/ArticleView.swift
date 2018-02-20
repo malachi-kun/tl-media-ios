@@ -76,7 +76,7 @@ class ArticleView:UIView{
     let authorLabel:UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 8)
         label.backgroundColor = .clear
         label.layer.cornerRadius = 8.0
         label.lineBreakMode = .byWordWrapping
@@ -99,7 +99,7 @@ class ArticleView:UIView{
 
     let redPlayIcon:UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "Playbutton"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "redPlay"), for: .normal)
         button.isUserInteractionEnabled = true
         return button
     }()
@@ -136,10 +136,13 @@ class ArticleView:UIView{
         authorImage.anchor(top: nil, left: leftAnchor, bottom: titleBackgroundLabel.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 25, height: 25)
         
         addSubview(authorLabel)
-        authorLabel.anchor(top: authorImage.topAnchor, left: authorImage.rightAnchor, bottom: authorImage.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        authorLabel.anchor(top: authorImage.topAnchor, left: authorImage.rightAnchor, bottom: authorImage.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         addSubview(issueDateLabel)
         issueDateLabel.anchor(top: authorImage.topAnchor, left: nil, bottom: authorImage.bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        addSubview(redPlayIcon)
+        redPlayIcon.anchor(top: nil, left: nil, bottom: titleBackgroundLabel.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 12, paddingRight: 5, width: 25, height: 25)
     
     }
 }

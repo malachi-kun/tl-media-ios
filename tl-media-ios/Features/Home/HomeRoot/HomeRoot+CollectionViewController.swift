@@ -24,15 +24,15 @@ extension HomeRootViewController {
             
             //ARTICLE CELL
             //**HEADLINE ARTICLE CELL
-            if indexPath.row == 0 {
+            if indexPath.row == 0 {   //Headline example
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.headlineArticleCell.rawValue, for: indexPath) as! HomeRootHeadlineArticleCell
                 
                 cell.headlineArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
+                cell.headlineArticle.authorLabel.text = articleDetails[indexPath.row].author
                 //cell image
                 cell.headlineArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
 
-                //cell.headlineArticle.articleSmallImage.isUserInteractionEnabled = true
                 //cell playButton
                 cell.headlineArticle.redPlayIcon.tag = indexPath.row
 
@@ -46,28 +46,36 @@ extension HomeRootViewController {
                 
                 return cell
                 
-            } else {
+            } else {   //regular article example
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! HomeRootViewArticleCell
                 
-                if indexPath.row+1 < articleDetails.count {
-                    cell.voiceArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
-            
-                    //image interaction
-                    let firsttapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(firstArticleImageTapped(tapGestureRecognizer:)))
-                    //tap gesture
-                    cell.voiceArticle.articleImage.tag = indexPath.row
-                    cell.voiceArticle.articleImage.addGestureRecognizer(firsttapGestureRecognizer)
-            
-                    //article label
-                    cell.voiceArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
-                    
-                } else if indexPath.row+1 == articleDetails.count {
-                    
-                    cell.voiceArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
-                    cell.voiceArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
-                }
+//                if indexPath.row+1 < articleDetails.count {  // MARK FOR DELETE 2018/02/20
+                
+                cell.voiceArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
+                
+                cell.voiceArticle.authorLabel.text = articleDetails[indexPath.row].author
+       
+                //cell.voiceArticle.authorLabel.text = articleDetail[indexPath.row].author
+                //image interaction
+                let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(firstArticleImageTapped(tapGestureRecognizer:)))
+                //tap gesture
+                cell.voiceArticle.articleImage.tag = indexPath.row
+                cell.voiceArticle.articleImage.addGestureRecognizer(tapGestureRecognizer)
+        
+                //article label
+                cell.voiceArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
                 return cell
+            
+// ***  MARK FOR DELETE
+//                } else if indexPath.row+1 == articleDetails.count {
+//
+//                    cell.voiceArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
+//                    cell.voiceArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
+//                }
+// ***  MARK FOR DELETE
+                
+
             }
         }
         
@@ -89,7 +97,7 @@ extension HomeRootViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
