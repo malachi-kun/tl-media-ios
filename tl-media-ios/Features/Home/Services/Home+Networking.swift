@@ -11,11 +11,15 @@ import Foundation
 class HomeNetworking {
 
     // MARK: PROPERTIES
+    
     // delegate prop.
     var delegateProd:ArticleDelegate?
     var delegateElements:ArticleElementListDelegate?
+    
+    //prop
     var articleList = [ArticleModel]()
     var articleElementList = [ArticleDetailElementModel]()
+    var authorList = [String:String]()  //id:icon url
     
     //Server endpoint
     enum authHeader:String{
@@ -23,8 +27,8 @@ class HomeNetworking {
         case authString = "Bearer 18ea0f254ce9bef70b6d95e10b03c6c36d9e4155c1fcc2322f69ab92c52069d2"
         case devUrl = "https://cms-api-dev.tabi-labo.com/api/v1/article"
         case prodUrl = "https://cms-api.tabi-labo.com/api/v1/article"
-        case prodAuthor = "https://cms-api.tabi-labo.com/api/v1/author"
         case prodPostedUrl = "https://cms-api.tabi-labo.com/api/v1/article?status=posted"
+        case prodAuthor = "https://cms-api.tabi-labo.com/api/v1/author"
     }
     
     enum env:String{
@@ -37,7 +41,6 @@ class HomeNetworking {
   
     // MARK: LIFECYCLE
     init(id:String?){
-        //getArticleFromServer(id: nil, last:nil) //disabled during testing
         if let id = id {
             self.getFromProdEndpoint(id:id)
         } else {
@@ -79,14 +82,16 @@ class HomeNetworking {
         
         //if 'id' received, fetch article detail.
         if let id = id {
-            address = "\(authHeader.prodUrl.rawValue)/\(id)"   //remove two options
+            address = "\(authHeader.prodUrl.rawValue)/\(id)" //remove two options
             initialReq = false
         } else {
             address = "\(authHeader.prodPostedUrl.rawValue)"
             initialReq = true
         }
-   
-        guard let url = NSURL(string: address!) else { return }
+    
+        guard let retrievedAddress = address else {return}
+        guard let url = NSURL(string: retrievedAddress) else { return }
+        
         let task = session.dataTask(with: url as URL) {
             (data, response, error) in
             
@@ -94,16 +99,17 @@ class HomeNetworking {
             do{
                 //decode and place article IDs in an Array
                 let json = try JSONSerialization.jsonObject(with: data!)
-                print(json)
+                //print(json)
+                //getAuthorList()
                 
                 if initialReq {
-                    parseJsonData(json: json)
+                    self.parseJsonData(json: json)
                     //put to main thread
                     DispatchQueue.main.async {
                         self.delegateProd?.articleContentList(articleContent: self.articleList)
                     }
                 } else {
-                    parseJsonForArticleDetails(json:json)
+                    self.parseJsonForArticleDetails(json:json)
                     //put to main thread
                     DispatchQueue.main.async {
                         self.delegateElements?.getArticleElements(elements: self.articleElementList)
@@ -114,7 +120,7 @@ class HomeNetworking {
             }
         }
         task.resume()
-    
+    }
     enum articleNodes:String{
         case article_id
         case author_id
@@ -155,44 +161,77 @@ class HomeNetworking {
         }
     }
         
-        func parseJsonForArticleDetails(json:Any) {
-       
-            let jsonObject = json as! [String:AnyObject]
-            let article = jsonObject["article_items"] as! [AnyObject]
-            //let sectionCount = article.count
-            var index = 0
-            for elements in article{
-                let inputType = elements["input_type"] as! String
+    func parseJsonForArticleDetails(json:Any) {
+   
+        let jsonObject = json as! [String:AnyObject]
+        let article = jsonObject["article_items"] as! [AnyObject]
+        //let sectionCount = article.count
+        var index = 0
+        for elements in article{
+            let inputType = elements["input_type"] as! String
 
-                if let content = elements["content"] as? String {
-                    let elementsModel = ArticleDetailElementModel(index: index, inputType: inputType, content: content)
-                    articleElementList.append(elementsModel)
-                    index += 1
-                }else {
-                    print("blah, not string object.")
-                }
-            }
-        }
-    
-        // MARK:  HELPER METHODS
-        //Check member property: 'environment' for either dev/prod
-        func configureEnvironmentURL() -> String?  {
-            
-            var url:String?
-            
-            if environment == env.prod.rawValue {
-                url = authHeader.prodUrl.rawValue
-                guard let url = url else {return nil}
-                return url
-            } else if environment == env.dev.rawValue{
-                url = authHeader.devUrl.rawValue
-                guard let url = url else {return nil}
-                return url
-            } else {
-                print("Environment does not exists.")
-                return nil
+            if let content = elements["content"] as? String {
+                let elementsModel = ArticleDetailElementModel(index: index, inputType: inputType, content: content)
+                articleElementList.append(elementsModel)
+                index += 1
+            }else {
+                print("blah, not string object.")
             }
         }
     }
+    
+    // MARK:  HELPER METHODS
+    //Check member property: 'environment' for either dev/prod
+    func configureEnvironmentURL() -> String?  {
+        
+        var url:String?
+        
+        if environment == env.prod.rawValue {
+            url = authHeader.prodUrl.rawValue
+            guard let url = url else {return nil}
+            return url
+        } else if environment == env.dev.rawValue{
+            url = authHeader.devUrl.rawValue
+            guard let url = url else {return nil}
+            return url
+        } else {
+            print("Environment does not exists.")
+            return nil
+        }
+    }
 }
+    
+//    func getAuthorList(){
+//        let config = URLSessionConfiguration.default
+//        config.httpAdditionalHeaders = [authHeader.authType.rawValue : authHeader.authString.rawValue]
+//
+//        let session = URLSession(configuration: config)
+//        let address = "\(authHeader.prodAuthor.rawValue)"
+//
+//
+//        guard let url = NSURL(string: address) else { return }
+//        print(url)
+//        let task = session.dataTask(with: url as URL) {
+//            (data, response, error) in
+//
+//            let httpResponse = response as? HTTPURLResponse
+//            do{
+//                //decode and place article IDs in an Array
+//                let json = try JSONSerialization.jsonObject(with: data!)
+//                print(json)
+//
+//
+//                //parseJsonData(json: json)
+//                //put to main thread
+//                DispatchQueue.main.async {
+//                    self.delegateProd?.articleContentList(articleContent: self.articleList)
+//                }
+//
+//            }catch let error {
+//                print("error: ", error)
+//            }
+//        }
+//    }
+    
+
 
