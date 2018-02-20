@@ -77,10 +77,8 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     }
     
     private func setupView(){
-        homeRootCollectionView.backgroundColor = .black
+        homeRootCollectionView.backgroundColor = UIColor(red: 237/255, green: 238/255, blue: 241/255, alpha: 30.0)
         navigationItem.title = navigationTitle
-        
-
         
 //        // Stop listening notification
 //        NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
@@ -108,7 +106,6 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     }
     
     @objc func articleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
-        //print("headline tapped, tag: \(tapGestureRecognizer.view?.tag)")
         guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
         // Delegate
         delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
@@ -120,23 +117,19 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         // Delegate
         delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
     }
-
-    @objc func secondArticleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
-        //print("second tapped, tag: \(tapGestureRecognizer.view?.tag)")
-        guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
-        // Delegate
-        delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
-    }
+//
+//    @objc func secondArticleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+//        //print("second tapped, tag: \(tapGestureRecognizer.view?.tag)")
+//        guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
+//        // Delegate
+//        delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
+//    }
     
     @objc func redPlayTapped(tapGestureRecognizer: UITapGestureRecognizer){
         guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
  
         // MARK: NOTIFICATION CENTER
         // Define identifier and Post notification
-//        let imageDataDict:[String:Any] = [notificationCalls.articleDetails.rawValue:articleDetails[selectedIndex]]
-//        let notificationName = Notification.Name(notificationCalls.playAudioArticlePressed.rawValue)
-        //let notificationName = Notification.Name(notificationCalls.playAudioArticlePressed.rawValue, object: nil, userInfo: imageDataDict)
-        //NotificationCenter.default.post(name: notificationName, object:nil, userInfo: articleDetails[selectedIndex] as? [AnyHashable : Any])
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.playAudioArticlePressed.rawValue), object: self, userInfo: [notificationCalls.articleDetails.rawValue:articleDetails[selectedIndex]])
     }
 

@@ -20,7 +20,6 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
     
     //CELL CODE
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //print("The count is: \(articleElements?.count)")
         return articleElements?.count ?? 1
     }
     
@@ -45,7 +44,6 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
             guard let author = articleDetail?.author else { return cell }
             guard let issueDate = articleDetail?.postDate else { return cell }
 
-            
             cell.articleHeaderImage.sd_setImage(with: URL(string: image), placeholderImage: #imageLiteral(resourceName: "whiteBackGround"))
             cell.titleLabel.text = headerTitle
             cell.authorNameLabel.text = author

@@ -368,8 +368,8 @@
 		4166513D2011C8DE005CA292 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				416992D02008A69E00EEEC56 /* HomeRootViewArticleCell.swift */,
 				41E122942022B45A00C86E3E /* HomeRootHeadlineArticleCell.swift */,
+				416992D02008A69E00EEEC56 /* HomeRootViewArticleCell.swift */,
 				4174389D200C736D00B56C19 /* HomeRootTabiLaboFamilyCell.swift */,
 				4174389F200C83F200B56C19 /* HomeRootCategoryCell.swift */,
 			);
@@ -399,9 +399,9 @@
 		4197FE46201082FF009F1037 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				41E122902022AE5000C86E3E /* HeadlineArticleView.swift */,
 				41914C592033D7EE00222279 /* ArticleView.swift */,
 				4174389B200C45BF00B56C19 /* VoiceArticleView.swift */,
-				41E122902022AE5000C86E3E /* HeadlineArticleView.swift */,
 				4164FF9A2032C96200EECBF3 /* ArticleElementsView.swift */,
 			);
 			path = UIViews;
