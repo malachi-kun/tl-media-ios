@@ -96,28 +96,32 @@ class HomeNetworking {
         let task = session.dataTask(with: url as URL) {
             (data, response, error) in
             
-            let httpResponse = response as? HTTPURLResponse
-            do{
-                //decode and place article IDs in an Array
-                let json = try JSONSerialization.jsonObject(with: data!)
-                //print(json)
-                //getAuthorList()
-                
-                if initialReq {
-                    self.parseJsonData(json: json)
-                    //put to main thread
-                    DispatchQueue.main.async {
-                        self.delegateProd?.articleContentList(articleContent: self.articleList)
+            guard let httpResponse = response as? HTTPURLResponse else {return}
+            
+            let connectionEstablished = self.checkConnectionStatus(httpResponse: httpResponse)
+            if connectionEstablished {
+                do{
+                    //decode and place article IDs in an Array
+                    let json = try JSONSerialization.jsonObject(with: data!)
+                    //print(json)
+                    //getAuthorList()
+                    
+                    if initialReq {
+                        self.parseJsonData(json: json)
+                        //put to main thread
+                        DispatchQueue.main.async {
+                            self.delegateProd?.articleContentList(articleContent: self.articleList)
+                        }
+                    } else {
+                        self.parseJsonForArticleDetails(json:json)
+                        //put to main thread
+                        DispatchQueue.main.async {
+                            self.delegateElements?.getArticleElements(elements: self.articleElementList)
+                        }
                     }
-                } else {
-                    self.parseJsonForArticleDetails(json:json)
-                    //put to main thread
-                    DispatchQueue.main.async {
-                        self.delegateElements?.getArticleElements(elements: self.articleElementList)
-                    }
+                }catch let error {
+                    print("error: ", error)
                 }
-            }catch let error {
-                print("error: ", error)
             }
         }
         task.resume()
@@ -130,28 +134,33 @@ class HomeNetworking {
         
         let session = URLSession(configuration: config)
         
-        var address = authHeader.prodAuthor.rawValue
+        let address = authHeader.prodAuthor.rawValue
         guard let url = NSURL(string: address) else { return }
         
         let task = session.dataTask(with: url as URL) {
             (data, response, error) in
             
-            let httpResponse = response as? HTTPURLResponse
-            do{
-                let json = try JSONSerialization.jsonObject(with: data!)
-                self.parseAuthorJsonData(json: json)
-                
-                //put to main thread
-                DispatchQueue.main.async {
-                    self.delegateProd?.authorList(authors: self.authorList)
+            guard let httpResponse = response as? HTTPURLResponse else {return}
+           
+            let connectionEstablished = self.checkConnectionStatus(httpResponse: httpResponse)
+            if connectionEstablished {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data!)
+                    self.parseAuthorJsonData(json: json)
+                    
+                    //put to main thread
+                    DispatchQueue.main.async {
+                        self.delegateProd?.authorList(authors: self.authorList)
+                    }
+                }catch let error {
+                    print("error: ", error)
                 }
-            }catch let error {
-                print("error: ", error)
             }
         }
         task.resume()
     }
     
+
     
     //enum for parsing data in method below
     enum articleNodes:String{
@@ -187,7 +196,7 @@ class HomeNetworking {
                     let postDate = article[articleNodes.post_date.rawValue] as! String
                     let eyeCatchUrls = article[articleNodes.eye_catch_urls.rawValue] as! [String]
                     
-                    let model = ArticleModel(id: "\(id)", status: status, author: author, title: title, body: body, postDate: postDate, authorId: "\(authorId)", images: eyeCatchUrls)
+                    let model = ArticleModel(id: "\(id)", status: status, author: author, title: title, body: body, postDate: postDate, authorId: "\(String(describing: authorId))", images: eyeCatchUrls)
                     print(model)
                     self.articleList.append(model)
                 }
@@ -222,14 +231,14 @@ class HomeNetworking {
 
             if let id =  authorDetail["id"], let icon = authorDetail["icon"]{
                 let id = id as! Int
-                self.authorList["\(id)"] = icon as! String
+                self.authorList["\(id)"] = icon as? String
             }
         }
     }
     
     // MARK:  HELPER METHODS
     //Check member property: 'environment' for either dev/prod
-    func configureEnvironmentURL() -> String?  {
+    private func configureEnvironmentURL() -> String?  {
         
         var url:String?
         
@@ -246,4 +255,13 @@ class HomeNetworking {
             return nil
         }
     }
+    
+    private func checkConnectionStatus(httpResponse:HTTPURLResponse) -> Bool {
+        if httpResponse.statusCode == 200 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }
