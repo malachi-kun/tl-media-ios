@@ -133,7 +133,7 @@ class HeadlineArticeView:UIView {
         authorLabel.anchor(top: titleBackgroundLabel.topAnchor, left: nil, bottom: titleBackgroundLabel.bottomAnchor, right: titleBackgroundLabel.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         titleBackgroundLabel.addSubview(authorImage)
-        authorImage.anchor(top: nil, left: titleLabel.rightAnchor, bottom: authorLabel.bottomAnchor, right: authorLabel.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -17, paddingRight: 5, width: 25, height: 25)
+        authorImage.anchor(top: nil, left: nil, bottom: authorLabel.bottomAnchor, right: authorLabel.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -17, paddingRight: 5, width: 25, height: 25)
      
         //Elements around image and text
         addSubview(categoryLabel)

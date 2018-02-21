@@ -53,6 +53,7 @@ class HomeViewController:UIViewController{
     var audioManager:HomeAudio?
     var nowPlaying:Bool?
     var activeModel:ArticleModel?
+
     
     private var animator : ARNTransitionAnimator?
     fileprivate var modalVC : HomeModalController!
@@ -177,18 +178,11 @@ class HomeViewController:UIViewController{
         view.addSubview(progressSlide)
         progressSlide.anchor(top: nil, left: view.leftAnchor, bottom: bottomAudioView.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 5)
         
-        //play~pause button
-        bottomAudioView.addSubview(playPauseButton)
-        playPauseButton.anchor(top: bottomAudioView.topAnchor, left: nil, bottom: bottomAudioView.bottomAnchor, right: bottomAudioView.rightAnchor, paddingTop: topBottomPadding, paddingLeft: 0, paddingBottom: -topBottomPadding, paddingRight: -50, width: 150, height:150)
-
-        //invisible button to activate
-        bottomAudioView.addSubview(audioButtonPressed)
-        audioButtonPressed.anchor(top: bottomAudioView.topAnchor, left: bottomAudioView.leftAnchor, bottom: view.bottomAnchor, right: playPauseButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -10, paddingRight: 0, width: 0, height: 0)
     
         // Assing values to UI components.
         if let title = activeModel?.title[0] {
             bottomAudioView.titleLabel.text = title
-            bottomAudioView.issueLabel.text = "2017/19/12"
+            //bottomAudioView.issueLabel.text = "2017/19/12"
         }
         verifyPlayButton()
     }

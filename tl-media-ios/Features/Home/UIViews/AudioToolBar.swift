@@ -19,21 +19,45 @@ class AudioToolBar:UIView{
     let titleLabel:UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.boldSystemFont(ofSize: 12)
         label.text = "This is the title description."
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
+//        label.lineBreakMode = .byWordWrapping
+//        label.numberOfLines = 0
         return label
     }()
     
-    let issueLabel:UILabel = {
+    let categoryLabel:UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.text = "ISSUE 2017/12/19"
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.backgroundColor = .white
+        label.layer.cornerRadius = 8.0
+        label.text = " Entertainment "
         return label
     }()
-  
+    
+    let playBtn:UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "Playbutton"), for: .normal)
+        button.isUserInteractionEnabled = true
+        return button
+    }()
+    
+    let backTrackBtn:UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "backwardTrack"), for: .normal)
+        button.isUserInteractionEnabled = true
+        return button
+    }()
+    
+    let forwardTrackBtn:UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "forwardTrack"), for: .normal)
+        button.isUserInteractionEnabled = true
+        return button
+    }()
+    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -53,10 +77,24 @@ class AudioToolBar:UIView{
         addSubview(titleLabel)
         let leftPadding:CGFloat = 15
         let labelWidth:CGFloat = 250
-        titleLabel.anchor(top: topAnchor, left: articleImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: leftPadding, paddingBottom:0, paddingRight: 0, width: labelWidth, height: 45)
+        titleLabel.anchor(top: articleImageView.topAnchor, left: articleImageView.rightAnchor, bottom: nil, right: nil, paddingTop: -10, paddingLeft: leftPadding, paddingBottom:0, paddingRight: 0, width: labelWidth, height: 45)
         
-        //issue label
-        addSubview(issueLabel)
-        issueLabel.anchor(top: titleLabel.bottomAnchor, left: articleImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: leftPadding, paddingBottom:0, paddingRight: 0, width: labelWidth, height: 15)
+        addSubview(categoryLabel)
+        categoryLabel.anchor(top: titleLabel.bottomAnchor, left: articleImageView.rightAnchor, bottom: nil, right: nil, paddingTop: -10, paddingLeft: leftPadding, paddingBottom: 0, paddingRight: 0, width:0, height: 0)
+        
+        //audio player controls
+        let buttonSize:CGFloat = 40
+        addSubview(forwardTrackBtn)
+        forwardTrackBtn.anchor(top: nil, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: buttonSize, height: buttonSize)
+        forwardTrackBtn.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        addSubview(playBtn)
+        playBtn.anchor(top: nil, left: nil, bottom: nil, right: forwardTrackBtn.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: buttonSize, height: buttonSize)
+        playBtn.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        addSubview(backTrackBtn)
+        backTrackBtn.anchor(top: nil, left: nil, bottom: nil, right: playBtn.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: buttonSize, height: buttonSize)
+        backTrackBtn.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
     }
 }

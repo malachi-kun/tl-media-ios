@@ -11,6 +11,7 @@ import UIKit
 //Gets article details from the network to HomeController.
 protocol ArticleDelegate {
     func articleContentList(articleContent:[ArticleModel])
+    func authorList(authors:[String:String])
 }
 
 //Sends article details from HomeController to HomeArticleDetailController

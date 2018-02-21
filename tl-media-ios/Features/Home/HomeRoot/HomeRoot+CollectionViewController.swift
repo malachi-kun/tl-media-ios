@@ -24,15 +24,26 @@ extension HomeRootViewController {
             
             //ARTICLE CELL
             //**HEADLINE ARTICLE CELL
-            if indexPath.row == 0 {   //Headline example
+            if indexPath.row == 0 {   //HEADLINE CELL
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.headlineArticleCell.rawValue, for: indexPath) as! HomeRootHeadlineArticleCell
                 
                 cell.headlineArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
                 cell.headlineArticle.authorLabel.text = articleDetails[indexPath.row].author
+                
                 //cell image
                 cell.headlineArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
 
+                //cell author image
+//                print(articleDetails[indexPath.row].authorId)
+//                let authorStringID = articleDetails[indexPath.row].authorId as! String
+//                print(authorStringID)
+//                guard let author = authorList else {return cell}
+//                print(author)
+//                let authorIconURL = author[authorStringID]
+//                print(authorIconURL)
+//                cell.headlineArticle.authorImage.sd_setImage(with: URL(string: authorIconURL!), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
+                
                 //cell playButton
                 cell.headlineArticle.redPlayIcon.tag = indexPath.row
 
@@ -46,50 +57,27 @@ extension HomeRootViewController {
                 
                 return cell
                 
-            } else {   //regular article example
+            } else {   //REGULAR ARTICLE CELL
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! HomeRootViewArticleCell
-                
-//                if indexPath.row+1 < articleDetails.count {  // MARK FOR DELETE 2018/02/20
-                
+
                 cell.voiceArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
-                
                 cell.voiceArticle.authorLabel.text = articleDetails[indexPath.row].author
        
-                //cell.voiceArticle.authorLabel.text = articleDetail[indexPath.row].author
                 //image interaction
-                let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(firstArticleImageTapped(tapGestureRecognizer:)))
+                let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(articleImageTapped(tapGestureRecognizer:)))
                 //tap gesture
                 cell.voiceArticle.articleImage.tag = indexPath.row
                 cell.voiceArticle.articleImage.addGestureRecognizer(tapGestureRecognizer)
+                
+                let redPlayTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(redPlayTapped(tapGestureRecognizer:)))
+                cell.voiceArticle.redPlayIcon.addGestureRecognizer(redPlayTapGestureRecognizer)
         
                 //article label
                 cell.voiceArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
                 return cell
-            
-// ***  MARK FOR DELETE
-//                } else if indexPath.row+1 == articleDetails.count {
-//
-//                    cell.voiceArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
-//                    cell.voiceArticle.titleLabel.text = articleDetails[indexPath.row].title[0]
-//                }
-// ***  MARK FOR DELETE
-                
-
             }
         }
-        
-//            //Tabi Labo Family  -- Mark for Delete  2018/02/20 --
-//        } else if indexPath.item == numOfArticles {
-//            //category
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.tlFamily.rawValue, for: indexPath) as! HomeRootTabiLaboFamilyCell
-//            return cell
-//
-//            //Category
-//        } else if indexPath.item == numOfArticles + 1 {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.category.rawValue, for: indexPath) as! HomeRootCategoryCell
-//            return cell
-//        }
         
         //default
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.voiceArticle.rawValue, for: indexPath) as! HomeRootViewArticleCell
@@ -97,7 +85,7 @@ extension HomeRootViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

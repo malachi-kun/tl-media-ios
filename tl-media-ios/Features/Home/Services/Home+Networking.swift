@@ -19,7 +19,7 @@ class HomeNetworking {
     //prop
     var articleList = [ArticleModel]()
     var articleElementList = [ArticleDetailElementModel]()
-    var authorList = [String:String]()  //id:icon url
+    var authorList = [String:String]()
     
     //Server endpoint
     enum authHeader:String{
@@ -45,6 +45,7 @@ class HomeNetworking {
             self.getFromProdEndpoint(id:id)
         } else {
             self.getFromProdEndpoint(id:nil)
+            self.getProdAuthorList()
         }
     }
     
@@ -69,7 +70,7 @@ class HomeNetworking {
         var body:String
     }
 
-    //**PROD Article CODEABLE STRUCTURE**
+    // MARK: FETCH FROM NETWORK CODE
     func getFromProdEndpoint(id:String?){
 
         let config = URLSessionConfiguration.default
@@ -121,6 +122,38 @@ class HomeNetworking {
         }
         task.resume()
     }
+    
+    func getProdAuthorList(){
+        
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [authHeader.authType.rawValue : authHeader.authString.rawValue]
+        
+        let session = URLSession(configuration: config)
+        
+        var address = authHeader.prodAuthor.rawValue
+        guard let url = NSURL(string: address) else { return }
+        
+        let task = session.dataTask(with: url as URL) {
+            (data, response, error) in
+            
+            let httpResponse = response as? HTTPURLResponse
+            do{
+                let json = try JSONSerialization.jsonObject(with: data!)
+                self.parseAuthorJsonData(json: json)
+                
+                //put to main thread
+                DispatchQueue.main.async {
+                    self.delegateProd?.authorList(authors: self.authorList)
+                }
+            }catch let error {
+                print("error: ", error)
+            }
+        }
+        task.resume()
+    }
+    
+    
+    //enum for parsing data in method below
     enum articleNodes:String{
         case article_id
         case author_id
@@ -155,6 +188,7 @@ class HomeNetworking {
                     let eyeCatchUrls = article[articleNodes.eye_catch_urls.rawValue] as! [String]
                     
                     let model = ArticleModel(id: "\(id)", status: status, author: author, title: title, body: body, postDate: postDate, authorId: "\(authorId)", images: eyeCatchUrls)
+                    print(model)
                     self.articleList.append(model)
                 }
             }
@@ -180,6 +214,19 @@ class HomeNetworking {
         }
     }
     
+    private func parseAuthorJsonData(json:Any){
+        let authorList = json as! [String:Any]
+        let authorsNode = authorList["authors"] as! [Any]
+        for author in authorsNode {
+            let authorDetail = author as! [String:Any]
+
+            if let id =  authorDetail["id"], let icon = authorDetail["icon"]{
+                let id = id as! Int
+                self.authorList["\(id)"] = icon as! String
+            }
+        }
+    }
+    
     // MARK:  HELPER METHODS
     //Check member property: 'environment' for either dev/prod
     func configureEnvironmentURL() -> String?  {
@@ -200,38 +247,3 @@ class HomeNetworking {
         }
     }
 }
-    
-//    func getAuthorList(){
-//        let config = URLSessionConfiguration.default
-//        config.httpAdditionalHeaders = [authHeader.authType.rawValue : authHeader.authString.rawValue]
-//
-//        let session = URLSession(configuration: config)
-//        let address = "\(authHeader.prodAuthor.rawValue)"
-//
-//
-//        guard let url = NSURL(string: address) else { return }
-//        print(url)
-//        let task = session.dataTask(with: url as URL) {
-//            (data, response, error) in
-//
-//            let httpResponse = response as? HTTPURLResponse
-//            do{
-//                //decode and place article IDs in an Array
-//                let json = try JSONSerialization.jsonObject(with: data!)
-//                print(json)
-//
-//
-//                //parseJsonData(json: json)
-//                //put to main thread
-//                DispatchQueue.main.async {
-//                    self.delegateProd?.articleContentList(articleContent: self.articleList)
-//                }
-//
-//            }catch let error {
-//                print("error: ", error)
-//            }
-//        }
-//    }
-    
-
-

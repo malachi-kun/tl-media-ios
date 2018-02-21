@@ -183,7 +183,7 @@ class HomeModalController:UIViewController {
         
         //Enter details of UI Component
         topController.titleLabel.text = header?.description
-        topController.issueLabel.text = header?.issueDate
+        //topController.issueLabel.text = header?.issueDate
         
         //verify UI status
         verifyPlayButton()

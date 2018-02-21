@@ -9,6 +9,10 @@ import UIKit
 import SDWebImage
 
 class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, ArticleDelegate, ArticleDetailDelegate {
+   
+    
+
+    
 
     // MARK: UI ELEMENTS
     let homeRootCollectionView: UICollectionView = {
@@ -25,7 +29,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     var articleDetails = [ArticleModel]()
     var indexPressed:Int?
     var delegate:ArticleDetailDelegate?  //delegate to ArticleDetailDelegate
-    
+    var authorList:[String:String]?
 
     //Image List
     var imageList = [Int:String]()
@@ -111,21 +115,6 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
     }
     
-    @objc func firstArticleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
-        //print("first tapped, tag: \(tapGestureRecognizer.view?.tag)")
-        guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
-        // Delegate
-        delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
-    }
-    
-//      MARK FOR DELETE - 2018/02/20
-//    @objc func secondArticleImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
-//        //print("second tapped, tag: \(tapGestureRecognizer.view?.tag)")
-//        guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
-//        // Delegate
-//        delegate?.passArticleDetail(detail: articleDetails[selectedIndex])
-//    }
-    
     @objc func redPlayTapped(tapGestureRecognizer: UITapGestureRecognizer){
         guard let selectedIndex = tapGestureRecognizer.view?.tag else { return }
  
@@ -134,7 +123,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationCalls.playAudioArticlePressed.rawValue), object: self, userInfo: [notificationCalls.articleDetails.rawValue:articleDetails[selectedIndex]])
     }
 
-    // MARK: NETWORK ARTICLE DETAIL DELEGATION
+    // MARK: NETWORK DELEGATION
     func articleContentList(articleContent: [ArticleModel]) {
         articleDetails = articleContent
         numOfArticles = articleDetails.count
@@ -147,5 +136,13 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     func passArticleDetail(detail: ArticleModel) {
         articleDetail = detail
         performSegue(withIdentifier: segueType.articleDetail.rawValue, sender: self)
+    }
+    
+    func authorList(authors: [String : String]) {
+        self.authorList = authors
+        
+        DispatchQueue.main.async {
+            self.homeRootCollectionView.reloadData()
+        }
     }
 }
