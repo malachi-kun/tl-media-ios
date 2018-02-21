@@ -19,12 +19,6 @@
 		4112FCDC1FC2C34E00D8C2AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4112FCDA1FC2C34E00D8C2AF /* LaunchScreen.storyboard */; };
 		4112FCE71FC2C34E00D8C2AF /* tl_media_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCE61FC2C34E00D8C2AF /* tl_media_iosTests.swift */; };
 		4112FCF21FC2C34E00D8C2AF /* tl_media_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCF11FC2C34E00D8C2AF /* tl_media_iosUITests.swift */; };
-		4116C1311FFE015A00F74946 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116C1301FFE015A00F74946 /* LoginController.swift */; };
-		4116C1331FFE170900F74946 /* TrainingBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4116C1321FFE170900F74946 /* TrainingBaseController.swift */; };
-		412483321FFDBC90001D1A2C /* LOGIN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 412483311FFDBC90001D1A2C /* LOGIN.storyboard */; };
-		412483351FFDBD38001D1A2C /* ListenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412483341FFDBD38001D1A2C /* ListenController.swift */; };
-		412483371FFDEC81001D1A2C /* DownloadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412483361FFDEC81001D1A2C /* DownloadController.swift */; };
-		412483391FFDEC8C001D1A2C /* BuyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412483381FFDEC8C001D1A2C /* BuyController.swift */; };
 		412CD2B21FE3CB120093D64B /* Home+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412CD2B11FE3CB120093D64B /* Home+Audio.swift */; };
 		4138698D1FCC1F0400DF5CD7 /* NewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4138698C1FCC1F0400DF5CD7 /* NewCollectionView.swift */; };
 		413869901FCC22C800DF5CD7 /* NEW.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4138698E1FCC22C800DF5CD7 /* NEW.storyboard */; };
@@ -112,12 +106,6 @@
 		4112FCED1FC2C34E00D8C2AF /* tl-media-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tl-media-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4112FCF11FC2C34E00D8C2AF /* tl_media_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tl_media_iosUITests.swift; sourceTree = "<group>"; };
 		4112FCF31FC2C34E00D8C2AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4116C1301FFE015A00F74946 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		4116C1321FFE170900F74946 /* TrainingBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingBaseController.swift; sourceTree = "<group>"; };
-		412483311FFDBC90001D1A2C /* LOGIN.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LOGIN.storyboard; sourceTree = "<group>"; };
-		412483341FFDBD38001D1A2C /* ListenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenController.swift; sourceTree = "<group>"; };
-		412483361FFDEC81001D1A2C /* DownloadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadController.swift; sourceTree = "<group>"; };
-		412483381FFDEC8C001D1A2C /* BuyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyController.swift; sourceTree = "<group>"; };
 		412CD2B11FE3CB120093D64B /* Home+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+Audio.swift"; sourceTree = "<group>"; };
 		412DFD221FD65E36003FF906 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		4138698C1FCC1F0400DF5CD7 /* NewCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCollectionView.swift; sourceTree = "<group>"; };
@@ -239,6 +227,7 @@
 		4112FCD01FC2C34E00D8C2AF /* tl-media-ios */ = {
 			isa = PBXGroup;
 			children = (
+				41C59CBB203D0C6000306334 /* MarkForDelete */,
 				41949F002010807E008C7747 /* PROTOCOLS */,
 				410FBA2B1FE234B700A9BFA1 /* API LIBRARIES */,
 				41F356C71FC2CC0D003F65FD /* HELPER UTILITY */,
@@ -279,7 +268,6 @@
 		4112FD001FC2C36E00D8C2AF /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				412483331FFDBCA6001D1A2C /* Login */,
 				4112FD021FC2C46E00D8C2AF /* Home */,
 				4138698B1FCC1EED00DF5CD7 /* New */,
 			);
@@ -289,7 +277,6 @@
 		4112FD011FC2C38B00D8C2AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				412483311FFDBC90001D1A2C /* LOGIN.storyboard */,
 				4112FCD51FC2C34E00D8C2AF /* HOME.storyboard */,
 				4138698E1FCC22C800DF5CD7 /* NEW.storyboard */,
 				413E2B801FCCE05700E25686 /* SEARCH.storyboard */,
@@ -312,19 +299,6 @@
 				41DD369D1FE8FCAC00836225 /* UIViews */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		412483331FFDBCA6001D1A2C /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				412483341FFDBD38001D1A2C /* ListenController.swift */,
-				412483361FFDEC81001D1A2C /* DownloadController.swift */,
-				412483381FFDEC8C001D1A2C /* BuyController.swift */,
-				4116C1301FFE015A00F74946 /* LoginController.swift */,
-				4116C1321FFE170900F74946 /* TrainingBaseController.swift */,
-				41A034B81FFF201E00176A0E /* FacebookService.swift */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		412CD2B01FE3CADF0093D64B /* Services */ = {
@@ -418,6 +392,13 @@
 			path = HomeArticleDetail;
 			sourceTree = "<group>";
 		};
+		41C59CBB203D0C6000306334 /* MarkForDelete */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MarkForDelete;
+			sourceTree = "<group>";
+		};
 		41DD369D1FE8FCAC00836225 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +418,7 @@
 		41F356C71FC2CC0D003F65FD /* HELPER UTILITY */ = {
 			isa = PBXGroup;
 			children = (
+				41A034B81FFF201E00176A0E /* FacebookService.swift */,
 				41F356C81FC2CC2B003F65FD /* HelperUtility.swift */,
 			);
 			path = "HELPER UTILITY";
@@ -574,7 +556,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				412483321FFDBC90001D1A2C /* LOGIN.storyboard in Resources */,
 				4112FCDC1FC2C34E00D8C2AF /* LaunchScreen.storyboard in Resources */,
 				4112FCD91FC2C34E00D8C2AF /* Assets.xcassets in Resources */,
 				4112FCD71FC2C34E00D8C2AF /* HOME.storyboard in Resources */,
@@ -775,7 +756,6 @@
 				41802DB11FEA6C0E0094EF4A /* Home+AudioChatPerson.swift in Sources */,
 				4164FF972032C11A00EECBF3 /* ArticleDetailElements.swift in Sources */,
 				4164FF9D2032CA6A00EECBF3 /* HomeArticleSentenceCell.swift in Sources */,
-				412483391FFDEC8C001D1A2C /* BuyController.swift in Sources */,
 				413E2B8D1FCD3EDA00E25686 /* Home+Networking.swift in Sources */,
 				415A2CBE2036A464006FEF3D /* HomeRoot+CollectionViewController.swift in Sources */,
 				417438A0200C83F200B56C19 /* HomeRootCategoryCell.swift in Sources */,
@@ -793,18 +773,14 @@
 				41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */,
 				410D2EAA2005AA2C0090BBB7 /* HomeArticleDetail+CollectionView.swift in Sources */,
 				417885C31FD50CC4008F4B8E /* ArticleModel.swift in Sources */,
-				4116C1331FFE170900F74946 /* TrainingBaseController.swift in Sources */,
 				41914C5A2033D7EE00222279 /* ArticleView.swift in Sources */,
 				416992CF2008A45500EEEC56 /* HomeRootViewController.swift in Sources */,
 				41E122952022B45A00C86E3E /* HomeRootHeadlineArticleCell.swift in Sources */,
 				41A034B91FFF201E00176A0E /* FacebookService.swift in Sources */,
-				412483351FFDBD38001D1A2C /* ListenController.swift in Sources */,
 				4164FFA02032CE0F00EECBF3 /* ImageElementCell.swift in Sources */,
 				41E122912022AE5000C86E3E /* HeadlineArticleView.swift in Sources */,
-				4116C1311FFE015A00F74946 /* LoginController.swift in Sources */,
 				410FBA2A1FE220C300A9BFA1 /* HomeViewController.swift in Sources */,
 				4108492F1FE8BCBD0063502E /* ArticleHeaderModel.swift in Sources */,
-				412483371FFDEC81001D1A2C /* DownloadController.swift in Sources */,
 				4164FF9B2032C96200EECBF3 /* ArticleElementsView.swift in Sources */,
 				412CD2B21FE3CB120093D64B /* Home+Audio.swift in Sources */,
 				410DA61E1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift in Sources */,
