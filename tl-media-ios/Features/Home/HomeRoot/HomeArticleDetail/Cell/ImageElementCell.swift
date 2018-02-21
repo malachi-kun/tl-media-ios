@@ -14,7 +14,7 @@ class ImageElementCell:UICollectionViewCell {
     let imageContent:UIImageView = {
         let iv = UIImageView()
         iv.image = #imageLiteral(resourceName: "whiteBackGround")
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.clipsToBounds = true
         //iv.isUserInteractionEnabled = true

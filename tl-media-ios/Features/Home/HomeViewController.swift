@@ -171,7 +171,7 @@ class HomeViewController:UIViewController{
     private func setupView(){
         view.addSubview(bottomAudioView)
         let topBottomPadding:CGFloat = 15
-        bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: -80, paddingRight: 00, width: view.frame.width, height: 85)
+        bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 00, width: view.frame.width, height: 85)
         
         //progressSlide
         view.addSubview(progressSlide)
@@ -190,7 +190,6 @@ class HomeViewController:UIViewController{
             bottomAudioView.titleLabel.text = title
             bottomAudioView.issueLabel.text = "2017/19/12"
         }
-        
         verifyPlayButton()
     }
     
