@@ -178,7 +178,6 @@ class HomeViewController:UIViewController{
         view.addSubview(progressSlide)
         progressSlide.anchor(top: nil, left: view.leftAnchor, bottom: bottomAudioView.topAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 5)
         
-    
         // Assing values to UI components.
         if let title = activeModel?.title[0] {
             bottomAudioView.titleLabel.text = title

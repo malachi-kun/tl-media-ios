@@ -34,7 +34,7 @@ extension HomeRootViewController {
                 //cell image
                 cell.headlineArticle.articleImage.sd_setImage(with: URL(string: articleDetails[indexPath.row].images![0]), placeholderImage: #imageLiteral(resourceName: "blackBackGround"))
 
-                //cell author image
+                //cell author image - **STILL WORKING ON**
 //                print(articleDetails[indexPath.row].authorId)
 //                let authorStringID = articleDetails[indexPath.row].authorId as! String
 //                print(authorStringID)
@@ -91,5 +91,9 @@ extension HomeRootViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: CGFloat((collectionView.frame.size.width)), height: CGFloat(100))
+//    }
     
 }

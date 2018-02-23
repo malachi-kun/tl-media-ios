@@ -33,10 +33,9 @@ class HomeArticleDetailController:UIViewController {
     var articleDetail:ArticleModel?
     var articleElements:[ArticleDetailElementModel]?
     
-    var imageDelegate:ImageResizeDelegate?
 
     //URL: (Image,Ratio)
-    var imageDict = [String: (image:UIImage, ratio:CGFloat)]()
+    //var imageDict = [String: (image:UIImage, ratio:CGFloat)]()
     
     // MARK: LIFECYCLE
     override func viewDidLoad() {
@@ -49,7 +48,7 @@ class HomeArticleDetailController:UIViewController {
         }
 
         //delegate
-        imageDelegate = self
+        //imageDelegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
         estimatedSize = UICollectionViewFlowLayoutAutomaticSize
@@ -81,13 +80,13 @@ class HomeArticleDetailController:UIViewController {
         networkManager.delegateElements = self
     }
     
-    func downloadArticleImages(elements:[ArticleDetailElementModel]){
-        guard let articleElements = articleElements else {return}
-            for image in articleElements {
-          
-                if image.inputType == cellType.image.rawValue {
-                    downloadImage(urlString: image.content)
-                }
-            }
-    }
+//    func downloadArticleImages(elements:[ArticleDetailElementModel]){
+//        guard let articleElements = articleElements else {return}
+//            for image in articleElements {
+//          
+//                if image.inputType == cellType.image.rawValue {
+//                    downloadImage(urlString: image.content)
+//                }
+//            }
+//    }
 }

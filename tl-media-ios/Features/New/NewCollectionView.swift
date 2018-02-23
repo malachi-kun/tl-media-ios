@@ -13,6 +13,4 @@ class NewCollectionView:UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
 }

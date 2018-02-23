@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ImageResizeDelegate {
+extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     
     
@@ -22,7 +22,6 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return articleElements?.count ?? 1
     }
-    
     
     enum cellType:String {
         case image
@@ -76,26 +75,6 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
-    // MARK: IMAGE DOWNLOADER HELP
-    func downloadImage(urlString: String) {
-        print("Download Started")
-        guard let url = URL(string: urlString) else {return}
-        getDataFromUrl(url: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print("Download Finished")
-            
-            DispatchQueue.main.async() {
-                let image = UIImage(data: data)
-                //save ratio
-                let ratio:CGFloat = ((image?.size.height)! / (image?.size.width)!)  // Height over Width
-                print(ratio)
-                //delegate image cache
-                guard let downloadImage = image else {return}
-                self.imageDelegate?.imageResizer(url: urlString, image: downloadImage, ratio: ratio)
-            }
-        }
-    }
-    
     func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             completion(data, response, error)
@@ -103,11 +82,6 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
     }
     
     // MARK: DELEGATE METHOD
-    func imageResizer(url:String, image: UIImage, ratio: CGFloat) {
-        print("urlString:\(url) ratio:\(ratio)")
-        imageDict[url] = (image, ratio)
-        collectionView.reloadData()
-    }
     
     @objc func playAudioPressed(){
         print("play pressed")

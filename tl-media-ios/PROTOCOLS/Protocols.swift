@@ -8,22 +8,21 @@
 
 import UIKit
 
-//Gets article details from the network to HomeController.
+// MARK: NETWORK DELEGATION
+//Gets article details from the NETWORK to HOMEVIEWCONTROLLER.
 protocol ArticleDelegate {
     func articleContentList(articleContent:[ArticleModel])
     func authorList(authors:[String:String])
 }
 
+// MARK: ARTICLE DETAIL DELEGATION
 //Sends article details from HomeController to HomeArticleDetailController
 protocol ArticleDetailDelegate{
     func passArticleDetail(detail:ArticleModel)
 }
 
+//article detail images to Article detail
 protocol ArticleElementListDelegate{
     func getArticleElements(elements:[ArticleDetailElementModel])
-}
-
-protocol ImageResizeDelegate{
-    func imageResizer(url:String, image:UIImage, ratio:CGFloat)
 }
 
