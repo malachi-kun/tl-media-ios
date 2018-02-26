@@ -1,6 +1,6 @@
 //
 //  HomeViewController.swift
-//  tl-media-ios
+//  tl-media-ios - chabi-labo
 //
 //  Created by Malachi Hul on 2017/12/14.
 //  Copyright © 2017 Tabi-Labo. All rights reserved.
