@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class HomeNetworking {
+class ArticleNetworkService {
 
     // MARK: PROPERTIES
     

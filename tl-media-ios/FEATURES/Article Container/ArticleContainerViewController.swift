@@ -12,7 +12,7 @@ import ARNTransitionAnimator
 import Foundation
 import MediaPlayer
 
-class HomeViewController:UIViewController{
+class ArticleContainerViewController:UIViewController{
 
     // MARK: UI Properties
     @IBOutlet weak var containerView: UIView!
@@ -24,7 +24,7 @@ class HomeViewController:UIViewController{
         slider.minimumTrackTintColor = .red
         slider.maximumTrackTintColor = .gray
         slider.setThumbImage(#imageLiteral(resourceName: "thumb"), for: .normal)
-         slider.addTarget(self, action: #selector(HomeViewController.sliderValueDidChange(_:)), for: .valueChanged)
+         slider.addTarget(self, action: #selector(ArticleContainerViewController.sliderValueDidChange(_:)), for: .valueChanged)
         return slider
     }()
     
@@ -146,8 +146,10 @@ class HomeViewController:UIViewController{
     @objc func verifyPlayButton(){
         guard let nowPlaying = nowPlaying else {return}
         if (nowPlaying) {
+            //set to pause image
            // playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         } else {
+            //set to play image
             //playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         }
     }
@@ -157,12 +159,10 @@ class HomeViewController:UIViewController{
         
         if (!nowPlaying) {
             audioManager?.playAudio()
-            //playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal) //pause
             self.nowPlaying = true
             syncProgressLineToAudio()
         } else {
             audioManager?.pauseAudio()
-            //playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal) //play
             self.nowPlaying = false
             syncProgressLineToAudio()
         }
@@ -193,7 +193,6 @@ class HomeViewController:UIViewController{
     
     func setupView(){
         view.addSubview(bottomAudioView)
-        let topBottomPadding:CGFloat = 15
         bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 00, width: view.frame.width, height: 85)
         
         //progressSlide
