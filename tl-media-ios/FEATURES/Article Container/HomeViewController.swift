@@ -133,7 +133,10 @@ class HomeViewController:UIViewController{
         bottomAudioView.titleLabel.text = activeModel.title[0]
         
         audioManager = HomeAudio.shared
-        audioManager?.playStream(fileURL: audioList[0])
+        audioManager?.resetAudio()
+        let random = Int(arc4random_uniform(3))
+        print(random)
+        audioManager?.playStream(fileURL: audioList[random])
         
         nowPlaying = true
         unHideUI()
