@@ -13,9 +13,8 @@ class HomeAudio {
     var avPlayer: AVPlayer?
     
     //singleTon
-    static let shared = HomeAudio(fileURL:"http://techslides.com/demos/samples/sample.mp3")
+    static let shared = HomeAudio(fileURL:"https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/b0328.mp3")
     //static let shared = HomeAudio()
-    
     init() {
         avPlayer = AVPlayer()
     }

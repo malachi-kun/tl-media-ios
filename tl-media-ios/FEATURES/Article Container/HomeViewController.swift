@@ -49,7 +49,9 @@ class HomeViewController:UIViewController{
 
     // MARK: PROPERTIES
     //?? will be fetching audio articles from the server.
-    var audioURLList:[String] = ["http://techslides.com/demos/samples/sample.mp3"]
+    
+    
+    var audioURLList:[String] = ["https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/b0328.mp3","https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/diner-orange.mp3","https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/oyster.mp3"]
     var audioManager:HomeAudio?
     var nowPlaying:Bool?
     var activeModel:ArticleModel?
