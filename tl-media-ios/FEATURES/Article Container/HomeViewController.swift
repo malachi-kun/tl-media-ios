@@ -29,17 +29,20 @@ class HomeViewController:UIViewController{
     }()
     
     let bottomAudioView:AudioToolBar = {
-        let top = AudioToolBar()
-        top.backgroundColor = .black
-        return top
+        let audioBar = AudioToolBar()
+        audioBar.backgroundColor = .black
+        audioBar.playBtn.addTarget(self, action: #selector(togglePlayButton), for: .touchUpInside)
+        audioBar.backTrackBtn.addTarget(self, action: #selector(backTrackPressded), for: .touchUpInside)
+        audioBar.forwardTrackBtn.addTarget(self, action: #selector(fwdTrackPressded), for: .touchUpInside)
+        return audioBar
     }()
     
-    let playPauseButton:UIButton = {
-        let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
-        button.addTarget(self, action: #selector(togglePlayButton), for: .touchUpInside)
-        return button
-    }()
+//    let playPauseButton:UIButton = {
+//        let button = UIButton()
+//        button.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
+//        button.addTarget(self, action: #selector(togglePlayButton), for: .touchUpInside)
+//        return button
+//    }()
 
     let audioButtonPressed:UIButton = {
         let button = UIButton()
@@ -128,7 +131,10 @@ class HomeViewController:UIViewController{
         guard let activeModel = activeModel else {return}
         
         bottomAudioView.titleLabel.text = activeModel.title[0]
+        
         audioManager = HomeAudio.shared
+        audioManager?.playStream(fileURL: audioList[0])
+        
         nowPlaying = true
         unHideUI()
         syncProgressLineToAudio()
@@ -137,9 +143,9 @@ class HomeViewController:UIViewController{
     @objc func verifyPlayButton(){
         guard let nowPlaying = nowPlaying else {return}
         if (nowPlaying) {
-            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
+           // playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         } else {
-            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
+            //playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
         }
     }
     
@@ -148,15 +154,25 @@ class HomeViewController:UIViewController{
         
         if (!nowPlaying) {
             audioManager?.playAudio()
-            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal) //pause
+            //playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal) //pause
             self.nowPlaying = true
             syncProgressLineToAudio()
         } else {
             audioManager?.pauseAudio()
-            playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal) //play
+            //playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal) //play
             self.nowPlaying = false
             syncProgressLineToAudio()
         }
+    }
+    
+    @objc func backTrackPressded(){
+        print("back pressed")
+        audioManager?.back15()
+    }
+    
+    @objc func fwdTrackPressded(){
+        print("fwd pressed")
+        audioManager?.foward15()
     }
     
     // MARK: ASSIST METHODS
