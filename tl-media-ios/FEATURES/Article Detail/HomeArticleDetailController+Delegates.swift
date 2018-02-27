@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension HomeArticleDetailController:ArticleElementListDelegate {
     func getArticleElements(elements: [ArticleDetailElementModel]) {
         articleElements = elements

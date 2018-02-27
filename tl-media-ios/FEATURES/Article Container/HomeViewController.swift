@@ -55,7 +55,7 @@ class HomeViewController:UIViewController{
     var activeModel:ArticleModel?
 
     
-    private var animator : ARNTransitionAnimator?
+    var animator : ARNTransitionAnimator?
     fileprivate var modalVC : HomeModalController!
     
     enum storyboardID:String{
@@ -131,7 +131,7 @@ class HomeViewController:UIViewController{
         syncProgressLineToAudio()
     }
     
-    @objc private func verifyPlayButton(){
+    @objc func verifyPlayButton(){
         guard let nowPlaying = nowPlaying else {return}
         if (nowPlaying) {
             playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
@@ -140,7 +140,7 @@ class HomeViewController:UIViewController{
         }
     }
     
-    @objc private func togglePlayButton(){
+    @objc func togglePlayButton(){
         guard let nowPlaying = nowPlaying else {return}
         
         if (!nowPlaying) {
@@ -157,19 +157,19 @@ class HomeViewController:UIViewController{
     }
     
     // MARK: ASSIST METHODS
-    private func hideUI(){
+    func hideUI(){
         let trueValue = true
         bottomAudioView.isHidden = trueValue
         progressSlide.isHidden = trueValue
     }
     
-    private func unHideUI(){
+    func unHideUI(){
         let falseValue = false
         bottomAudioView.isHidden = falseValue
         progressSlide.isHidden = falseValue
     }
     
-    private func setupView(){
+    func setupView(){
         view.addSubview(bottomAudioView)
         let topBottomPadding:CGFloat = 15
         bottomAudioView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 00, width: view.frame.width, height: 85)
@@ -186,31 +186,31 @@ class HomeViewController:UIViewController{
         verifyPlayButton()
     }
     
-    func setupAnimator() {
-        let animation = MusicPlayerTransitionAnimation(rootVC: self, modalVC: self.modalVC)
-        animation.completion = { [weak self] isPresenting in
-            if isPresenting {
-                guard let _self = self else { return }
-                let modalGestureHandler = TransitionGestureHandler(targetVC: _self, direction: .bottom)
-                modalGestureHandler.registerGesture(_self.modalVC.view)
-                modalGestureHandler.panCompletionThreshold = 15.0
-                _self.animator?.registerInteractiveTransitioning(.dismiss, gestureHandler: modalGestureHandler)
-            } else {
-                self?.setupAnimator()
-            }
-        }
-        
-        let gestureHandler = TransitionGestureHandler(targetVC: self, direction: .top)
-        gestureHandler.registerGesture(self.bottomAudioView)
-        gestureHandler.panCompletionThreshold = 15.0
-        
-        self.animator = ARNTransitionAnimator(duration: 0.5, animation: animation)
-        self.animator?.registerInteractiveTransitioning(.present, gestureHandler: gestureHandler)
-        
-        self.modalVC.transitioningDelegate = self.animator
-    }
+//    func setupAnimator() {
+//        let animation = MusicPlayerTransitionAnimation(rootVC: self, modalVC: self.modalVC)
+//        animation.completion = { [weak self] isPresenting in
+//            if isPresenting {
+//                guard let _self = self else { return }
+//                let modalGestureHandler = TransitionGestureHandler(targetVC: _self, direction: .bottom)
+//                modalGestureHandler.registerGesture(_self.modalVC.view)
+//                modalGestureHandler.panCompletionThreshold = 15.0
+//                _self.animator?.registerInteractiveTransitioning(.dismiss, gestureHandler: modalGestureHandler)
+//            } else {
+//                self?.setupAnimator()
+//            }
+//        }
+//
+//        let gestureHandler = TransitionGestureHandler(targetVC: self, direction: .top)
+//        gestureHandler.registerGesture(self.bottomAudioView)
+//        gestureHandler.panCompletionThreshold = 15.0
+//
+//        self.animator = ARNTransitionAnimator(duration: 0.5, animation: animation)
+//        self.animator?.registerInteractiveTransitioning(.present, gestureHandler: gestureHandler)
+//
+//        self.modalVC.transitioningDelegate = self.animator
+//    }
     
-    private func syncProgressLineToAudio(){
+    func syncProgressLineToAudio(){
         //progress code
         audioManager?.avPlayer?.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 30), queue: .main) { time in
             let fraction = CMTimeGetSeconds(time) / CMTimeGetSeconds((self.audioManager?.avPlayer?.currentItem!.duration)!)
@@ -218,7 +218,7 @@ class HomeViewController:UIViewController{
         }
     }
     
-    private func getProgressLineStatus(){
+    func getProgressLineStatus(){
         //progress line logic
         let floatTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentTime())!))
         let durationTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentItem?.duration)!))
