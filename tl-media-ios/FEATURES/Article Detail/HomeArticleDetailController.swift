@@ -76,7 +76,7 @@ class HomeArticleDetailController:UIViewController {
     private func getArticleDetails(){
         //get article details
         guard let id = articleDetail?.id else {return}
-        let networkManager = HomeNetworking(id: id)
+        let networkManager = ArticleNetworkService(id: id)
         networkManager.delegateElements = self
     }
     

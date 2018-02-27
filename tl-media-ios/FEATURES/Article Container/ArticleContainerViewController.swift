@@ -21,9 +21,9 @@ class ArticleContainerViewController:UIViewController{
     // MARK: UI COMPONENTS
     let progressSlide:UISlider = {
         let slider = UISlider()
-        slider.minimumTrackTintColor = .red
+        slider.minimumTrackTintColor = .gray
         slider.maximumTrackTintColor = .gray
-        slider.setThumbImage(#imageLiteral(resourceName: "thumb"), for: .normal)
+        //slider.setThumbImage(#imageLiteral(resourceName: "thumb"), for: .normal)
          slider.addTarget(self, action: #selector(ArticleContainerViewController.sliderValueDidChange(_:)), for: .valueChanged)
         return slider
     }()
@@ -37,13 +37,6 @@ class ArticleContainerViewController:UIViewController{
         return audioBar
     }()
     
-//    let playPauseButton:UIButton = {
-//        let button = UIButton()
-//        button.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
-//        button.addTarget(self, action: #selector(togglePlayButton), for: .touchUpInside)
-//        return button
-//    }()
-
     let audioButtonPressed:UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(tapMiniPlayerButton), for: .touchUpInside)
@@ -147,10 +140,10 @@ class ArticleContainerViewController:UIViewController{
         guard let nowPlaying = nowPlaying else {return}
         if (nowPlaying) {
             //set to pause image
-           // playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
+
         } else {
             //set to play image
-            //playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
+
         }
     }
     

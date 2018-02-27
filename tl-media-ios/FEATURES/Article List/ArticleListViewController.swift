@@ -21,7 +21,7 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
     var tappedHeadSetIndex:Int?
 
     //Get data from server
-    let networkManager = HomeNetworking(id:nil)
+    let networkManager = ArticleNetworkService(id:nil)
     var articleDetails = [ArticleModel]()
     var indexPressed:Int?
     var delegate:ArticleDetailDelegate?  //delegate to ArticleDetailDelegate
