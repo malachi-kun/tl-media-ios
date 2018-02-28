@@ -11,7 +11,7 @@
 import UIKit
 import MediaPlayer
 
-class HomeModalController:UIViewController {
+class ArticleModalController:UIViewController {
 
     // MARK: UI COMPONENTS
     let topController:AudioToolBar = {

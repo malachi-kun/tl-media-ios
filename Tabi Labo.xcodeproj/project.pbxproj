@@ -47,7 +47,7 @@
 		41A034B31FFF182000176A0E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A034B71FFF182000176A0E /* FBSDKShareKit.framework */; };
 		41A034B91FFF201E00176A0E /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A034B81FFF201E00176A0E /* FacebookService.swift */; };
 		41C3E8792004514000A7B89F /* HomeArticleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C3E8782004514000A7B89F /* HomeArticleDetailController.swift */; };
-		41D7D5211FE26B17006B8E77 /* HomeModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7D5201FE26B17006B8E77 /* HomeModalController.swift */; };
+		41D7D5211FE26B17006B8E77 /* ArticleModalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7D5201FE26B17006B8E77 /* ArticleModalController.swift */; };
 		41DD369F1FE8FCD100836225 /* AudioToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DD369E1FE8FCD100836225 /* AudioToolBar.swift */; };
 		41E122912022AE5000C86E3E /* HeadlineArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E122902022AE5000C86E3E /* HeadlineArticleView.swift */; };
 		41E122952022B45A00C86E3E /* HeadlineArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E122942022B45A00C86E3E /* HeadlineArticleCell.swift */; };
@@ -136,7 +136,7 @@
 		41A034B71FFF182000176A0E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41A034B81FFF201E00176A0E /* FacebookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
 		41C3E8782004514000A7B89F /* HomeArticleDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArticleDetailController.swift; sourceTree = "<group>"; };
-		41D7D5201FE26B17006B8E77 /* HomeModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModalController.swift; sourceTree = "<group>"; };
+		41D7D5201FE26B17006B8E77 /* ArticleModalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModalController.swift; sourceTree = "<group>"; };
 		41DD369E1FE8FCD100836225 /* AudioToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioToolBar.swift; sourceTree = "<group>"; };
 		41E122902022AE5000C86E3E /* HeadlineArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineArticleView.swift; sourceTree = "<group>"; };
 		41E122942022B45A00C86E3E /* HeadlineArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineArticleCell.swift; sourceTree = "<group>"; };
@@ -410,7 +410,7 @@
 		41F0082B2006FC5D000C4F18 /* Article Audio Player */ = {
 			isa = PBXGroup;
 			children = (
-				41D7D5201FE26B17006B8E77 /* HomeModalController.swift */,
+				41D7D5201FE26B17006B8E77 /* ArticleModalController.swift */,
 			);
 			path = "Article Audio Player";
 			sourceTree = "<group>";
@@ -767,7 +767,7 @@
 				417885C11FD50C27008F4B8E /* Protocols.swift in Sources */,
 				4174389E200C736D00B56C19 /* TabiLaboFamilyCell.swift in Sources */,
 				4138698D1FCC1F0400DF5CD7 /* NewCollectionView.swift in Sources */,
-				41D7D5211FE26B17006B8E77 /* HomeModalController.swift in Sources */,
+				41D7D5211FE26B17006B8E77 /* ArticleModalController.swift in Sources */,
 				4112FCD21FC2C34E00D8C2AF /* AppDelegate.swift in Sources */,
 				410D2EAC2005AD1C0090BBB7 /* HomeArticleDetailCell.swift in Sources */,
 				41F356C91FC2CC2B003F65FD /* HelperUtility.swift in Sources */,

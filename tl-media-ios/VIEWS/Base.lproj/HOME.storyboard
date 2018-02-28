@@ -161,7 +161,7 @@
             <objects>
                 <viewController id="kfS-Xx-mI0" customClass="HomeRootViewController" customModule="tl_media_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ah-hL-gLs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ia8-rF-RQr"/>
@@ -180,7 +180,7 @@
             <objects>
                 <viewController id="ca7-oB-DDd" customClass="HomeArticleDetailController" customModule="tl_media_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bg9-8z-eAS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="h04-mr-eM6"/>
@@ -190,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="1823" y="986"/>
         </scene>
-        <!--Home Modal Controller-->
+        <!--Article Modal Controller-->
         <scene sceneID="ucm-o4-acg">
             <objects>
-                <viewController storyboardIdentifier="HomeModal" id="rlb-Dy-y9p" customClass="HomeModalController" customModule="tl_media_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeModal" id="rlb-Dy-y9p" customClass="ArticleModalController" customModule="tl_media_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BOR-Nj-3tb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

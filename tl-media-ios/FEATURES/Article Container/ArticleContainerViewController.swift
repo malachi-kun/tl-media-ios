@@ -55,7 +55,7 @@ class ArticleContainerViewController:UIViewController{
 
     
     var animator : ARNTransitionAnimator?
-    fileprivate var modalVC : HomeModalController!
+    fileprivate var modalVC : ArticleModalController!
     
     enum storyboardID:String{
         case storyBoardName = "HOME"
@@ -79,7 +79,7 @@ class ArticleContainerViewController:UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(notifyNowPlayingStatus(_:)), name: Notification.Name(notificationCalls.nowPlayingStatus.rawValue), object: nil)
         
         let storyboard = UIStoryboard(name: storyboardID.storyBoardName.rawValue, bundle: nil)
-        self.modalVC = storyboard.instantiateViewController(withIdentifier: storyboardID.storyBoardWithIdentier.rawValue) as? HomeModalController
+        self.modalVC = storyboard.instantiateViewController(withIdentifier: storyboardID.storyBoardWithIdentier.rawValue) as? ArticleModalController
         self.modalVC.modalPresentationStyle = .overFullScreen
         
         //miniplayer properties

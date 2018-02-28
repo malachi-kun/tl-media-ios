@@ -13,7 +13,7 @@ import ARNTransitionAnimator
 final class MusicPlayerTransitionAnimation : TransitionAnimatable {
     
     fileprivate var rootVC: ArticleContainerViewController!
-    fileprivate weak var modalVC: HomeModalController!
+    fileprivate weak var modalVC: ArticleModalController!
     @IBOutlet fileprivate(set) weak var tabBar : UITabBar!
     
     var completion: ((Bool) -> Void)?
@@ -26,7 +26,7 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable {
         print("deinit MusicPlayerTransitionAnimation")
     }
     
-    init(rootVC: ArticleContainerViewController, modalVC: HomeModalController) {
+    init(rootVC: ArticleContainerViewController, modalVC: ArticleModalController) {
         self.rootVC = rootVC
         self.modalVC = modalVC
         
