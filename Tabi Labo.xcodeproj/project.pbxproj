@@ -20,6 +20,8 @@
 		4112FCE71FC2C34E00D8C2AF /* tl_media_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCE61FC2C34E00D8C2AF /* tl_media_iosTests.swift */; };
 		4112FCF21FC2C34E00D8C2AF /* tl_media_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112FCF11FC2C34E00D8C2AF /* tl_media_iosUITests.swift */; };
 		412CD2B21FE3CB120093D64B /* Home+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412CD2B11FE3CB120093D64B /* Home+Audio.swift */; };
+		4137351120466C8500456E74 /* PlayListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137351020466C8500456E74 /* PlayListItem.swift */; };
+		4137351320466E2B00456E74 /* PlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4137351220466E2B00456E74 /* PlayList.swift */; };
 		4138698D1FCC1F0400DF5CD7 /* NewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4138698C1FCC1F0400DF5CD7 /* NewCollectionView.swift */; };
 		413869901FCC22C800DF5CD7 /* NEW.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4138698E1FCC22C800DF5CD7 /* NEW.storyboard */; };
 		413E2B811FCCE05700E25686 /* SEARCH.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 413E2B801FCCE05700E25686 /* SEARCH.storyboard */; };
@@ -108,6 +110,8 @@
 		4112FCF31FC2C34E00D8C2AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		412CD2B11FE3CB120093D64B /* Home+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+Audio.swift"; sourceTree = "<group>"; };
 		412DFD221FD65E36003FF906 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		4137351020466C8500456E74 /* PlayListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListItem.swift; sourceTree = "<group>"; };
+		4137351220466E2B00456E74 /* PlayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayList.swift; sourceTree = "<group>"; };
 		4138698C1FCC1F0400DF5CD7 /* NewCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCollectionView.swift; sourceTree = "<group>"; };
 		4138698F1FCC22C800DF5CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "tl-media-ios/Views/Base.lproj/NEW.storyboard"; sourceTree = "<group>"; };
 		413E2B801FCCE05700E25686 /* SEARCH.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SEARCH.storyboard; sourceTree = "<group>"; };
@@ -311,6 +315,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		4137350F20466C6700456E74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4137351020466C8500456E74 /* PlayListItem.swift */,
+				4137351220466E2B00456E74 /* PlayList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4138698B1FCC1EED00DF5CD7 /* New */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +370,7 @@
 				416992CE2008A45500EEEC56 /* ArticleListViewController.swift */,
 				415A2CBD2036A464006FEF3D /* ArticleList+CollectionViewController.swift */,
 				4166513D2011C8DE005CA292 /* Cell */,
+				4137350F20466C6700456E74 /* Model */,
 				4197FE46201082FF009F1037 /* UIViews */,
 			);
 			path = "Article List";
@@ -777,9 +791,11 @@
 				416992CF2008A45500EEEC56 /* ArticleListViewController.swift in Sources */,
 				41E122952022B45A00C86E3E /* HeadlineArticleCell.swift in Sources */,
 				41A034B91FFF201E00176A0E /* FacebookService.swift in Sources */,
+				4137351320466E2B00456E74 /* PlayList.swift in Sources */,
 				4164FFA02032CE0F00EECBF3 /* ImageElementCell.swift in Sources */,
 				41E122912022AE5000C86E3E /* HeadlineArticleView.swift in Sources */,
 				410FBA2A1FE220C300A9BFA1 /* ArticleContainerViewController.swift in Sources */,
+				4137351120466C8500456E74 /* PlayListItem.swift in Sources */,
 				4108492F1FE8BCBD0063502E /* ArticleHeaderModel.swift in Sources */,
 				4164FF9B2032C96200EECBF3 /* ArticleElementsView.swift in Sources */,
 				412CD2B21FE3CB120093D64B /* Home+Audio.swift in Sources */,

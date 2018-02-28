@@ -29,9 +29,7 @@ extension HomeArticleDetailController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //COLLECTIONVIEW AT INDEX 0
-
+    
         if indexPath.row == 0 {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID.HomeArticleDetailCell.rawValue, for: indexPath) as! HomeArticleDetailCell

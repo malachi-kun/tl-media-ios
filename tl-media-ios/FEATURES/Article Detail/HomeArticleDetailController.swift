@@ -79,14 +79,4 @@ class HomeArticleDetailController:UIViewController {
         let networkManager = ArticleNetworkService(id: id)
         networkManager.delegateElements = self
     }
-    
-//    func downloadArticleImages(elements:[ArticleDetailElementModel]){
-//        guard let articleElements = articleElements else {return}
-//            for image in articleElements {
-//          
-//                if image.inputType == cellType.image.rawValue {
-//                    downloadImage(urlString: image.content)
-//                }
-//            }
-//    }
 }

@@ -63,7 +63,6 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
         
         //DELEGATES
         networkManager.delegateProd = self
-        //networkManager.getAuthorList()
         delegate = self
         
         //CELL REGISTRATION
