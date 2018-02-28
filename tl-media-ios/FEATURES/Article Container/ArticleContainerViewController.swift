@@ -21,8 +21,9 @@ class ArticleContainerViewController:UIViewController{
     // MARK: UI COMPONENTS
     let progressSlide:UISlider = {
         let slider = UISlider()
-        slider.minimumTrackTintColor = .gray
+        slider.minimumTrackTintColor = .red
         slider.maximumTrackTintColor = .gray
+        slider.setThumbImage(UIImage(), for: .normal)
         //slider.setThumbImage(#imageLiteral(resourceName: "thumb"), for: .normal)
          slider.addTarget(self, action: #selector(ArticleContainerViewController.sliderValueDidChange(_:)), for: .valueChanged)
         return slider
@@ -87,7 +88,18 @@ class ArticleContainerViewController:UIViewController{
         //self.setupAnimator()  //turned off for now.  Buggy.
         
         setupView()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "test playlist", style: .plain, target: self, action: #selector(testPlayList))
+        //test code
     }
+    
+    // MARK: *** TEST CODE ***
+    @objc func testPlayList(){
+        print("test playlist pressed")
+        
+        playPlayList()
+    }
+    // TEST CODE
     
     override func viewWillAppear(_ animated: Bool) {
         setupView()
@@ -128,8 +140,8 @@ class ArticleContainerViewController:UIViewController{
         audioManager = HomeAudio.shared
         audioManager?.resetAudio()
         let random = Int(arc4random_uniform(3))
-        print(random)
         audioManager?.playStream(fileURL: audioList[random])
+
         
         nowPlaying = true
         unHideUI()
@@ -238,6 +250,34 @@ class ArticleContainerViewController:UIViewController{
         let durationTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentItem?.duration)!))
         progressSlide.setValue(floatTime/durationTime, animated: true)
     }
+    
+    // MARK: ***   test code   ***
+    let voice:[String] = ["https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/b0328.mp3","https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/diner-orange.mp3","https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/oyster.mp3"]
+    
+    func  playPlayList(){
+        //create playlist
+        let voiceArticleOne:PlayListItem = PlayListItem(title: "one", url: voice[0])
+        let voiceArticleTwo:PlayListItem = PlayListItem(title: "two", url: voice[1])
+        let voiceArticleThree:PlayListItem = PlayListItem(title: "three", url: voice[2])
+        
+        let playListName = "Hanabi"
+        var testPlaylist = PlayList(name: playListName, item: voiceArticleOne)
+        testPlaylist.addPlayListItem(name:playListName , item: voiceArticleTwo)
+        testPlaylist.addPlayListItem(name: playListName, item: voiceArticleThree)
+        
+        //play playlist
+        audioManager = HomeAudio.shared
+        audioManager?.resetAudio()
+        nowPlaying = true
+        unHideUI()
+        syncProgressLineToAudio()
+        
+        for voiceURL in testPlaylist.pList[playListName]! {
+            audioManager?.playStream(fileURL: voiceURL.url)
+        }
+
+    }
+    //***   test code   ***
 }
 
 

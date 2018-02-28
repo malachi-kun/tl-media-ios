@@ -65,7 +65,7 @@ class HomeAudio {
         if newTime < 0 {
             newTime = 0
         }
-        let calculatedTime:CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+        let calculatedTime:CMTime = CMTimeMake(Int64(newTime * 1500 as Float64), 1500)
         avPlayer?.seek(to: calculatedTime)
     }
     
@@ -75,7 +75,7 @@ class HomeAudio {
         if newTime < 0 {
             newTime = 0
         }
-        let calculatedTime:CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+        let calculatedTime:CMTime = CMTimeMake(Int64(newTime * 1500000 as Float64), 15000)
         avPlayer?.seek(to: calculatedTime)
     }
     

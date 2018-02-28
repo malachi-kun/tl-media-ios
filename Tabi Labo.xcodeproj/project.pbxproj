@@ -315,15 +315,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		4137350F20466C6700456E74 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4137351020466C8500456E74 /* PlayListItem.swift */,
-				4137351220466E2B00456E74 /* PlayList.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		4138698B1FCC1EED00DF5CD7 /* New */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +326,8 @@
 		413E2B8E1FCD3F6700E25686 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4137351020466C8500456E74 /* PlayListItem.swift */,
+				4137351220466E2B00456E74 /* PlayList.swift */,
 				417885C21FD50CC4008F4B8E /* ArticleModel.swift */,
 				4164FF962032C11A00EECBF3 /* ArticleDetailElements.swift */,
 				4108492E1FE8BCBD0063502E /* ArticleHeaderModel.swift */,
@@ -370,7 +363,6 @@
 				416992CE2008A45500EEEC56 /* ArticleListViewController.swift */,
 				415A2CBD2036A464006FEF3D /* ArticleList+CollectionViewController.swift */,
 				4166513D2011C8DE005CA292 /* Cell */,
-				4137350F20466C6700456E74 /* Model */,
 				4197FE46201082FF009F1037 /* UIViews */,
 			);
 			path = "Article List";

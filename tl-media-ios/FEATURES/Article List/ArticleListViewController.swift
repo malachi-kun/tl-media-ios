@@ -74,6 +74,8 @@ class HomeRootViewController:UIViewController,UICollectionViewDelegate, UICollec
             flowlayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
         setupView()
+        
+
     }
     
     private func setupView(){
