@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct PlayListItem {
+class PlayListItem {
     var title:String
     var url:String
     
