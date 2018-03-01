@@ -50,7 +50,6 @@ class ArticleContainerViewController:UIViewController{
     
     var audioList:[String] = ["https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/b0328.mp3","https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/diner-orange.mp3","https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/oyster.mp3"]
     
-    //var audioManager:HomeAudio?
     var nowPlaying:Bool?
     var activeModel:ArticleModel?
 
@@ -116,9 +115,7 @@ class ArticleContainerViewController:UIViewController{
     @objc func sliderValueDidChange(_ sender:UISlider!){
         print("slider changed")
         let changedTime = Double(progressSlide.value)
-        //let cmTime = CMTimeMake(Int64(changedTime * 1000 as Float64), 1000)
         let cmTime = Int64(changedTime * 1000 as Float64)
-        //audioManager?.avPlayer?.seek(to: cmTime)
         PlayListPlayer.shared.seek(to: Float(cmTime))
     }
     

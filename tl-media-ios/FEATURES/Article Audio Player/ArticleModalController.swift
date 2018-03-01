@@ -85,14 +85,14 @@ class ArticleModalController:UIViewController {
     }()
     
     // MARK: PROPERTIES
-    var audioManager:HomeAudio?
+    //var audioManager:HomeAudio?
     var nowPlaying:Bool?
     var header:ArticleHeader?
     
     
     // MARK: LIFECYLE
     override func viewDidLoad() {
-        audioManager = HomeAudio.shared
+        //audioManager = HomeAudio.shared
         setupView()
     }
     
@@ -106,7 +106,8 @@ class ArticleModalController:UIViewController {
         
         //top controller
         guard let nowPlaying = nowPlaying else {
-            audioManager?.playAudio()
+            //audioManager?.playAudio()
+            PlayListPlayer.shared.play()
             self.nowPlaying = true
             playPauseButton.setImage(#imageLiteral(resourceName: "pause.png"), for: .normal)
             return
@@ -135,7 +136,7 @@ class ArticleModalController:UIViewController {
 
     @objc private func rewindPressed(){
         print("rewind button pressed.")
-        audioManager?.back15()
+        PlayListPlayer.shared.jumpToPreviousTrack()
     }
     
     @objc private func pausePlayPressed(){
@@ -145,12 +146,12 @@ class ArticleModalController:UIViewController {
     
     @objc private func forwardPressed(){
         print("forward button pressed.")
-        audioManager?.foward15()
+        PlayListPlayer.shared.skipToNextTrack()
     }
     
     @objc private func replayPressed(){
         print("replay button pressed.")
-        audioManager?.resetAudio()
+        PlayListPlayer.shared.seekToBeginning()
     }
     
     // MARK: ASSIST METHODS
@@ -213,20 +214,20 @@ class ArticleModalController:UIViewController {
     
     private func getProgressLineStatus(){
         //progress line logic
-        let floatTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentTime())!))
-        let durationTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentItem?.duration)!))
+        let floatTime = Float(CMTimeGetSeconds((PlayListPlayer.shared.player.currentTime())))
+        let durationTime = Float(CMTimeGetSeconds((PlayListPlayer.shared.player.currentItem?.duration)!))
         progressSlide.setValue(floatTime/durationTime, animated: true)
     }
     
     private func togglePlayButton(nowPlaying:Bool){
         if (!nowPlaying) {
-            audioManager?.playAudio()
+            PlayListPlayer.shared.play()
             self.nowPlaying = true
             playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
             pausePlayButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
             syncProgressLineToAudio()
         } else {
-            audioManager?.pauseAudio()
+            PlayListPlayer.shared.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
             pausePlayButton.setImage(#imageLiteral(resourceName: "playTrack"), for: .normal)
             self.nowPlaying = false
@@ -235,8 +236,8 @@ class ArticleModalController:UIViewController {
     }
     
     private func syncProgressLineToAudio(){
-        audioManager?.avPlayer?.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 30), queue: .main) { time in
-            let fraction = CMTimeGetSeconds(time) / CMTimeGetSeconds((self.audioManager?.avPlayer?.currentItem!.duration)!)
+        PlayListPlayer.shared.player.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 30), queue: .main) { time in
+            let fraction = CMTimeGetSeconds(time) / CMTimeGetSeconds((PlayListPlayer.shared.player.currentItem!.duration))
             self.progressSlide.value = Float(fraction)
         }
     }
