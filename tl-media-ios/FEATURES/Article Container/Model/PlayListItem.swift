@@ -10,9 +10,9 @@ import UIKit
 
 class PlayListItem {
     var title:String
-    var url:String
+    var url:URL
     
-    init(title:String, url:String){
+    init(title:String, url:URL){
         self.title = title
         self.url = url
     }

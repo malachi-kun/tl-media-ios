@@ -139,6 +139,7 @@ class ArticleContainerViewController:UIViewController{
         let random = Int(arc4random_uniform(3))
         guard let thisURL = URL(string: audioList[random]) else {return}
         PlayListPlayer.shared.set(playList: [thisURL])
+        PlayListPlayer.shared.seekToBeginning()
         PlayListPlayer.shared.play()
 
         nowPlaying = true
@@ -256,23 +257,21 @@ class ArticleContainerViewController:UIViewController{
     
     
     func  playPlayList(){
+        //create playlist items
+        guard let voiceArticleOne:PlayListItem = PlayListItem(title: "one", url: URL(string: voice[0])!) else {return}
+        guard let voiceArticleTwo:PlayListItem = PlayListItem(title: "two", url: URL(string: voice[1])!) else {return}
+        guard let voiceArticleThree:PlayListItem = PlayListItem(title: "three", url: URL(string: voice[2])!) else {return}
+
         //create playlist
-        let voiceArticleOne:PlayListItem = PlayListItem(title: "one", url: voice[0])
-        let voiceArticleTwo:PlayListItem = PlayListItem(title: "two", url: voice[1])
-        let voiceArticleThree:PlayListItem = PlayListItem(title: "three", url: voice[2])
+        let playListName = "Hanami"
+        var testPlaylist = PlayList(name: playListName, item: voiceArticleOne)
+        testPlaylist.addPlayListItem(name:playListName , item: voiceArticleTwo)
+        testPlaylist.addPlayListItem(name: playListName, item: voiceArticleThree)
 
-//        let playListName = "Hanami"
-//        var testPlaylist = PlayList(name: playListName, item: voiceArticleOne)
-//        testPlaylist.addPlayListItem(name:playListName , item: voiceArticleTwo)
-//        testPlaylist.addPlayListItem(name: playListName, item: voiceArticleThree)
-        
-        let url1: URL = URL(string: voiceArticleOne.url)!
-        let url2: URL = URL(string: voiceArticleTwo.url)!
-        let url3: URL = URL(string: voiceArticleThree.url)!
-        PlayListPlayer.shared.set(playList: [url1, url2, url3])
+        PlayListPlayer.shared.set(playList: testPlaylist.listOfURL)
 
         
-        //start playing
+        //start playing playlist
         PlayListPlayer.shared.play()
         nowPlaying = true
         unHideUI()
