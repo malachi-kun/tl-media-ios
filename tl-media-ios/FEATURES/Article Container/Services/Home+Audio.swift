@@ -8,6 +8,7 @@
 
 import Foundation
 import MediaPlayer
+import PlayListPlayer
 
 class HomeAudio {
     var avPlayer: AVPlayer?
@@ -60,23 +61,27 @@ class HomeAudio {
     
     private let seekDuration:Float64 = 1
     func back15(){
-        let currentTime = CMTimeGetSeconds((avPlayer?.currentTime())!)
-        var newTime = currentTime - seekDuration
-        if newTime < 0 {
-            newTime = 0
-        }
-        let calculatedTime:CMTime = CMTimeMake(Int64(newTime * 1500 as Float64), 1500)
-        avPlayer?.seek(to: calculatedTime)
+//        let currentTime = CMTimeGetSeconds((avPlayer?.currentTime())!)
+//        var newTime = currentTime - seekDuration
+//        if newTime < 0 {
+//            newTime = 0
+//        }
+//        let calculatedTime:CMTime = CMTimeMake(Int64(newTime * 1500 as Float64), 1500)
+//        avPlayer?.seek(to: calculatedTime)
+        
+        PlayListPlayer.shared.jumpToPreviousTrack()
     }
     
     func foward15(){
-        let currentTime = CMTimeGetSeconds((avPlayer?.currentTime())!)
-        var newTime = currentTime + seekDuration
-        if newTime < 0 {
-            newTime = 0
-        }
-        let calculatedTime:CMTime = CMTimeMake(Int64(newTime * 1500000 as Float64), 15000)
-        avPlayer?.seek(to: calculatedTime)
+//        let currentTime = CMTimeGetSeconds((avPlayer?.currentTime())!)
+//        var newTime = currentTime + seekDuration
+//        if newTime < 0 {
+//            newTime = 0
+//        }
+//        let calculatedTime:CMTime = CMTimeMake(Int64(newTime * 1500000 as Float64), 15000)
+//        avPlayer?.seek(to: calculatedTime)
+        
+        PlayListPlayer.shared.skipToNextTrack()
     }
     
     func setPlayingScreen(fileURL: String){

@@ -36,6 +36,9 @@
 		4164FFA02032CE0F00EECBF3 /* ImageElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4164FF9F2032CE0F00EECBF3 /* ImageElementCell.swift */; };
 		416992CF2008A45500EEEC56 /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416992CE2008A45500EEEC56 /* ArticleListViewController.swift */; };
 		416992D12008A69E00EEEC56 /* StandardArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416992D02008A69E00EEEC56 /* StandardArticleCell.swift */; };
+		41735F78204799C800BFAE0A /* PlayListPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4149F17F204795E000C4D87F /* PlayListPlayer.framework */; };
+		41735F79204799D000BFAE0A /* PlayListPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4149F17F204795E000C4D87F /* PlayListPlayer.framework */; };
+		41735F7A204799D000BFAE0A /* PlayListPlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4149F17F204795E000C4D87F /* PlayListPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4174389C200C45BF00B56C19 /* VoiceArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4174389B200C45BF00B56C19 /* VoiceArticleView.swift */; };
 		4174389E200C736D00B56C19 /* TabiLaboFamilyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4174389D200C736D00B56C19 /* TabiLaboFamilyCell.swift */; };
 		417438A0200C83F200B56C19 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4174389F200C83F200B56C19 /* CategoryCell.swift */; };
@@ -73,6 +76,27 @@
 			remoteGlobalIDString = 4112FCCD1FC2C34E00D8C2AF;
 			remoteInfo = "tl-media-ios";
 		};
+		4149F17E204795E000C4D87F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4149F178204795E000C4D87F /* PlayListPlayer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 73983FF11D3D0D620001EA78;
+			remoteInfo = PlayListPlayer;
+		};
+		4149F180204795E000C4D87F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4149F178204795E000C4D87F /* PlayListPlayer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 73983FFB1D3D0D620001EA78;
+			remoteInfo = PlayListPlayerTests;
+		};
+		41735F7B204799D000BFAE0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4149F178204795E000C4D87F /* PlayListPlayer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 73983FF01D3D0D620001EA78;
+			remoteInfo = PlayListPlayer;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -84,6 +108,17 @@
 			files = (
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41735F7D204799D000BFAE0A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				41735F7A204799D000BFAE0A /* PlayListPlayer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -119,6 +154,7 @@
 		413E2B851FCCE08400E25686 /* HISTORY.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HISTORY.storyboard; sourceTree = "<group>"; };
 		413E2B8C1FCD3EDA00E25686 /* Article+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+Networking.swift"; sourceTree = "<group>"; };
 		413E2B911FCD449700E25686 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "tl-media-ios/Info.plist"; sourceTree = SOURCE_ROOT; };
+		4149F178204795E000C4D87F /* PlayListPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PlayListPlayer.xcodeproj; path = "../../../../../../../Downloads/PlayListPlayer-master/PlayListPlayer.xcodeproj"; sourceTree = "<group>"; };
 		415A2CBD2036A464006FEF3D /* ArticleList+CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleList+CollectionViewController.swift"; sourceTree = "<group>"; };
 		4164FF962032C11A00EECBF3 /* ArticleDetailElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailElements.swift; sourceTree = "<group>"; };
 		4164FF982032C44900EECBF3 /* HomeArticleDetailController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeArticleDetailController+Delegates.swift"; sourceTree = "<group>"; };
@@ -158,7 +194,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41735F78204799C800BFAE0A /* PlayListPlayer.framework in Frameworks */,
 				41A034B01FFF182000176A0E /* Bolts.framework in Frameworks */,
+				41735F79204799D000BFAE0A /* PlayListPlayer.framework in Frameworks */,
 				41A034B11FFF182000176A0E /* FBSDKCoreKit.framework in Frameworks */,
 				41A034B21FFF182000176A0E /* FBSDKLoginKit.framework in Frameworks */,
 				41A034B31FFF182000176A0E /* FBSDKShareKit.framework in Frameworks */,
@@ -201,6 +239,7 @@
 		410FBA2B1FE234B700A9BFA1 /* API LIBRARIES */ = {
 			isa = PBXGroup;
 			children = (
+				4149F178204795E000C4D87F /* PlayListPlayer.xcodeproj */,
 				410DA61D1FE23A770074C321 /* MusicPlayerTransitionAnimation.swift */,
 			);
 			path = "API LIBRARIES";
@@ -336,6 +375,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		4149F179204795E000C4D87F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4149F17F204795E000C4D87F /* PlayListPlayer.framework */,
+				4149F181204795E000C4D87F /* PlayListPlayerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4164FF9E2032CDEF00EECBF3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,10 +507,12 @@
 				F14C2B68E9D02F9D07E59B13 /* [CP] Embed Pods Frameworks */,
 				7DDB9E346552A023ED98F494 /* [CP] Copy Pods Resources */,
 				412DFD331FD65E36003FF906 /* Embed App Extensions */,
+				41735F7D204799D000BFAE0A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				41735F7C204799D000BFAE0A /* PBXTargetDependency */,
 			);
 			name = "tl-media-ios";
 			productName = "tl-media-ios";
@@ -548,6 +598,12 @@
 			mainGroup = 4112FCC51FC2C34E00D8C2AF;
 			productRefGroup = 4112FCCF1FC2C34E00D8C2AF /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4149F179204795E000C4D87F /* Products */;
+					ProjectRef = 4149F178204795E000C4D87F /* PlayListPlayer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4112FCCD1FC2C34E00D8C2AF /* tl-media-ios */,
@@ -556,6 +612,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4149F17F204795E000C4D87F /* PlayListPlayer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PlayListPlayer.framework;
+			remoteRef = 4149F17E204795E000C4D87F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4149F181204795E000C4D87F /* PlayListPlayerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PlayListPlayerTests.xctest;
+			remoteRef = 4149F180204795E000C4D87F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4112FCCC1FC2C34E00D8C2AF /* Resources */ = {
@@ -823,6 +896,11 @@
 			isa = PBXTargetDependency;
 			target = 4112FCCD1FC2C34E00D8C2AF /* tl-media-ios */;
 			targetProxy = 4112FCEE1FC2C34E00D8C2AF /* PBXContainerItemProxy */;
+		};
+		41735F7C204799D000BFAE0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PlayListPlayer;
+			targetProxy = 41735F7B204799D000BFAE0A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

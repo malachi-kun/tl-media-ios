@@ -9,6 +9,7 @@ target 'tl-media-ios' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
+  pod 'PlayListPlayer'
   # Pods for tl-media-ios
   
   target 'tl-media-iosTests' do

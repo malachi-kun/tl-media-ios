@@ -12,6 +12,7 @@ import UIKit
 import ARNTransitionAnimator
 import Foundation
 import MediaPlayer
+import PlayListPlayer
 
 class ArticleContainerViewController:UIViewController{
 
@@ -176,12 +177,14 @@ class ArticleContainerViewController:UIViewController{
     
     @objc func backTrackPressded(){
         print("back pressed")
-        audioManager?.back15()
+        //audioManager?.back15()
+        PlayListPlayer.shared.jumpToPreviousTrack()
     }
     
     @objc func fwdTrackPressded(){
         print("fwd pressed")
-        audioManager?.foward15()
+        PlayListPlayer.shared.skipToNextTrack()
+        //audioManager?.foward15()
     }
     
     // MARK: ASSIST METHODS
@@ -255,28 +258,32 @@ class ArticleContainerViewController:UIViewController{
     // MARK: ***   test code   ***
     let voice:[String] = ["https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/b0328.mp3","https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/diner-orange.mp3","https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/oyster.mp3"]
     
+    
+    
+    
     func  playPlayList(){
         //create playlist
         let voiceArticleOne:PlayListItem = PlayListItem(title: "one", url: voice[0])
         let voiceArticleTwo:PlayListItem = PlayListItem(title: "two", url: voice[1])
         let voiceArticleThree:PlayListItem = PlayListItem(title: "three", url: voice[2])
+
+//        let playListName = "Hanami"
+//        var testPlaylist = PlayList(name: playListName, item: voiceArticleOne)
+//        testPlaylist.addPlayListItem(name:playListName , item: voiceArticleTwo)
+//        testPlaylist.addPlayListItem(name: playListName, item: voiceArticleThree)
         
-        let playListName = "Hanabi"
-        var testPlaylist = PlayList(name: playListName, item: voiceArticleOne)
-        testPlaylist.addPlayListItem(name:playListName , item: voiceArticleTwo)
-        testPlaylist.addPlayListItem(name: playListName, item: voiceArticleThree)
+        let url1: URL = URL(string: voiceArticleOne.url)!
+        let url2: URL = URL(string: voiceArticleTwo.url)!
+        let url3: URL = URL(string: voiceArticleThree.url)!
+        PlayListPlayer.shared.set(playList: [url1, url2, url3])
+        PlayListPlayer.shared.playMode = PlayerPlayMode.noRepeat
         
-        //play playlist
-        audioManager = HomeAudio.shared
-        audioManager?.resetAudio()
+        //start playing
+        PlayListPlayer.shared.play()
         nowPlaying = true
         unHideUI()
         syncProgressLineToAudio()
         
-        for voiceURL in testPlaylist.pList[playListName]! {
-            audioManager?.playStream(fileURL: voiceURL.url)
-        }
-
     }
     //***   test code   ***
 }
