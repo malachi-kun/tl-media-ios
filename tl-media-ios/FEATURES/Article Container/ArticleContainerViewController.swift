@@ -12,7 +12,6 @@ import UIKit
 import ARNTransitionAnimator
 import Foundation
 import MediaPlayer
-import PlayListPlayer
 
 class ArticleContainerViewController:UIViewController{
 
@@ -26,7 +25,6 @@ class ArticleContainerViewController:UIViewController{
         slider.minimumTrackTintColor = .red
         slider.maximumTrackTintColor = .gray
         slider.setThumbImage(UIImage(), for: .normal)
-        //slider.setThumbImage(#imageLiteral(resourceName: "thumb"), for: .normal)
          slider.addTarget(self, action: #selector(ArticleContainerViewController.sliderValueDidChange(_:)), for: .valueChanged)
         return slider
     }()
@@ -52,7 +50,7 @@ class ArticleContainerViewController:UIViewController{
     
     var audioList:[String] = ["https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/b0328.mp3","https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/diner-orange.mp3","https://s3-ap-northeast-1.amazonaws.com/tl-media-ios-tempfile/oyster.mp3"]
     
-    var audioManager:HomeAudio?
+    //var audioManager:HomeAudio?
     var nowPlaying:Bool?
     var activeModel:ArticleModel?
 
@@ -118,8 +116,10 @@ class ArticleContainerViewController:UIViewController{
     @objc func sliderValueDidChange(_ sender:UISlider!){
         print("slider changed")
         let changedTime = Double(progressSlide.value)
-        let cmTime = CMTimeMake(Int64(changedTime * 1000 as Float64), 1000)
-        audioManager?.avPlayer?.seek(to: cmTime)
+        //let cmTime = CMTimeMake(Int64(changedTime * 1000 as Float64), 1000)
+        let cmTime = Int64(changedTime * 1000 as Float64)
+        //audioManager?.avPlayer?.seek(to: cmTime)
+        PlayListPlayer.shared.seek(to: Float(cmTime))
     }
     
     @objc func notifyNowPlayingStatus(_ notification:Notification){
@@ -139,12 +139,11 @@ class ArticleContainerViewController:UIViewController{
         
         bottomAudioView.titleLabel.text = activeModel.title[0]
         
-        audioManager = HomeAudio.shared
-        audioManager?.resetAudio()
         let random = Int(arc4random_uniform(3))
-        audioManager?.playStream(fileURL: audioList[random])
+        guard let thisURL = URL(string: audioList[random]) else {return}
+        PlayListPlayer.shared.set(playList: [thisURL])
+        PlayListPlayer.shared.play()
 
-        
         nowPlaying = true
         unHideUI()
         syncProgressLineToAudio()
@@ -165,11 +164,11 @@ class ArticleContainerViewController:UIViewController{
         guard let nowPlaying = nowPlaying else {return}
         
         if (!nowPlaying) {
-            audioManager?.playAudio()
+            PlayListPlayer.shared.play()
             self.nowPlaying = true
             syncProgressLineToAudio()
         } else {
-            audioManager?.pauseAudio()
+            PlayListPlayer.shared.pause()
             self.nowPlaying = false
             syncProgressLineToAudio()
         }
@@ -177,14 +176,12 @@ class ArticleContainerViewController:UIViewController{
     
     @objc func backTrackPressded(){
         print("back pressed")
-        //audioManager?.back15()
         PlayListPlayer.shared.jumpToPreviousTrack()
     }
     
     @objc func fwdTrackPressded(){
         print("fwd pressed")
         PlayListPlayer.shared.skipToNextTrack()
-        //audioManager?.foward15()
     }
     
     // MARK: ASSIST METHODS
@@ -242,16 +239,16 @@ class ArticleContainerViewController:UIViewController{
     
     func syncProgressLineToAudio(){
         //progress code
-        audioManager?.avPlayer?.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 30), queue: .main) { time in
-            let fraction = CMTimeGetSeconds(time) / CMTimeGetSeconds((self.audioManager?.avPlayer?.currentItem!.duration)!)
+        PlayListPlayer.shared.player.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 30), queue: .main) { time in
+            let fraction = CMTimeGetSeconds(time) / CMTimeGetSeconds((PlayListPlayer.shared.player.currentItem?.duration)!)
             self.progressSlide.value = Float(fraction)
         }
     }
     
     func getProgressLineStatus(){
         //progress line logic
-        let floatTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentTime())!))
-        let durationTime = Float(CMTimeGetSeconds((audioManager?.avPlayer?.currentItem?.duration)!))
+        let floatTime = Float(CMTimeGetSeconds((PlayListPlayer.shared.player.currentTime())))
+        let durationTime = Float(CMTimeGetSeconds((PlayListPlayer.shared.player.currentItem?.duration)!))
         progressSlide.setValue(floatTime/durationTime, animated: true)
     }
     
@@ -276,7 +273,7 @@ class ArticleContainerViewController:UIViewController{
         let url2: URL = URL(string: voiceArticleTwo.url)!
         let url3: URL = URL(string: voiceArticleThree.url)!
         PlayListPlayer.shared.set(playList: [url1, url2, url3])
-        PlayListPlayer.shared.playMode = PlayerPlayMode.noRepeat
+
         
         //start playing
         PlayListPlayer.shared.play()

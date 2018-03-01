@@ -12,6 +12,7 @@ class ArticleNetworkService {
 
     // MARK: PROPERTIES
     
+    
     // delegate prop.
     var delegateProd:ArticleDelegate?
     var delegateElements:ArticleElementListDelegate?
@@ -159,8 +160,6 @@ class ArticleNetworkService {
         }
         task.resume()
     }
-    
-
     
     //enum for parsing data in method below
     enum articleNodes:String{
